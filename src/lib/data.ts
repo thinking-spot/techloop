@@ -3,8 +3,8 @@ export type Device = {
     name: string;
     category: string;
     price: string;
-    description: string;
     tagline?: string;
+    description: string;
     longDescription?: string;
     imageUrl: string;
     specs: string[];
@@ -30,6 +30,7 @@ export type Device = {
     rating?: number;
     reviewCount?: number;
     badges?: string[];
+    useCase?: string[]; // Added for new filter
 };
 
 export const devices: Device[] = [
@@ -49,6 +50,7 @@ export const devices: Device[] = [
             "https://placehold.co/600x400?text=Meta+Ray-Ban+Case",
         ],
         badges: ["Most Popular", "In Stock"],
+        useCase: ["Photography", "Communication", "Entertainment"],
         specs: ["12MP Ultra Wide Camera", "Qualcomm Snapdragon AR1 Gen 1", "Open-ear Audio", "Meta AI Voice Control"],
         features: [
             { icon: "Camera", title: "12MP Camera", description: "Capture photos & 60s videos hands-free" },
@@ -106,7 +108,7 @@ export const devices: Device[] = [
         ]
     },
     {
-        id: "xreal-air",
+        id: "xreal-air-pro",
         name: "XREAL Air 2 Pro",
         category: "AR Glasses",
         price: "48",
@@ -121,6 +123,7 @@ export const devices: Device[] = [
             "https://placehold.co/600x400?text=XREAL+POV",
         ],
         badges: ["Best for Productivity", "In Stock"],
+        useCase: ["Productivity", "Travel", "Gaming"],
         specs: ["Micro-OLED Panel", "120Hz Refresh Rate", "One-touch Immersion Control", "Directional Audio"],
         features: [
             { icon: "Screen", title: "130\" Virtual Display", description: "Equivalent to 4m away" },
@@ -170,10 +173,10 @@ export const devices: Device[] = [
     },
     {
         id: "oura-ring",
-        name: "Oura Ring Gen 3",
+        name: "Oura Ring Gen 4",
         category: "Smart Ring",
-        price: "48",
-        tagline: "Health tracking wrapped around your finger.",
+        price: "38",
+        tagline: "Your body's story, told by a ring.",
         description: "Advanced health sensing in a durable, lightweight titanium ring. Tracks sleep, readiness, and activity with research-grade accuracy.",
         longDescription: "Oura monitors your sleep, activity, recovery, temperature trends, heart rate, stress, and more — with high accuracy. It's so comfortable you'll forget you're wearing it, yet durable enough to wear anywhere.",
         imageUrl: "https://placehold.co/600x400?text=Oura+Ring",
@@ -183,7 +186,8 @@ export const devices: Device[] = [
             "https://placehold.co/600x400?text=Oura+App+View",
             "https://placehold.co/600x400?text=Oura+Charger",
         ],
-        badges: ["Best Sleep Tracker", "Low Stock"],
+        badges: ["Free Sizing Kit", "In Stock"],
+        useCase: ["Fitness & Health", "Sleep"],
         specs: ["Sleep Tracking", "Heart Rate Variability", "7 Days Battery", "Water Resistant"],
         features: [
             { icon: "Moon", title: "Sleep Analysis", description: "Deep, Light, REM stages" },
@@ -209,8 +213,8 @@ export const devices: Device[] = [
                 ]
             }
         ],
-        rating: 4.9,
-        reviewCount: 3102,
+        rating: 4.7,
+        reviewCount: 8456,
         reviews: [
             {
                 user: "Emily R.",
@@ -223,9 +227,55 @@ export const devices: Device[] = [
         ]
     },
     {
+        id: "samsung-ring",
+        name: "Samsung Galaxy Ring",
+        category: "Smart Ring",
+        price: "42",
+        tagline: "The smart ring that loves your Galaxy phone.",
+        description: "Everything Oura does, but plays perfectly with Samsung ecosystem. Galaxy Watch integration. Free Samsung Health app.",
+        imageUrl: "https://placehold.co/600x400?text=Samsung+Galaxy+Ring",
+        galleryImages: [
+            "https://placehold.co/600x400?text=Samsung+Ring+Silver",
+            "https://placehold.co/600x400?text=Samsung+Ring+App",
+        ],
+        badges: ["Best for Android", "In Stock"],
+        useCase: ["Fitness & Health", "Communication"],
+        specs: ["7-day battery", "Galaxy Watch Gestures", "Waterproof", "No Subscription"],
+        rating: 4.4,
+        reviewCount: 1673
+    },
+    {
+        id: "nothing-ear",
+        name: "Nothing Ear",
+        category: "AI Earbuds",
+        price: "18",
+        tagline: "ChatGPT in your ears. Music in your soul.",
+        description: "Premium audio meets AI assistant. Ask questions, get translations, control your life without touching your phone.",
+        imageUrl: "https://placehold.co/600x400?text=Nothing+Ear",
+        badges: ["Best Value", "In Stock"],
+        useCase: ["Entertainment", "Communication", "AI Assistant"],
+        specs: ["Active Noise Cancellation", "40hr Battery", "ChatGPT Built-in", "IPX4"],
+        rating: 4.5,
+        reviewCount: 3128
+    },
+    {
+        id: "brilliant-labs-frame",
+        name: "Brilliant Labs Frame",
+        category: "Smart Glasses",
+        price: "39",
+        tagline: "Open-source smart glasses for hackers.",
+        description: "Build your own AI features. Customize everything. The anti-Meta glasses. Join the developer community.",
+        imageUrl: "https://placehold.co/600x400?text=Brilliant+Labs+Frame",
+        badges: ["Developer Favorite", "In Stock"],
+        useCase: ["Developer", "Productivity"],
+        specs: ["Open-source SDK", "AI Vision", "MicroPython", "Lightweight"],
+        rating: 4.3,
+        reviewCount: 894
+    },
+    {
         id: "vision-pro",
         name: "Apple Vision Pro",
-        category: "Spatial Computer",
+        category: "AR/VR Headset",
         price: "299",
         tagline: "Welcome to the era of spatial computing.",
         description: "Seamlessly blends digital content with your physical space. Controlled by your eyes, hands, and voice.",
@@ -237,7 +287,8 @@ export const devices: Device[] = [
             "https://placehold.co/600x400?text=Vision+Pro+Side",
             "https://placehold.co/600x400?text=Vision+Pro+Battery",
         ],
-        badges: ["Premium", "Limited Availability"],
+        badges: ["Flagship Device", "Limited Availability"],
+        useCase: ["Productivity", "Entertainment", "Gaming"],
         specs: ["Micro-OLED Display", "R1 Chip", "Eye Tracking", "Spatial Audio"],
         features: [
             { icon: "Eye", title: "Eye Tracking", description: "Navigate with just your eyes" },
@@ -262,8 +313,8 @@ export const devices: Device[] = [
                 ]
             }
         ],
-        rating: 4.7,
-        reviewCount: 450,
+        rating: 4.2,
+        reviewCount: 567,
         reviews: [
             {
                 user: "Michael B.",
@@ -276,12 +327,40 @@ export const devices: Device[] = [
         ]
     },
     {
+        id: "whoop-4",
+        name: "Whoop 4.0",
+        category: "Fitness Tracker",
+        price: "32",
+        tagline: "Your 24/7 digital fitness coach.",
+        description: "Personalized coaching without the distraction of a screen. Track strain, recovery, and sleep. Used by pro athletes.",
+        imageUrl: "https://placehold.co/600x400?text=Whoop+4.0",
+        badges: ["Fitness Focused", "In Stock"],
+        useCase: ["Fitness & Health", "Sleep"],
+        specs: ["5-day battery", "Waterproof", "Haptic Alarm", "No Screen"],
+        rating: 4.6,
+        reviewCount: 5234
+    },
+    {
+        id: "rabbit-r1",
+        name: "Rabbit R1",
+        category: "AI Assistant",
+        price: "15",
+        tagline: "Your pocket AI that actually does things.",
+        description: "Navigate apps for you via voice. Order food, book rides, control music. The standalone AI companion.",
+        imageUrl: "https://placehold.co/600x400?text=Rabbit+R1",
+        badges: ["New Arrival", "In Stock"],
+        useCase: ["AI Assistant", "Productivity"],
+        specs: ["Push-to-talk", "Rotating Camera", "Standalone", "TEO OS"],
+        rating: 3.8,
+        reviewCount: 234
+    },
+    {
         id: "humane-pin",
         name: "Humane Ai Pin",
-        category: "AI Pin",
-        price: "48",
-        tagline: "Take AI with you everywhere.",
-        description: "Screen-free AI assistant that clips to your clothing and projects info onto your hand.",
+        category: "AI Assistant",
+        price: "20",
+        tagline: "Screen-free computing.",
+        description: "Magnetic AI pin with laser projector. Voice-first interaction. Interesting concept, challenging execution.",
         longDescription: "Ai Pin is a standalone device and software platform built from the ground up for AI. It's designed to be used conversationally, so you can interact with it naturally.",
         imageUrl: "https://placehold.co/600x400?text=Humane+Ai+Pin",
         galleryImages: [
@@ -289,7 +368,8 @@ export const devices: Device[] = [
             "https://placehold.co/600x400?text=Ai+Pin+Laser",
             "https://placehold.co/600x400?text=Ai+Pin+Worn",
         ],
-        badges: ["New Arrival"],
+        badges: ["Controversial", "In Stock"],
+        useCase: ["AI Assistant", "Communication"],
         specs: ["Laser Ink Display", "Translates Languages", "Web Search", "Trust Light"],
         features: [
             { icon: "Mic", title: "Conversational AI", description: "Just talk to it naturally" },
@@ -307,8 +387,8 @@ export const devices: Device[] = [
                 ]
             }
         ],
-        rating: 3.8,
-        reviewCount: 120,
+        rating: 2.9,
+        reviewCount: 156,
         reviews: [
             {
                 user: "Tom H.",
@@ -321,9 +401,37 @@ export const devices: Device[] = [
         ]
     },
     {
+        id: "nothing-ear-a",
+        name: "Nothing Ear (a)",
+        category: "AI Earbuds",
+        price: "12",
+        tagline: "AI features without the premium price.",
+        description: "Great audio, solid ANC, ChatGPT integration. The smart budget choice.",
+        imageUrl: "https://placehold.co/600x400?text=Nothing+Ear+(a)",
+        badges: ["Budget Pick", "In Stock"],
+        useCase: ["Entertainment", "AI Assistant", "Value"],
+        specs: ["Active Noise Cancellation", "42hr Battery", "ChatGPT Built-in", "IPX4"],
+        rating: 4.4,
+        reviewCount: 1456
+    },
+    {
+        id: "xreal-air-2",
+        name: "XREAL Air 2",
+        category: "AR Glasses",
+        price: "39",
+        tagline: "Same great display, without the Pro features.",
+        description: "All the screen real estate of Air 2 Pro, but without dimming. Save $9/mo if you don't need it.",
+        imageUrl: "https://placehold.co/600x400?text=XREAL+Air+2",
+        badges: ["Value Option", "In Stock"],
+        useCase: ["Productivity", "Gaming"],
+        specs: ["1080p Display", "72g weight", "USB-C Plug & Play", "Compatible w/ All"],
+        rating: 4.5,
+        reviewCount: 3567
+    },
+    {
         id: "quest-3",
         name: "Meta Quest 3",
-        category: "VR/MR Headset",
+        category: "AR/VR Headset",
         price: "48",
         tagline: "Expand your world.",
         description: "The most powerful Meta Quest yet, with breakthrough mixed reality.",
@@ -335,6 +443,7 @@ export const devices: Device[] = [
             "https://placehold.co/600x400?text=Quest+3+Controllers",
         ],
         badges: ["Best VR Headset", "In Stock"],
+        useCase: ["Gaming", "Entertainment"],
         specs: ["4K+ Infinite Display", "Snapdragon XR2 Gen 2", "Color Passthrough", "Touch Plus Controllers"],
         features: [
             { icon: "Eye", title: "4K+ Infinite Display", description: "2064x2208 pixels per eye" },
@@ -364,5 +473,5 @@ export const devices: Device[] = [
                 verified: true
             }
         ]
-    },
+    }
 ];
