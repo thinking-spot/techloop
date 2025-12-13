@@ -141,7 +141,7 @@ export default function WaitlistPage() {
                         <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing TechLoop</span>
                         <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Netflix for AI Wearables</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
-                            Try any device for $40-70/month. Swap unlimited times. Buy only what you love.
+                            Try any device for $48/month. Swap again and again. Buy only what you love.
                         </p>
                     </div>
 
@@ -150,10 +150,10 @@ export default function WaitlistPage() {
                             <CheckCircle2 size={40} className="text-button mb-6" />
                             <h3 className="text-2xl font-bold text-headline mb-4">Try Risk-Free</h3>
                             <p className="text-paragraph mb-6">
-                                Rent Meta Ray-Ban for $45/mo instead of $299 upfront. Try for 2 months ($90). Hate them? Return free.
+                                Rent Meta Ray-Ban for $48/mo instead of $299 upfront. Try for 2 months. Don't love them? Return free.
                             </p>
                             <div className="bg-green-50 text-green-800 text-sm font-bold px-3 py-1 rounded-full inline-block">
-                                Save $209 vs buying
+                                Save $200+ vs buying
                             </div>
                         </div>
                         <div className="bg-white p-8 rounded-2xl shadow-sm border border-cyan-100">
