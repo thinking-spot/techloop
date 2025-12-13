@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 import TopNav from "@/components/layout/TopNav";
 import Sidebar from "@/components/layout/Sidebar";
+import Footer from "@/components/layout/Footer";
 
 export default function RootLayout({
   children,
@@ -29,8 +30,9 @@ export default function RootLayout({
         <div className="flex pt-16"> {/* Offset for sticky header */}
           {/* Sidebar is fixed, so we don't need it in the flex flow to take space, but we need to reserve space for it */}
           <Sidebar />
-          <main className="flex-1 w-full md:pl-60">
+          <main className="flex-1 w-full md:pl-60 flex flex-col min-h-[calc(100vh-4rem)]">
             {children}
+            <Footer />
           </main>
         </div>
       </body>

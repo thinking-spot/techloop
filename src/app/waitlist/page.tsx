@@ -105,7 +105,7 @@ export default function WaitlistPage() {
                         <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">💸</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Too Expensive to Experiment</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            Smart glasses cost $299-799. Rings are $349. Trying all three costs over $1,000. Most people can&apos;t justify that just to "see if I like it".
+                            Smart glasses cost $299-799. Rings are $349. Trying all three costs over $1,000. Why lock yourself in when you can try before you buy?
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-red-200">
                             &quot;I wanted to try XREAL glasses for work, but $399 is steep for something I might not use.&quot;
@@ -113,22 +113,22 @@ export default function WaitlistPage() {
                     </div>
                     <div className="p-6">
                         <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🤷</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Can&apos;t Try Before You Buy</h3>
+                        <h3 className="text-xl font-bold text-headline mb-4">Is This My AI Identity?</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            5 minutes in a store isn&apos;t enough. Will you actually wear a smart ring 24/7? You need weeks of real-world use to know for sure.
+                            Wearables are more than fashion. The right device should feel like, well, <em>yourself</em>. Try until you find the perfect fit.
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-orange-200">
-                            &quot;Bought Meta Ray-Ban, returned after 2 weeks. Wish I could&apos;ve rented first.&quot;
+                            &quot;Bought Meta Ray-Ban, but it just wasn&apos;t &apos;me&apos;. Wish I could&apos;ve rented first.&quot;
                         </blockquote>
                     </div>
                     <div className="p-6">
                         <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🔄</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Tech Moves Too Fast</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            Buy XREAL Air 2 today, Air 3 comes out tomorrow. The upgrade cycle is brutal. Don&apos;t get stuck with obsolete ($400) hardware.
+                            Buy XREAL Air 2 today, Air 3 comes out tomorrow. The upgrade cycle can be brutal. Be an early adopter, every time, for just $48/month.
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-blue-200">
-                            &quot;Bought Humane AI Pin for $699. It&apos;s already obsolete. Waste of money.&quot;
+                            &quot;Bought Humane AI Pin for $699 last year. It&apos;s already obsolete. Waste of money.&quot;
                         </blockquote>
                     </div>
                 </div>
