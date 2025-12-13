@@ -115,7 +115,7 @@ export default function WaitlistPage() {
                         <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🤷</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Is This My AI Identity?</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            AI wearables are more than fashion. The right device should feel like, well, <em>your self</em>. Try until you find the perfect fit.
+                            AI wearables are more than fashion. The right device should feel like, well, your self. Try until you find the perfect fit.
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-orange-200">
                             &quot;Bought Meta Ray-Ban, but it just wasn&apos;t &apos;me&apos;. Wish I could&apos;ve rented first.&quot;
