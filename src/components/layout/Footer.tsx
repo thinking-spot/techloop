@@ -17,6 +17,8 @@ export default function Footer() {
                     <h4 className="font-bold text-headline mb-4">Explore</h4>
                     <ul className="space-y-2 text-sm text-paragraph">
                         <li><Link href="/browse" className="hover:text-button">Browse Devices</Link></li>
+                        <li><Link href="/quiz" className="hover:text-button">Device Quiz</Link></li>
+                        <li><Link href="/blog" className="hover:text-button">TechLoop Hub</Link></li>
                         <li><Link href="/how-it-works" className="hover:text-button">How It Works</Link></li>
                         <li><Link href="/pricing" className="hover:text-button">Pricing</Link></li>
                         <li><Link href="/waitlist" className="hover:text-button">Join Waitlist</Link></li>

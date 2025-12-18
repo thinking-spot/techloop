@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "techloop | Rent AI wearables",
-  description: "Try tomorrow's tech, today. No commitment, just curiosity.",
-};
-
 import TopNav from "@/components/layout/TopNav";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
+import CartDrawer from "@/components/commerce/CartDrawer";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+export const metadata: Metadata = {
+  title: "TechLoop - Rent the Future",
+  description: "Experience the latest tech gadgets with our flexible rental subscription.",
+};
 
 export default function RootLayout({
   children,
@@ -23,17 +23,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased min-h-screen bg-background text-foreground`}
-      >
+      <body className={`${inter.variable} font-sans text-paragraph antialiased bg-background`}>
         <TopNav />
-        <div className="flex pt-16"> {/* Offset for sticky header */}
-          {/* Sidebar is fixed, so we don't need it in the flex flow to take space, but we need to reserve space for it */}
-          <Sidebar />
-          <main className="flex-1 w-full md:pl-60 flex flex-col min-h-[calc(100vh-4rem)]">
+        <Sidebar />
+        <CartDrawer />
+
+        {/* Main Content Area - Offset for Sidebar and TopNav */}
+        <div className="flex flex-col min-h-screen md:pl-64 pt-16">
+          <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-8">
             {children}
-            <Footer />
           </main>
+          <Footer />
         </div>
       </body>
     </html>

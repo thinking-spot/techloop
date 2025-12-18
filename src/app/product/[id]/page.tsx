@@ -47,6 +47,35 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 </div>
             </div>
 
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        name: device.name,
+                        image: device.imageUrl,
+                        description: device.description,
+                        brand: {
+                            "@type": "Brand",
+                            name: "TechLoop"
+                        },
+                        offers: {
+                            "@type": "Offer",
+                            url: `https://techloop.com/product/${device.id}`,
+                            priceCurrency: "USD",
+                            price: device.price,
+                            availability: "https://schema.org/InStock"
+                        },
+                        aggregateRating: {
+                            "@type": "AggregateRating",
+                            ratingValue: device.rating,
+                            reviewCount: device.reviewCount
+                        }
+                    })
+                }}
+            />
+
             <div className="max-w-7xl mx-auto px-6 py-8 md:py-12 md:px-12">
                 <div className="grid gap-12 lg:grid-cols-12">
 

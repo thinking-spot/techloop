@@ -233,16 +233,68 @@ export const devices: Device[] = [
         price: "42",
         tagline: "The smart ring that loves your Galaxy phone.",
         description: "Everything Oura does, but plays perfectly with Samsung ecosystem. Galaxy Watch integration. Free Samsung Health app.",
+        longDescription: "Designed for Galaxy users, this smart ring tracks your sleep, heart rate, and activity with precision. It seamlessly integrates with Samsung Health and works in tandem with your Galaxy Watch for enhanced accuracy. The lightweight titanium design is comfortable 24/7.",
         imageUrl: "https://placehold.co/600x400?text=Samsung+Galaxy+Ring",
         galleryImages: [
             "https://placehold.co/600x400?text=Samsung+Ring+Silver",
-            "https://placehold.co/600x400?text=Samsung+Ring+App",
+            "https://placehold.co/600x400?text=Samsung+Ring+Black",
+            "https://placehold.co/600x400?text=Samsung+Ring+Case",
+            "https://placehold.co/600x400?text=Samsung+Health+App",
         ],
         badges: ["Best for Android", "In Stock"],
         useCase: ["Fitness & Health", "Communication"],
         specs: ["7-day battery", "Galaxy Watch Gestures", "Waterproof", "No Subscription"],
+        features: [
+            { icon: "Bot", title: "Galaxy AI", description: "Personalized Energy Score" },
+            { icon: "Battery", title: "7-Day Battery", description: "Charge once a week" },
+            { icon: "Speaker", title: "Activity Tracking", description: "Auto-workout detection" },
+            { icon: "Mic", title: "Sleep Coaching", description: "Advanced sleep insights" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Sensors",
+                items: [
+                    { label: "Heart Rate", value: "Optical Heart Rate Sensor" },
+                    { label: "Temperature", value: "Skin Temperature" },
+                    { label: "Motion", value: "Accelerometer" }
+                ]
+            },
+            {
+                category: "Build",
+                items: [
+                    { label: "Material", value: "Titanium Grade 5" },
+                    { label: "Durability", value: "10ATM + IP68" },
+                    { label: "Weight", value: "2.3g - 3.0g" }
+                ]
+            },
+            {
+                category: "Connectivity",
+                items: [
+                    { label: "Bluetooth", value: "BLE 5.4" },
+                    { label: "Compatibility", value: "Samsung Galaxy Smartphones" }
+                ]
+            }
+        ],
         rating: 4.4,
-        reviewCount: 1673
+        reviewCount: 1673,
+        reviews: [
+            {
+                user: "Jason M.",
+                rating: 5,
+                title: "Works perfect with my S24",
+                content: "The integration with my Galaxy phone is seamless. I love the Energy Score feature, it really helps me plan my day.",
+                date: "November 2024",
+                verified: true
+            },
+            {
+                user: "Lisa K.",
+                rating: 4,
+                title: "So light",
+                content: "I forget I'm wearing it. The charging case is really nice too, looks like a jewelry box.",
+                date: "December 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "nothing-ear",
@@ -251,12 +303,61 @@ export const devices: Device[] = [
         price: "18",
         tagline: "ChatGPT in your ears. Music in your soul.",
         description: "Premium audio meets AI assistant. Ask questions, get translations, control your life without touching your phone.",
+        longDescription: "Experience pure sound with 11mm ceramic drivers and advanced active noise cancellation. Integrated with ChatGPT, you can ask questions and get answers directly into your ears. The transparent design reveals the raw beauty of technology.",
         imageUrl: "https://placehold.co/600x400?text=Nothing+Ear",
+        galleryImages: [
+            "https://placehold.co/600x400?text=Nothing+Ear+Case",
+            "https://placehold.co/600x400?text=Nothing+Ear+Buds",
+            "https://placehold.co/600x400?text=Nothing+Ear+Worn",
+            "https://placehold.co/600x400?text=Nothing+X+App",
+        ],
         badges: ["Best Value", "In Stock"],
         useCase: ["Entertainment", "Communication", "AI Assistant"],
         specs: ["Active Noise Cancellation", "40hr Battery", "ChatGPT Built-in", "IPX4"],
+        features: [
+            { icon: "Speaker", title: "Ceramic Driver", description: "11mm for rich, crisp sound" },
+            { icon: "Mic", title: "Smart ANC", description: "Up to 45dB noise cancellation" },
+            { icon: "Bot", title: "ChatGPT Integrated", description: "Pinch to speak to AI" },
+            { icon: "Battery", title: "40.5 Hr Battery", description: "Total playback with case" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Audio",
+                items: [
+                    { label: "Driver", value: "11mm Ceramic" },
+                    { label: "Codec", value: "LHDC 5.0, LDAC" },
+                    { label: "ANC", value: "Up to 45dB" }
+                ]
+            },
+            {
+                category: "Battery",
+                items: [
+                    { label: "Buds", value: "8.5 hours (ANC off)" },
+                    { label: "Case", value: "40.5 hours total" },
+                    { label: "Charging", value: "USB-C + Wireless" }
+                ]
+            }
+        ],
         rating: 4.5,
-        reviewCount: 3128
+        reviewCount: 3128,
+        reviews: [
+            {
+                user: "Carlos R.",
+                rating: 5,
+                title: "Best sound for the price",
+                content: "The ceramic drivers actually make a difference. Highs are super crisp. And the transparent design is a conversation starter.",
+                date: "October 2024",
+                verified: true
+            },
+            {
+                user: "Sophie L.",
+                rating: 4,
+                title: "ChatGPT is cool",
+                content: "Using ChatGPT on the go without taking out my phone is surprisingly useful for quick questions.",
+                date: "November 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "brilliant-labs-frame",
@@ -265,12 +366,61 @@ export const devices: Device[] = [
         price: "39",
         tagline: "Open-source smart glasses for hackers.",
         description: "Build your own AI features. Customize everything. The anti-Meta glasses. Join the developer community.",
+        longDescription: "Frame is the world's first open-source AI glasses. It's designed for hackers, builders, and dreamers. With an always-on display and camera, it brings the powers of AI to your daily life. It's fully programmable and hackable.",
         imageUrl: "https://placehold.co/600x400?text=Brilliant+Labs+Frame",
+        galleryImages: [
+            "https://placehold.co/600x400?text=Frame+Front",
+            "https://placehold.co/600x400?text=Frame+Side",
+            "https://placehold.co/600x400?text=Frame+Lens",
+            "https://placehold.co/600x400?text=Frame+App",
+        ],
         badges: ["Developer Favorite", "In Stock"],
         useCase: ["Developer", "Productivity"],
         specs: ["Open-source SDK", "AI Vision", "MicroPython", "Lightweight"],
+        features: [
+            { icon: "Bot", title: "Multimodal AI", description: "See and talk to Noa AI" },
+            { icon: "Camera", title: "Visual Analysis", description: "Identify objects & translate text" },
+            { icon: "Battery", title: "All-Day Battery", description: "With Mister Power charger" },
+            { icon: "Speaker", title: "Open Platform", description: "Code your own apps" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Display",
+                items: [
+                    { label: "Type", value: "Micro-OLED" },
+                    { label: "Resolution", value: "640 x 400 Color" },
+                    { label: "FOV", value: "20 degrees" }
+                ]
+            },
+            {
+                category: "Hardware",
+                items: [
+                    { label: "MCU", value: "nRF52840 Cortex-M4F" },
+                    { label: "Camera", value: "1280x720 Color" },
+                    { label: "Weight", value: "39g" }
+                ]
+            }
+        ],
         rating: 4.3,
-        reviewCount: 894
+        reviewCount: 894,
+        reviews: [
+            {
+                user: "DevGuy99",
+                rating: 5,
+                title: "Dream device for makers",
+                content: "I wrote a python script to display my server stats on the lens in 10 minutes. This is what Google Glass should have been.",
+                date: "September 2024",
+                verified: true
+            },
+            {
+                user: "Alice W.",
+                rating: 4,
+                title: "Super light",
+                content: "They look like regular glasses (mostly). The AI translation feature is actually really fast.",
+                date: "October 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "vision-pro",
@@ -333,12 +483,61 @@ export const devices: Device[] = [
         price: "32",
         tagline: "Your 24/7 digital fitness coach.",
         description: "Personalized coaching without the distraction of a screen. Track strain, recovery, and sleep. Used by pro athletes.",
+        longDescription: "WHOOP 4.0 is a wearable health and fitness coach that keeps track of your sleep, strain, recovery, and overall health. It's screen-free for a distraction-free life, and the strap is interchangeable to match your style.",
         imageUrl: "https://placehold.co/600x400?text=Whoop+4.0",
+        galleryImages: [
+            "https://placehold.co/600x400?text=Whoop+Black",
+            "https://placehold.co/600x400?text=Whoop+Wrist",
+            "https://placehold.co/600x400?text=Whoop+App",
+            "https://placehold.co/600x400?text=Whoop+Battery+Pack",
+        ],
         badges: ["Fitness Focused", "In Stock"],
         useCase: ["Fitness & Health", "Sleep"],
         specs: ["5-day battery", "Waterproof", "Haptic Alarm", "No Screen"],
+        features: [
+            { icon: "Activity", title: "Strain Coach", description: "Target exertion levels" },
+            { icon: "Moon", title: "Sleep Recovery", description: " Detailed sleep staging" },
+            { icon: "Battery", title: "On-the-Go Charge", description: "Wireless battery pack" },
+            { icon: "Speaker", title: "Haptic Alarm", description: "Silent wake up" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Sensors",
+                items: [
+                    { label: "Heart Rate", value: "5 LEDs + 4 Photodiodes" },
+                    { label: "Temp", value: "Skin Temperature Sensor" },
+                    { label: "Blood Oxygen", value: "Pulse Oximetry" }
+                ]
+            },
+            {
+                category: "Build",
+                items: [
+                    { label: "Waterproof", value: "IP68 (up to 10m)" },
+                    { label: "Battery Life", value: "Up to 5 days" },
+                    { label: "Charging", value: "Wireless slide-on pack" }
+                ]
+            }
+        ],
         rating: 4.6,
-        reviewCount: 5234
+        reviewCount: 5234,
+        reviews: [
+            {
+                user: "Mike T.",
+                rating: 5,
+                title: "Changed my training",
+                content: "The recovery score is real. When it says I'm red, I perform poorly. When green, I PR. Simple as that.",
+                date: "November 2024",
+                verified: true
+            },
+            {
+                user: "Jenny S.",
+                rating: 5,
+                title: "Love that it has no screen",
+                content: "I was tired of notifications on my wrist. Whoop lets me track everything without the distractions.",
+                date: "December 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "rabbit-r1",
@@ -347,12 +546,61 @@ export const devices: Device[] = [
         price: "15",
         tagline: "Your pocket AI that actually does things.",
         description: "Navigate apps for you via voice. Order food, book rides, control music. The standalone AI companion.",
+        longDescription: "The Rabbit R1 is a pocket companion that uses a Large Action Model (LAM) to use apps for you. Just press the button and ask it to order food, book a ride, or play music. No apps, no logins, just action.",
         imageUrl: "https://placehold.co/600x400?text=Rabbit+R1",
+        galleryImages: [
+            "https://placehold.co/600x400?text=R1+Front",
+            "https://placehold.co/600x400?text=R1+Back",
+            "https://placehold.co/600x400?text=R1+Camera",
+            "https://placehold.co/600x400?text=R1+Scroll+Wheel",
+        ],
         badges: ["New Arrival", "In Stock"],
         useCase: ["AI Assistant", "Productivity"],
         specs: ["Push-to-talk", "Rotating Camera", "Standalone", "TEO OS"],
+        features: [
+            { icon: "Bot", title: "Large Action Model", description: "Uses apps for you" },
+            { icon: "Camera", title: "Rabbit Eye", description: "360° rotating camera" },
+            { icon: "Mic", title: "Push-to-Talk", description: "Instant voice commands" },
+            { icon: "Battery", title: "All-day Battery", description: "Stay connected" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Display",
+                items: [
+                    { label: "Screen", value: "2.88\" Touchscreen" },
+                    { label: "Type", value: "TFT Panel" }
+                ]
+            },
+            {
+                category: "Hardware",
+                items: [
+                    { label: "Processor", value: "MediaTek Helio P35" },
+                    { label: "RAM", value: "4GB" },
+                    { label: "Storage", value: "128GB" },
+                    { label: "Connectivity", value: "4G LTE + Wi-Fi" }
+                ]
+            }
+        ],
         rating: 3.8,
-        reviewCount: 234
+        reviewCount: 234,
+        reviews: [
+            {
+                user: "TechReviewer",
+                rating: 3,
+                title: "Fun but early",
+                content: "The hardware design by Teenage Engineering is stunning. The AI is promising but still learning many apps.",
+                date: "November 2024",
+                verified: true
+            },
+            {
+                user: "EarlyAdopter",
+                rating: 5,
+                title: "The future of interfaces",
+                content: "Not having to doom scroll through apps to get a task done feels liberating. The teaching mode is very powerful.",
+                date: "December 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "humane-pin",
@@ -407,12 +655,61 @@ export const devices: Device[] = [
         price: "12",
         tagline: "AI features without the premium price.",
         description: "Great audio, solid ANC, ChatGPT integration. The smart budget choice.",
+        longDescription: "Nothing Ear (a) brings the signature Nothing design and powerful active noise cancellation to a more accessible price point. With a unique bubbly case design and punchy bass, it's designed for play.",
         imageUrl: "https://placehold.co/600x400?text=Nothing+Ear+(a)",
+        galleryImages: [
+            "https://placehold.co/600x400?text=Ear+(a)+Yellow",
+            "https://placehold.co/600x400?text=Ear+(a)+White",
+            "https://placehold.co/600x400?text=Ear+(a)+Case",
+            "https://placehold.co/600x400?text=Ear+(a)+Buds",
+        ],
         badges: ["Budget Pick", "In Stock"],
         useCase: ["Entertainment", "AI Assistant", "Value"],
         specs: ["Active Noise Cancellation", "42hr Battery", "ChatGPT Built-in", "IPX4"],
+        features: [
+            { icon: "Speaker", title: "Bass Enhance", description: "Algorithm for deep bass" },
+            { icon: "Mic", title: "45dB ANC", description: "Silence the world" },
+            { icon: "Battery", title: "Long Battery", description: "9.5h buds / 42.5h case" },
+            { icon: "Bot", title: "ChatGPT", description: "Voice integration" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Audio",
+                items: [
+                    { label: "Driver", value: "11mm Dynamic" },
+                    { label: "Codec", value: "LDAC, AAC" },
+                    { label: "ANC", value: "Up to 45dB" }
+                ]
+            },
+            {
+                category: "Battery",
+                items: [
+                    { label: "Buds", value: "9.5 hours (ANC off)" },
+                    { label: "Case", value: "42.5 hours total" },
+                    { label: "Charging", value: "USB-C Fast Charge" }
+                ]
+            }
+        ],
         rating: 4.4,
-        reviewCount: 1456
+        reviewCount: 1456,
+        reviews: [
+            {
+                user: "Student22",
+                rating: 5,
+                title: "Best value earbuds",
+                content: "For this price? The ANC is insane. And I love the yellow color, so unique.",
+                date: "October 2024",
+                verified: true
+            },
+            {
+                user: "MusicLover",
+                rating: 4,
+                title: "Fun sound",
+                content: "Definitely more bass-heavy than the flagship ears, but perfect for the gym.",
+                date: "November 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "xreal-air-2",
@@ -421,12 +718,61 @@ export const devices: Device[] = [
         price: "39",
         tagline: "Same great display, without the Pro features.",
         description: "All the screen real estate of Air 2 Pro, but without dimming. Save $9/mo if you don't need it.",
+        longDescription: "The XREAL Air 2 offers the same stunning 130-inch virtual display as the Pro model in an even lighter package. It connects to almost any device to provide a private, cinema-quality screen wherever you go.",
         imageUrl: "https://placehold.co/600x400?text=XREAL+Air+2",
+        galleryImages: [
+            "https://placehold.co/600x400?text=Air+2+Red",
+            "https://placehold.co/600x400?text=Air+2+Front",
+            "https://placehold.co/600x400?text=Air+2+Side",
+            "https://placehold.co/600x400?text=Air+2+Gaming",
+        ],
         badges: ["Value Option", "In Stock"],
         useCase: ["Productivity", "Gaming"],
         specs: ["1080p Display", "72g weight", "USB-C Plug & Play", "Compatible w/ All"],
+        features: [
+            { icon: "Screen", title: "130\" Screen", description: "Portable cinema" },
+            { icon: "Eye", title: "Micro-OLED", description: "Sony 1080p panels" },
+            { icon: "Speaker", title: "Spatial Audio", description: "Directional sound" },
+            { icon: "Feather", title: "72g Light", description: "All-day comfort" },
+        ],
+        technicalSpecs: [
+            {
+                category: "Display",
+                items: [
+                    { label: "Panel", value: "Sony Micro-OLED" },
+                    { label: "Resolution", value: "1920 x 1080 per eye" },
+                    { label: "Refresh Rate", value: "Up to 120Hz" },
+                    { label: "Brightness", value: "500 nits" }
+                ]
+            },
+            {
+                category: "Connectivity",
+                items: [
+                    { label: "Port", value: "USB-C DisplayPort" },
+                    { label: "Device", value: "Steam Deck, ROG Ally, iPhone 15" }
+                ]
+            }
+        ],
         rating: 4.5,
-        reviewCount: 3567
+        reviewCount: 3567,
+        reviews: [
+            {
+                user: "GamerPro",
+                rating: 5,
+                title: "Essential for Steam Deck",
+                content: "Laying in bed playing Cyberpunk on a 130 inch screen is the peak of gaming. Zero lag.",
+                date: "November 2024",
+                verified: true
+            },
+            {
+                user: "Traveler",
+                rating: 4,
+                title: "Good for planes",
+                content: "I didn't need the dimming feature of the Pro, so I saved money with this. Works great on red-eyes.",
+                date: "October 2024",
+                verified: true
+            }
+        ]
     },
     {
         id: "quest-3",

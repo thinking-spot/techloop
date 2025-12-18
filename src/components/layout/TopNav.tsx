@@ -8,8 +8,8 @@ export default function TopNav() {
                 <Logo className="mr-8" />
 
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-paragraph">
-                    <Link href="/browse" className="hover:text-headline transition-colors">
-                        Browse Devices
+                    <Link href="/quiz" className="hover:text-headline transition-colors">
+                        Device Quiz
                     </Link>
                     <Link href="/how-it-works" className="hover:text-headline transition-colors">
                         How It Works

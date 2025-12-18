@@ -192,7 +192,7 @@ export default function Home() {
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
           {featuredDevices.map((device) => (
-            <DeviceCard key={device.id} {...device} />
+            <DeviceCard key={device.id} device={device} />
           ))}
         </div>
 

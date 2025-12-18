@@ -116,7 +116,7 @@ export default function BrowsePage() {
         // But doing it robustly inside a map is hard. Let's just push to a new array.
 
         for (let i = 0; i < devicesToRender.length; i++) {
-            items.push(<DeviceCard key={devicesToRender[i].id} {...devicesToRender[i]} />);
+            items.push(<DeviceCard key={devicesToRender[i].id} device={devicesToRender[i]} />);
 
             // Insert Quiz Block after 6th item
             if (i === 5) {
@@ -131,7 +131,9 @@ export default function BrowsePage() {
                                 <p className="text-paragraph">Take our 60-second quiz and we&apos;ll recommend your perfect match.</p>
                             </div>
                         </div>
-                        <Button size="lg" className="whitespace-nowrap">Take Device Quiz <ArrowRight className="ml-2 w-4 h-4" /></Button>
+                        <Link href="/quiz">
+                            <Button size="lg" className="whitespace-nowrap">Take Device Quiz <ArrowRight className="ml-2 w-4 h-4" /></Button>
+                        </Link>
                     </div>
                 );
             }

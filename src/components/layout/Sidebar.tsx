@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutGrid, Package, Settings, HelpCircle, Lock, MessageSquare } from "lucide-react";
+import { LayoutGrid, Package, Settings, HelpCircle, Lock, MessageSquare, Sparkles, BookOpen } from "lucide-react";
 import { clsx } from "clsx";
 
 const navItems = [
     { name: "Browse Devices", href: "/browse", icon: LayoutGrid },
-    { name: "My Rentals", href: "/waitlist", icon: Package, isLocked: true },
-    { name: "Settings", href: "/waitlist", icon: Settings, isLocked: true },
+    { name: "My Rentals", href: "/dashboard", icon: Package },
+    { name: "Settings", href: "/settings", icon: Settings },
     { name: "Help & Support", href: "/help", icon: HelpCircle },
 ];
 
