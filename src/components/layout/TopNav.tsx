@@ -27,6 +27,9 @@ export default function TopNav() {
                     <Link href="/signup" className="text-sm font-semibold bg-button text-button-text px-4 py-2 rounded-lg hover:bg-[#2D8FDC] transition-colors">
                         Sign Up
                     </Link>
+                    <Link href="/waitlist" className="inline-flex text-sm font-semibold bg-headline text-white px-4 py-2 rounded-lg hover:bg-[#094067]/90 transition-colors shadow-sm">
+                        Waitlist
+                    </Link>
                 </div>
             </div>
         </header>

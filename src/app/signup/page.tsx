@@ -1,12 +1,38 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { PasswordInput } from "@/components/ui/PasswordInput";
 import Logo from "@/components/ui/Logo";
-import { ArrowRight, Mail, Lock, User } from "lucide-react";
+import { ArrowRight, Key, Mail, User } from "lucide-react";
+import { useToast } from "@/components/ui/Toast";
 
 export default function SignupPage() {
+    const { addToast } = useToast();
+    const [isLoading, setIsLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        accessCode: ""
+    });
+
+    const isCodeValid = formData.accessCode.length > 0; // Simple validation for now
+
+    const handleSignup = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        setIsLoading(false);
+        addToast({ title: "Account Created", description: "Welcome to TechLoop!", type: "success" });
+        // In a real app, redirect here
+    };
+
     return (
         <div className="min-h-screen bg-white flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -28,7 +54,7 @@ export default function SignupPage() {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white py-8 px-4 shadow-xl shadow-slate-200/50 sm:rounded-2xl sm:px-10 border border-slate-100">
-                    <form className="space-y-6" action="/dashboard">
+                    <form className="space-y-6" onSubmit={handleSignup}>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-headline mb-1">
                                 Full Name
@@ -45,6 +71,8 @@ export default function SignupPage() {
                                     required
                                     className="pl-10"
                                     placeholder="Jane Doe"
+                                    value={formData.name}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 />
                             </div>
                         </div>
@@ -65,6 +93,8 @@ export default function SignupPage() {
                                     required
                                     className="pl-10"
                                     placeholder="you@example.com"
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 />
                             </div>
                         </div>
@@ -73,27 +103,49 @@ export default function SignupPage() {
                             <label htmlFor="password" className="block text-sm font-medium text-headline mb-1">
                                 Password
                             </label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-paragraph/50">
-                                    <Lock size={18} />
-                                </div>
-                                <Input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    required
-                                    className="pl-10"
-                                    placeholder="••••••••"
-                                />
-                            </div>
-                            <p className="mt-2 text-xs text-paragraph">
-                                Must be at least 8 characters.
-                            </p>
+                            <PasswordInput // Lock icon is internal to this component now
+                                id="password"
+                                name="password"
+                                required
+                                placeholder="••••••••"
+                                value={formData.password}
+                                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                                showStrength
+                            />
                         </div>
 
                         <div>
-                            <Button type="submit" className="w-full flex justify-center items-center gap-2">
-                                Create Account <ArrowRight size={16} />
+                            <label htmlFor="accessCode" className="block text-sm font-medium text-headline mb-1">
+                                Early Access Code
+                            </label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-paragraph/50">
+                                    <Key size={18} />
+                                </div>
+                                <Input
+                                    id="accessCode"
+                                    name="accessCode"
+                                    type="text"
+                                    required
+                                    className="pl-10 uppercase tracking-widest font-mono"
+                                    value={formData.accessCode}
+                                    onChange={(e) => setFormData({ ...formData, accessCode: e.target.value.toUpperCase() })}
+                                />
+                            </div>
+                            <div className="mt-2 text-center text-xs text-paragraph">
+                                Don't have a code? <Link href="/waitlist" className="text-button hover:underline font-medium">Join the Waitlist</Link>
+                            </div>
+                        </div>
+
+                        <div>
+                            <Button
+                                type="submit"
+                                className="w-full flex justify-center items-center gap-2"
+                                disabled={isLoading || !isCodeValid}
+                                title={!isCodeValid ? "Please enter a valid access code" : ""}
+                            >
+                                {isLoading ? "Creating..." : "Create Account"}
+                                {!isLoading && <ArrowRight size={16} />}
                             </Button>
                         </div>
                     </form>

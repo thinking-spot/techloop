@@ -1,38 +1,32 @@
 "use client";
 
 import { useCartStore } from "@/store/cart";
-import { X, ShoppingBag, ArrowRight, Trash2 } from "lucide-react";
+import { ShoppingBag, ArrowRight, Trash2, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from "@/components/ui/Sheet";
+import { useToast } from "@/components/ui/Toast";
 
 export default function CartDrawer() {
     const { items, isOpen, closeCart, removeItem, total } = useCartStore();
+    const { addToast } = useToast();
 
-    if (!isOpen) return null;
+    const handleRemove = (id: string) => {
+        removeItem(id);
+        addToast({ title: "Removed", description: "Item removed from cart", type: "info", duration: 2000 });
+    }
 
     return (
-        <div className="fixed inset-0 z-[100] flex justify-end">
-            {/* Backdrop */}
-            <div
-                className="absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity"
-                onClick={closeCart}
-            />
+        <Sheet isOpen={isOpen} onClose={closeCart} side="right" className="w-full sm:max-w-md">
+            <SheetHeader className="flex flex-row items-center justify-between border-b px-6 py-4">
+                <SheetTitle className="flex items-center gap-2">
+                    <ShoppingBag size={20} /> Your Bag
+                </SheetTitle>
+                <SheetClose onClick={closeCart} className="static translate-y-0" />
+            </SheetHeader>
 
-            {/* Drawer */}
-            <div className="relative w-full max-w-md bg-white shadow-2xl h-full flex flex-col animate-in slide-in-from-right duration-300">
-                <div className="p-6 border-b border-[#F1F5F9] flex items-center justify-between">
-                    <h2 className="text-lg font-bold text-headline flex items-center gap-2">
-                        <ShoppingBag size={20} /> Your Bag
-                    </h2>
-                    <button
-                        onClick={closeCart}
-                        className="p-2 hover:bg-[#F8FAFC] rounded-full transition-colors text-paragraph hover:text-headline"
-                    >
-                        <X size={20} />
-                    </button>
-                </div>
-
+            <SheetContent className="flex flex-col p-0">
                 <div className="flex-1 overflow-y-auto p-6">
                     {items.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
@@ -64,7 +58,7 @@ export default function CartDrawer() {
                                         <div className="flex justify-between items-start">
                                             <h4 className="font-semibold text-headline text-sm">{item.name}</h4>
                                             <button
-                                                onClick={() => removeItem(item.id)}
+                                                onClick={() => handleRemove(item.id)}
                                                 className="text-paragraph hover:text-red-500 transition-colors"
                                             >
                                                 <Trash2 size={16} />
@@ -110,7 +104,7 @@ export default function CartDrawer() {
                         </p>
                     </div>
                 )}
-            </div>
-        </div>
+            </SheetContent>
+        </Sheet>
     );
 }

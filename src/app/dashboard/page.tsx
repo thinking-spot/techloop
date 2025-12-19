@@ -1,10 +1,18 @@
+"use client"
+
+import React, { useState } from "react"
 import Link from "next/link";
 import { Package, Calendar, Activity, ArrowRight, Battery, Wifi } from "lucide-react";
 import Image from "next/image";
+import OrderDetailsSheet from "./_components/OrderDetailsSheet";
 
 export default function DashboardPage() {
+    const [isManageSheetOpen, setIsManageSheetOpen] = useState(false)
+
     return (
         <div className="space-y-8">
+            <OrderDetailsSheet isOpen={isManageSheetOpen} onClose={() => setIsManageSheetOpen(false)} />
+
             {/* Welcome Section */}
             <div>
                 <h1 className="text-2xl font-display font-bold text-headline">Dashboard</h1>
@@ -62,7 +70,10 @@ export default function DashboardPage() {
                         <button className="px-4 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm font-semibold text-headline hover:bg-[#F8FAFC]">
                             View Manual
                         </button>
-                        <button className="px-4 py-2 bg-button text-white rounded-lg text-sm font-semibold hover:bg-button-hover shadow-button">
+                        <button
+                            onClick={() => setIsManageSheetOpen(true)}
+                            className="px-4 py-2 bg-button text-white rounded-lg text-sm font-semibold hover:bg-button-hover shadow-button"
+                        >
                             Manage Rental
                         </button>
                     </div>
