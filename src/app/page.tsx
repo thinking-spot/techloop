@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Search, Package, RefreshCcw, Star, ShieldCheck, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -7,6 +8,11 @@ import { devices } from "@/lib/data";
 // Select specific devices to match the "Devices you actually want to try"
 // In a real app we'd filter by ID or feature flag
 const featuredDevices = devices.slice(0, 4);
+
+export const metadata: Metadata = {
+  title: "Try AI devices + wearables | rent, swap, love, buy | techloop",
+  description: "Glasses, watches, rings, pins, earbuds + pendants. Pick any AI device, try it for real. Love it? Keep it. No commitment. No risk. $48/m",
+};
 
 export default function Home() {
   return (
@@ -19,7 +25,7 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
           <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-5xl font-bold leading-[1.1] tracking-tight text-headline md:text-6xl lg:text-7xl">
-            Try AI Wearables <br className="hidden md:block" />
+            Try AI Devices <br className="hidden md:block" />
             the <span className="text-button relative inline-block">
               Smart Way
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-button/20" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -132,7 +138,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
-              As easy as ordering takeout
+              As easy as ordering takeout online
             </h2>
             <p className="text-paragraph text-lg mb-8">
               We&apos;ve removed all the friction. No long contracts. No hidden fees. Just pick a device and we ship it today.
@@ -180,7 +186,7 @@ export default function Home() {
       <section className="px-6 md:px-12">
         <div className="flex items-end justify-between mb-10 max-w-7xl mx-auto">
           <div>
-            <h2 className="text-3xl font-display font-medium text-headline mb-2 md:text-4xl">Devices you actually want to try</h2>
+            <h2 className="text-3xl font-display font-medium text-headline mb-2 md:text-4xl">Smart devices you actually want to try</h2>
             <p className="text-paragraph text-lg">4.8+ star rated devices only. If it's not great, we don't carry it.</p>
           </div>
           <Link href="/browse" className="hidden md:block">
@@ -208,9 +214,9 @@ export default function Home() {
         <div className="bg-[#094067] rounded-[2rem] p-8 md:p-16 text-white max-w-7xl mx-auto text-center md:text-left">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/3">
-              <h2 className="font-display text-3xl font-bold mb-4 text-white">Join 1,000+ early adopters</h2>
+              <h2 className="font-display text-3xl font-bold mb-4 text-white">Be an early adopter. Get Perks.</h2>
               <p className="text-white/80 mb-8">
-                See why tech enthusiasts are ditching ownership for access.
+                See why tech enthusiasts are ditching MSRP for early access + no risks.
               </p>
               <div className="flex gap-8 justify-center md:justify-start">
                 <div>
@@ -259,7 +265,7 @@ export default function Home() {
 
       {/* Comparison Table Section */}
       <section className="px-6 md:px-12 max-w-5xl mx-auto">
-        <h2 className="text-center font-display text-3xl font-bold text-headline mb-4">Why TechLoop vs. Buying?</h2>
+        <h2 className="text-center font-display text-3xl font-bold text-headline mb-4">Why Techloop vs. Buying?</h2>
         <p className="text-center text-paragraph mb-12">Because $400 is a lot to gamble on something you might hate.</p>
 
         <div className="border border-[#F1F5F9] rounded-2xl overflow-hidden shadow-sm">
@@ -268,7 +274,7 @@ export default function Home() {
               <tr>
                 <th className="py-4 px-6 font-medium text-paragraph w-1/3">The Scenario</th>
                 <th className="py-4 px-6 font-medium text-paragraph w-1/3">Buying on Amazon</th>
-                <th className="py-4 px-6 font-bold text-headline w-1/3 bg-[#E0F2FE]/30">TechLoop</th>
+                <th className="py-4 px-6 font-bold text-headline w-1/3 bg-[#E0F2FE]/30">Techloop</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#F1F5F9]">
@@ -352,15 +358,15 @@ export default function Home() {
         <div className="rounded-[2.5rem] bg-headline px-6 py-20 text-center text-white md:px-16 overflow-hidden relative">
           <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[bg-position_15s_ease-in-out_infinite]" />
 
-          <h2 className="relative mb-6 font-display text-4xl font-bold md:text-5xl text-white">Ready to try AI wearables?</h2>
+          <h2 className="relative mb-6 font-display text-4xl font-bold md:text-5xl text-white">Rent. Swap. Love. Keep.</h2>
           <p className="relative mx-auto mb-10 max-w-2xl text-lg text-white/80">
             Start with any device. If you don't love it, swap it. <br />
             Cancel anytime.
           </p>
           <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/browse">
+            <Link href="/quiz">
               <Button size="lg" className="px-10 py-6 bg-button text-white border-0 hover:bg-[#2D8FDC]">
-                Start Your Trial <ArrowRight className="ml-2 w-5 h-5" />
+                Try our AI Device Quiz <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link href="/browse">
