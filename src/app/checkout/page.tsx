@@ -4,20 +4,32 @@ import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/cart";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Check, Truck, ShieldCheck, CreditCard, ArrowRight } from "lucide-react";
+import { Check, Truck, CreditCard, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 
+// Stripe Imports
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./_components/CheckoutForm";
+
+// Initialize Stripe outside of component
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
+
 const STEPS = [
     { id: 1, name: "Shipping", icon: Truck },
-    { id: 2, name: "Verification", icon: ShieldCheck },
-    { id: 3, name: "Payment", icon: CreditCard },
+    { id: 2, name: "Payment", icon: CreditCard },
 ];
 
 export default function CheckoutPage() {
-    const { items, total, clearCart } = useCartStore();
+    const { items, total } = useCartStore();
     const [step, setStep] = useState(1);
     const [isProcessing, setIsProcessing] = useState(false);
+
+    // Stripe State
+    const [clientSecret, setClientSecret] = useState("");
+    const [stripeError, setStripeError] = useState("");
+
     const router = useRouter();
 
     // Hydration check for Zustand
@@ -37,16 +49,44 @@ export default function CheckoutPage() {
 
     const handleNext = async () => {
         setIsProcessing(true);
-        // Simulate delay
-        await new Promise(resolve => setTimeout(resolve, 800));
-        setIsProcessing(false);
+        setStripeError(""); // Clear previous errors
 
-        if (step < 3) {
+        // If moving TO Payment step (Step 1 -> Step 2)
+        if (step === 1) {
+            try {
+                // Determine which item to subscribe to (MVP: just the first item for now)
+                const mainItem = items[0];
+
+                const res = await fetch("/api/checkout/create-intent", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        price: mainItem.price,
+                        productName: mainItem.name,
+                        productId: mainItem.id // slug
+                    }),
+                });
+
+                if (!res.ok) {
+                    const errData = await res.json();
+                    throw new Error(errData.error || "Failed to initialize checkout");
+                }
+
+                const data = await res.json();
+                setClientSecret(data.clientSecret);
+                setStep(step + 1);
+            } catch (err: unknown) {
+                console.error(err);
+                const errorMessage = err instanceof Error ? err.message : "Could not initialize payment system.";
+                setStripeError(errorMessage);
+            } finally {
+                setIsProcessing(false);
+            }
+        } else if (step < 2) {
+            // Normal step transition (if we had more steps)
+            await new Promise(resolve => setTimeout(resolve, 500));
             setStep(step + 1);
-        } else {
-            // Complete Order
-            clearCart();
-            router.push("/checkout/success");
+            setIsProcessing(false);
         }
     };
 
@@ -61,8 +101,8 @@ export default function CheckoutPage() {
                             <li key={s.name} className={`relative flex items-center pr-4 sm:pr-10 ${stepIdx !== STEPS.length - 1 ? 'flex-1' : ''}`}>
                                 <div className="flex items-center gap-2 md:gap-4">
                                     <div className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${step > s.id ? 'bg-button border-button text-white' :
-                                            step === s.id ? 'border-button text-button' :
-                                                'border-gray-300 text-gray-500'
+                                        step === s.id ? 'border-button text-button' :
+                                            'border-gray-300 text-gray-500'
                                         }`}>
                                         {step > s.id ? <Check size={16} /> : <s.icon size={16} />}
                                     </div>
@@ -103,57 +143,41 @@ export default function CheckoutPage() {
                     )}
 
                     {step === 2 && (
-                        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-center py-8">
-                            <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-button mb-4">
-                                <ShieldCheck size={32} />
-                            </div>
-                            <h2 className="text-xl font-bold text-headline">Identity Verification</h2>
-                            <p className="text-paragraph max-w-md mx-auto">
-                                To insure our devices, we need to verify your identity.
-                                Click below to simulate a quick ID scan.
-                            </p>
-                            <div className="p-4 bg-slate-50 border border-dashed border-slate-300 rounded-lg max-w-sm mx-auto">
-                                <p className="text-xs text-paragraph font-mono">Simulating Stripe Identity...</p>
-                                <div className="mt-2 h-2 w-full bg-slate-200 rounded-full overflow-hidden">
-                                    <div className="h-full bg-green-500 animate-pulse w-2/3"></div>
-                                </div>
-                                <p className="text-xs text-green-600 mt-2 font-bold flex items-center justify-center gap-1">
-                                    <Check size={12} /> Pre-verified for Demo
-                                </p>
-                            </div>
-                        </div>
-                    )}
-
-                    {step === 3 && (
                         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                             <h2 className="text-xl font-bold text-headline">Payment Method</h2>
-                            <div className="p-4 border border-button bg-blue-50/50 rounded-lg flex items-center gap-3">
-                                <CreditCard className="text-button" size={24} />
-                                <div>
-                                    <p className="text-sm font-bold text-headline">Test Card</p>
-                                    <p className="text-xs text-paragraph">•••• 4242</p>
+
+                            {clientSecret ? (
+                                <Elements options={{ clientSecret, appearance: { theme: 'stripe' } }} stripe={stripePromise}>
+                                    <CheckoutForm />
+                                </Elements>
+                            ) : (
+                                <div className="text-center py-8 text-paragraph/50">
+                                    Initializing payment...
                                 </div>
-                                <div className="ml-auto text-button">
-                                    <Check size={20} />
-                                </div>
-                            </div>
-                            <p className="text-xs text-paragraph">
-                                You will be charged <strong>${total()}</strong> today.
-                                Your subscription will renew monthly. Cancel anytime.
-                            </p>
+                            )}
                         </div>
                     )}
 
-                    <div className="mt-8 pt-6 border-t border-[#F1F5F9] flex justify-end">
-                        <Button
-                            onClick={handleNext}
-                            disabled={isProcessing}
-                            className="min-w-[140px] flex items-center justify-center gap-2"
-                        >
-                            {isProcessing ? "Processing..." : step === 3 ? "Complete Order" : "Continue"}
-                            {!isProcessing && <ArrowRight size={16} />}
-                        </Button>
-                    </div>
+                    {/* Error Message */}
+                    {stripeError && (
+                        <div className="p-4 bg-red-50 text-red-600 rounded-lg text-sm mb-4">
+                            {stripeError}
+                        </div>
+                    )}
+
+                    {/* Navigation Buttons (Only for steps < 2 - i.e. Step 1) */}
+                    {step < 2 && (
+                        <div className="mt-8 pt-6 border-t border-[#F1F5F9] flex justify-end">
+                            <Button
+                                onClick={handleNext}
+                                disabled={isProcessing}
+                                className="min-w-[140px] flex items-center justify-center gap-2"
+                            >
+                                {isProcessing ? "Processing..." : "Continue to Payment"}
+                                {!isProcessing && <ArrowRight size={16} />}
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -203,3 +227,4 @@ export default function CheckoutPage() {
         </div>
     );
 }
+

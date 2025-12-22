@@ -1,12 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import Logo from "@/components/ui/Logo";
 import { ArrowRight, Mail, Lock } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 export default function LoginPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     return (
         <div className="min-h-screen bg-white flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -28,7 +34,32 @@ export default function LoginPage() {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white py-8 px-4 shadow-xl shadow-slate-200/50 sm:rounded-2xl sm:px-10 border border-slate-100">
-                    <form className="space-y-6" action="/dashboard">
+                    {error && (
+                        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm">
+                            {error}
+                        </div>
+                    )}
+
+                    <form className="space-y-6" onSubmit={async (e) => {
+                        e.preventDefault();
+                        setIsLoading(true);
+                        setError(null);
+
+                        const supabase = createClient();
+                        const { error: signInError } = await supabase.auth.signInWithPassword({
+                            email,
+                            password,
+                        });
+
+                        if (signInError) {
+                            setError(signInError.message);
+                            setIsLoading(false);
+                            return;
+                        }
+
+                        // Refresh to allow middleware to update session
+                        window.location.href = "/dashboard";
+                    }}>
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-headline mb-1">
                                 Email address
@@ -45,6 +76,8 @@ export default function LoginPage() {
                                     required
                                     className="pl-10"
                                     placeholder="you@example.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -72,13 +105,15 @@ export default function LoginPage() {
                                     required
                                     className="pl-10"
                                     placeholder="••••••••"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <Button type="submit" className="w-full flex justify-center items-center gap-2">
-                                Sign in <ArrowRight size={16} />
+                            <Button type="submit" className="w-full flex justify-center items-center gap-2" disabled={isLoading}>
+                                {isLoading ? "Signing in..." : <>Sign in <ArrowRight size={16} /></>}
                             </Button>
                         </div>
                     </form>

@@ -3,8 +3,13 @@
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function CheckoutSuccessPage() {
+function SuccessContent() {
+    const searchParams = useSearchParams();
+    const paymentIntent = searchParams.get("payment_intent");
+
     return (
         <div className="text-center py-16 animate-in fade-in zoom-in duration-500">
             <div className="mx-auto w-24 h-24 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6">
@@ -12,7 +17,7 @@ export default function CheckoutSuccessPage() {
             </div>
 
             <h1 className="text-3xl font-display font-bold text-headline mb-4">
-                Order Confirmed!
+                {paymentIntent ? "Subscription Active!" : "Order Confirmed!"}
             </h1>
             <p className="text-paragraph max-w-md mx-auto mb-8">
                 Your tech is on its way. You will receive a confirmation email shortly with tracking details.
@@ -22,11 +27,13 @@ export default function CheckoutSuccessPage() {
                 <p className="text-xs text-paragraph uppercase tracking-wider font-bold mb-2">Order Details</p>
                 <div className="flex justify-between text-sm mb-1">
                     <span className="text-paragraph">Order ID</span>
-                    <span className="font-mono text-headline">#TL-82928</span>
+                    <span className="font-mono text-headline">
+                        {paymentIntent ? `#${paymentIntent.slice(-8).toUpperCase()}` : "#TL-PREVIEW"}
+                    </span>
                 </div>
                 <div className="flex justify-between text-sm">
                     <span className="text-paragraph">Est. Delivery</span>
-                    <span className="text-headline">Dec 22, 2025</span>
+                    <span className="text-headline">2-3 Business Days</span>
                 </div>
             </div>
 
@@ -41,5 +48,13 @@ export default function CheckoutSuccessPage() {
                 </Link>
             </div>
         </div>
+    );
+}
+
+export default function CheckoutSuccessPage() {
+    return (
+        <Suspense fallback={<div className="p-20 text-center">Loading confirmation...</div>}>
+            <SuccessContent />
+        </Suspense>
     );
 }

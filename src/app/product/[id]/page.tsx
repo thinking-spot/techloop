@@ -14,7 +14,8 @@ import {
     Battery
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { devices } from "@/lib/data";
+import AddToCartButton from "@/components/ui/AddToCartButton";
+import { getProductBySlug } from "@/lib/products";
 
 const iconMap: Record<string, any> = {
     Camera,
@@ -26,7 +27,7 @@ const iconMap: Record<string, any> = {
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
-    const device = devices.find((d) => d.id === id);
+    const device = await getProductBySlug(id);
 
     if (!device) {
         notFound();
@@ -253,11 +254,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                     </p>
                                 </div>
 
-                                <Link href="/signup">
-                                    <Button size="lg" className="w-full mb-4 py-6 text-lg font-bold shadow-button/20 shadow-lg">
-                                        Rent Now
-                                    </Button>
-                                </Link>
+                                <AddToCartButton product={device} />
 
                                 <div className="space-y-4 mb-6 pt-6 border-t border-[#F1F5F9]">
                                     <div className="flex items-start gap-3 text-sm text-paragraph">
@@ -297,9 +294,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         <div className="text-xs text-paragraph uppercase font-bold">Monthly Rental</div>
                         <div className="text-xl font-bold text-headline">${device.price}<span className="text-sm font-normal text-paragraph">/mo</span></div>
                     </div>
-                    <Link href="/signup" className="flex-1">
-                        <Button className="w-full">Rent Now</Button>
-                    </Link>
+                    <div className="flex-1">
+                        <AddToCartButton product={device} />
+                    </div>
                 </div>
             </div>
         </div>

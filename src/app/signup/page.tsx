@@ -8,10 +8,12 @@ import { PasswordInput } from "@/components/ui/PasswordInput";
 import Logo from "@/components/ui/Logo";
 import { ArrowRight, Key, Mail, User } from "lucide-react";
 import { useToast } from "@/components/ui/Toast";
+import { createClient } from "@/utils/supabase/client";
 
 export default function SignupPage() {
     const { addToast } = useToast();
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -24,13 +26,29 @@ export default function SignupPage() {
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
+        setError(null);
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const supabase = createClient();
+        const { error: signUpError } = await supabase.auth.signUp({
+            email: formData.email,
+            password: formData.password,
+            options: {
+                data: {
+                    full_name: formData.name,
+                    // Store access code if needed, or validate it against a server action later
+                }
+            }
+        });
+
+        if (signUpError) {
+            setError(signUpError.message);
+            setIsLoading(false);
+            return;
+        }
 
         setIsLoading(false);
-        addToast({ title: "Account Created", description: "Welcome to TechLoop!", type: "success" });
-        // In a real app, redirect here
+        addToast({ title: "Account Created", description: "Please check your email to confirm your account.", type: "success" });
+        // Redirect or show success state
     };
 
     return (
@@ -54,6 +72,13 @@ export default function SignupPage() {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white py-8 px-4 shadow-xl shadow-slate-200/50 sm:rounded-2xl sm:px-10 border border-slate-100">
+
+                    {error && (
+                        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm">
+                            {error}
+                        </div>
+                    )}
+
                     <form className="space-y-6" onSubmit={handleSignup}>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-headline mb-1">

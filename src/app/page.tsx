@@ -3,18 +3,16 @@ import Link from "next/link";
 import { ArrowRight, Check, RefreshCcw, Star, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import DeviceCard from "@/components/ui/DeviceCard";
-import { devices } from "@/lib/data";
-
-// Select specific devices to match the "Devices you actually want to try"
-// In a real app we'd filter by ID or feature flag
-const featuredDevices = devices.slice(0, 4);
+import { getAllProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Try AI devices + wearables | rent, swap, love, buy | techloop",
   description: "Glasses, watches, rings, pins, earbuds + pendants. Pick any AI device, try it for real. Love it? Keep it. No commitment. No risk. $48/m",
 };
 
-export default function Home() {
+export default async function Home() {
+  const devices = await getAllProducts();
+  const featuredDevices = devices.slice(0, 4);
   return (
     <div className="flex flex-col gap-24 pb-20">
 
