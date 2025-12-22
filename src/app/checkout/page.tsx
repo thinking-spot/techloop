@@ -54,7 +54,6 @@ export default function CheckoutPage() {
         // If moving TO Payment step (Step 1 -> Step 2)
         if (step === 1) {
             try {
-                // Determine which item to subscribe to (MVP: just the first item for now)
                 const mainItem = items[0];
 
                 const res = await fetch("/api/checkout/create-intent", {
@@ -74,12 +73,12 @@ export default function CheckoutPage() {
 
                 const data = await res.json();
 
+                // CRITICAL FIX: If clientSecret is null, the invoice is already paid (e.g. credits).
+                // Redirect straight to success.
                 if (data.clientSecret) {
                     setClientSecret(data.clientSecret);
                     setStep(step + 1);
                 } else {
-                    // If clientSecret is null, it means the invoice is already paid (e.g. credits) 
-                    // or doesn't require payment. Redirect to success directly.
                     router.push("/checkout/success");
                 }
             } catch (err: unknown) {
@@ -90,7 +89,7 @@ export default function CheckoutPage() {
                 setIsProcessing(false);
             }
         } else if (step < 2) {
-            // Normal step transition (if we had more steps)
+            // Normal step transition
             await new Promise(resolve => setTimeout(resolve, 500));
             setStep(step + 1);
             setIsProcessing(false);
@@ -238,4 +237,3 @@ export default function CheckoutPage() {
         </div>
     );
 }
-
