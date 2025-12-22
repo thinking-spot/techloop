@@ -133,7 +133,7 @@ export default function SignupPage() {
                                 />
                             </div>
                             <div className="mt-2 text-center text-xs text-paragraph">
-                                Don't have a code? <Link href="/waitlist" className="text-button hover:underline font-medium">Join the Waitlist</Link>
+                                Don&apos;t have a code? <Link href="/waitlist" className="text-button hover:underline font-medium">Join the Waitlist</Link>
                             </div>
                         </div>
 

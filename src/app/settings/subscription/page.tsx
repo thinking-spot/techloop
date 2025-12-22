@@ -1,8 +1,19 @@
-import { CreditCard, CheckCircle, AlertTriangle } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { CreditCard } from "lucide-react";
+import CancelSubscriptionModal from "./_components/CancelSubscriptionModal";
 
 export default function SubscriptionSettingsPage() {
+    const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+
     return (
         <div className="space-y-6">
+            <CancelSubscriptionModal
+                isOpen={isCancelModalOpen}
+                onClose={() => setIsCancelModalOpen(false)}
+            />
+
             <div>
                 <h2 className="text-2xl font-bold text-headline">Subscription & Billing</h2>
                 <p className="text-paragraph">Manage your plan and payment methods.</p>
@@ -36,7 +47,10 @@ export default function SubscriptionSettingsPage() {
                     <button className="px-4 py-2 bg-white border border-[#E2E8F0] rounded-lg text-sm font-semibold text-headline hover:bg-[#F8FAFC]">
                         Pause Subscription
                     </button>
-                    <button className="px-4 py-2 text-red-600 text-sm font-semibold hover:bg-red-50 rounded-lg ml-auto">
+                    <button
+                        onClick={() => setIsCancelModalOpen(true)}
+                        className="px-4 py-2 text-red-600 text-sm font-semibold hover:bg-red-50 rounded-lg ml-auto"
+                    >
                         Cancel
                     </button>
                 </div>

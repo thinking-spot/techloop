@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Search, Package, RefreshCcw, Star, ShieldCheck, DollarSign } from "lucide-react";
+import { ArrowRight, Check, RefreshCcw, Star, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import DeviceCard from "@/components/ui/DeviceCard";
 import { devices } from "@/lib/data";
@@ -94,7 +94,7 @@ export default function Home() {
             <h3 className="text-xl font-bold text-headline mb-3">No $400+ Gambles</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
               Want to try smart glasses? Buying costs $399 upfront. Hate them? You&apos;re out of luck.
-              With us, pay $48/month. If you don't love it, just return it.
+              With us, pay $48/month. If you don&apos;t love it, just return it.
             </p>
             <div className="text-xs font-semibold text-success bg-green-50 px-3 py-1 rounded-full inline-block">
               Save $351 upfront
@@ -109,7 +109,7 @@ export default function Home() {
             <h3 className="text-xl font-bold text-headline mb-3">Swap Until You Find &quot;The One&quot;</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
               Not sure which smart ring fits your life? Try Oura. Swap to Samsung. Compare side-by-side.
-              Finding your favorite tech shouldn't be stressful.
+              Finding your favorite tech shouldn&apos;t be stressful.
             </p>
             <div className="text-xs font-semibold text-button bg-blue-50 px-3 py-1 rounded-full inline-block">
               4 free swaps / year
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
             <h3 className="text-xl font-bold text-headline mb-3">Always Get The Latest</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
-              New version launching next month? Don't get stuck with old tech. Swap to the newest model immediately.
+              New version launching next month? Don&apos;t get stuck with old tech. Swap to the newest model immediately.
               Stay current without buying new gear every year.
             </p>
             <div className="text-xs font-semibold text-button bg-blue-50 px-3 py-1 rounded-full inline-block">
@@ -138,7 +138,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
-              As easy as ordering takeout online
+              Easy as ordering takeout online
             </h2>
             <p className="text-paragraph text-lg mb-8">
               We&apos;ve removed all the friction. No long contracts. No hidden fees. Just pick a device and we ship it today.
@@ -187,7 +187,7 @@ export default function Home() {
         <div className="flex items-end justify-between mb-10 max-w-7xl mx-auto">
           <div>
             <h2 className="text-3xl font-display font-medium text-headline mb-2 md:text-4xl">Smart devices you actually want to try</h2>
-            <p className="text-paragraph text-lg">4.8+ star rated devices only. If it's not great, we don't carry it.</p>
+            <p className="text-paragraph text-lg">4.8+ star rated devices only. If it&apos;s not great, we don&apos;t carry it.</p>
           </div>
           <Link href="/browse" className="hidden md:block">
             <Button variant="tertiary" className="group">
@@ -234,7 +234,7 @@ export default function Home() {
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/10">
                 <div className="flex text-yellow-400 text-xs mb-3">★★★★★</div>
                 <p className="text-sm leading-relaxed mb-4">
-                  "I wanted smart glasses but wasn't sure which ones. Tried XREAL, didn't love them. Swapped to Meta Ray-Ban and now I wear them every day. Total no-brainer."
+                  &quot;I wanted smart glasses but wasn&apos;t sure which ones. Tried XREAL, didn&apos;t love them. Swapped to Meta Ray-Ban and now I wear them every day. Total no-brainer.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-white/20" />
@@ -248,7 +248,7 @@ export default function Home() {
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/10 hidden md:block">
                 <div className="flex text-yellow-400 text-xs mb-3">★★★★★</div>
                 <p className="text-sm leading-relaxed mb-4">
-                  "The Explorer plan is perfect. $84/month to try $750 worth of devices? I'm saving up to buy them, but trying first saved me from buying the wrong ring."
+                  &quot;The Explorer plan is perfect. $84/month to try $750 worth of devices? I&apos;m saving up to buy them, but trying first saved me from buying the wrong ring.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-white/20" />
@@ -260,11 +260,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
 
       {/* Comparison Table Section */}
-      <section className="px-6 md:px-12 max-w-5xl mx-auto">
+      < section className="px-6 md:px-12 max-w-5xl mx-auto" >
         <h2 className="text-center font-display text-3xl font-bold text-headline mb-4">Why Techloop vs. Buying?</h2>
         <p className="text-center text-paragraph mb-12">Because $400 is a lot to gamble on something you might hate.</p>
 
@@ -304,10 +304,10 @@ export default function Home() {
             💡 <strong>Pro Tip:</strong> Try 3 devices for $288 total. Buying all 3 would cost $1,197. <strong>You save $909.</strong>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Pricing Teaser */}
-      <section className="px-6 md:px-12 text-center max-w-4xl mx-auto py-8">
+      < section className="px-6 md:px-12 text-center max-w-4xl mx-auto py-8" >
         <h2 className="font-display text-3xl font-bold text-headline mb-4">Pick your plan. Change anytime.</h2>
         <p className="text-paragraph mb-10">All plans include brand new devices and free swaps.</p>
 
@@ -351,16 +351,16 @@ export default function Home() {
         </div>
 
         <Link href="/pricing" className="text-button font-medium hover:underline">See full pricing details &rarr;</Link>
-      </section>
+      </section >
 
       {/* Final CTA */}
-      <section className="px-6 md:px-12">
+      < section className="px-6 md:px-12" >
         <div className="rounded-[2.5rem] bg-headline px-6 py-20 text-center text-white md:px-16 overflow-hidden relative">
           <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[bg-position_15s_ease-in-out_infinite]" />
 
           <h2 className="relative mb-6 font-display text-4xl font-bold md:text-5xl text-white">Rent. Swap. Love. Keep.</h2>
           <p className="relative mx-auto mb-10 max-w-2xl text-lg text-white/80">
-            Start with any device. If you don't love it, swap it. <br />
+            Start with any device. If you don&apos;t love it, swap it. <br />
             Cancel anytime.
           </p>
           <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -374,8 +374,8 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section >
 
-    </div>
+    </div >
   );
 }

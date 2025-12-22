@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
-import { Bell, Search, User, ArrowLeft } from "lucide-react";
+import { User, ArrowLeft } from "lucide-react";
 import Sidebar from "@/components/layout/Sidebar";
 
 export default function SettingsLayout({

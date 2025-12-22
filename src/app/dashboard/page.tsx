@@ -5,13 +5,20 @@ import Link from "next/link";
 import { Package, Calendar, Activity, ArrowRight, Battery, Wifi } from "lucide-react";
 import Image from "next/image";
 import OrderDetailsSheet from "./_components/OrderDetailsSheet";
+import SwapConfirmationModal from "./_components/SwapConfirmationModal";
 
 export default function DashboardPage() {
     const [isManageSheetOpen, setIsManageSheetOpen] = useState(false)
+    const [swapDevice, setSwapDevice] = useState<{ name: string; image: string } | null>(null)
 
     return (
         <div className="space-y-8">
             <OrderDetailsSheet isOpen={isManageSheetOpen} onClose={() => setIsManageSheetOpen(false)} />
+            <SwapConfirmationModal
+                isOpen={!!swapDevice}
+                onClose={() => setSwapDevice(null)}
+                device={swapDevice}
+            />
 
             {/* Welcome Section */}
             <div>
@@ -146,7 +153,13 @@ export default function DashboardPage() {
                             </div>
                             <h4 className="font-bold text-headline text-sm mb-1">Rabbit R1</h4>
                             <p className="text-xs text-paragraph mb-3">AI Pocket Companion</p>
-                            <button className="w-full py-2 bg-[#F1F5F9] text-headline text-xs font-semibold rounded-lg group-hover:bg-button group-hover:text-white transition-colors">
+                            <button
+                                onClick={() => setSwapDevice({
+                                    name: "Rabbit R1",
+                                    image: `https://placehold.co/300x300/F8FAFC/094067?text=Device+${item}`
+                                })}
+                                className="w-full py-2 bg-[#F1F5F9] text-headline text-xs font-semibold rounded-lg group-hover:bg-button group-hover:text-white transition-colors"
+                            >
                                 Valid for Swap
                             </button>
                         </div>

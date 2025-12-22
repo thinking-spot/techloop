@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check, HelpCircle, X, Shield, RefreshCcw, Truck, Info, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, Shield, RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const plans = [
@@ -57,7 +57,7 @@ const plans = [
 const faqs = [
     {
         q: "Are these actually brand new devices?",
-        a: "Yes! Your first rental of any device is always brand new, factory sealed. When you return it, we professionally refurbish it to like-new condition, then it becomes available in our 'Certified Pre-Owned' tier at a lower price."
+        a: "Yes! Your first rental of any device is always brand new, factory sealed. When you return it, we professionally refurbish it to like-new condition, then it becomes available for swaps."
     },
     {
         q: "What if I damage the device?",
@@ -65,7 +65,7 @@ const faqs = [
     },
     {
         q: "How do swaps work?",
-        a: "Log into your dashboard, click 'Request Swap', and choose your next device. We ship it in 2-3 days. You return the old one in prepaid packaging within 3 days. Your billing stays the same."
+        a: "Log into your dashboard, click 'Request Swap', and choose your next device. You return the old one in prepaid packaging. Get your next device in 2-3 days. Your billing stays the same."
     },
     {
         q: "Can I cancel anytime?",
@@ -73,7 +73,7 @@ const faqs = [
     },
     {
         q: "How is this different from buying on Amazon?",
-        a: "Amazon gives you 30 days. If you return it, you have nothing. With TechLoop, you can rent as long as you want, swap to try other devices, and if you keep it, you get 40-60% off retail."
+        a: "Amazon gives you 30 days. If you return it, you have nothing. With Techloop, you can rent as long as you want, swap to try other devices, and if you keep it, you get 40-60% off retail."
     }
 ];
 
@@ -161,7 +161,7 @@ export default function PricingPage() {
             {/* Comparison Table */}
             <section className="py-16 px-6 md:px-12 bg-[#F8FAFC]">
                 <div className="max-w-5xl mx-auto">
-                    <h2 className="text-3xl font-display font-medium text-headline text-center mb-12">Why TechLoop vs. Other Options?</h2>
+                    <h2 className="text-3xl font-display font-medium text-headline text-center mb-12">Why Techloop vs. Other Options?</h2>
 
                     <div className="border border-[#F1F5F9] rounded-2xl overflow-hidden shadow-sm bg-white">
                         <div className="overflow-x-auto">
@@ -188,7 +188,7 @@ export default function PricingPage() {
                                         <td className="py-4 px-6 text-sm text-paragraph">None (active loan)</td>
                                     </tr>
                                     <tr className="bg-[#F0F9FF]">
-                                        <td className="py-4 px-6 text-sm font-bold text-headline">TechLoop Starter</td>
+                                        <td className="py-4 px-6 text-sm font-bold text-headline">Techloop Starter</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">$48/month</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Yes (4 free swaps/yr)</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Cancel anytime</td>
@@ -209,7 +209,7 @@ export default function PricingPage() {
                             <Shield size={28} className="text-button" /> Security Deposit
                         </h3>
                         <p className="text-paragraph mb-6">
-                            Just like renting an apartment. We collect a refundable deposit ($200 for Starter) to protect our devices.
+                            We collect a refundable deposit ($84) to protect our devices and keep the balance sheet healthy.
                         </p>
                         <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0]">
                             <h4 className="font-semibold text-headline mb-3 text-sm">100% Refunded when you:</h4>
@@ -269,7 +269,7 @@ export default function PricingPage() {
                     <div className="text-center mt-12">
                         <p className="text-paragraph mb-4">Still have questions?</p>
                         <Link href="/contact">
-                            <Button variant="secondary">Chat with Support</Button>
+                            <Button variant="secondary">Help & Support</Button>
                         </Link>
                     </div>
                 </div>

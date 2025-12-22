@@ -11,9 +11,7 @@ import {
     Mic,
     Speaker,
     Bot,
-    Battery,
-    ChevronDown,
-    ArrowRight
+    Battery
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { devices } from "@/lib/data";

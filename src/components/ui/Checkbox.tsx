@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+import { InputHTMLAttributes, forwardRef, useId } from "react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Check } from "lucide-react";
@@ -10,7 +10,8 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ({ className, label, id, ...props }, ref) => {
         // Ensure we have an ID for the label
-        const inputId = id || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
+        const generatedId = useId();
+        const inputId = id || `checkbox-${generatedId}`;
 
         return (
             <div className="flex items-center gap-3">

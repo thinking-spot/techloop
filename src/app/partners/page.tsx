@@ -62,7 +62,7 @@ export default function PartnersPage() {
                                     <div className="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
                                     <div>
                                         <h4 className="font-bold text-red-900 mb-1">Slow Feedback</h4>
-                                        <p className="text-red-700/80 text-sm">Waiting months for Amazon reviews that don't tell you <em>why</em> they returned it.</p>
+                                        <p className="text-red-700/80 text-sm">Waiting months for Amazon reviews that don&apos;t tell you <em>why</em> they returned it.</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ export default function PartnersPage() {
             {/* Metrics Section */}
             <section className="bg-headline text-white py-24 px-6 md:px-12">
                 <div className="max-w-6xl mx-auto text-center mb-16">
-                    <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-white">Data You Can't Get Anywhere Else</h2>
+                    <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-white">Data You Can&apos;t Get Anywhere Else</h2>
                     <p className="text-xl text-blue-100/80">Our Competitive Intelligence dashboard gives you the edge.</p>
                 </div>
 
@@ -152,7 +152,7 @@ export default function PartnersPage() {
                 <div className="max-w-3xl mx-auto bg-white rounded-[2.5rem] shadow-2xl shadow-slate-200 border border-slate-100 p-8 md:p-16">
                     <div className="text-center mb-10">
                         <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-4">Partner with TechLoop</h2>
-                        <p className="text-paragraph">Tell us about your hardware. We'll tell you if it's a fit for our fleet.</p>
+                        <p className="text-paragraph">Tell us about your hardware. We&apos;ll tell you if it&apos;s a fit for our fleet.</p>
                     </div>
 
                     <form className="space-y-6">
@@ -174,7 +174,7 @@ export default function PartnersPage() {
 
                         <div className="space-y-2">
                             <label className="text-sm font-bold text-headline">Message</label>
-                            <textarea className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#3DA9FC] outline-none transition-all h-32" placeholder="Tell us what you're building..." />
+                            <textarea className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#3DA9FC] outline-none transition-all h-32" placeholder="Tell us what you&apos;re building..." />
                         </div>
 
                         <Button size="lg" className="w-full text-lg py-6">

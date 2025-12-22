@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
     Check,
     Search,
-    Package,
     HelpCircle,
     RefreshCcw,
     ArrowRight,
@@ -25,7 +24,7 @@ export default function HowItWorksPage() {
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
                     <h1 className="relative mx-auto mb-6 font-display text-4xl font-bold leading-tight text-headline md:text-5xl lg:text-6xl">
-                        New AI devices <br className="hidden md:block" />for $48/month
+                        Shop, swap, love. <br className="hidden md:block" />Wearable AI for $48/m
                     </h1>
                     <p className="relative mx-auto mb-10 text-xl text-paragraph max-w-2xl leading-relaxed">
                         No commitment. No risk. Pick any device, try it for real. If you love it, keep it.
@@ -44,7 +43,7 @@ export default function HowItWorksPage() {
                             <Truck size={16} className="text-success" /> 2-3 day shipping
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Check size={16} className="text-success" /> Brand new devices
+                            <Check size={16} className="text-success" /> Rent to own, 100%
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
                             <RefreshCcw size={16} className="text-success" /> Cancel anytime
@@ -60,9 +59,9 @@ export default function HowItWorksPage() {
             <section className="py-20 px-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="font-display text-3xl font-bold text-headline mb-4">The TechLoop Process</h2>
+                        <h2 className="font-display text-3xl font-bold text-headline mb-4">How techloop works</h2>
                         <p className="text-paragraph max-w-2xl mx-auto">
-                            Think of TechLoop like Netflix for AI wearables. Rent monthly, swap anytime, only keep what you love.
+                            Techloop is like Netflix for DVDs, but AI wearables. Rent monthly, swap anytime, only keep what you love.
                         </p>
                     </div>
 
@@ -133,10 +132,10 @@ export default function HowItWorksPage() {
                             <div className="space-y-4 text-paragraph">
                                 <p>
                                     Most people need at least 3 weeks to truly test a wearable.
-                                    Week 1 is setup, Week 2 is daily routine, Week 3 is when you find the "aha!" moments.
+                                    Week 1 is setup, Week 2 is daily routine, Week 3 is when you discover the &quot;aha!&quot; moments.
                                 </p>
                                 <p>
-                                    That's why we have a 30-day minimum rental. We want you to give it a fair shot.
+                                    That&apos;s why we have a 30-day minimum rental. We want you to give it a fair shot.
                                     If you hate it before 30 days, you can still swap for a small early-swap fee.
                                 </p>
                             </div>
@@ -146,11 +145,11 @@ export default function HowItWorksPage() {
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
                                     <div className="mt-1 bg-green-100 p-1 rounded-full text-success"><Check size={12} /></div>
-                                    <span className="text-sm text-paragraph"><strong>Brand New Device</strong> - Factory sealed, never worn.</span>
+                                    <span className="text-sm text-paragraph"><strong>Any Device - Yours forever (or until next month).</strong> - Factory sealed, never worn.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <div className="mt-1 bg-green-100 p-1 rounded-full text-success"><Check size={12} /></div>
-                                    <span className="text-sm text-paragraph"><strong>All Accessories</strong> - Charging cable, case, manual.</span>
+                                    <span className="text-sm text-paragraph"><strong>Accessories</strong> - Charging cable, case, manual.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <div className="mt-1 bg-green-100 p-1 rounded-full text-success"><Check size={12} /></div>
@@ -167,8 +166,8 @@ export default function HowItWorksPage() {
                     {/* After 30 Days Options */}
                     <div>
                         <div className="text-center mb-12">
-                            <h2 className="font-display text-3xl font-bold text-headline mb-4">After 30 Days, It's Up To You</h2>
-                            <p className="text-paragraph">Most users try 3-5 devices before finding "the one".</p>
+                            <h2 className="font-display text-3xl font-bold text-headline mb-4">After 30 Days, It&apos;s Up To You</h2>
+                            <p className="text-paragraph">Most users try 3-5 devices before finding &quot;the one&quot;.</p>
                         </div>
 
                         <div className="grid md:grid-cols-4 gap-6">
@@ -204,7 +203,7 @@ export default function HowItWorksPage() {
                 <div className="space-y-6">
                     <div className="bg-white p-6 rounded-xl border border-[#F1F5F9]">
                         <h4 className="font-bold text-headline mb-2">Are these actually new devices?</h4>
-                        <p className="text-paragraph text-sm">Yes! Your first rental is always a brand new, factory-sealed device. You are the first person to touch it.</p>
+                        <p className="text-paragraph text-sm">Yes! Your first rental is always a brand new, factory-sealed device. You are the first person to use it.</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border border-[#F1F5F9]">
                         <h4 className="font-bold text-headline mb-2">What if I damage it?</h4>
@@ -219,13 +218,13 @@ export default function HowItWorksPage() {
 
             {/* CTA */}
             <section className="bg-headline py-20 px-6 text-center text-white">
-                <h2 className="font-display text-3xl font-bold mb-6 text-white">Ready to find your perfect match?</h2>
+                <h2 className="font-display text-3xl font-bold mb-6 text-white">Ready to find the perfect fit?</h2>
                 <p className="mb-10 text-white/80 max-w-xl mx-auto">
-                    Start with any device. Swap if you don't love it. Keep what works.
+                    Start with any device. Swap if you don&apos;t love it. Keep what works.
                 </p>
                 <Link href="/browse">
                     <Button size="lg" className="bg-button text-white hover:bg-[#2D8FDC] border-none px-8">
-                        Browse Catalog
+                        Browse Wearables
                     </Button>
                 </Link>
             </section>

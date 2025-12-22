@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
-    ArrowRight,
     CheckCircle2,
     Shield,
     CreditCard,
@@ -12,12 +10,8 @@ import {
     RefreshCcw,
     Zap,
     HelpCircle,
-    Mail,
-    Search,
     AlertCircle,
-    Star,
     ChevronDown,
-    ChevronUp
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -150,7 +144,7 @@ export default function WaitlistPage() {
                             <CheckCircle2 size={40} className="text-button mb-6" />
                             <h3 className="text-2xl font-bold text-headline mb-4">Try Risk-Free</h3>
                             <p className="text-paragraph mb-6">
-                                Rent Meta Ray-Ban for $48/mo instead of $299 upfront. Try for 2 months. Don't love them? Return free.
+                                Rent Meta Ray-Ban for $48/mo instead of $299 upfront. Try for 2 months. Don&apos;t love them? Return free.
                             </p>
                             <div className="bg-green-50 text-green-800 text-sm font-bold px-3 py-1 rounded-full inline-block">
                                 Save $200+ vs buying
@@ -238,7 +232,7 @@ export default function WaitlistPage() {
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <CreditCard className="text-green-400 mb-4" size={32} />
-                            <h3 className="text-xl font-bold mb-2 text-white">Founder's Pricing</h3>
+                            <h3 className="text-xl font-bold mb-2 text-white">Founder&apos;s Pricing</h3>
                             <p className="text-sm text-gray-300">Lock in $48/mo forever, even if we raise prices later.</p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
@@ -412,33 +406,4 @@ function WaitlistForm() {
     );
 }
 
-function FAQAccordion() {
-    const [open, setOpen] = useState<number | null>(null);
 
-    const faqs = [
-        { q: "What exactly am I signing up for?", a: "A spot in line. No commitment required today." },
-        { q: "When is launch?", a: "Targeting Q1 2025." },
-        { q: "Is the deposit refundable?", a: "Yes, 100% refundable upon return." }
-    ];
-
-    return (
-        <div className="space-y-4">
-            {faqs.map((faq, i) => (
-                <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
-                    <button
-                        onClick={() => setOpen(open === i ? null : i)}
-                        className="w-full flex items-center justify-between p-4 text-left font-bold text-headline bg-white hover:bg-gray-50 transition-colors"
-                    >
-                        {faq.q}
-                        {open === i ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </button>
-                    {open === i && (
-                        <div className="p-4 pt-0 text-paragraph text-sm bg-gray-50 border-t border-gray-100">
-                            {faq.a}
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    )
-}
