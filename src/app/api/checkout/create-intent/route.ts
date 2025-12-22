@@ -1,4 +1,4 @@
-```typescript
+
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import Stripe from "stripe";
@@ -100,6 +100,7 @@ export async function POST(request: Request) {
 
         const invoice = subscription.latest_invoice as Stripe.Invoice;
         // Expanded payment_intent might not be in the default Invoice type definition if types are old
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const paymentIntent = (invoice as any).payment_intent as Stripe.PaymentIntent;
 
         return NextResponse.json({
