@@ -102,7 +102,7 @@ export async function POST(request: Request) {
             });
         }
         // If it's an object but payment_intent is missing/string, refresh it
-        else if (invoice && (!invoice.payment_intent || typeof invoice.payment_intent === 'string')) {
+        else if (invoice && (!(invoice as any).payment_intent || typeof (invoice as any).payment_intent === 'string')) {
             invoice = await stripe.invoices.retrieve(invoice.id, {
                 expand: ['payment_intent']
             });
