@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCartStore } from "@/store/cart";
 import { Button } from "@/components/ui/Button";
 
-export default function CheckoutReturn() {
+function ReturnContent() {
     const [status, setStatus] = useState<string | null>(null);
     const [customerEmail, setCustomerEmail] = useState("");
     const searchParams = useSearchParams();
@@ -65,5 +65,13 @@ export default function CheckoutReturn() {
         <div className="flex items-center justify-center min-h-[60vh]">
             <p className="text-paragraph">Verifying payment...</p>
         </div>
+    );
+}
+
+export default function CheckoutReturn() {
+    return (
+        <Suspense fallback={<div className="flex items-center justify-center min-h-[60vh]"><p>Loading...</p></div>}>
+            <ReturnContent />
+        </Suspense>
     );
 }
