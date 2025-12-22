@@ -73,8 +73,15 @@ export default function CheckoutPage() {
                 }
 
                 const data = await res.json();
-                setClientSecret(data.clientSecret);
-                setStep(step + 1);
+
+                if (data.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                    setStep(step + 1);
+                } else {
+                    // If clientSecret is null, it means the invoice is already paid (e.g. credits) 
+                    // or doesn't require payment. Redirect to success directly.
+                    router.push("/checkout/success");
+                }
             } catch (err: unknown) {
                 console.error(err);
                 const errorMessage = err instanceof Error ? err.message : "Could not initialize payment system.";
@@ -135,6 +142,10 @@ export default function CheckoutPage() {
                                     <Input placeholder="San Francisco" />
                                 </div>
                                 <div>
+                                    <label className="block text-sm font-medium text-headline mb-1">State</label>
+                                    <Input placeholder="CA" />
+                                </div>
+                                <div className="md:col-span-2">
                                     <label className="block text-sm font-medium text-headline mb-1">ZIP Code</label>
                                     <Input placeholder="94105" />
                                 </div>

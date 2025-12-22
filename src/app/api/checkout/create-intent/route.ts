@@ -1,4 +1,3 @@
-
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import Stripe from "stripe";
@@ -38,7 +37,6 @@ export async function POST(request: Request) {
         }
 
         // 2. Find or Create Product
-        // We search by a custom metadata field 'slug' to avoid creating duplicates
         let stripeProductId;
         const existingProducts = await stripe.products.search({
             query: `metadata['product_slug']: '${productId}'`,
@@ -57,7 +55,6 @@ export async function POST(request: Request) {
         }
 
         // 3. Find or Create Price
-        // We look for a recurring price for this product with the exact amount
         let priceId;
         const existingPrices = await stripe.prices.list({
             product: stripeProductId,
@@ -84,11 +81,7 @@ export async function POST(request: Request) {
         const subscription = await stripe.subscriptions.create({
             customer: customerId,
             currency: "usd",
-            items: [
-                {
-                    price: priceId, // Use the Price ID directly
-                },
-            ],
+            items: [{ price: priceId }],
             payment_behavior: "default_incomplete",
             payment_settings: { save_default_payment_method: "on_subscription" },
             expand: ["latest_invoice.payment_intent"],
@@ -100,13 +93,16 @@ export async function POST(request: Request) {
 
         let invoice = subscription.latest_invoice;
 
-        // If 'latest_invoice' is a string (ID) or missing payment_intent, fetch it explicitly
+        // --- ROBUST INVOICE HANDLING ---
+
+        // If 'latest_invoice' is a string (ID), fetch the object
         if (typeof invoice === 'string') {
             invoice = await stripe.invoices.retrieve(invoice, {
                 expand: ['payment_intent']
             });
-        } else if (invoice && (!invoice.payment_intent || typeof invoice.payment_intent === 'string')) {
-            // If it's an object but payment_intent isn't an object, refresh it
+        }
+        // If it's an object but payment_intent is missing/string, refresh it
+        else if (invoice && (!invoice.payment_intent || typeof invoice.payment_intent === 'string')) {
             invoice = await stripe.invoices.retrieve(invoice.id, {
                 expand: ['payment_intent']
             });
@@ -116,11 +112,22 @@ export async function POST(request: Request) {
             throw new Error("Subscription created but no invoice generated.");
         }
 
-        // Expanded payment_intent might not be in the default Invoice type definition if types are old
+        // 5. Handle "Already Paid" or "No Payment Needed" cases
+        // This happens if the customer has a credit balance or the price is 0
+        if (invoice.amount_due === 0 || invoice.status === 'paid') {
+            return NextResponse.json({
+                subscriptionId: subscription.id,
+                clientSecret: null,
+                message: "Subscription active, no payment required."
+            });
+        }
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const paymentIntent = (invoice as any).payment_intent as Stripe.PaymentIntent;
 
         if (!paymentIntent) {
+            // Log status to help debug if this happens again
+            console.error(`Invoice Status: ${invoice.status}, Amount Due: ${invoice.amount_due}`);
             throw new Error("Subscription invoice does not have a payment intent.");
         }
 
@@ -128,6 +135,7 @@ export async function POST(request: Request) {
             subscriptionId: subscription.id,
             clientSecret: paymentIntent.client_secret,
         });
+
     } catch (error: unknown) {
         console.error("Stripe Error:", error);
         const errorMessage = error instanceof Error ? error.message : "Internal Server Error";
