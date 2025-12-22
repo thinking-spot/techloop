@@ -98,9 +98,21 @@ export async function POST(request: Request) {
             }
         });
 
-        const invoice = subscription.latest_invoice as Stripe.Invoice;
+        let invoice = subscription.latest_invoice;
 
-        if (!invoice) {
+        // If 'latest_invoice' is a string (ID) or missing payment_intent, fetch it explicitly
+        if (typeof invoice === 'string') {
+            invoice = await stripe.invoices.retrieve(invoice, {
+                expand: ['payment_intent']
+            });
+        } else if (invoice && (!invoice.payment_intent || typeof invoice.payment_intent === 'string')) {
+            // If it's an object but payment_intent isn't an object, refresh it
+            invoice = await stripe.invoices.retrieve(invoice.id, {
+                expand: ['payment_intent']
+            });
+        }
+
+        if (!invoice || typeof invoice === 'string') {
             throw new Error("Subscription created but no invoice generated.");
         }
 
