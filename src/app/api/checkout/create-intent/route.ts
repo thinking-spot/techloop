@@ -99,9 +99,18 @@ export async function POST(request: Request) {
         });
 
         const invoice = subscription.latest_invoice as Stripe.Invoice;
+
+        if (!invoice) {
+            throw new Error("Subscription created but no invoice generated.");
+        }
+
         // Expanded payment_intent might not be in the default Invoice type definition if types are old
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const paymentIntent = (invoice as any).payment_intent as Stripe.PaymentIntent;
+
+        if (!paymentIntent) {
+            throw new Error("Subscription invoice does not have a payment intent.");
+        }
 
         return NextResponse.json({
             subscriptionId: subscription.id,
