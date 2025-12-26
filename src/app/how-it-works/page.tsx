@@ -24,7 +24,7 @@ export default function HowItWorksPage() {
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
                     <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight text-headline md:text-[48px]">
-                        Shop ➡️ swap ➡️ love ➡️ keep <br className="hidden md:block" />Wearable AI for $48/m
+                        Shop ➡️ swap ➡️ love ➡️ keep. <br className="hidden md:block" />Wearable AI for $48/m
                     </h1>
                     <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl leading-relaxed">
                         No commitment. No risk. Pick any device and try it for real. If you love it, keep it.
@@ -160,7 +160,7 @@ export default function HowItWorksPage() {
                     <div>
                         <div className="text-center mb-12">
                             <h2 className="font-display text-3xl font-bold text-headline mb-4">After 30 Days, It&apos;s Up To You</h2>
-                            <p className="text-paragraph">Most users try 2+ devices before finding The One.</p>
+                            <p className="text-paragraph">Most users try 2+ devices before finding the perfect fit.</p>
                         </div>
 
                         <div className="grid md:grid-cols-4 gap-6">
