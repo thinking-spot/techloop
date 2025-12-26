@@ -213,12 +213,12 @@ export default function QuizResults({ answers, onRetake }: { answers: Record<num
             >
                 <h2 className="font-display text-3xl font-bold mb-4">Try Both & Save</h2>
                 <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                    Get the <strong>Explorer Plan</strong> to rent 2 devices at once. Swap them anytime.
+                    Get the <strong>Explorer Plan</strong> to try 2 devices at once. Swap anytime. Or rent to own.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/pricing">
                         <Button variant="secondary" size="lg" className="w-full sm:w-auto bg-white text-headline border-white hover:bg-gray-100">
-                            Get Explorer Plan ($89/mo)
+                            Get Explorer Plan ($84/mo)
                         </Button>
                     </Link>
                     <Link href="/browse">
