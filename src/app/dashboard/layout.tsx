@@ -49,7 +49,7 @@ export default function DashboardLayout({
                             </button>
                             <div className="flex items-center gap-3 pl-4 border-l border-[#F1F5F9]">
                                 <div className="text-right hidden sm:block">
-                                    <p className="text-sm font-semibold text-headline">James Ladd</p>
+                                    <p className="text-sm font-semibold text-headline">James Test</p>
                                     <p className="text-xs text-paragraph">Pro Member</p>
                                 </div>
                                 <div className="h-9 w-9 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center text-slate-500 overflow-hidden">

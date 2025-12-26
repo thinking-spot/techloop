@@ -42,7 +42,7 @@ export default function ProfileSettingsPage() {
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-paragraph/50">
                                     <User size={18} />
                                 </div>
-                                <Input defaultValue="James Ladd" className="pl-10" />
+                                <Input defaultValue="James Test" className="pl-10" />
                             </div>
                         </div>
                         <div>
