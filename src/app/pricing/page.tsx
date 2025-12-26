@@ -10,8 +10,7 @@ const plans = [
         features: [
             "1 AI wearable device at a time",
             "Brand new device shipped to you",
-            "Try up to 5 different devices per year",
-            "30-day satisfaction guarantee",
+            "Try up to 5 devices per year",
             "Rent-to-own pricing available",
             "Free return shipping",
         ],
@@ -24,10 +23,9 @@ const plans = [
         price: "84",
         description: "Most Popular",
         features: [
-            "2 AI wearable devices simultaneously",
+            "2 AI wearable devices at once",
             "Both brand new, shipped together",
-            "Try up to 10 different devices per year",
-            "30-day satisfaction guarantee per device",
+            "Try up to 10 devices per year",
             "Rent-to-own pricing on both",
             "Free return shipping",
             "Compare devices head-to-head",
@@ -209,7 +207,7 @@ export default function PricingPage() {
                             <Shield size={28} className="text-button" /> Security Deposit
                         </h3>
                         <p className="text-paragraph mb-6">
-                            We collect a refundable deposit ($84) to protect our devices and keep the balance sheet healthy.
+                            We collect a refundable deposit ($48) to protect our devices and keep the balance sheet healthy.
                         </p>
                         <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0]">
                             <h4 className="font-semibold text-headline mb-3 text-sm">100% Refunded when you:</h4>
@@ -238,15 +236,15 @@ export default function PricingPage() {
                                 <span className="font-bold text-headline line-through">$399</span>
                             </div>
                             <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
-                                <span className="text-paragraph">You paid (6 mos rental):</span>
-                                <span className="font-bold text-success">-$288</span>
+                                <span className="text-paragraph">You paid (3 mos rental):</span>
+                                <span className="font-bold text-success">-$144</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="font-bold text-headline">Buyout Price:</span>
-                                <span className="font-bold text-2xl text-button">$180</span>
+                                <span className="font-bold text-2xl text-button">$240</span>
                             </div>
                             <p className="text-xs text-paragraph mt-4">
-                                *Example for XREAL Air 2 Pro after 6 months.
+                                *Example for XREAL Air 2 Pro after 3 months.
                             </p>
                         </div>
                     </div>
