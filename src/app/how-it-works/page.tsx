@@ -23,20 +23,13 @@ export default function HowItWorksPage() {
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                    <h1 className="relative mx-auto mb-6 font-display text-4xl font-bold leading-tight text-headline md:text-5xl lg:text-6xl">
-                        Shop, swap, love. <br className="hidden md:block" />Wearable AI for $48/m
+                    <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight text-headline md:text-[48px]">
+                        Shop, swap, love <br className="hidden md:block" />Wearable AI for $48/m
                     </h1>
-                    <p className="relative mx-auto mb-10 text-xl text-paragraph max-w-2xl leading-relaxed">
+                    <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl leading-relaxed">
                         No commitment. No risk. Pick any device, try it for real. If you love it, keep it.
                     </p>
 
-                    <div className="relative flex justify-center mb-12">
-                        <Link href="/browse">
-                            <Button size="lg" className="rounded-full px-8 py-6 text-lg shadow-lg shadow-button/20 hover:shadow-button/40">
-                                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-                            </Button>
-                        </Link>
-                    </div>
 
                     <div className="relative flex flex-wrap justify-center gap-4 text-sm font-medium text-paragraph/80">
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">

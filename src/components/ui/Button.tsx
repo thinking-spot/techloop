@@ -3,7 +3,7 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "primary" | "secondary" | "tertiary" | "outline";
+    variant?: "primary" | "secondary" | "tertiary" | "outline" | "ghost";
     size?: "sm" | "md" | "lg";
 }
 
@@ -24,6 +24,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                                 variant === "tertiary",
                             "bg-white border border-[#CBD5E1] text-headline hover:bg-[#F8FAFC] hover:border-[#94A3B8] shadow-sm":
                                 variant === "outline",
+                            "bg-transparent text-headline hover:bg-[#F1F5F9] active:bg-[#E2E8F0]":
+                                variant === "ghost",
                             "px-3 py-1.5 text-sm": size === "sm",
                             "px-6 py-3 text-base": size === "md",
                             "px-8 py-4 text-lg": size === "lg",

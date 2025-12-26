@@ -87,10 +87,10 @@ export default function PricingPage() {
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                    <h1 className="relative mx-auto mb-6 font-display text-4xl font-bold leading-tight text-headline md:text-5xl lg:text-6xl">
+                    <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight text-headline md:text-[48px]">
                         Try $400+ AI devices for less than $50/month
                     </h1>
-                    <p className="relative mx-auto mb-10 text-xl text-paragraph max-w-2xl mx-auto leading-relaxed">
+                    <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl mx-auto leading-relaxed">
                         New devices. No commitment. Swap anytime. Keep what you love.
                     </p>
 

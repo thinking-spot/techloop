@@ -29,10 +29,10 @@ export default function WaitlistPage() {
 
                     <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
                         <div className="space-y-8">
-                            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-headline">
+                            <h1 className="font-display text-[40px] md:text-[48px] font-bold tracking-tight leading-[1.1] text-headline">
                                 Try $400 AI devices for <span className="text-button">$48/month</span>
                             </h1>
-                            <p className="text-xl md:text-2xl text-paragraph leading-relaxed font-light">
+                            <p className="text-[20px] md:text-[22px] text-paragraph leading-relaxed font-light">
                                 Smart glasses. AI rings. Earbuds that translate languages. <br className="hidden md:block" />
                                 Rent them risk-free before you buy.
                             </p>

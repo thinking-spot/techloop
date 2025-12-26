@@ -18,11 +18,11 @@ export default function PartnersPage() {
                         <Zap size={16} /> For Hardware Manufacturers
                     </div>
 
-                    <h1 className="relative mx-auto mb-6 font-display text-4xl font-bold leading-tight md:text-5xl lg:text-7xl">
+                    <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight md:text-[48px]">
                         Stop Paying $2,000 CAC. <br />
                         <span className="text-[#3DA9FC]">Partner with TechLoop.</span>
                     </h1>
-                    <p className="relative mx-auto mb-10 text-xl text-slate-300 max-w-3xl leading-relaxed">
+                    <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-slate-300 max-w-3xl leading-relaxed">
                         Distribute your AI hardware to qualified early adopters. We handle the logistics, you get the data.
                         Join XREAL, Oura, and others in the new distribution model.
                     </p>

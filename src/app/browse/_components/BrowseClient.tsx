@@ -182,8 +182,8 @@ export default function BrowseClient({ initialDevices }: BrowseClientProps) {
             {/* Page Header */}
             <div className="bg-[#F8FAFC] border-b border-[#F1F5F9] px-6 py-12 md:px-12">
                 <div className="max-w-7xl mx-auto">
-                    <h1 className="font-display text-4xl md:text-5xl font-bold text-headline mb-4">Find your perfect AI wearable</h1>
-                    <p className="text-xl text-paragraph max-w-2xl mb-8">
+                    <h1 className="font-display text-[40px] md:text-[48px] font-bold text-headline mb-4">Find your perfect AI wearable</h1>
+                    <p className="text-[20px] md:text-[22px] text-paragraph max-w-2xl mb-8">
                         Browse 20+ devices across 6 categories. All brand new. All swappable. All available to ship today.
                     </p>
 

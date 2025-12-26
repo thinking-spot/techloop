@@ -22,7 +22,7 @@ export default async function Home() {
           {/* Background decorative blob */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-          <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-5xl font-bold leading-[1.1] tracking-tight text-headline md:text-6xl lg:text-7xl">
+          <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-[40px] font-bold leading-[1.1] tracking-tight text-headline md:text-[48px]">
             Try AI Devices <br className="hidden md:block" />
             the <span className="text-button relative inline-block">
               Smart Way
@@ -31,7 +31,7 @@ export default async function Home() {
               </svg>
             </span>
           </h1>
-          <p className="relative mx-auto mb-10 max-w-2xl text-xl text-paragraph leading-relaxed">
+          <p className="relative mx-auto mb-10 max-w-2xl text-[20px] text-paragraph leading-relaxed md:text-[22px]">
             New devices. No commitment. Swap anytime. <br className="hidden md:block" />
             Find the perfect fit for $48/month.
           </p>

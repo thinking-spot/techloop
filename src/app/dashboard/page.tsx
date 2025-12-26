@@ -1,15 +1,60 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link";
-import { Package, Calendar, Activity, ArrowRight, Battery, Wifi } from "lucide-react";
+import { Package, Calendar, ArrowRight, Battery, Wifi } from "lucide-react";
 import Image from "next/image";
 import OrderDetailsSheet from "./_components/OrderDetailsSheet";
 import SwapConfirmationModal from "./_components/SwapConfirmationModal";
 
+// Gamification Components
+import ExplorerHero from "@/components/dashboard/ExplorerHero";
+import ReferralCard from "@/components/dashboard/ReferralCard";
+import QALockCard from "@/components/dashboard/QALockCard";
+import WaysToEarnModal from "@/components/dashboard/WaysToEarnModal";
+import RewardsStoreModal from "@/components/dashboard/RewardsStoreModal";
+
+// Actions
+import { getExplorerStatus, generateReferralCode } from "@/app/actions/points";
+
 export default function DashboardPage() {
     const [isManageSheetOpen, setIsManageSheetOpen] = useState(false)
     const [swapDevice, setSwapDevice] = useState<{ name: string; image: string } | null>(null)
+
+    // Gamification State
+    const [isEarnModalOpen, setIsEarnModalOpen] = useState(false);
+    const [isRewardsModalOpen, setIsRewardsModalOpen] = useState(false);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [explorerData, setExplorerData] = useState<any>(null);
+    const [referralCode, setReferralCode] = useState<string | null>(null);
+
+    // Initial Data Fetch
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const status = await getExplorerStatus();
+                setExplorerData(status);
+
+                if (status?.referral_code) {
+                    setReferralCode(status.referral_code);
+                } else {
+                    // Generate if doesn't exist yet
+                    const newCode = await generateReferralCode();
+                    if (newCode) setReferralCode(newCode.referral_code);
+                }
+            } catch (err) {
+                console.error("Failed to fetch dashboard data", err);
+            }
+        };
+        fetchData();
+    }, []);
+
+    // Derived values or defaults
+    const score = explorerData?.score || 0;
+    const streak = explorerData?.streak_days || 0;
+    const level = explorerData?.level || 1;
+    // Mock days active for Q&A lock (In real app, calculate from subscription start date)
+    const mockDaysActive = 15;
 
     return (
         <div className="space-y-8">
@@ -19,6 +64,12 @@ export default function DashboardPage() {
                 onClose={() => setSwapDevice(null)}
                 device={swapDevice}
             />
+            <WaysToEarnModal isOpen={isEarnModalOpen} onClose={() => setIsEarnModalOpen(false)} />
+            <RewardsStoreModal
+                isOpen={isRewardsModalOpen}
+                onClose={() => setIsRewardsModalOpen(false)}
+                currentPoints={score}
+            />
 
             {/* Welcome Section */}
             <div>
@@ -26,50 +77,56 @@ export default function DashboardPage() {
                 <p className="text-paragraph">Your tech ecosystem at a glance.</p>
             </div>
 
-            {/* Quick Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white p-6 rounded-xl border border-[#F1F5F9] shadow-sm">
-                    <div className="flex items-start justify-between mb-4">
-                        <div className="p-2 bg-blue-50 text-button rounded-lg">
+            {/* HERO: Gamification Status */}
+            <section className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <ExplorerHero
+                    score={score}
+                    streak={streak}
+                    level={level}
+                    onOpenEarnModal={() => setIsEarnModalOpen(true)}
+                    onOpenRewardsModal={() => setIsRewardsModalOpen(true)}
+                />
+            </section>
+
+            {/* Quick Stats & Actions Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* 1. Referral Card (Growth) */}
+                <div className="lg:col-span-1">
+                    <ReferralCard referralCode={referralCode} />
+                </div>
+
+                {/* 2. Q&A Logic (Intel) */}
+                <div className="lg:col-span-1">
+                    <QALockCard daysActive={mockDaysActive} />
+                </div>
+
+                {/* 3. Operational Stats (Context) */}
+                <div className="lg:col-span-1 space-y-6">
+                    {/* Active Device Mini-Card */}
+                    <div className="bg-white p-5 rounded-2xl border border-[#F1F5F9] shadow-sm flex items-center gap-4">
+                        <div className="p-3 bg-blue-50 text-button rounded-xl">
                             <Package size={20} />
                         </div>
-                        <span className="text-xs font-semibold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Active</span>
+                        <div>
+                            <p className="text-xs text-paragraph font-medium">Current Device</p>
+                            <h3 className="text-base font-bold text-headline">Meta Ray-Ban</h3>
+                        </div>
                     </div>
-                    <div className="space-y-1">
-                        <p className="text-sm text-paragraph font-medium">Current Device</p>
-                        <h3 className="text-xl font-bold text-headline">Meta Ray-Ban</h3>
-                        <p className="text-xs text-paragraph">Wayfarer Matte Black</p>
-                    </div>
-                </div>
 
-                <div className="bg-white p-6 rounded-xl border border-[#F1F5F9] shadow-sm">
-                    <div className="flex items-start justify-between mb-4">
-                        <div className="p-2 bg-purple-50 text-purple-500 rounded-lg">
+                    {/* Next Swap Mini-Card */}
+                    <div className="bg-white p-5 rounded-2xl border border-[#F1F5F9] shadow-sm flex items-center gap-4">
+                        <div className="p-3 bg-purple-50 text-purple-500 rounded-xl">
                             <Calendar size={20} />
                         </div>
-                    </div>
-                    <div className="space-y-1">
-                        <p className="text-sm text-paragraph font-medium">Next Swap Available</p>
-                        <h3 className="text-xl font-bold text-headline">In 12 Days</h3>
-                        <p className="text-xs text-paragraph">Dec 30, 2025</p>
-                    </div>
-                </div>
-
-                <div className="bg-white p-6 rounded-xl border border-[#F1F5F9] shadow-sm">
-                    <div className="flex items-start justify-between mb-4">
-                        <div className="p-2 bg-orange-50 text-orange-500 rounded-lg">
-                            <Activity size={20} />
+                        <div>
+                            <p className="text-xs text-paragraph font-medium">Next Swap Available</p>
+                            <h3 className="text-base font-bold text-headline">In 12 Days</h3>
                         </div>
-                    </div>
-                    <div className="space-y-1">
-                        <p className="text-sm text-paragraph font-medium">Explorer Points</p>
-                        <h3 className="text-xl font-bold text-headline">2,450</h3>
-                        <p className="text-xs text-paragraph">Level 3 Explorer</p>
                     </div>
                 </div>
             </div>
 
-            {/* Active Device Detail */}
+            {/* Active Device Detail (Operational) */}
             <section className="bg-white rounded-2xl border border-[#F1F5F9] shadow-sm overflow-hidden">
                 <div className="p-6 border-b border-[#F1F5F9] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <h2 className="text-lg font-bold text-headline">Active Rental</h2>
