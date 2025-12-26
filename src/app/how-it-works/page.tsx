@@ -24,10 +24,10 @@ export default function HowItWorksPage() {
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
                     <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight text-headline md:text-[48px]">
-                        Shop, swap, love <br className="hidden md:block" />Wearable AI for $48/m
+                        Shop, swap, love, keep. <br className="hidden md:block" />Wearable AI for $48/m
                     </h1>
                     <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl leading-relaxed">
-                        No commitment. No risk. Pick any device, try it for real. If you love it, keep it.
+                        No commitment. No risk. Pick any device, try it for real. Love it? Keep it.
                     </p>
 
 
@@ -52,9 +52,9 @@ export default function HowItWorksPage() {
             <section className="py-20 px-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="font-display text-3xl font-bold text-headline mb-4">How techloop works</h2>
+                        <h2 className="font-display text-3xl font-bold text-headline mb-4">How Techloop works</h2>
                         <p className="text-paragraph max-w-2xl mx-auto">
-                            Techloop is like Netflix for DVDs, but AI wearables. Rent monthly, swap anytime, only keep what you love.
+                            Techloop is like Netflix for DVDs, but for AI wearables. Rent monthly, swap anytime, only buy what you love.
                         </p>
                     </div>
 
@@ -138,7 +138,7 @@ export default function HowItWorksPage() {
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
                                     <div className="mt-1 bg-green-100 p-1 rounded-full text-success"><Check size={12} /></div>
-                                    <span className="text-sm text-paragraph"><strong>Any Device - Yours forever (or until next month).</strong> - Factory sealed, never worn.</span>
+                                    <span className="text-sm text-paragraph"><strong>Any Device</strong> - Yours forever (or until next month).</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <div className="mt-1 bg-green-100 p-1 rounded-full text-success"><Check size={12} /></div>
@@ -160,7 +160,7 @@ export default function HowItWorksPage() {
                     <div>
                         <div className="text-center mb-12">
                             <h2 className="font-display text-3xl font-bold text-headline mb-4">After 30 Days, It&apos;s Up To You</h2>
-                            <p className="text-paragraph">Most users try 3-5 devices before finding &quot;the one&quot;.</p>
+                            <p className="text-paragraph">Most users try 2+ devices before finding The One.</p>
                         </div>
 
                         <div className="grid md:grid-cols-4 gap-6">
