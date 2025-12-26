@@ -42,7 +42,7 @@ export default function ReferralCard({ referralCode }: ReferralCardProps) {
                     </span>
                     <Button
                         size="sm"
-                        variant={copied ? "default" : "secondary"}
+                        variant={copied ? "primary" : "secondary"}
                         className={copied ? "bg-green-600 hover:bg-green-700 text-white" : ""}
                         onClick={handleCopy}
                         disabled={!referralCode}
