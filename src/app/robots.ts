@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: ['/dashboard/', '/api/'], // Protect private routes from crawling
+            disallow: ['/dashboard/', '/api/', '/checkout/'], // Protect private routes from crawling
         },
-        sitemap: 'https://techloop.com/sitemap.xml',
+        sitemap: 'https://trytechloop.com/sitemap.xml',
     }
 }
