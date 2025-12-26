@@ -85,7 +85,7 @@ export default function RewardsStoreModal({ isOpen, onClose, currentPoints }: Re
                                         <Button
                                             size="sm"
                                             className="w-full"
-                                            variant={canAfford ? "default" : "secondary"}
+                                            variant={canAfford ? "primary" : "secondary"}
                                             disabled={!canAfford}
                                         >
                                             {reward.id === 'gift' ? 'Give' : 'Redeem'}
