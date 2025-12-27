@@ -258,7 +258,7 @@ export default function PartnersPage() {
                         <div>
                             <h4 className="font-bold text-headline text-lg mb-2">Why the Ecosystem Acquisition Bounty?</h4>
                             <p className="text-paragraph text-lg leading-relaxed">
-                                Retailers sell hardware and marked up product protection plans – they don't care if the customer uses it. We sell adoption. The $150 is a CAC bounty - you only pay when we deliver an active user.
+                                Retailers sell hardware and marked up product protection plans – they don't care if the customer uses it. We sell adoption. The CAC bounty is for acquiring ecosystem users - you only pay when we deliver an active user.
                             </p>
                         </div>
                         <div className="w-full h-px bg-slate-100" />
