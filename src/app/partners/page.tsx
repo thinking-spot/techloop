@@ -164,7 +164,7 @@ export default function PartnersPage() {
                             </div>
                             <h3 className="text-xl font-bold text-headline mb-3">&quot;First-Touch New&quot; Brand Protection</h3>
                             <p className="text-paragraph mb-4">
-                                We protect your premium brand. Every new Techloop subscriber receives a <strong>brand-new device</strong>, drop-shipped directly from you. We only use refurbished inventory for warranty swaps. You move new inventory for every single acquisition.
+                                We protect your premium brand. Every new Techloop subscriber receives a <strong>brand-new device</strong>, drop-shipped directly from you. We only use refurbished inventory for swaps. You always move new inventory for new acquisition.
                             </p>
                         </div>
                     </div>
@@ -194,54 +194,7 @@ export default function PartnersPage() {
                 </div>
             </section>
 
-            {/* Economics Table */}
-            <section className="px-6 md:px-12 py-24 bg-[#0F172A] text-white">
-                <div className="max-w-4xl mx-auto">
-                    <div className="text-center mb-12">
-                        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Stop Losing Margin</h2>
-                        <p className="text-slate-400 text-lg">Compare Techloop vs. Traditional Retail Economics</p>
-                    </div>
 
-                    <div className="border border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-slate-800">
-                        <table className="w-full text-left">
-                            <thead className="bg-slate-900 border-b border-slate-700">
-                                <tr>
-                                    <th className="py-5 px-6 font-medium text-slate-400 w-1/3">Metric</th>
-                                    <th className="py-5 px-6 font-medium text-slate-400 w-1/3">Traditional Retail</th>
-                                    <th className="py-5 px-6 font-bold text-[#3DA9FC] w-1/3">The Techloop Model</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-700">
-                                <tr>
-                                    <td className="py-5 px-6 font-medium text-white">Headline Wholesale</td>
-                                    <td className="py-5 px-6 text-slate-300">$210 (Est.)</td>
-                                    <td className="py-5 px-6 font-bold text-[#3DA9FC]">$235 (Guaranteed)</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-5 px-6 font-medium text-white">Return Costs</td>
-                                    <td className="py-5 px-6 text-red-400">-$37.80 (Avg.)</td>
-                                    <td className="py-5 px-6 font-bold text-green-400">$0</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-5 px-6 font-medium text-white">Realized Net</td>
-                                    <td className="py-5 px-6 text-slate-300">~$172</td>
-                                    <td className="py-5 px-6 font-bold text-green-400">$235</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-5 px-6 font-medium text-white">Ecosystem Reach</td>
-                                    <td className="py-5 px-6 text-slate-300">1 User</td>
-                                    <td className="py-5 px-6 font-bold text-[#3DA9FC]">3+ Users</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-5 px-6 font-medium text-white">Data Insight</td>
-                                    <td className="py-5 px-6 text-slate-500 italic">Blind Spot</td>
-                                    <td className="py-5 px-6 font-bold text-white">Win/Loss & Churn Data</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
 
             {/* FAQ Section */}
             <section className="px-6 md:px-12 py-24 bg-white">
