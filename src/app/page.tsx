@@ -23,7 +23,7 @@ export default async function Home() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
           <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-[40px] font-bold leading-[1.1] tracking-tight text-headline md:text-[52px]">
-            Try new AI Devices <br className="hidden md:block" />
+            Try AI Devices <br className="hidden md:block" />
             the <span className="text-button relative inline-block">
               Smart Way
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-button/20" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -136,10 +136,10 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
-              Easy as ordering takeout online
+              Easy as ordering pizza online
             </h2>
             <p className="text-paragraph text-lg mb-8">
-              We&apos;ve removed all the friction. No long contracts. No hidden fees. Just pick a device and we ship it today.
+              We&apos;ve removed all the friction. No contracts. No hidden fees. No buyer's remorse. Just pick a device and we ship it today.
             </p>
             <div className="space-y-6">
               <div className="flex gap-4">
@@ -212,7 +212,7 @@ export default async function Home() {
         <div className="bg-[#094067] rounded-[2rem] p-8 md:p-16 text-white max-w-7xl mx-auto text-center md:text-left">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/3">
-              <h2 className="font-display text-3xl font-bold mb-4 text-white">Be an early adopter. Get Perks.</h2>
+              <h2 className="font-display text-3xl font-bold mb-4 text-white">Be an early adopter. Get perks.</h2>
               <p className="text-white/80 mb-8">
                 See why tech enthusiasts are ditching MSRP for early access + no risks.
               </p>
