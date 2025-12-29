@@ -20,8 +20,8 @@ export default async function Home() {
     <div className="flex flex-col gap-24 pb-20">
 
       {/* Hero Section */}
-      <section className="relative px-6 pt-12 md:px-12 lg:pt-20">
-        <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-8 md:p-20 text-center border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
+      <section className="relative px-4 pt-12 md:px-12 lg:pt-20">
+        <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-6 md:p-20 text-center border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
           {/* Background decorative blob */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
@@ -41,12 +41,12 @@ export default async function Home() {
 
           <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row mb-12">
             <Link href="/browse">
-              <Button size="lg" className="w-full sm:w-auto px-10 py-7 text-lg shadow-lg shadow-button/20 hover:shadow-button/40">
+              <Button size="lg" className="w-full sm:w-auto px-8 py-7 text-lg shadow-lg shadow-button/20 hover:shadow-button/40 md:px-10">
                 Find Your Device <ArrowRight className="ml-2" />
               </Button>
             </Link>
             <Link href="/how-it-works">
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-10 py-7 text-lg bg-white/60 hover:bg-white">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-8 py-7 text-lg bg-white/60 hover:bg-white md:px-10">
                 How It Works
               </Button>
             </Link>
@@ -80,7 +80,7 @@ export default async function Home() {
       </section>
 
       {/* Value Props */}
-      <section className="px-6 md:px-12">
+      <section className="px-4 md:px-12">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-3xl font-display font-medium text-headline mb-4 md:text-4xl">The smart way to try AI wearables</h2>
           <p className="text-paragraph text-lg">Don&apos;t spend $1,200 finding out which devices actually work for you.</p>
@@ -135,7 +135,7 @@ export default async function Home() {
       </section>
 
       {/* Process Preview */}
-      <section className="bg-[#F8FAFC] py-20 px-6 md:px-12">
+      <section className="bg-[#F8FAFC] py-20 px-4 md:px-12">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
@@ -184,7 +184,7 @@ export default async function Home() {
 
 
       {/* Featured Devices */}
-      <section className="px-6 md:px-12">
+      <section className="px-4 md:px-12">
         <div className="flex items-end justify-between mb-10 max-w-7xl mx-auto">
           <div>
             <h2 className="text-3xl font-display font-medium text-headline mb-2 md:text-4xl">Smart devices you actually want to try</h2>
@@ -211,8 +211,8 @@ export default async function Home() {
       </section>
 
       {/* Social Proof */}
-      <section className="px-6 md:px-12 py-10">
-        <div className="bg-[#094067] rounded-[2rem] p-8 md:p-16 text-white max-w-7xl mx-auto text-center md:text-left">
+      <section className="px-4 md:px-12 py-10">
+        <div className="bg-[#094067] rounded-[2rem] p-6 md:p-16 text-white max-w-7xl mx-auto text-center md:text-left">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/3">
               <h2 className="font-display text-3xl font-bold mb-4 text-white">Be an early adopter. Get perks.</h2>
@@ -265,7 +265,8 @@ export default async function Home() {
       </section >
 
       {/* Comparison Table Section */}
-      < section className="px-6 md:px-12 max-w-5xl mx-auto" >
+      {/* Comparison Table Section */}
+      <section className="px-4 md:px-12 max-w-5xl mx-auto">
         <h2 className="text-center font-display text-3xl font-bold text-headline mb-4">Why Techloop vs. Buying?</h2>
         <p className="text-center text-paragraph mb-12">Because $400 is a lot to gamble on something you might hate.</p>
 
@@ -273,31 +274,31 @@ export default async function Home() {
           <table className="w-full text-left bg-white">
             <thead className="bg-[#F8FAFC]">
               <tr>
-                <th className="py-4 px-6 font-medium text-paragraph w-1/3">The Scenario</th>
-                <th className="py-4 px-6 font-medium text-paragraph w-1/3">Buying on Amazon</th>
-                <th className="py-4 px-6 font-bold text-headline w-1/3 bg-[#E0F2FE]/30">Techloop</th>
+                <th className="py-4 px-3 md:px-6 font-medium text-paragraph w-1/3">The Scenario</th>
+                <th className="py-4 px-3 md:px-6 font-medium text-paragraph w-1/3">Buying on Amazon</th>
+                <th className="py-4 px-3 md:px-6 font-bold text-headline w-1/3 bg-[#E0F2FE]/30">Techloop</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#F1F5F9]">
               <tr>
-                <td className="py-4 px-6 text-sm font-medium text-paragraph">Cost to try</td>
-                <td className="py-4 px-6 text-sm text-paragraph">$399 upfront</td>
-                <td className="py-4 px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">$48/month</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">Cost to try</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">$399 upfront</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">$48/month</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 text-sm font-medium text-paragraph">Try multiple devices</td>
-                <td className="py-4 px-6 text-sm text-paragraph">Buy each ($1,200+)</td>
-                <td className="py-4 px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Swap free (4x/year)</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">Try multiple devices</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">Buy each ($1,200+)</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Swap free (4x/year)</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 text-sm font-medium text-paragraph">If you hate it</td>
-                <td className="py-4 px-6 text-sm text-paragraph">Return w/in 30 days</td>
-                <td className="py-4 px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Swap anytime</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">If you hate it</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">Return w/in 30 days</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Swap anytime</td>
               </tr>
               <tr>
-                <td className="py-4 px-6 text-sm font-medium text-paragraph">If you love it</td>
-                <td className="py-4 px-6 text-sm text-paragraph">You paid $399</td>
-                <td className="py-4 px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Buy at a discount</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">If you love it</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">You paid $399</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Buy at a discount</td>
               </tr>
             </tbody>
           </table>
@@ -308,7 +309,8 @@ export default async function Home() {
       </section >
 
       {/* Pricing Teaser */}
-      < section className="px-6 md:px-12 text-center max-w-4xl mx-auto py-8" >
+      {/* Pricing Teaser */}
+      <section className="px-4 md:px-12 text-center max-w-4xl mx-auto py-8">
         <h2 className="font-display text-3xl font-bold text-headline mb-4">Pick your plan. Change anytime.</h2>
         <p className="text-paragraph mb-10">All plans include brand new devices and free swaps.</p>
 
@@ -355,8 +357,9 @@ export default async function Home() {
       </section >
 
       {/* Final CTA */}
-      < section className="px-6 md:px-12" >
-        <div className="rounded-[2.5rem] bg-headline px-6 py-20 text-center text-white md:px-16 overflow-hidden relative">
+      {/* Final CTA */}
+      <section className="px-4 md:px-12">
+        <div className="rounded-[2.5rem] bg-headline px-4 py-20 text-center text-white md:px-16 overflow-hidden relative">
           <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[bg-position_15s_ease-in-out_infinite]" />
 
           <h2 className="relative mb-6 font-display text-4xl font-bold md:text-5xl text-white">Rent. Swap. Love. Keep.</h2>
@@ -366,7 +369,7 @@ export default async function Home() {
           </p>
           <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link href="/quiz">
-              <Button size="lg" className="px-10 py-6 bg-button text-white border-0 hover:bg-[#2D8FDC]">
+              <Button size="lg" className="px-6 py-6 bg-button text-white border-0 hover:bg-[#2D8FDC] md:px-10">
                 Try our AI Device Quiz <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
