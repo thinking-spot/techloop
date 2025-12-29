@@ -30,22 +30,22 @@ export default function WaitlistPage() {
                     <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
                         <div className="space-y-8">
                             <h1 className="font-display text-[40px] md:text-[48px] font-bold tracking-tight leading-[1.1] text-headline">
-                                Try $400 AI devices for <span className="text-button">$48/month</span>
+                                Get ready to love 💙 <span className="text-button">Techloop 🤖</span>
                             </h1>
-                            <p className="text-[20px] md:text-[22px] text-paragraph leading-relaxed font-light">
-                                Smart glasses. AI rings. Earbuds that translate languages. <br className="hidden md:block" />
-                                Rent them risk-free before you buy.
+                            <p className="text-[18px] md:text-[20px] text-paragraph leading-relaxed font-light">
+                                AI glasses, rings, watches, earbuds, pins, and pendants.
+                                Try them risk-free before you buy.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-sm md:text-base font-medium text-paragraph">
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> Brand new devices
+                                    <CheckCircle2 className="text-button" size={20} /> New devices
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <CheckCircle2 className="text-button" size={20} /> 4 free swaps/yr
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> Buy at 40% off
+                                    <CheckCircle2 className="text-button" size={20} /> Rent to own
                                 </div>
                             </div>
                         </div>
@@ -57,23 +57,13 @@ export default function WaitlistPage() {
                                     <AlertCircle size={14} /> Limited Spots
                                 </div>
                                 <h3 className="text-2xl font-bold mb-2">Join the Waitlist</h3>
-                                <p className="text-paragraph text-sm">Be the first to know when we launch in Q1 2025.</p>
+                                <p className="text-paragraph text-sm">Be the first to know when we launch in Q1 2026.</p>
                             </div>
 
                             <WaitlistForm />
 
                             <div className="mt-6 pt-6 border-t border-gray-100">
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-headline mb-1">2,347</div>
-                                    <div className="text-xs text-paragraph uppercase font-bold tracking-wide">People Waiting</div>
-                                </div>
 
-                                <div className="mt-4 space-y-2 text-xs text-paragraph/70">
-                                    <div className="flex items-center justify-center gap-2">
-                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                        Sarah from SF joined 3m ago
-                                    </div>
-                                </div>
                             </div>
 
                             <div className="mt-4 flex justify-center gap-4 text-[10px] text-paragraph uppercase font-bold tracking-wider opacity-60">
@@ -97,9 +87,9 @@ export default function WaitlistPage() {
                 <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
                     <div className="p-6">
                         <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">💸</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Too Expensive to Experiment</h3>
+                        <h3 className="text-xl font-bold text-headline mb-4">Too expensive to experiment</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            Smart glasses cost $299-799. Rings are $349. Trying all three costs over $1,000. Why lock yourself in when you can try before you buy?
+                            Smart glasses cost $299-499. Rings are $300. Trying both costs over $750. Why lock yourself in when you can try before you buy?
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-red-200">
                             &quot;I wanted to try XREAL glasses for work, but $399 is steep for something I might not use.&quot;
@@ -107,17 +97,17 @@ export default function WaitlistPage() {
                     </div>
                     <div className="p-6">
                         <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🤷</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Is This My AI Identity?</h3>
+                        <h3 className="text-xl font-bold text-headline mb-4">Is this my AI identity?</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
                             AI wearables are more than fashion. The right device should feel like, well, your self. Try until you find the perfect fit.
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-orange-200">
-                            &quot;Bought Meta Ray-Ban, but it just wasn&apos;t &apos;me&apos;. Wish I could&apos;ve rented first.&quot;
+                            &quot;I bought Meta Ray-Ban, but it just didn&apos;t feel like &apos;me&apos;. Wish I could&apos;ve rented first.&quot;
                         </blockquote>
                     </div>
                     <div className="p-6">
                         <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🔄</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Tech Moves Too Fast</h3>
+                        <h3 className="text-xl font-bold text-headline mb-4">Tech moves too fast</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
                             Buy XREAL Air 2 today, Air 3 comes out tomorrow. The upgrade cycle can be brutal. Be an early adopter, every time, for just $48/month.
                         </p>
@@ -221,19 +211,19 @@ export default function WaitlistPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="font-display text-4xl font-bold mb-6 text-white">Why Join the Waitlist?</h2>
-                        <p className="text-xl text-cyan-100/80">First 1,000 people get exclusive perks.</p>
+                        <p className="text-xl text-cyan-100/80">The first 1,000 people to try Techloop get exclusive lifetime perks.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <Zap className="text-yellow-400 mb-4" size={32} />
                             <h3 className="text-xl font-bold mb-2 text-white">Skip the Line</h3>
-                            <p className="text-sm text-gray-300">Get early access before public launch. Secure your device first.</p>
+                            <p className="text-sm text-gray-300">Get early access before public launch. Choose your device first.</p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <CreditCard className="text-green-400 mb-4" size={32} />
                             <h3 className="text-xl font-bold mb-2 text-white">Founder&apos;s Pricing</h3>
-                            <p className="text-sm text-gray-300">Lock in $48/mo forever, even if we raise prices later.</p>
+                            <p className="text-sm text-gray-300">Lock in $48/mo forever, even if prices go up later.</p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <Gift className="text-pink-400 mb-4" size={32} />
@@ -250,12 +240,12 @@ export default function WaitlistPage() {
                     <div className="mt-16 max-w-2xl mx-auto text-center">
                         <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest mb-2 px-1">
                             <span>Progress</span>
-                            <span>87% Claimed</span>
+                            <span>17% Claimed</span>
                         </div>
                         <div className="h-4 bg-white/10 rounded-full overflow-hidden mb-4">
-                            <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-[87%] rounded-full"></div>
+                            <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-[17%] rounded-full"></div>
                         </div>
-                        <p className="text-sm text-cyan-200">Only 137 founder spots remaining</p>
+                        <p className="text-sm text-cyan-200">Only 837 founder spots remaining</p>
                     </div>
                 </div>
             </section>
@@ -317,7 +307,6 @@ export default function WaitlistPage() {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="font-display text-4xl font-bold text-headline mb-6">Ready to skip the $400 risk?</h2>
                     <p className="text-xl text-paragraph mb-10">
-                        Join 2,347 others waiting to try the future of tech.
                     </p>
                     <div className="max-w-md mx-auto">
                         <form action={joinWaitlist} className="flex gap-2">
