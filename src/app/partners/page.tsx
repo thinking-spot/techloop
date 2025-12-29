@@ -115,7 +115,7 @@ export default function PartnersPage() {
                                     <div className="w-12 h-12 rounded-full bg-[#3DA9FC] text-white flex items-center justify-center font-bold text-xl flex-shrink-0">4x</div>
                                     <div>
                                         <h4 className="font-bold text-headline text-lg">4x Your TAM</h4>
-                                        <p className="text-paragraph">We unlock the 95% of consumers who are curious about AI hardware but risk-averse to high upfront costs.</p>
+                                        <p className="text-paragraph">We unlock the 80% of consumers who are curious about AI hardware but risk-averse to high upfront costs.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
