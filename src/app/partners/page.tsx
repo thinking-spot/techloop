@@ -214,14 +214,14 @@ export default function PartnersPage() {
                         <div>
                             <h4 className="font-bold text-headline text-lg mb-2">Why the Ecosystem Acquisition Bounty?</h4>
                             <p className="text-paragraph text-lg leading-relaxed">
-                                Retailers sell hardware and marked up protection plans – they don't care if the customer uses it. We sell adoption. The acquisition bounty is for ecosystem users - you only pay when we deliver an active user.
+                                Retailers sell hardware and marked up protection plans – they don't care if the customer uses it. We sell adoption. The acquisition bounty is for ecosystem users – you only pay when we deliver an active user.
                             </p>
                         </div>
                         <div className="w-full h-px bg-slate-100" />
                         <div>
                             <h4 className="font-bold text-headline text-lg mb-2">You guarantee 0% returns?</h4>
                             <p className="text-paragraph text-lg leading-relaxed">
-                                Yes, we recognize that 20% return rate is a massive cost for our partners. So we built our business model to make returns profitable. It's good for everyone.
+                                Yes, we recognized that device returns are a massive cost for our partners. So we built our business model to make returns profitable. It's good for everyone.
                             </p>
                         </div>
                     </div>
