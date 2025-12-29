@@ -190,7 +190,7 @@ export default function PartnersPage() {
                             </div>
                             <h3 className="text-xl font-bold text-headline mb-3">ESG & Social Impact</h3>
                             <p className="text-paragraph mb-4">
-                                Turn distribution into a sustainability engine. For every 1,000 users served, we prevent 400 redundant devices. Plus, we lower the barrier to entry by 93%, bridging the digital divide.
+                                Turn distribution into a sustainability engine. For every 1,000 users served, we prevent 400 redundant devices. Plus, we lower the barrier to entry for AI devices by 80%, helping everyone bridge the digital divide.
                             </p>
                         </div>
                     </div>
@@ -207,14 +207,14 @@ export default function PartnersPage() {
                         <div>
                             <h4 className="font-bold text-headline text-lg mb-2">Won&apos;t this cannibalize my direct sales?</h4>
                             <p className="text-paragraph text-lg leading-relaxed">
-                                The customer willing to drop $700 on AI hardware is a tiny demographic. You've already acquired them. Techloop unlocks the mass market that is curious but risk-averse and cost-conscious.
+                                The customer willing to drop $500 on unproven AI hardware is a tiny demographic. You've already acquired them. Techloop unlocks the mass market that is cost conscious and unsure about the use case.
                             </p>
                         </div>
                         <div className="w-full h-px bg-slate-100" />
                         <div>
                             <h4 className="font-bold text-headline text-lg mb-2">Why the Ecosystem Acquisition Bounty?</h4>
                             <p className="text-paragraph text-lg leading-relaxed">
-                                Retailers sell hardware and marked up product protection plans – they don't care if the customer uses it. We sell adoption. The CAC bounty is for acquiring ecosystem users - you only pay when we deliver an active user.
+                                Retailers sell hardware and marked up protection plans – they don't care if the customer uses it. We sell adoption. The acquisition bounty is for ecosystem users - you only pay when we deliver an active user.
                             </p>
                         </div>
                         <div className="w-full h-px bg-slate-100" />
