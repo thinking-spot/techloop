@@ -65,7 +65,7 @@ export default function PartnersPage() {
                             </div>
                             <h3 className="text-xl font-bold text-headline mb-2">Limited Reach</h3>
                             <p className="text-paragraph">
-                                In the traditional model, user acquisition is limited: <b>1 device = 1 user</b>. You lose valuation as the gap between CAC and LTV widens.
+                                In the old model, user acquisition is limited: <b>1 device = 1 user</b>. You lose valuation as the gap between CAC and LTV widens.
                             </p>
                         </div>
                         {/* Card 2 */}
