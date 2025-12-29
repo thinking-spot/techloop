@@ -11,11 +11,21 @@ import Link from "next/link";
 
 interface BrowseClientProps {
     initialDevices: Device[];
+    pageTitle?: string;
+    pageDescription?: string;
+    initialCategoryFilter?: string[];
+    buyingGuideSlot?: React.ReactNode;
 }
 
-export default function BrowseClient({ initialDevices }: BrowseClientProps) {
+export default function BrowseClient({
+    initialDevices,
+    pageTitle = "Find your perfect AI wearable",
+    pageDescription = "Browse 20+ devices across 6 categories. All brand new. All swappable. All available to ship today.",
+    initialCategoryFilter = [],
+    buyingGuideSlot
+}: BrowseClientProps) {
     const [searchQuery, setSearchQuery] = useState("");
-    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCategoryFilter);
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
     const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
     const [selectedUseCases, setSelectedUseCases] = useState<string[]>([]);
@@ -182,9 +192,9 @@ export default function BrowseClient({ initialDevices }: BrowseClientProps) {
             {/* Page Header */}
             <div className="bg-[#F8FAFC] border-b border-[#F1F5F9] px-6 py-12 md:px-12">
                 <div className="max-w-7xl mx-auto">
-                    <h1 className="font-display text-[40px] md:text-[48px] font-bold text-headline mb-4">Find your perfect AI wearable</h1>
+                    <h1 className="font-display text-[40px] md:text-[48px] font-bold text-headline mb-4">{pageTitle}</h1>
                     <p className="text-[20px] md:text-[22px] text-paragraph max-w-2xl mb-8">
-                        Browse 20+ devices across 6 categories. All brand new. All swappable. All available to ship today.
+                        {pageDescription}
                     </p>
 
                     <div className="flex flex-wrap gap-4 md:gap-8 text-sm font-medium text-paragraph/80">
@@ -365,30 +375,34 @@ export default function BrowseClient({ initialDevices }: BrowseClientProps) {
                         </div>
                     )}
 
-                    {/* SEO / Category Guides */}
-                    <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
-                        <div>
-                            <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Glasses Buying Guide</h3>
-                            <p className="text-sm text-paragraph mb-4">Not sure which smart glasses are right for you?</p>
-                            <ul className="space-y-3 text-sm text-paragraph">
-                                <li><strong>Camera Glasses (Meta Ray-Ban):</strong> Best for content creators and POV video.</li>
-                                <li><strong>AR Display Glasses (XREAL):</strong> Best for productivity, gaming, and watching movies on a giant virtual screen.</li>
-                                <li><strong>Developer Glasses (Brilliant Labs):</strong> Best for hackers wanting to build custom AI features.</li>
-                            </ul>
-                            <Link href="/help" className="text-sm font-bold text-button mt-4 inline-block hover:underline">Read full guide →</Link>
-                        </div>
-                        <div>
-                            <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Rings Buying Guide</h3>
-                            <p className="text-sm text-paragraph mb-4">Oura vs Samsung: Which is right for you?</p>
-                            <ul className="space-y-3 text-sm text-paragraph">
-                                <li><strong>Choose Oura if:</strong> You want accurate sleep tracking and have an iPhone.</li>
-                                <li><strong>Choose Samsung Gallery Ring if:</strong> You have a Galaxy phone and want no subscription fees.</li>
-                            </ul>
-                            <div className="mt-4 text-sm bg-blue-50 text-blue-800 p-3 rounded-lg inline-block">
-                                <strong>Tip:</strong> Rent both on our Explorer plan to compare side-by-side.
+                    {/* SEO / Category Guides - Dynamic Slot or Default */}
+                    {buyingGuideSlot ? (
+                        buyingGuideSlot
+                    ) : (
+                        <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                            <div>
+                                <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Glasses Buying Guide</h3>
+                                <p className="text-sm text-paragraph mb-4">Not sure which smart glasses are right for you?</p>
+                                <ul className="space-y-3 text-sm text-paragraph">
+                                    <li><strong>Camera Glasses (Meta Ray-Ban):</strong> Best for content creators and POV video.</li>
+                                    <li><strong>AR Display Glasses (XREAL):</strong> Best for productivity, gaming, and watching movies on a giant virtual screen.</li>
+                                    <li><strong>Developer Glasses (Brilliant Labs):</strong> Best for hackers wanting to build custom AI features.</li>
+                                </ul>
+                                <Link href="/help" className="text-sm font-bold text-button mt-4 inline-block hover:underline">Read full guide →</Link>
+                            </div>
+                            <div>
+                                <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Rings Buying Guide</h3>
+                                <p className="text-sm text-paragraph mb-4">Oura vs Samsung: Which is right for you?</p>
+                                <ul className="space-y-3 text-sm text-paragraph">
+                                    <li><strong>Choose Oura if:</strong> You want accurate sleep tracking and have an iPhone.</li>
+                                    <li><strong>Choose Samsung Gallery Ring if:</strong> You have a Galaxy phone and want no subscription fees.</li>
+                                </ul>
+                                <div className="mt-4 text-sm bg-blue-50 text-blue-800 p-3 rounded-lg inline-block">
+                                    <strong>Tip:</strong> Rent both on our Explorer plan to compare side-by-side.
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
 
                 </div>
             </div>
