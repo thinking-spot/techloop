@@ -8,6 +8,9 @@ import RotatingHeadline from "./RotatingHeadline";
 export const metadata: Metadata = {
     title: "Partner with Techloop - Distribution-as-a-Service",
     description: "Techloop helps AI wearable manufacturers turn 1 device into 3+ ecosystem users. We offer committed volume, 0% returns, and immediate sell-through.",
+    openGraph: {
+        images: "/images/techloop-wordmark.png",
+    },
 };
 
 export default function PartnersPage() {

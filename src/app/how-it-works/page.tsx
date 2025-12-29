@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
     Check,
     Search,
@@ -12,6 +13,14 @@ import {
     Box
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+
+export const metadata: Metadata = {
+    title: "How Techloop Works | Rent, Try, Swap AI Wearables",
+    description: "Pick a device. Try it for $48/mo. Swap for a different one. Or keep it and buy it. No long-term commitments.",
+    openGraph: {
+        images: "/images/techloop-wordmark.png",
+    },
+};
 
 export default function HowItWorksPage() {
     return (

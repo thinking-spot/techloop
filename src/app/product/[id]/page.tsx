@@ -1,3 +1,4 @@
+import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -24,6 +25,36 @@ const iconMap: Record<string, any> = {
     Bot,
     Battery
 };
+
+
+
+export async function generateMetadata(
+    { params }: { params: Promise<{ id: string }> },
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    // read route params
+    const { id } = await params;
+
+    // fetch data
+    const device = await getProductBySlug(id);
+
+    // optionally access and extend (rather than replace) parent metadata
+    // const previousImages = (await parent).openGraph?.images || []
+
+    if (!device) {
+        return {
+            title: "Product Not Found | Techloop",
+        };
+    }
+
+    return {
+        title: `${device.name} | $${device.price}/m | Rent-to-buy + Risk-free`,
+        description: `Rent ${device.name} for $${device.price}/month. No commitment. Swap anytime. Free shipping & returns. Try AI wearables before you buy.`,
+        openGraph: {
+            images: "/images/techloop-wordmark.png",
+        },
+    };
+}
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;

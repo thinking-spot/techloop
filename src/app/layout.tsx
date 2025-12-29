@@ -13,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://trytechloop.com"),
   title: "TechLoop - Rent the Future",
   description: "Experience the latest tech gadgets with our flexible rental subscription.",
 };

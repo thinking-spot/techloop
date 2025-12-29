@@ -4,9 +4,14 @@ import BrowseClient from "./_components/BrowseClient";
 // Revalidate every hour
 export const revalidate = 3600;
 
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
     title: "Browse AI Wearables | TechLoop",
     description: "Rent the latest smart glasses, AI pins, and smart rings. Flexible plans, free shipping, swap anytime.",
+    openGraph: {
+        images: "/images/techloop-wordmark.png",
+    },
 };
 
 export default async function BrowsePage() {

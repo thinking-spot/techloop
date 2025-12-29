@@ -1,5 +1,14 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Techloop Blog | Future of AI Wearables",
+    description: "Insights, reviews, and news about the latest AI hardware and the subscription economy.",
+    openGraph: {
+        images: "/images/techloop-wordmark.png",
+    },
+};
 
 export default function BlogLayout({
     children,

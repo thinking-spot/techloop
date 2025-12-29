@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Check, Shield, RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -74,6 +75,16 @@ const faqs = [
         a: "Amazon gives you 30 days. If you return it, you have nothing. With Techloop, you can rent as long as you want, swap to try other devices, and if you keep it, you get 40-60% off retail."
     }
 ];
+
+
+
+export const metadata: Metadata = {
+    title: "Pricing | Simple $48/mo AI Device Subscription",
+    description: "Try $400+ AI devices for less than $50/month. No hidden fees. Cancel anytime. Free swaps included.",
+    openGraph: {
+        images: "/images/techloop-wordmark.png",
+    },
+};
 
 export default function PricingPage() {
     return (
