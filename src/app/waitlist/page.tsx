@@ -89,10 +89,10 @@ export default function WaitlistPage() {
                         <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">💸</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Too expensive to experiment</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            Smart glasses cost $299-499. Rings are $300. Trying both costs over $750. Why lock yourself in when you can try before you buy?
+                            AI glasses cost $400+. Rings are $300. Trying both costs over $750. Why lock yourself in when you can try before you buy?
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-red-200">
-                            &quot;I wanted to try XREAL glasses for work, but $399 is steep for something I might not use.&quot;
+                            &quot;I wanted to try XREAL glasses for work, but $3399 is steep for something I might not use.&quot;
                         </blockquote>
                     </div>
                     <div className="p-6">
