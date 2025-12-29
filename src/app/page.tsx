@@ -72,7 +72,7 @@ export default async function Home() {
               <div className="flex text-yellow-400 text-[10px]">
                 {[1, 2, 3, 4, 5].map(i => <Star key={i} size={11} fill="currentColor" />)}
               </div>
-              <div className="text-xs font-semibold text-headline">Techloop 💙</div>
+              <div className="text-xs font-semibold text-headline">Techloop</div>
             </div>
           </div>
 
