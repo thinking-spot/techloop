@@ -33,10 +33,10 @@ export function WishlistButton({ item, className }: WishlistButtonProps) {
         <button
             onClick={toggleWishlist}
             className={cn(
-                "rounded-full p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2",
+                "rounded-full p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 border",
                 isSaved
-                    ? "bg-red-50 text-red-500 hover:bg-red-100"
-                    : "bg-slate-100 text-slate-400 hover:bg-slate-200 hover:text-slate-600",
+                    ? "bg-slate-100 text-headline border-headline hover:bg-slate-200"
+                    : "bg-slate-100 text-slate-400 border-transparent hover:bg-slate-200 hover:text-slate-600",
                 className
             )}
             aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}

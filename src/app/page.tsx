@@ -6,7 +6,7 @@ import DeviceCard from "@/components/ui/DeviceCard";
 import { getAllProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Try AI devices + wearables | rent, swap, love, buy | techloop",
+  title: "Try AI devices + wearables | rent, swap, love, buy | Techloop",
   description: "Glasses, watches, rings, pins, earbuds + pendants. Pick any AI device, try it for real. Love it? Keep it. No commitment. No risk. $48/m",
   openGraph: {
     images: "/images/techloop-wordmark.png",
@@ -70,9 +70,9 @@ export default async function Home() {
             </div>
             <div className="text-left">
               <div className="flex text-yellow-400 text-[10px]">
-                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={10} fill="currentColor" />)}
+                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={11} fill="currentColor" />)}
               </div>
-              <div className="text-xs font-semibold text-headline">1,000+ happy renters</div>
+              <div className="text-xs font-semibold text-headline">Techloop 💙</div>
             </div>
           </div>
 
@@ -297,12 +297,12 @@ export default async function Home() {
               <tr>
                 <td className="py-4 px-6 text-sm font-medium text-paragraph">If you love it</td>
                 <td className="py-4 px-6 text-sm text-paragraph">You paid $399</td>
-                <td className="py-4 px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Buy at 40-60% off</td>
+                <td className="py-4 px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Buy at a discount</td>
               </tr>
             </tbody>
           </table>
           <div className="bg-[#F0F9FF] p-4 text-center text-sm text-headline border-t border-[#E0F2FE]">
-            💡 <strong>Pro Tip:</strong> Try 3 devices for $288 total. Buying all 3 would cost $1,197. <strong>You save $909.</strong>
+            💡 <strong>Pro Tip:</strong> Test 2 devices head-to-head for $84. Keep the one you like best for <strong>$84 off MSRP.</strong>
           </div>
         </div>
       </section >
