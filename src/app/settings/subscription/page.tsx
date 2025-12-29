@@ -1,11 +1,43 @@
 "use client";
 
-import { useState } from "react";
-import { CreditCard } from "lucide-react";
+import { useState, useEffect } from "react";
+import { CreditCard, Loader2 } from "lucide-react";
 import CancelSubscriptionModal from "./_components/CancelSubscriptionModal";
+import { getProfile } from "@/app/actions/get-profile";
+import { cn } from "@/lib/utils";
 
 export default function SubscriptionSettingsPage() {
     const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [profile, setProfile] = useState<any>(null);
+
+    useEffect(() => {
+        async function loadProfile() {
+            const data = await getProfile();
+            if (data) {
+                setProfile(data);
+            }
+            setIsLoading(false);
+        }
+        loadProfile();
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center py-20">
+                <Loader2 className="animate-spin text-slate-400" size={32} />
+            </div>
+        );
+    }
+
+    // Default Fallbacks if DB is empty/null
+    const planName = profile?.subscription_plan || "No Active Plan";
+    const status = profile?.subscription_status || "inactive";
+    const nextBilling = profile?.next_billing_date
+        ? new Date(profile.next_billing_date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })
+        : "N/A";
+
+    const isPlanActive = status === 'active' || status === 'trialing';
 
     return (
         <div className="space-y-6">
@@ -28,15 +60,20 @@ export default function SubscriptionSettingsPage() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
                     <div>
                         <div className="flex items-center gap-2 mb-1">
-                            <span className="px-2.5 py-0.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold">Active</span>
+                            <span className={cn(
+                                "px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize",
+                                isPlanActive ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-500"
+                            )}>
+                                {status}
+                            </span>
                             <span className="text-sm text-paragraph">Billed monthly</span>
                         </div>
-                        <h3 className="text-xl font-bold text-headline">Explorer Plan</h3>
+                        <h3 className="text-xl font-bold text-headline">{planName}</h3>
                         <p className="text-sm text-paragraph">Includes 1 active device + 4 swaps/year</p>
                     </div>
                     <div className="text-right">
                         <p className="text-2xl font-bold text-headline">$48<span className="text-sm font-normal text-paragraph">/mo</span></p>
-                        <p className="text-xs text-paragraph">Next billing: Dec 30, 2025</p>
+                        <p className="text-xs text-paragraph">Next billing: {nextBilling}</p>
                     </div>
                 </div>
 
