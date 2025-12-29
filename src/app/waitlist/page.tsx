@@ -45,7 +45,7 @@ export default function WaitlistPage() {
                                     <CheckCircle2 className="text-button" size={20} /> 4 free swaps/yr
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> Rent to own
+                                    <CheckCircle2 className="text-button" size={20} /> Rent to keep
                                 </div>
                             </div>
                         </div>
@@ -78,9 +78,9 @@ export default function WaitlistPage() {
             {/* 2. The Problem */}
             <section className="py-24 px-6 bg-white">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">Why AI wearables are impossible to buy right now</h2>
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI wearables are difficult to buy right now</h2>
                     <p className="text-xl text-paragraph leading-relaxed">
-                        You want to try Meta Ray-Ban glasses or Oura Ring. But there&apos;s a massive problem.
+                        You want to try Meta Ray-Ban glasses, or maybe XREAL Air Pro. But you have real concerns about committing to an AI device.
                     </p>
                 </div>
 
@@ -99,7 +99,7 @@ export default function WaitlistPage() {
                         <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🤷</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Is this my AI identity?</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            AI wearables are more than fashion. The right device should feel like, well, your self. Try until you find the perfect fit.
+                            AI wearables are more than fashion. The right device should feel like <b>your self</b>. With Techloop, you can try until you find the perfect fit.
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-orange-200">
                             &quot;I bought Meta Ray-Ban, but it just didn&apos;t feel like &apos;me&apos;. Wish I could&apos;ve rented first.&quot;
