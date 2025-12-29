@@ -5,6 +5,8 @@ import Logo from "@/components/ui/Logo";
 import { User, ArrowLeft } from "lucide-react";
 import Sidebar from "@/components/layout/Sidebar";
 
+import SettingsTabs from "./_components/SettingsTabs";
+
 export default function SettingsLayout({
     children,
 }: {
@@ -26,8 +28,8 @@ export default function SettingsLayout({
                         </Link>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <h1 className="text-lg font-bold text-headline hidden md:block">Settings</h1>
+                    <div className="flex items-center gap-4 hidden md:block">
+                        <SettingsTabs />
                     </div>
 
                     <div className="flex flex-1 items-center justify-end gap-4 ml-auto">
