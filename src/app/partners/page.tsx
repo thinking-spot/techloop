@@ -51,7 +51,7 @@ export default function PartnersPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <div className="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-bold uppercase tracking-wide mb-4">The Problem</div>
-                        <h2 className="font-display text-4xl font-bold text-headline mb-4">The &quot;Hardware Trap&quot;</h2>
+                        <h2 className="font-display text-4xl font-bold text-headline mb-4">The &quot;Hardware Gateway Trap&quot;</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
                             If you ship 10,000 devices, you’re lucky to retain 6,000 users. CAC outpaces cash flow. Realizing the LTV takes a lifetime.
                         </p>
@@ -61,31 +61,31 @@ export default function PartnersPage() {
                         {/* Card 1 */}
                         <div className="bg-[#FFF4F4] p-8 rounded-2xl border border-red-100">
                             <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6">
+                                <Users size={24} />
+                            </div>
+                            <h3 className="text-xl font-bold text-headline mb-2">Limited Reach</h3>
+                            <p className="text-paragraph">
+                                In the traditional model, user acquisition is limited: <b>1 device = 1 user</b>. You lose valuation as the gap between CAC and LTV widens.
+                            </p>
+                        </div>
+                        {/* Card 2 */}
+                        <div className="bg-[#FFF4F4] p-8 rounded-2xl border border-red-100">
+                            <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6">
                                 <AlertTriangle size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-headline mb-2">High Friction</h3>
                             <p className="text-paragraph">
-                                Standard return rates for AI wearables range from 20-30%. That&apos;s a massive drain on your logistics and margins.
+                                Device <b>return rates</b> for AI wearables range from <b>20-30%</b>. That&apos;s a massive drain on your logistics and margins.
                             </p>
                         </div>
-                        {/* Card 2 */}
+                        {/* Card 3 */}
                         <div className="bg-[#FFF4F4] p-8 rounded-2xl border border-red-100">
                             <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6">
                                 <Layers size={24} />
                             </div>
                             <h3 className="text-xl font-bold text-headline mb-2">Shelf Death</h3>
                             <p className="text-paragraph">
-                                Another 20-30% of inventory suffers from &quot;shelf death&quot;—sold, but never activated. No recurring revenue. No LTV.
-                            </p>
-                        </div>
-                        {/* Card 3 */}
-                        <div className="bg-[#FFF4F4] p-8 rounded-2xl border border-red-100">
-                            <div className="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6">
-                                <Users size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-headline mb-2">Limited Reach</h3>
-                            <p className="text-paragraph">
-                                In the traditional model, ecosystem acquisition is limited: 1 device = 1 user. You&apos;re losing valuation trying to close the gap between CAC and LTV.
+                                Another <b>20-30%</b> of inventory suffers <b>shelf death</b> — sold, but never <i>used</i>. No recurring revenue. No LTV.
                             </p>
                         </div>
                     </div>
