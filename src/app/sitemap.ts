@@ -1,7 +1,16 @@
 import { MetadataRoute } from 'next'
+import { getAllProducts } from '@/lib/products'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://trytechloop.com'
+    const products = await getAllProducts()
+
+    const productEntries: MetadataRoute.Sitemap = products.map((product) => ({
+        url: `${baseUrl}/product/${product.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+    }))
 
     return [
         {
@@ -64,5 +73,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'yearly',
             priority: 0.4,
         },
+        ...productEntries,
     ]
 }
