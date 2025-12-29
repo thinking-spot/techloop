@@ -75,7 +75,7 @@ export default function PartnersPage() {
                             </div>
                             <h3 className="text-xl font-bold text-headline mb-2">High Friction</h3>
                             <p className="text-paragraph">
-                                Device <b>return rates</b> for AI wearables range from <b>20-30%</b>. That&apos;s a massive drain on your logistics and margins.
+                                Device <b>return rates</b> for AI wearables range from <b>20-30%</b>. That&apos;s a massive drain on your logistics and your acquisition.
                             </p>
                         </div>
                         {/* Card 3 */}
