@@ -79,7 +79,7 @@ const faqs = [
 
 
 export const metadata: Metadata = {
-    title: "Pricing | Simple $48/mo AI Device Subscription",
+    title: "Pricing | Simple $48/mo AI Wearables Subscription",
     description: "Try $400+ AI devices for less than $50/month. No hidden fees. Cancel anytime. Free swaps included.",
     openGraph: {
         images: "/images/techloop-wordmark.png",
