@@ -80,7 +80,7 @@ export default function WaitlistPage() {
                 <div className="max-w-4xl mx-auto text-center mb-16">
                     <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI wearables can be a tough sell</h2>
                     <p className="text-xl text-paragraph leading-relaxed">
-                        You want smart glasses, but need to try before you buy. What if they don't fit? What if they're creepy? Will you actually use them? Fair questions.
+                        You want smart glasses, but you need to try before you buy. What if they don't fit? What if they're creepy? Will you actually use them? Fair questions.
                     </p>
                 </div>
 
