@@ -78,9 +78,9 @@ export default function WaitlistPage() {
             {/* 2. The Problem */}
             <section className="py-24 px-6 bg-white">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI wearables are difficult to buy right now</h2>
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI wearables can be a tough sell</h2>
                     <p className="text-xl text-paragraph leading-relaxed">
-                        You want to try Meta Ray-Ban glasses, or maybe XREAL Air Pro. But you have real concerns about committing to an AI device.
+                        You want smart glasses, but need to try before you buy. What if they don't fit? What if they're creepy? Will you actually use them? Fair questions.
                     </p>
                 </div>
 
@@ -89,10 +89,10 @@ export default function WaitlistPage() {
                         <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">💸</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Too expensive to experiment</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            AI glasses cost $400+. Rings are $300. Trying both costs over $750. Why lock yourself in when you can try before you buy?
+                            AI glasses cost $450. Rings are $300. Trying both costs over $750. Why lock yourself in when you can try before you buy?
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-red-200">
-                            &quot;I wanted to try XREAL glasses for work, but $3399 is steep for something I might not use.&quot;
+                            &quot;I wanted to try XREAL glasses for work, but $399 is steep for something I might not use.&quot;
                         </blockquote>
                     </div>
                     <div className="p-6">
