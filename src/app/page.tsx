@@ -6,7 +6,7 @@ import DeviceCard from "@/components/ui/DeviceCard";
 import { getAllProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Try AI devices risk-free | rent, swap, love, buy | Techloop",
+  title: "Try AI devices | rent, swap, love, buy | Techloop",
   description:
     "Glasses, watches, rings, pins, earbuds + pendants. Pick any AI device, try it for real. Love it? Keep it. No commitment. No risk. $48/m",
   openGraph: {
