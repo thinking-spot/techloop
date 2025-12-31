@@ -34,8 +34,8 @@ export default function WaitlistPage() {
                                 Get ready to love 💙 <span className="text-button">Techloop 🤖</span>
                             </h1>
                             <p className="text-base md:text-[20px] text-paragraph leading-relaxed font-light">
-                                AI glasses, rings, watches, earbuds, pins, and pendants.
-                                Try risk-free before you buy.
+                                AI glasses, rings, watches, earbuds, pins, and cards.
+                                Try them before you buy.
                             </p>
 
                             <div className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-3 text-sm md:text-base font-medium text-paragraph">
