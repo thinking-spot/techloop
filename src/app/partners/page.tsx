@@ -28,10 +28,12 @@ export default function PartnersPage() {
                         <Zap size={16} /> Distribution-as-a-Service
                     </div>
 
-                    <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight md:text-[56px] max-w-4xl">
-                        Partner with Techloop <br />
-                        <RotatingHeadline />
+                    <h1 className="relative mx-auto mb-2 font-display text-[40px] font-bold leading-tight md:text-[56px] max-w-4xl">
+                        Partner with Techloop
                     </h1>
+                    <div className="relative mx-auto mb-6 font-display text-[28px] font-bold leading-tight md:text-[56px] max-w-4xl">
+                        <RotatingHeadline />
+                    </div>
                     <p className="relative mx-auto mb-10 text-[20px] md:text-[24px] text-slate-300 max-w-3xl leading-relaxed">
                         Acquiring customers is about more than the MSRP of your hardware. It’s about the LTV of users in your ecosystem.
                     </p>
