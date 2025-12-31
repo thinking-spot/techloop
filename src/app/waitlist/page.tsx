@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {
+    Check,
     CheckCircle2,
     Shield,
     CreditCard,
@@ -78,7 +79,7 @@ export default function WaitlistPage() {
             {/* 2. The Problem */}
             <section className="py-24 px-6 bg-white">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI devices are a tough sell</h2>
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI wearables are a tough sell</h2>
                     <p className="text-xl text-paragraph leading-relaxed">
                         You want smart glasses, but you need to try before you buy. What if they don't fit? What if they're creepy? Will you actually use them? Fair questions.
                     </p>
@@ -158,49 +159,55 @@ export default function WaitlistPage() {
                 </div>
             </section>
 
-            {/* 4. How It Works - Simplified */}
-            <section className="py-24 px-6 bg-white border-b border-gray-100">
-                <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="font-display text-3xl font-bold text-headline mb-6">How it works</h2>
+            {/* Rent to Own & Security Deposit */}
+            <section className="py-20 px-6 md:px-12 bg-white">
+                <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16">
+                    {/* Security Deposit */}
+                    <div>
+                        <h3 className="flex items-center gap-2 font-display text-2xl font-bold text-headline mb-4">
+                            <Shield size={28} className="text-button" /> Security Deposit
+                        </h3>
+                        <p className="text-paragraph mb-6">
+                            We collect a refundable deposit ($48) to protect our devices and keep the balance sheet healthy.
+                        </p>
+                        <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0]">
+                            <h4 className="font-semibold text-headline mb-3 text-sm">100% Refunded when you:</h4>
+                            <ul className="space-y-3 mb-4">
+                                <li className="flex items-center gap-2 text-sm text-paragraph"><Check size={16} className="text-success" /> Return the device</li>
+                                <li className="flex items-center gap-2 text-sm text-paragraph"><Check size={16} className="text-success" /> Purchase the device</li>
+                            </ul>
+                            <p className="text-xs text-paragraph/70 border-t border-[#E2E8F0] pt-3">
+                                98% of our users get their full deposit back.
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="space-y-12 relative">
-                        {/* Connector Line */}
-                        <div className="hidden md:block absolute left-[50%] top-0 bottom-0 w-0.5 bg-gray-100 -translate-x-1/2 z-0"></div>
+                    {/* Rent to Own */}
+                    <div>
+                        <h3 className="flex items-center gap-2 font-display text-2xl font-bold text-headline mb-4">
+                            <RefreshCcw size={28} className="text-button" /> Rent-to-Own
+                        </h3>
+                        <p className="text-paragraph mb-6">
+                            Fall in love? Keep it. Your rental payments count toward the purchase price.
+                        </p>
 
-                        {[
-                            { step: "1", title: "Choose a Device", desc: "Browse 20+ devices. Ships in 2-3 days." },
-                            { step: "2", title: "Try in Real Life", desc: "Use it for weeks, not minutes. Minimum 30 days." },
-                            { step: "3", title: "Decide What's Next", desc: "Keep renting, swap to something else, or buy it." },
-                            { step: "4", title: "Repeat", desc: "Most users try 3 devices before buying one." }
-                        ].map((item, i) => (
-                            <div key={i} className={`flex items-center gap-8 md:gap-16 relative z-10 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse md:flex-row'}`}>
-                                <div className={`flex-1 text-center md:text-right hidden md:block ${i % 2 !== 0 ? 'md:order-1' : ''}`}>
-                                    {i % 2 === 0 && (
-                                        <>
-                                            <h3 className="text-2xl font-bold text-headline mb-2">{item.title}</h3>
-                                            <p className="text-paragraph">{item.desc}</p>
-                                        </>
-                                    )}
-                                </div>
-                                <div className="w-12 h-12 rounded-full bg-button text-white flex items-center justify-center font-bold text-xl shadow-lg ring-4 ring-white shrink-0 mx-auto md:mx-0">
-                                    {item.step}
-                                </div>
-                                <div className={`flex-1 text-center md:text-left ${i % 2 !== 0 ? 'md:order-first' : ''}`}>
-                                    <div className="md:hidden mb-2">
-                                        <h3 className="text-2xl font-bold text-headline mb-2">{item.title}</h3>
-                                        <p className="text-paragraph">{item.desc}</p>
-                                    </div>
-                                    {i % 2 !== 0 && (
-                                        <div className="hidden md:block">
-                                            <h3 className="text-2xl font-bold text-headline mb-2">{item.title}</h3>
-                                            <p className="text-paragraph">{item.desc}</p>
-                                        </div>
-                                    )}
-                                </div>
+                        <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0] text-sm">
+                            <div className="flex justify-between mb-2">
+                                <span className="text-paragraph">Retail Price:</span>
+                                <span className="font-bold text-headline line-through">$399</span>
                             </div>
-                        ))}
+                            <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
+                                <span className="text-paragraph">You paid (3 mos rental):</span>
+                                <span className="font-bold text-success">-$144</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span className="font-bold text-headline">Buyout Price:</span>
+                                <span className="font-bold text-2xl text-button">$240</span>
+                            </div>
+                            <p className="text-xs text-paragraph mt-4">
+                                *Example for XREAL Air 2 Pro after 3 months.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
