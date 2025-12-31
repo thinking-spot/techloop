@@ -22,22 +22,22 @@ export default function WaitlistPage() {
         <div className="bg-white min-h-screen font-sans text-headline">
 
             {/* 1. Hero Section */}
-            <section className="relative px-6 pt-12 md:px-12 lg:pt-20">
-                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-8 md:p-16 text-center lg:text-left border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
+            <section className="relative px-4 pt-12 md:px-12 lg:pt-20">
+                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-6 md:p-16 text-center lg:text-left border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                    <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                        <div className="space-y-8">
-                            <h1 className="font-display text-[40px] md:text-[48px] font-bold tracking-tight leading-[1.1] text-headline">
+                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+                        <div className="space-y-6 md:space-y-8">
+                            <h1 className="font-display text-[32px] md:text-[48px] font-bold tracking-tight leading-[1.1] text-headline">
                                 Get ready to love 💙 <span className="text-button">Techloop 🤖</span>
                             </h1>
-                            <p className="text-[18px] md:text-[20px] text-paragraph leading-relaxed font-light">
+                            <p className="text-base md:text-[20px] text-paragraph leading-relaxed font-light">
                                 AI glasses, rings, watches, earbuds, pins, and pendants.
-                                Try them risk-free before you buy.
+                                Try risk-free before you buy.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 text-sm md:text-base font-medium text-paragraph">
+                            <div className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-3 text-sm md:text-base font-medium text-paragraph">
                                 <div className="flex items-center gap-2">
                                     <CheckCircle2 className="text-button" size={20} /> New devices
                                 </div>
@@ -56,7 +56,7 @@ export default function WaitlistPage() {
                                 <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-3 animate-pulse">
                                     <AlertCircle size={14} /> Limited Spots
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2">Join the Waitlist</h3>
+
                                 <p className="text-paragraph text-sm">Be the first to know when we launch in Q1 2026.</p>
                             </div>
 
@@ -163,7 +163,6 @@ export default function WaitlistPage() {
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="font-display text-3xl font-bold text-headline mb-6">How it works</h2>
-                        <p className="text-paragraph text-xl">Four steps from curious to confident.</p>
                     </div>
 
                     <div className="space-y-12 relative">
@@ -385,7 +384,7 @@ function WaitlistForm() {
             </div>
 
             <Button type="submit" size="lg" className="w-full text-base font-bold shadow-lg shadow-cyan-500/20" disabled={status === 'submitting'}>
-                {status === 'submitting' ? 'Joining...' : 'Join the Waitlist →'}
+                {status === 'submitting' ? 'Joining...' : 'Join Waitlist →'}
             </Button>
 
             <p className="text-xs text-center text-gray-400">
