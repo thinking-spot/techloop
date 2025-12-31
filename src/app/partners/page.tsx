@@ -18,8 +18,8 @@ export default function PartnersPage() {
         <div className="bg-white min-h-screen pb-20">
 
             {/* Hero Section */}
-            <section className="relative px-6 pt-12 md:px-12 lg:pt-20">
-                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-[#0F172A] p-8 md:p-20 text-center border border-[#334155] shadow-2xl relative overflow-hidden text-white">
+            <section className="relative px-4 pt-12 md:px-12 lg:pt-20">
+                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-[#0F172A] p-6 md:p-20 text-center border border-[#334155] shadow-2xl relative overflow-hidden text-white">
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/10 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
                     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/2" />
@@ -31,17 +31,17 @@ export default function PartnersPage() {
                     <h1 className="relative mx-auto mb-2 font-display text-[40px] font-bold leading-tight md:text-[56px] max-w-4xl">
                         Partner with Techloop
                     </h1>
-                    <div className="relative mx-auto mb-6 font-display text-[28px] font-bold leading-tight md:text-[56px] max-w-4xl">
+                    <div className="relative mx-auto mb-6 font-display text-[20px] font-semibold leading-tight md:text-[56px] max-w-4xl">
                         <RotatingHeadline />
                     </div>
-                    <p className="relative mx-auto mb-10 text-[20px] md:text-[24px] text-slate-300 max-w-3xl leading-relaxed">
+                    <p className="relative mx-auto mb-10 text-[20px] md:text-[24px] text-slate-300 max-w-4xl leading-relaxed">
                         Acquiring customers is about more than the MSRP of your hardware. It’s about the LTV of users in your ecosystem.
                     </p>
 
                     <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="#contact">
+                        <Link href="https://calendar.app.google/vxc8CNQAQQrjzrsz9">
                             <Button size="lg" className="w-full sm:w-auto px-8 py-6 text-lg bg-[#3DA9FC] hover:bg-[#094067] border-0 text-white shadow-lg shadow-cyan-500/20">
-                                Become a Launch Partner
+                                Book a Call
                             </Button>
                         </Link>
                     </div>

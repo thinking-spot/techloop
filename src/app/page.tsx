@@ -53,29 +53,21 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="relative flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-medium text-paragraph/80">
-            <span className="flex items-center gap-2"><Check size={16} className="text-success" /> Brand new devices</span>
-            <span className="flex items-center gap-2"><Check size={16} className="text-success" /> Free swaps (4x/year)</span>
-            <span className="flex items-center gap-2"><Check size={16} className="text-success" /> Cancel anytime</span>
-            <span className="flex items-center gap-2"><Check size={16} className="text-success" /> 98% refund rate</span>
+          <div className="relative flex flex-wrap justify-center gap-4 text-sm font-medium text-paragraph/80">
+            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
+              <Check size={16} className="text-success" /> Brand new devices
+            </div>
+            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
+              <Check size={16} className="text-success" /> Free swaps (4x/year)
+            </div>
+            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
+              <Check size={16} className="text-success" /> Cancel anytime
+            </div>
+            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
+              <Check size={16} className="text-success" /> 98% refund rate
+            </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-[#094067]/5 inline-flex items-center gap-4 px-6 py-3 bg-white/50 backdrop-blur-sm rounded-full border border-white/50 shadow-sm">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map(i => (
-                <div key={i} className={`w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 overflow-hidden`}>
-                  {/* Placeholder avatars */}
-                  <div className="w-full h-full bg-gradient-to-tr from-gray-300 to-gray-100" />
-                </div>
-              ))}
-            </div>
-            <div className="text-left">
-              <div className="flex text-yellow-400 text-[10px]">
-                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={11} fill="currentColor" />)}
-              </div>
-              <div className="text-xs font-semibold text-headline">Techloop</div>
-            </div>
-          </div>
 
         </div>
       </section>
