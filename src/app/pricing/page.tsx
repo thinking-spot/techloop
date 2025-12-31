@@ -105,13 +105,13 @@ export default function PricingPage() {
 
                     <div className="relative flex flex-wrap justify-center gap-4 text-sm font-medium text-paragraph/80">
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Check size={16} className="text-success" /> Brand new devices
+                            <Check size={16} className="text-success" /> New AI devices
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Check size={16} className="text-success" /> Swap 4x/year free
+                            <Check size={16} className="text-success" /> Free swaps
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Check size={16} className="text-success" /> Cancel anytime
+                            <Check size={16} className="text-success" /> Rent-to-own
                         </div>
                     </div>
                 </div>

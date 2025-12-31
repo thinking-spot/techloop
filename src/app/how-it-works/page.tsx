@@ -45,13 +45,13 @@ export default function HowItWorksPage() {
                             <Truck size={16} className="text-success" /> 2-3 day shipping
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Check size={16} className="text-success" /> Rent to own, 100%
+                            <Check size={16} className="text-success" /> Love? Keep 💙
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <RefreshCcw size={16} className="text-success" /> Cancel anytime
+                            <RefreshCcw size={16} className="text-success" /> Free swaps
                         </div>
                         <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Shield size={16} className="text-success" /> 98% get full deposit back
+                            <Shield size={16} className="text-success" /> Cancel anytime
                         </div>
                     </div>
                 </div>

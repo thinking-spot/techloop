@@ -40,13 +40,13 @@ export default function WaitlistPage() {
 
                             <div className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-3 text-sm md:text-base font-medium text-paragraph">
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> New devices
+                                    <CheckCircle2 className="text-button" size={20} /> New AI devices
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> 4 free swaps/yr
+                                    <CheckCircle2 className="text-button" size={20} /> Rent-to-own
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> Rent to keep
+                                    <CheckCircle2 className="text-button" size={20} /> Free swaps
                                 </div>
                             </div>
                         </div>
