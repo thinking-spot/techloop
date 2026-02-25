@@ -39,7 +39,7 @@ export default function PartnersPage() {
                     </p>
 
                     <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="https://calendar.app.google/vxc8CNQAQQrjzrsz9">
+                        <Link href="https://calendar.app.google/T6jpQJfSbEkuAxeo8">
                             <Button size="lg" className="w-full sm:w-auto px-8 py-6 text-lg bg-[#3DA9FC] hover:bg-[#094067] border-0 text-white shadow-lg shadow-cyan-500/20">
                                 Book a Call
                             </Button>
