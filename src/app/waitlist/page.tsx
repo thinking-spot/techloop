@@ -124,9 +124,9 @@ export default function WaitlistPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing TechLoop</span>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Like Netflix DVDs, but for AI Wearables</h2>
+                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Netflix for DVDs, but for AI devices</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
-                            Try any device for $48/month. Swap again and again. Keep only what you love.
+                            Rent any AI device for $48/month. Swap again and again. Find the perfect fit? Keep it at a discount.
                         </p>
                     </div>
 
@@ -135,7 +135,7 @@ export default function WaitlistPage() {
                             <CheckCircle2 size={40} className="text-button mb-6" />
                             <h3 className="text-2xl font-bold text-headline mb-4">Try Risk-Free</h3>
                             <p className="text-paragraph mb-6">
-                                Rent Meta Ray-Ban for $48/mo instead of $400 upfront. Try for 2 months. Don&apos;t love them? Return free.
+                                Rent Meta Ray-Ban for $48/mo instead of $400 upfront. Try for 2 months. Don&apos;t love it? Return free.
                             </p>
                             <div className="bg-green-50 text-green-800 text-sm font-bold px-3 py-1 rounded-full inline-block">
                                 Save $350+ month 1
