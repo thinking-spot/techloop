@@ -124,9 +124,9 @@ export default function WaitlistPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing TechLoop</span>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Netflix for AI Wearables</h2>
+                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Like Netflix DVDs, but for AI Wearables</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
-                            Try any device for $48/month. Swap again and again. Buy only what you love.
+                            Try any device for $48/month. Swap again and again. Keep only what you love.
                         </p>
                     </div>
 
