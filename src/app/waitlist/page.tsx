@@ -135,10 +135,10 @@ export default function WaitlistPage() {
                             <CheckCircle2 size={40} className="text-button mb-6" />
                             <h3 className="text-2xl font-bold text-headline mb-4">Try Risk-Free</h3>
                             <p className="text-paragraph mb-6">
-                                Rent Meta Ray-Ban for $48/mo instead of $299 upfront. Try for 2 months. Don&apos;t love them? Return free.
+                                Rent Meta Ray-Ban for $48/mo instead of $400 upfront. Try for 2 months. Don&apos;t love them? Return free.
                             </p>
                             <div className="bg-green-50 text-green-800 text-sm font-bold px-3 py-1 rounded-full inline-block">
-                                Save $200+ vs buying
+                                Save $350+ month 1
                             </div>
                         </div>
                         <div className="bg-white p-8 rounded-2xl shadow-sm border border-cyan-100">
@@ -194,7 +194,7 @@ export default function WaitlistPage() {
                         <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0] text-sm">
                             <div className="flex justify-between mb-2">
                                 <span className="text-paragraph">Retail Price:</span>
-                                <span className="font-bold text-headline line-through">$399</span>
+                                <span className="font-bold text-headline line-through">$400</span>
                             </div>
                             <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
                                 <span className="text-paragraph">You paid (3 mos rental):</span>
@@ -202,10 +202,10 @@ export default function WaitlistPage() {
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="font-bold text-headline">Buyout Price:</span>
-                                <span className="font-bold text-2xl text-button">$240</span>
+                                <span className="font-bold text-2xl text-button">$256</span>
                             </div>
                             <p className="text-xs text-paragraph mt-4">
-                                *Example for XREAL Air 2 Pro after 3 months.
+                                *Example for Meta Ray-Ban after 3 months.
                             </p>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ export default function WaitlistPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="font-display text-4xl font-bold mb-6 text-white">Why Join the Waitlist?</h2>
-                        <p className="text-xl text-cyan-100/80">The first 1,000 people to try Techloop get exclusive lifetime perks.</p>
+                        <p className="text-xl text-cyan-100/80">The first people to try Techloop get exclusive lifetime perks.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
