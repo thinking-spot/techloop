@@ -36,7 +36,7 @@ export default function HowItWorksPage() {
                         Rent-to-own AI devices <br className="hidden md:block" />Swap anytime.
                     </h1>
                     <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl leading-relaxed">
-                        $48/monthNo commitment. Pick any device and try it for real. If you love it, keep it.
+                        $48/month. No commitment. Pick any device and try it for real. If you love it, keep it.
                     </p>
 
 
