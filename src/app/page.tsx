@@ -87,11 +87,11 @@ export default async function Home() {
             </div>
             <h3 className="text-xl font-bold text-headline mb-3">No $400+ Gambles</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
-              Want to try smart glasses? Buying costs $399 upfront. Hate them? You&apos;re out of luck.
+              Want to try smart glasses? Buying costs $400 upfront. Hate them? You&apos;re out of luck.
               With us, pay $48/month. If you don&apos;t love it, just return it.
             </p>
             <div className="text-xs font-semibold text-success bg-green-50 px-3 py-1 rounded-full inline-block">
-              Save $351 upfront
+              Save $350+ upfront
             </div>
           </div>
 
@@ -102,7 +102,7 @@ export default async function Home() {
             </div>
             <h3 className="text-xl font-bold text-headline mb-3">Swap Until You Find &quot;The One&quot;</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
-              Not sure which smart ring fits your life? Try Oura. Swap to Samsung. Compare side-by-side.
+              Not sure which smart ring fits your life? Try Oura. Swap to Samsung.
               Finding your favorite tech shouldn&apos;t be stressful.
             </p>
             <div className="text-xs font-semibold text-button bg-blue-50 px-3 py-1 rounded-full inline-block">
@@ -117,7 +117,7 @@ export default async function Home() {
             </div>
             <h3 className="text-xl font-bold text-headline mb-3">Always Get The Latest</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
-              New version launching next month? Don&apos;t get stuck with old tech. Swap to the newest model immediately.
+              Don&apos;t get stuck with old tech. Swap to the newest model immediately.
               Stay current without buying new gear every year.
             </p>
             <div className="text-xs font-semibold text-button bg-blue-50 px-3 py-1 rounded-full inline-block">
@@ -181,7 +181,7 @@ export default async function Home() {
         <div className="flex items-end justify-between mb-10 max-w-7xl mx-auto">
           <div>
             <h2 className="text-3xl font-display font-medium text-headline mb-2 md:text-4xl">Smart devices you actually want to try</h2>
-            <p className="text-paragraph text-lg">4.8+ star rated devices only. If it&apos;s not great, we don&apos;t carry it.</p>
+            <p className="text-paragraph text-lg">4.0+ star rated devices only. If it&apos;s not great, we don&apos;t carry it.</p>
           </div>
           <Link href="/browse" className="hidden md:block">
             <Button variant="tertiary" className="group">
@@ -247,7 +247,7 @@ export default async function Home() {
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-white/20" />
                   <div className="text-xs">
-                    <div className="font-bold">Priya K.</div>
+                    <div className="font-bold">Elliott W.</div>
                     <div className="text-white/60">Product Manager</div>
                   </div>
                 </div>
@@ -275,12 +275,12 @@ export default async function Home() {
             <tbody className="divide-y divide-[#F1F5F9]">
               <tr>
                 <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">Cost to try</td>
-                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">$399 upfront</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">$400 upfront</td>
                 <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">$48/month</td>
               </tr>
               <tr>
                 <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">Try multiple devices</td>
-                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">Buy each ($1,200+)</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">Buy each ($400+$400...)</td>
                 <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Swap free (4x/year)</td>
               </tr>
               <tr>
@@ -290,7 +290,7 @@ export default async function Home() {
               </tr>
               <tr>
                 <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">If you love it</td>
-                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">You paid $399</td>
+                <td className="py-4 px-3 md:px-6 text-sm text-paragraph">You paid $400</td>
                 <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">Buy at a discount</td>
               </tr>
             </tbody>
