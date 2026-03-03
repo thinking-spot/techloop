@@ -244,7 +244,7 @@ export default function PricingPage() {
                         <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0] text-sm">
                             <div className="flex justify-between mb-2">
                                 <span className="text-paragraph">Retail Price:</span>
-                                <span className="font-bold text-headline line-through">$399</span>
+                                <span className="font-bold text-headline line-through">$400</span>
                             </div>
                             <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
                                 <span className="text-paragraph">You paid (3 mos rental):</span>
@@ -252,7 +252,7 @@ export default function PricingPage() {
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="font-bold text-headline">Buyout Price:</span>
-                                <span className="font-bold text-2xl text-button">$240</span>
+                                <span className="font-bold text-2xl text-button">$256</span>
                             </div>
                             <p className="text-xs text-paragraph mt-4">
                                 *Example for XREAL Air 2 Pro after 3 months.
