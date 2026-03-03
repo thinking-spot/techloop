@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, RefreshCcw, Star, DollarSign } from "lucide-react";
+import { ArrowRight, Check, RefreshCcw, Star, DollarSign, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import DeviceCard from "@/components/ui/DeviceCard";
 import { getAllProducts } from "@/lib/products";
@@ -113,7 +113,7 @@ export default async function Home() {
           {/* Prop 3 */}
           <div className="bg-[#FFF] p-8 rounded-2xl border border-[#F1F5F9] shadow-sm">
             <div className="w-12 h-12 bg-[#E0F2FE] rounded-xl flex items-center justify-center text-button mb-6">
-              <RefreshCcw size={24} />
+              <ArrowUp size={24} />
             </div>
             <h3 className="text-xl font-bold text-headline mb-3">Always Get The Latest</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
