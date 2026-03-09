@@ -24,7 +24,7 @@ export default function RewardsStoreModal({ isOpen, onClose, currentPoints }: Re
         {
             id: 'month',
             title: "Free Month of Service",
-            cost: 420,
+            cost: 400,
             description: "Get a 100% discount on your next renewal date.",
             icon: <Calendar size={24} />,
             color: "purple"
@@ -32,7 +32,7 @@ export default function RewardsStoreModal({ isOpen, onClose, currentPoints }: Re
         {
             id: 'gift',
             title: "Give a Free Gift",
-            cost: 420,
+            cost: 400,
             description: "Give 3 months of Techloop. If they love it, they can keep it!",
             icon: <Gift size={24} />,
             color: "pink"
