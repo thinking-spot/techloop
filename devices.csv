@@ -1,0 +1,4 @@
+id,name,description,features,monthly_price,image_url,category,stock_status,created_at,slug
+2e283740-071f-408f-ac28-db7204eed144,Ray-Ban Meta,Smart glasses with AI.,,2900,https://placehold.co/400x300?text=Ray-Ban,glasses,in_stock,2025-12-22T19:22:07.600815+00:00,meta-rayban
+0eb4b8e2-b381-4cde-9d01-561d694f18d2,Rabbit R1,AI pocket companion.,,1900,https://placehold.co/400x300?text=Rabbit,assistant,in_stock,2025-12-22T19:22:07.600815+00:00,rabbit-r1
+75b50917-d6c8-4d40-847f-9d6666c0d146,Whoop 4.0,Fitness and health tracker.,,3000,https://placehold.co/400x300?text=Whoop,wearable,in_stock,2025-12-22T19:22:07.600815+00:00,whoop-4

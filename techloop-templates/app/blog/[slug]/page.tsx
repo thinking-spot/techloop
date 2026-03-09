@@ -20,10 +20,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }): Promise<Metadata> {
-  const { slug } = await params
-  const content = await getBlogPost(slug)
+  const content = await getBlogPost(params.slug)
   if (!content) return {}
 
   return {
@@ -53,10 +52,9 @@ export async function generateMetadata({
 export default async function BlogPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  const { slug } = await params
-  const content = await getBlogPost(slug)
+  const content = await getBlogPost(params.slug)
 
   if (!content) notFound()
 
@@ -111,7 +109,7 @@ export default async function BlogPage({
         The MDX body is rendered inline via MDXRemote and passed as children.
       */}
       <BlogPostTemplate content={content}>
-        <MDXRemote source={content.body_mdx.replace(/\s*\{#([^}]+)\}/g, '<a id="$1"></a>')} />
+        <MDXRemote source={content.body_mdx} />
       </BlogPostTemplate>
     </>
   )

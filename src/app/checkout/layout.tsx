@@ -26,7 +26,7 @@ export default function CheckoutLayout({
                 {children}
             </main>
             <footer className="py-6 text-center text-xs text-paragraph/50">
-                © 2024 TechLoop Inc. All rights reserved.
+                © 2024 Techloop Inc. All rights reserved.
             </footer>
         </div>
     );

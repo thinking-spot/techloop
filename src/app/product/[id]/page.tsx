@@ -88,7 +88,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         description: device.description,
                         brand: {
                             "@type": "Brand",
-                            name: "TechLoop"
+                            name: "Techloop"
                         },
                         offers: {
                             "@type": "Offer",

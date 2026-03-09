@@ -22,10 +22,10 @@ export default function BlogLayout({
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2 text-paragraph hover:text-headline transition-colors text-sm font-medium">
                         <ArrowLeft size={16} />
-                        Back to TechLoop
+                        Back to Techloop
                     </Link>
                     <div className="font-display font-bold text-xl text-headline">
-                        TechLoop <span className="text-button">Hub</span>
+                        Techloop <span className="text-button">Hub</span>
                     </div>
                     <div className="w-24"></div> {/* Spacer for center alignment */}
                 </div>

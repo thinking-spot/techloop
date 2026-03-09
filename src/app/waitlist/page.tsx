@@ -123,7 +123,7 @@ export default function WaitlistPage() {
             <section className="py-24 px-6 bg-[#F0F9FF]">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing TechLoop</span>
+                        <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing Techloop</span>
                         <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Netflix for DVDs, but for AI devices</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
                             Rent any AI device for $48/month. Swap again and again. Find the perfect fit? Keep it at a discount.

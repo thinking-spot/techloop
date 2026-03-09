@@ -18,7 +18,7 @@ export default function Footer() {
                     <ul className="space-y-2 text-sm text-paragraph">
                         <li><Link href="/browse" className="hover:text-button">Browse Devices</Link></li>
                         <li><Link href="/quiz" className="hover:text-button">Device Quiz</Link></li>
-                        <li><Link href="/blog" className="hover:text-button">TechLoop Hub</Link></li>
+                        <li><Link href="/blog" className="hover:text-button">Techloop Hub</Link></li>
                         <li><Link href="/how-it-works" className="hover:text-button">How It Works</Link></li>
                         <li><Link href="/pricing" className="hover:text-button">Pricing</Link></li>
                         <li><Link href="/waitlist" className="hover:text-button">Join Waitlist</Link></li>
@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-7xl mx-auto pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-paragraph/60">
-                <p>&copy; {new Date().getFullYear()} TechLoop Inc. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Techloop Inc. All rights reserved.</p>
                 <div className="flex gap-4">
                     <a href="#" className="hover:text-headline">Twitter</a>
                     <a href="#" className="hover:text-headline">Instagram</a>
