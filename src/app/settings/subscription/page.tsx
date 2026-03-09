@@ -72,7 +72,7 @@ export default function SubscriptionSettingsPage() {
                         <p className="text-sm text-paragraph">Includes 1 active device + 4 swaps/year</p>
                     </div>
                     <div className="text-right">
-                        <p className="text-2xl font-bold text-headline">$48<span className="text-sm font-normal text-paragraph">/mo</span></p>
+                        <p className="text-2xl font-bold text-headline">$42<span className="text-sm font-normal text-paragraph">/mo</span></p>
                         <p className="text-xs text-paragraph">Next billing: {nextBilling}</p>
                     </div>
                 </div>

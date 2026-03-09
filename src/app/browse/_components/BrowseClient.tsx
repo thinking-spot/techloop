@@ -174,7 +174,7 @@ export default function BrowseClient({
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Want to try multiple devices?</h3>
-                                <p className="text-white/80">Explorer plan lets you rent 2 devices at once for $84/month.</p>
+                                <p className="text-white/80">Explorer plan lets you rent 2 devices at once for $75/month.</p>
                             </div>
                         </div>
                         <Button className="whitespace-nowrap bg-white text-headline hover:bg-white/90 border-0 relative z-10">See Explorer Plan</Button>

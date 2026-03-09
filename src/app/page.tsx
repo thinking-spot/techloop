@@ -8,7 +8,7 @@ import { getAllProducts } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Try AI devices | rent, swap, love, buy | Techloop",
   description:
-    "Glasses, watches, rings, pins, earbuds + pendants. Pick any AI device, try it for real. Love it? Keep it. No commitment. No risk. $48/m",
+    "Glasses, watches, rings, pins, earbuds + pendants. Pick any AI device, try it for real. Love it? Keep it. No commitment. No risk. $42/m",
   openGraph: {
     images: "/images/techloop-wordmark.png",
   },
@@ -37,7 +37,7 @@ export default async function Home() {
           </h1>
           <p className="relative mx-auto mb-10 max-w-2xl text-[20px] text-paragraph leading-relaxed md:text-[22px]">
             AI glasses, rings, watches, earbuds, pins and more. <br className="hidden md:block" />
-            Find the perfect fit for $48/month.
+            Find the perfect fit for $42/month.
           </p>
 
           <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row mb-12">
@@ -88,7 +88,7 @@ export default async function Home() {
             <h3 className="text-xl font-bold text-headline mb-3">No $400+ Gambles</h3>
             <p className="text-paragraph text-sm leading-relaxed mb-4">
               Want to try smart glasses? Buying costs $400 upfront. Hate them? You&apos;re out of luck.
-              With us, pay $48/month. If you don&apos;t love it, just return it.
+              With us, pay $42/month. If you don&apos;t love it, just return it.
             </p>
             <div className="text-xs font-semibold text-success bg-green-50 px-3 py-1 rounded-full inline-block">
               Save $350+ upfront
@@ -242,7 +242,7 @@ export default async function Home() {
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/10 hidden md:block">
                 <div className="flex text-yellow-400 text-xs mb-3">★★★★★</div>
                 <p className="text-sm leading-relaxed mb-4">
-                  &quot;The Explorer plan is perfect. $84/month to try $750 worth of devices? I&apos;m saving up to buy them, but trying first saved me from buying the wrong ring.&quot;
+                  &quot;The Explorer plan is perfect. $75/month to try $750 worth of devices? I&apos;m saving up to buy them, but trying first saved me from buying the wrong ring.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-white/20" />
@@ -276,7 +276,7 @@ export default async function Home() {
               <tr>
                 <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">Cost to try</td>
                 <td className="py-4 px-3 md:px-6 text-sm text-paragraph">$400 upfront</td>
-                <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">$48/month</td>
+                <td className="py-4 px-3 md:px-6 text-sm font-bold text-headline bg-[#E0F2FE]/30">$42/month</td>
               </tr>
               <tr>
                 <td className="py-4 px-3 md:px-6 text-sm font-medium text-paragraph">Try multiple devices</td>
@@ -296,7 +296,7 @@ export default async function Home() {
             </tbody>
           </table>
           <div className="bg-[#F0F9FF] p-4 text-center text-sm text-headline border-t border-[#E0F2FE]">
-            💡 <strong>Pro Tip:</strong> Test 2 devices head-to-head for $84. Keep the one you like best for <strong>$84 off MSRP.</strong>
+            💡 <strong>Pro Tip:</strong> Test 2 devices head-to-head for $75. Keep the one you like best for <strong>$75 off MSRP.</strong>
           </div>
         </div>
       </section >
@@ -311,7 +311,7 @@ export default async function Home() {
           {/* Starter */}
           <div className="border border-[#E2E8F0] p-6 rounded-xl bg-white hover:border-[#CBD5E1] transition-colors">
             <div className="text-sm font-bold text-paragraph uppercase tracking-wide mb-2">Starter</div>
-            <div className="text-3xl font-bold text-headline mb-1">$48<span className="text-lg text-paragraph font-normal">/mo</span></div>
+            <div className="text-3xl font-bold text-headline mb-1">$42<span className="text-lg text-paragraph font-normal">/mo</span></div>
             <div className="text-xs text-paragraph mb-6">1 device at a time</div>
             <ul className="space-y-2 mb-6">
               <li className="text-sm flex gap-2"><Check size={16} className="text-button" /> Brand new device</li>
@@ -324,7 +324,7 @@ export default async function Home() {
           <div className="border-2 border-button p-6 rounded-xl bg-white relative shadow-md scale-105 z-10">
             <div className="absolute top-0 right-0 bg-button text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg">POPULAR</div>
             <div className="text-sm font-bold text-button uppercase tracking-wide mb-2">Explorer</div>
-            <div className="text-3xl font-bold text-headline mb-1">$84<span className="text-lg text-paragraph font-normal">/mo</span></div>
+            <div className="text-3xl font-bold text-headline mb-1">$75<span className="text-lg text-paragraph font-normal">/mo</span></div>
             <div className="text-xs text-paragraph mb-6">2 devices at once</div>
             <ul className="space-y-2 mb-6">
               <li className="text-sm flex gap-2"><Check size={16} className="text-button" /> Brand new devices</li>
@@ -336,7 +336,7 @@ export default async function Home() {
           {/* Power User */}
           <div className="border border-[#E2E8F0] p-6 rounded-xl bg-white hover:border-[#CBD5E1] transition-colors">
             <div className="text-sm font-bold text-paragraph uppercase tracking-wide mb-2">Power User</div>
-            <div className="text-3xl font-bold text-headline mb-1">$119<span className="text-lg text-paragraph font-normal">/mo</span></div>
+            <div className="text-3xl font-bold text-headline mb-1">$100<span className="text-lg text-paragraph font-normal">/mo</span></div>
             <div className="text-xs text-paragraph mb-6">3+ devices at once</div>
             <ul className="space-y-2 mb-6">
               <li className="text-sm flex gap-2"><Check size={16} className="text-button" /> Build ecosystem</li>

@@ -157,7 +157,7 @@ export async function getBlogPostsByType(
 
 // ─── Utilities ────────────────────────────────────────────────────────────────
 
-/** Format cents to display string: 4800 → "$48" */
+/** Format cents to display string: 4200 → "$42" */
 export function formatPrice(cents: number, decimals = false): string {
   const dollars = cents / 100
   return decimals
@@ -165,7 +165,7 @@ export function formatPrice(cents: number, decimals = false): string {
     : `$${Math.round(dollars)}`
 }
 
-/** Format cents to monthly string: 4800 → "$48/mo" */
+/** Format cents to monthly string: 4200 → "$42/mo" */
 export function formatMonthly(cents: number): string {
   return `${formatPrice(cents)}/mo`
 }

@@ -113,7 +113,7 @@ export const categoryData: Record<string, CategoryConfig> = {
                     <h3 className="font-display text-xl font-bold text-headline mb-4">Are they ready?</h3>
                     <p className="text-sm text-paragraph mb-4">Honestly? It's early days.</p>
                     <div className="mt-4 text-sm bg-orange-50 text-orange-800 p-3 rounded-lg inline-block">
-                        <strong>Why Renting is Perfect:</strong> These devices are experimental. Renting lets you try the future for $48 instead of paying $700+ to beta test hardware.
+                        <strong>Why Renting is Perfect:</strong> These devices are experimental. Renting lets you try the future for $42 instead of paying $700+ to beta test hardware.
                     </div>
                 </div>
             </div>

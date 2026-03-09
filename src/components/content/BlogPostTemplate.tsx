@@ -87,17 +87,17 @@ const typeLabels: Record<string, string> = {
 function ArticleHeader({ content }: { content: BlogPostContent }) {
   const publishDate = content.published_at
     ? new Date(content.published_at).toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      })
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    })
     : null
 
   const reviewDate = content.last_reviewed_at
     ? new Date(content.last_reviewed_at).toLocaleDateString('en-US', {
-        month: 'long',
-        year: 'numeric',
-      })
+      month: 'long',
+      year: 'numeric',
+    })
     : null
 
   return (
@@ -212,9 +212,8 @@ function TableOfContents({ content }: { content: BlogPostContent }) {
               <a
                 key={entry.anchor}
                 href={entry.anchor}
-                className={`block text-sm text-slate-600 hover:text-cyan-600 transition-colors ${
-                  entry.level === 3 ? 'pl-4' : ''
-                }`}
+                className={`block text-sm text-slate-600 hover:text-cyan-600 transition-colors ${entry.level === 3 ? 'pl-4' : ''
+                  }`}
               >
                 {entry.label}
               </a>
@@ -275,11 +274,10 @@ function IntroCTA({ content }: { content: BlogPostContent }) {
         </p>
         <Link
           href={cta.href}
-          className={`flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded transition-colors whitespace-nowrap ${
-            cta.style === 'primary'
-              ? 'bg-[#0A1F44] hover:bg-[#0d2654] text-white'
-              : 'border border-slate-300 hover:border-slate-400 text-slate-700'
-          }`}
+          className={`flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded transition-colors whitespace-nowrap ${cta.style === 'primary'
+            ? 'bg-[#0A1F44] hover:bg-[#0d2654] text-white'
+            : 'border border-slate-300 hover:border-slate-400 text-slate-700'
+            }`}
         >
           {cta.label}
           <ArrowIcon />
@@ -333,7 +331,7 @@ function MidCTA({ content }: { content: BlogPostContent }) {
           Try before you spend $400.
         </p>
         <p className="text-slate-400 text-sm mb-6">
-          techloop ships new AI wearables from $48/month. Cancel anytime.
+          techloop ships new AI wearables from $42/month. Cancel anytime.
         </p>
         <Link
           href={cta.href}
@@ -441,7 +439,7 @@ function BottomCTA({ content }: { content: BlogPostContent }) {
           Done reading. Ready to try?
         </h2>
         <p className="text-slate-400 mb-8">
-          New devices from $48/month. Cancel anytime. Apply payments toward purchase.
+          New devices from $42/month. Cancel anytime. Apply payments toward purchase.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

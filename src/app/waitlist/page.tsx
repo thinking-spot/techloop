@@ -31,7 +31,7 @@ export default function WaitlistPage() {
                     <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
                         <div className="space-y-6 md:space-y-8">
                             <h1 className="font-display text-[32px] md:text-[48px] font-bold tracking-tight leading-[1.1] text-headline">
-                                Get ready to love 💙 <span className="text-button">Techloop 🤖</span>
+                                Ready to love 💙 <span className="text-button">Techloop 🤖</span>
                             </h1>
                             <p className="text-base md:text-[20px] text-paragraph leading-relaxed font-light">
                                 AI glasses, rings, watches, earbuds, cards, and pins.
@@ -110,7 +110,7 @@ export default function WaitlistPage() {
                         <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🔄</div>
                         <h3 className="text-xl font-bold text-headline mb-4">Tech moves too fast</h3>
                         <p className="text-paragraph leading-relaxed mb-6">
-                            Buy XREAL Air 2 today, Air 3 comes out tomorrow. The upgrade cycle can be brutal. Be an early adopter, every time, for just $48/month.
+                            Buy XREAL Air 2 today, Air 3 comes out tomorrow. The upgrade cycle can be brutal. Be an early adopter, every time, for just $42/month.
                         </p>
                         <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-blue-200">
                             &quot;Bought Humane AI Pin for $699 last year. It&apos;s already obsolete. Waste of money.&quot;
@@ -126,7 +126,7 @@ export default function WaitlistPage() {
                         <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing Techloop</span>
                         <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Netflix for DVDs, but for AI devices</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
-                            Rent any AI device for $48/month. Swap again and again. Find the perfect fit? Keep it at a discount.
+                            Rent any AI device for $42/month. Swap again and again. Find the perfect fit? Keep it at a discount.
                         </p>
                     </div>
 
@@ -135,7 +135,7 @@ export default function WaitlistPage() {
                             <CheckCircle2 size={40} className="text-button mb-6" />
                             <h3 className="text-2xl font-bold text-headline mb-4">Try Risk-Free</h3>
                             <p className="text-paragraph mb-6">
-                                Rent Meta Ray-Ban for $48/mo instead of $400 upfront. Try for 2 months. Don&apos;t love it? Return free.
+                                Rent Meta Ray-Ban for $42/mo instead of $400 upfront. Try for 2 months. Don&apos;t love it? Return free.
                             </p>
                             <div className="bg-green-50 text-green-800 text-sm font-bold px-3 py-1 rounded-full inline-block">
                                 Save $350+ month 1
@@ -168,7 +168,7 @@ export default function WaitlistPage() {
                             <Shield size={28} className="text-button" /> Security Deposit
                         </h3>
                         <p className="text-paragraph mb-6">
-                            We collect a refundable deposit ($48) to protect our devices and keep the balance sheet healthy.
+                            We collect a refundable deposit ($42) to protect our devices and keep the balance sheet healthy.
                         </p>
                         <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0]">
                             <h4 className="font-semibold text-headline mb-3 text-sm">100% Refunded when you:</h4>
@@ -198,11 +198,11 @@ export default function WaitlistPage() {
                             </div>
                             <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
                                 <span className="text-paragraph">Rental Payments (3 months):</span>
-                                <span className="font-bold text-success">-$144</span>
+                                <span className="font-bold text-success">-$126</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="font-bold text-headline">Buyout Price:</span>
-                                <span className="font-bold text-2xl text-button">$256</span>
+                                <span className="font-bold text-2xl text-button">$274</span>
                             </div>
                             <p className="text-xs text-paragraph mt-4">
                                 *Example for Meta Ray-Ban after 3 months.
@@ -229,12 +229,12 @@ export default function WaitlistPage() {
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <CreditCard className="text-green-400 mb-4" size={32} />
                             <h3 className="text-xl font-bold mb-2 text-white">Founder&apos;s Pricing</h3>
-                            <p className="text-sm text-gray-300">Lock in $48/mo forever, even if prices go up later.</p>
+                            <p className="text-sm text-gray-300">Lock in $42/mo forever, even if prices go up later.</p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <Gift className="text-pink-400 mb-4" size={32} />
                             <h3 className="text-xl font-bold mb-2 text-white">$20 Credit</h3>
-                            <p className="text-sm text-gray-300">First month discount. Try your first device for just $28.</p>
+                            <p className="text-sm text-gray-300">First month discount. Try your first device for just $22.</p>
                         </div>
                         <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
                             <HelpCircle className="text-cyan-400 mb-4" size={32} />
@@ -268,7 +268,7 @@ export default function WaitlistPage() {
                         {/* Tier 1 */}
                         <div className="border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                             <h3 className="text-2xl font-bold text-headline mb-2">Starter</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$48</span><span className="text-paragraph">/mo</span></div>
+                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$42</span><span className="text-paragraph">/mo</span></div>
                             <p className="text-sm text-paragraph mb-8">Perfect for trying one device deeply.</p>
                             <ul className="space-y-4 text-sm text-headline mb-8">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 1 device at a time</li>
@@ -282,7 +282,7 @@ export default function WaitlistPage() {
                         <div className="border-2 border-button rounded-2xl p-8 relative shadow-xl">
                             <div className="absolute top-0 right-0 bg-button text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg uppercase">Most Popular</div>
                             <h3 className="text-2xl font-bold text-headline mb-2">Explorer</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$84</span><span className="text-paragraph">/mo</span></div>
+                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$75</span><span className="text-paragraph">/mo</span></div>
                             <p className="text-sm text-paragraph mb-8">Compare 2 devices side-by-side.</p>
                             <ul className="space-y-4 text-sm text-headline mb-8">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 2 devices at a time</li>
@@ -295,7 +295,7 @@ export default function WaitlistPage() {
                         {/* Tier 3 */}
                         <div className="border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                             <h3 className="text-2xl font-bold text-headline mb-2">Power User</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$119</span><span className="text-paragraph">/mo</span></div>
+                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$100</span><span className="text-paragraph">/mo</span></div>
                             <p className="text-sm text-paragraph mb-8">The full AI lifestyle.</p>
                             <ul className="space-y-4 text-sm text-headline mb-8">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 3 devices at a time</li>

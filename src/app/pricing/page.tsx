@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 const plans = [
     {
         name: "Starter",
-        price: "48",
+        price: "42",
         description: "Best for trying one device",
         features: [
             "1 AI wearable device at a time",
@@ -21,7 +21,7 @@ const plans = [
     },
     {
         name: "Explorer",
-        price: "84",
+        price: "75",
         description: "Most Popular",
         features: [
             "2 AI wearable devices at once",
@@ -37,7 +37,7 @@ const plans = [
     },
     {
         name: "Power User",
-        price: "119",
+        price: "100",
         description: "For the ultimate tech explorer",
         features: [
             "3+ AI wearable devices at once",
@@ -79,7 +79,7 @@ const faqs = [
 
 
 export const metadata: Metadata = {
-    title: "Pricing | Simple $48/mo AI Wearables Subscription",
+    title: "Pricing | Simple $42/mo AI Wearables Subscription",
     description: "Try $400+ AI devices for less than $50/month. No hidden fees. Cancel anytime. Free swaps included.",
     openGraph: {
         images: "/images/techloop-wordmark.png",
@@ -97,7 +97,7 @@ export default function PricingPage() {
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
                     <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight text-headline md:text-[48px]">
-                        Try any AI device for $48/m.
+                        Try any AI device for $42/m.
                     </h1>
                     <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl mx-auto leading-relaxed">
                         Rent-to-own. No commitments. Swap anytime. Keep what you love.
@@ -198,7 +198,7 @@ export default function PricingPage() {
                                     </tr>
                                     <tr className="bg-[#F0F9FF]">
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Techloop Starter</td>
-                                        <td className="py-4 px-6 text-sm font-bold text-headline">$48/month</td>
+                                        <td className="py-4 px-6 text-sm font-bold text-headline">$42/month</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Yes (4 free swaps/yr)</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Cancel anytime</td>
                                     </tr>
@@ -218,7 +218,7 @@ export default function PricingPage() {
                             <Shield size={28} className="text-button" /> Security Deposit
                         </h3>
                         <p className="text-paragraph mb-6">
-                            We collect a refundable deposit ($48) to protect our devices and keep the balance sheet healthy.
+                            We collect a refundable deposit ($42) to protect our devices and keep the balance sheet healthy.
                         </p>
                         <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0]">
                             <h4 className="font-semibold text-headline mb-3 text-sm">100% Refunded when you:</h4>
@@ -248,11 +248,11 @@ export default function PricingPage() {
                             </div>
                             <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
                                 <span className="text-paragraph">You paid (3 mos rental):</span>
-                                <span className="font-bold text-success">-$144</span>
+                                <span className="font-bold text-success">-$126</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="font-bold text-headline">Buyout Price:</span>
-                                <span className="font-bold text-2xl text-button">$256</span>
+                                <span className="font-bold text-2xl text-button">$274</span>
                             </div>
                             <p className="text-xs text-paragraph mt-4">
                                 *Example for XREAL Air 2 Pro after 3 months.

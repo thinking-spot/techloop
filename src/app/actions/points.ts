@@ -60,7 +60,7 @@ export async function redeemReward(type: 'SWAP' | 'MONTH') {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return { error: "Unauthorized" };
 
-    const cost = type === 'SWAP' ? 250 : 480;
+    const cost = type === 'SWAP' ? 250 : 420;
 
     // 1. Check Balance
     const { data: status } = await supabase

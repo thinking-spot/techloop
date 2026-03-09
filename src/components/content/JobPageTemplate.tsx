@@ -70,10 +70,10 @@ function Hero({ content }: { content: JobPageContent }) {
             {content.job_category === 'blue-collar'
               ? 'Trades & Field Work'
               : content.job_category === 'white-collar'
-              ? 'Knowledge Work'
-              : content.job_category === 'enthusiast'
-              ? 'Early Adopter'
-              : 'Life & Wellness'}
+                ? 'Knowledge Work'
+                : content.job_category === 'enthusiast'
+                  ? 'Early Adopter'
+                  : 'Life & Wellness'}
           </span>
 
           <h1 className="text-4xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight mb-6">
@@ -400,7 +400,7 @@ function MidCTA({ content }: { content: JobPageContent }) {
             Try the right device for your job — before spending $400.
           </p>
           <p className="text-slate-400 text-sm">
-            From $48/month. Cancel anytime. Apply payments toward the purchase price.
+            From $42/month. Cancel anytime. Apply payments toward the purchase price.
           </p>
         </div>
         <div className="flex-shrink-0 flex flex-col sm:flex-row gap-3">
@@ -473,7 +473,7 @@ function BottomCTA({ content }: { content: JobPageContent }) {
           Without the $400 commitment.
         </h2>
         <p className="text-slate-400 text-lg mb-10">
-          From $48/month. Cancel anytime. Keep what works.
+          From $42/month. Cancel anytime. Keep what works.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

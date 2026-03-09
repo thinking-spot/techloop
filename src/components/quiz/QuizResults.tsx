@@ -218,7 +218,7 @@ export default function QuizResults({ answers, onRetake }: { answers: Record<num
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/pricing">
                         <Button variant="secondary" size="lg" className="w-full sm:w-auto bg-white text-headline border-white hover:bg-gray-100">
-                            Get Explorer Plan ($84/mo)
+                            Get Explorer Plan ($75/mo)
                         </Button>
                     </Link>
                     <Link href="/browse">

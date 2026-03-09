@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
     title: "How Techloop Works | Rent, Try, Swap Buy | AI Wearables",
-    description: "Pick a device. Try it for $48/mo. Swap for a different one. Or keep it and buy it. No long-term commitments.",
+    description: "Pick a device. Try it for $42/mo. Swap for a different one. Or keep it and buy it. No long-term commitments.",
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },
@@ -36,7 +36,7 @@ export default function HowItWorksPage() {
                         Rent-to-own AI devices. <br className="hidden md:block" />Swap anytime.
                     </h1>
                     <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl leading-relaxed">
-                        $48/month. No commitment. Pick any device and try it for real. If you love it, keep it.
+                        $42/month. No commitment. Pick any device and try it for real. If you love it, keep it.
                     </p>
 
 
