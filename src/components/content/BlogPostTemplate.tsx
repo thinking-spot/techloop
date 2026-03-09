@@ -305,9 +305,10 @@ function ArticleBody({ children }: { children: React.ReactNode }) {
           prose-strong:text-slate-900 prose-strong:font-semibold
           prose-code:text-cyan-700 prose-code:bg-cyan-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
           prose-blockquote:border-l-cyan-400 prose-blockquote:text-slate-600
-          prose-table:text-sm
-          prose-th:bg-slate-100 prose-th:text-slate-700 prose-th:font-semibold
-          prose-td:text-slate-600
+          prose-table:w-full prose-table:text-sm prose-table:my-10 prose-table:border-collapse prose-table:border prose-table:border-slate-200 prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-sm
+          prose-th:bg-slate-50 prose-th:text-slate-700 prose-th:font-semibold prose-th:tracking-wider prose-th:uppercase prose-th:px-5 prose-th:py-4 prose-th:text-left prose-th:border-b prose-th:border-slate-200
+          prose-td:px-5 prose-td:py-4 prose-td:text-slate-600 prose-td:border-b prose-td:border-slate-100 last:prose-td:border-0
+          prose-tr:transition-colors hover:prose-tr:bg-slate-50/50
           prose-li:text-slate-600
           prose-img:rounded-lg prose-img:shadow-md
         "
