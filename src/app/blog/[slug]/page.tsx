@@ -6,6 +6,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import { getBlogPost, getAllBlogSlugs } from '@/lib/content'
 import { BlogPostTemplate } from '@/components/content/BlogPostTemplate'
 
@@ -95,6 +96,8 @@ export default async function BlogPage({
     ],
   }
 
+  const processedMdx = content.body_mdx.replace(/\s*\{#([^}]+)\}/g, '<a id="$1"></a>')
+
   return (
     <>
       <script
@@ -111,7 +114,14 @@ export default async function BlogPage({
         The MDX body is rendered inline via MDXRemote and passed as children.
       */}
       <BlogPostTemplate content={content}>
-        <MDXRemote source={content.body_mdx.replace(/\s*\{#([^}]+)\}/g, '<a id="$1"></a>')} />
+        <MDXRemote
+          source={processedMdx}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm]
+            }
+          }}
+        />
       </BlogPostTemplate>
     </>
   )
