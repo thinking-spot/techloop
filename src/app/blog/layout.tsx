@@ -35,25 +35,6 @@ export default function BlogLayout({
                 {children}
             </main>
 
-            <section className="bg-headline text-white py-16 px-4">
-                <div className="max-w-2xl mx-auto text-center space-y-6">
-                    <h2 className="font-display text-3xl font-bold">Stay in the loop</h2>
-                    <p className="text-white/80">
-                        Get the latest reviews, comparisons, and rental drops delivered to your inbox.
-                        No spam, just tech.
-                    </p>
-                    <div className="flex gap-2 max-w-md mx-auto">
-                        <input
-                            type="email"
-                            placeholder="your@email.com"
-                            className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-button"
-                        />
-                        <button className="bg-button text-white px-6 py-3 rounded-lg font-bold hover:bg-button/90 transition-colors">
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 }
