@@ -186,19 +186,19 @@ export default function PricingPage() {
                                 <tbody className="divide-y divide-[#F1F5F9]">
                                     <tr>
                                         <td className="py-4 px-6 text-sm font-medium text-paragraph">Buy on Amazon</td>
-                                        <td className="py-4 px-6 text-sm text-paragraph">$399 upfront</td>
+                                        <td className="py-4 px-6 text-sm text-paragraph">$400 upfront</td>
                                         <td className="py-4 px-6 text-sm text-paragraph">No (buy each)</td>
                                         <td className="py-4 px-6 text-sm text-paragraph">30 days</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-4 px-6 text-sm font-medium text-paragraph">Finance (Affirm)</td>
-                                        <td className="py-4 px-6 text-sm text-paragraph">$36/mo x 12</td>
+                                        <td className="py-4 px-6 text-sm font-medium text-paragraph">Finance (ie. Klarna)</td>
+                                        <td className="py-4 px-6 text-sm text-paragraph">$39/mo x 16</td>
                                         <td className="py-4 px-6 text-sm text-paragraph">No</td>
                                         <td className="py-4 px-6 text-sm text-paragraph">None (active loan)</td>
                                     </tr>
                                     <tr className="bg-[#F0F9FF]">
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Techloop Starter</td>
-                                        <td className="py-4 px-6 text-sm font-bold text-headline">$42/month</td>
+                                        <td className="py-4 px-6 text-sm font-bold text-headline">$42/mo</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Yes (4 free swaps/yr)</td>
                                         <td className="py-4 px-6 text-sm font-bold text-headline">Cancel anytime</td>
                                     </tr>
