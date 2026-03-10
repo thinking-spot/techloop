@@ -9,6 +9,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import { getBlogPost, getAllBlogSlugs } from '@/lib/content'
 import { BlogPostTemplate } from '@/components/content/BlogPostTemplate'
+import RentVsBuyCalculator from '@/components/mdx/RentVsBuyCalculator'
 
 export const revalidate = 60
 export const dynamicParams = true
@@ -116,6 +117,7 @@ export default async function BlogPage({
       <BlogPostTemplate content={content}>
         <MDXRemote
           source={processedMdx}
+          components={{ RentVsBuyCalculator }}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm]
