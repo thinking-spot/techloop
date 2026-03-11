@@ -132,7 +132,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
-              Easy as ordering clothes online
+              How Techloop works
             </h2>
             <p className="text-paragraph text-lg mb-8">
               We removed all the friction. No contracts. No hidden fees. No buyer's remorse. Just pick a device and we ship it today.
@@ -141,22 +141,22 @@ export default async function Home() {
               <div className="flex gap-4">
                 <div className="w-8 h-8 rounded-full bg-button text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
                 <div>
-                  <h4 className="font-bold text-headline">Choose</h4>
+                  <h4 className="font-bold text-headline">Choose your device</h4>
                   <p className="text-sm text-paragraph mt-1">Take our quiz or browse the catalog. Find your match.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="w-8 h-8 rounded-full bg-button text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
                 <div>
-                  <h4 className="font-bold text-headline">Try</h4>
-                  <p className="text-sm text-paragraph mt-1">Use it for real. 30+ days to test drive in your daily life.</p>
+                  <h4 className="font-bold text-headline">Try for 30 days</h4>
+                  <p className="text-sm text-paragraph mt-1">Use it for real in life. Find your "aha" moment.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="w-8 h-8 rounded-full bg-button text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
                 <div>
-                  <h4 className="font-bold text-headline">Decide</h4>
-                  <p className="text-sm text-paragraph mt-1">Keep renting, buy it for a discount, or swap it.</p>
+                  <h4 className="font-bold text-headline">It's your call</h4>
+                  <p className="text-sm text-paragraph mt-1">Keep renting, buy for a discount, or swap it.</p>
                 </div>
               </div>
             </div>
