@@ -37,7 +37,7 @@ const plans = [
     },
     {
         name: "Power User",
-        price: "100",
+        price: "99",
         description: "For the ultimate tech explorer",
         features: [
             "3+ AI wearable devices at once",

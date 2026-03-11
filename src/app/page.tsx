@@ -336,7 +336,7 @@ export default async function Home() {
           {/* Power User */}
           <div className="border border-[#E2E8F0] p-6 rounded-xl bg-white hover:border-[#CBD5E1] transition-colors">
             <div className="text-sm font-bold text-paragraph uppercase tracking-wide mb-2">Power User</div>
-            <div className="text-3xl font-bold text-headline mb-1">$100<span className="text-lg text-paragraph font-normal">/mo</span></div>
+            <div className="text-3xl font-bold text-headline mb-1">$99<span className="text-lg text-paragraph font-normal">/mo</span></div>
             <div className="text-xs text-paragraph mb-6">3+ devices at once</div>
             <ul className="space-y-2 mb-6">
               <li className="text-sm flex gap-2"><Check size={16} className="text-button" /> Build ecosystem</li>
