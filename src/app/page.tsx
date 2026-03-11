@@ -149,7 +149,7 @@ export default async function Home() {
                 <div className="w-8 h-8 rounded-full bg-button text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
                 <div>
                   <h4 className="font-bold text-headline">Try for 30 days</h4>
-                  <p className="text-sm text-paragraph mt-1">Use it for real in life. Find your "aha" moment.</p>
+                  <p className="text-sm text-paragraph mt-1">Use it for real in daily life. Find your "aha" moment.</p>
                 </div>
               </div>
               <div className="flex gap-4">
