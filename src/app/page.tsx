@@ -132,7 +132,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
-              How Techloop works
+              How Techloop Works
             </h2>
             <p className="text-paragraph text-lg mb-8">
               We removed all the friction. No contracts. No hidden fees. No buyer's remorse. Just pick a device and we ship it today.
@@ -162,7 +162,7 @@ export default async function Home() {
             </div>
             <div className="mt-10">
               <Link href="/how-it-works">
-                <Button variant="secondary">See How It Works</Button>
+                <Button variant="secondary">How It Works</Button>
               </Link>
             </div>
           </div>
