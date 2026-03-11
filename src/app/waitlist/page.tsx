@@ -197,7 +197,7 @@ export default function WaitlistPage() {
                                 <span className="font-bold text-headline line-through">$400</span>
                             </div>
                             <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
-                                <span className="text-paragraph">Rental Payments (3 months):</span>
+                                <span className="text-paragraph">Rental Payments (3 x $42):</span>
                                 <span className="font-bold text-success">-$126</span>
                             </div>
                             <div className="flex justify-between items-center">
