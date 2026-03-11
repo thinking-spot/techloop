@@ -380,10 +380,14 @@ function WaitlistForm() {
                         name="device"
                         className="w-full h-12 pl-4 pr-10 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-button focus:border-transparent focus:bg-white transition-colors cursor-pointer"
                     >
-                        <option value="meta-rayban">Meta Ray-Ban Smart Glasses</option>
+                        <option value="meta-rayban">Meta Ray-Ban</option>
                         <option value="xreal">XREAL Air 2 Pro</option>
                         <option value="oura">Oura Ring Gen 4</option>
                         <option value="samsung">Samsung Galaxy Ring</option>
+                        <option value="nothing-ear-a">Nothing Ear (a)</option>
+                        <option value="timekettle">Timekettle</option>
+                        <option value="rabbit-r1">Rabbit R1</option>
+                        <option value="bee-bracelet">Bee Bracelet</option>
                         <option value="unsure">Not sure yet</option>
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
