@@ -132,10 +132,10 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl font-display font-medium text-headline mb-6 md:text-4xl">
-              Easy as ordering pizza online
+              Easy as ordering clothes online
             </h2>
             <p className="text-paragraph text-lg mb-8">
-              We&apos;ve removed all the friction. No contracts. No hidden fees. No buyer's remorse. Just pick a device and we ship it today.
+              We removed all the friction. No contracts. No hidden fees. No buyer's remorse. Just pick a device and we ship it today.
             </p>
             <div className="space-y-6">
               <div className="flex gap-4">
@@ -181,7 +181,7 @@ export default async function Home() {
         <div className="flex items-end justify-between mb-10 max-w-7xl mx-auto">
           <div>
             <h2 className="text-3xl font-display font-medium text-headline mb-2 md:text-4xl">Smart devices you actually want to try</h2>
-            <p className="text-paragraph text-lg">4.0+ star rated devices only. If it&apos;s not great, we don&apos;t carry it.</p>
+            <p className="text-paragraph text-lg">4+ star rated devices only. If it&apos;s not great, we don&apos;t carry it.</p>
           </div>
           <Link href="/browse" className="hidden md:block">
             <Button variant="tertiary" className="group">
