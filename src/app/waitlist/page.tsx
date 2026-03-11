@@ -366,7 +366,7 @@ function WaitlistForm() {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="you@work.com"
+                    placeholder="you@email.com"
                     required
                     className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors"
                 />
