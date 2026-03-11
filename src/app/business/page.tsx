@@ -6,67 +6,67 @@ import { Check, ArrowRight, TrendingUp, Users, Database, Shield, Zap, Globe, Ale
 import { Button } from "@/components/ui/Button";
 
 const INDUSTRIES = [
-  { name: "Sales Teams", icon: "📊", desc: "Equip reps with AI wearables that transcribe calls, surface insights, and close deals faster." },
-  { name: "Drivers & Fleet", icon: "🚛", desc: "Hands-free AI assistants for navigation, dispatch, and real-time route optimization." },
-  { name: "Paralegals", icon: "⚖️", desc: "AI-powered research devices that cut document review time by 70%." },
-  { name: "Customer Support", icon: "🎧", desc: "Smart devices with real-time sentiment analysis and instant knowledge retrieval." },
-  { name: "Healthcare", icon: "🏥", desc: "HIPAA-aware AI devices for patient intake, clinical notes, and care coordination." },
-  { name: "Education", icon: "🎓", desc: "Adaptive learning devices for classrooms, tutoring labs, and remote instruction." },
-  { name: "Medical Research", icon: "🔬", desc: "High-compute AI devices for data analysis, literature review, and lab documentation." },
-  { name: "Content & Influencers", icon: "🎬", desc: "Creative AI tools for editing, scripting, scheduling, and audience analytics." },
-  { name: "Field Techs", icon: "🔧", desc: "Rugged AI devices with visual diagnostics, manuals on demand, and remote expert support." },
-  { name: "Engineers", icon: "💻", desc: "Cutting-edge AI coding companions — test the latest before committing." },
+    { name: "Sales Teams", icon: "📊", desc: "Equip reps with AI wearables that transcribe calls, surface insights, and close deals faster." },
+    { name: "Drivers & Fleet", icon: "🚛", desc: "Hands-free AI assistants for navigation, dispatch, and real-time route optimization." },
+    { name: "Paralegals", icon: "⚖️", desc: "AI-powered research devices that cut document review time by 70%." },
+    { name: "Customer Support", icon: "🎧", desc: "Smart devices with real-time sentiment analysis and instant knowledge retrieval." },
+    { name: "Healthcare", icon: "🏥", desc: "HIPAA-aware AI devices for patient intake, clinical notes, and care coordination." },
+    { name: "Education", icon: "🎓", desc: "Adaptive learning devices for classrooms, tutoring labs, and remote instruction." },
+    { name: "Medical Research", icon: "🔬", desc: "High-compute AI devices for data analysis, literature review, and lab documentation." },
+    { name: "Content & Influencers", icon: "🎬", desc: "Creative AI tools for editing, scripting, scheduling, and audience analytics." },
+    { name: "Field Techs", icon: "🔧", desc: "Rugged AI devices with visual diagnostics, manuals on demand, and remote expert support." },
+    { name: "Engineers", icon: "💻", desc: "Cutting-edge AI coding companions — test the latest before committing." },
 ];
 
 const FEATURES = [
-  {
-    title: "Live Team Dashboard",
-    subtitle: "Real-time visibility, total privacy",
-    desc: "Monitor device status, usage trends, and team adoption metrics from one centralized dashboard. All user data is anonymized — you see what matters without compromising individual privacy.",
-    icon: <Users size={24} />,
-    color: "text-[#3DA9FC]",
-    bg: "bg-[#E0F2FE]"
-  },
-  {
-    title: "Effortless Team Management",
-    subtitle: "Add, remove, reassign in clicks",
-    desc: "Spin up a cohort of any size in minutes. Add team members, assign devices, track shipments, and manage returns — all from a single, intuitive admin panel.",
-    icon: <Layers size={24} />,
-    color: "text-purple-600",
-    bg: "bg-purple-50"
-  },
-  {
-    title: "Free Device Switching",
-    subtitle: "Every member finds their perfect fit",
-    desc: "Team members can swap to a different AI device anytime within your rental period. Not the right form factor? Wrong ecosystem? No problem — switch until every person has exactly what works for them.",
-    icon: <RotateCw size={24} />,
-    color: "text-green-600",
-    bg: "bg-green-50"
-  },
-  {
-    title: "Love It? Keep It.",
-    subtitle: "Buy any device at a team discount",
-    desc: "When your team finds the AI devices they can't live without, purchase them outright at a discounted rate. Each member can keep whichever device they love — no bulk uniformity required.",
-    icon: <TrendingUp size={24} />,
-    color: "text-amber-600",
-    bg: "bg-amber-50"
-  },
-  {
-    title: "No Minimums. Ever.",
-    subtitle: "Rent 1 device or 1,000",
-    desc: "Select any number of AI devices from our catalog of 67+ products across 6 categories. There are no minimum orders, no forced bundles. Scale up or down as your needs change.",
-    icon: <Database size={24} />,
-    color: "text-rose-600",
-    bg: "bg-rose-50"
-  },
-  {
-    title: "Your Accounts. Your Data.",
-    subtitle: "We only own the hardware",
-    desc: "Every AI device user account, subscription, and dataset belongs entirely to your organization. We own the physical device — that's it. When you return or buy, your data stays yours. Always.",
-    icon: <Shield size={24} />,
-    color: "text-blue-600",
-    bg: "bg-blue-50"
-  },
+    {
+        title: "Your Team Dashboard",
+        subtitle: "Live visibility, user privacy",
+        desc: "Monitor device status, usage trends, and team adoption metrics from one centralized dashboard. All user data is anonymized — you see what matters without compromising individual privacy.",
+        icon: <Users size={24} />,
+        color: "text-[#3DA9FC]",
+        bg: "bg-[#E0F2FE]"
+    },
+    {
+        title: "Easy Team Management",
+        subtitle: "Add, remove, reassign, easy",
+        desc: "Spin up a cohort of any size in minutes. Add team members, assign devices, track shipments, and manage returns — all from a single, intuitive admin panel.",
+        icon: <Layers size={24} />,
+        color: "text-purple-600",
+        bg: "bg-purple-50"
+    },
+    {
+        title: "Free Device Switching",
+        subtitle: "Everyone finds a perfect fit",
+        desc: "Team members can swap to a different AI device anytime within your rental period. Not the right form factor? Wrong ecosystem? No problem — switch until every person has exactly what works for them.",
+        icon: <RotateCw size={24} />,
+        color: "text-green-600",
+        bg: "bg-green-50"
+    },
+    {
+        title: "Love It? Keep It.",
+        subtitle: "Buy any device at a discount",
+        desc: "When your team finds the AI devices they can't live without, purchase them outright at a discounted rate. Each member can keep whichever device they love — no bulk uniformity required.",
+        icon: <TrendingUp size={24} />,
+        color: "text-amber-600",
+        bg: "bg-amber-50"
+    },
+    {
+        title: "No Min. Or Max.",
+        subtitle: "Rent 1 device or 1,000",
+        desc: "Select any number of AI devices from our catalog of 20+ products across 6 categories. There are no minimum orders, no forced bundles. Scale up or down as your needs change.",
+        icon: <Database size={24} />,
+        color: "text-rose-600",
+        bg: "bg-rose-50"
+    },
+    {
+        title: "Your Accounts. Your Data.",
+        subtitle: "Cutting edge AI, on your terms",
+        desc: "Every AI device user account, subscription, and dataset belongs entirely to your organization. We own the physical device — that's it. Whether you return or buy, your data stays yours.",
+        icon: <Shield size={24} />,
+        color: "text-blue-600",
+        bg: "bg-blue-50"
+    },
 ];
 
 export default function BusinessPage() {
@@ -81,7 +81,7 @@ export default function BusinessPage() {
 
     return (
         <div className="bg-white min-h-screen pb-20 overflow-x-hidden">
-            
+
             {/* Hero Section */}
             <section className="relative px-6 pt-10 md:px-12 lg:pt-20">
                 <div className="mx-auto max-w-5xl rounded-[2.5rem] bg-[#0F172A] p-8 pt-16 pb-12 md:p-20 text-center border border-[#334155] shadow-2xl relative overflow-hidden text-white">
@@ -91,14 +91,14 @@ export default function BusinessPage() {
 
                     <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-sm font-medium text-cyan-300 mb-8">
                         <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                        Now available — 67+ AI devices across 6 categories
+                        20+ AI devices across 6 categories
                     </div>
 
                     <h1 className="relative mx-auto mb-6 font-display text-[44px] md:text-[64px] font-bold leading-[1.05] tracking-tight max-w-4xl">
                         Give your team the <br />
                         <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,#38BDF8,#818CF8,#C084FC)] bg-[length:200%_200%] animate-[bg-position_6s_ease_infinite]">AI devices they deserve</span>
                     </h1>
-                    
+
                     <p className="relative mx-auto mb-10 text-[18px] md:text-[20px] text-slate-300 max-w-2xl leading-relaxed">
                         Rent cutting-edge AI hardware for your entire team. Everyone finds their perfect device, you keep full control, and nobody gets locked in.
                     </p>
@@ -152,7 +152,7 @@ export default function BusinessPage() {
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div>
                             <div className="w-16 h-1 bg-[linear-gradient(90deg,#38BDF8,#818CF8)] rounded-full mb-6" />
-                            <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mb-6 tracking-tight">Your team, at a glance</h2>
+                            <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mb-6 tracking-tight">AI-enabled teams, <br></br>at a glance</h2>
                             <p className="text-lg text-paragraph mb-8 leading-relaxed">
                                 The Techloop Business Dashboard gives you real-time visibility into every device in your fleet — without compromising individual privacy. Track device status, monitor adoption curves, and spot underutilized hardware before it becomes waste.
                             </p>
@@ -222,7 +222,7 @@ export default function BusinessPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <div className="w-16 h-1 bg-[linear-gradient(90deg,#38BDF8,#818CF8)] rounded-full mx-auto mb-6" />
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mb-4 tracking-tight">AI devices for every team</h2>
+                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mb-4 tracking-tight">AI tools for every team</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
                             From field operations to executive suites — Techloop equips any role with the right AI hardware.
                         </p>
@@ -235,8 +235,8 @@ export default function BusinessPage() {
                                 onClick={() => setActiveIndustry(i)}
                                 className={`
                                     flex items-center gap-2 px-6 py-3 rounded-full border text-sm font-medium transition-all duration-300
-                                    ${activeIndustry === i 
-                                        ? "bg-[linear-gradient(135deg,rgba(56,189,248,0.1),rgba(129,140,248,0.1))] border-[#3DA9FC]/30 text-headline shadow-sm" 
+                                    ${activeIndustry === i
+                                        ? "bg-[linear-gradient(135deg,rgba(56,189,248,0.1),rgba(129,140,248,0.1))] border-[#3DA9FC]/30 text-headline shadow-sm"
                                         : "bg-white border-[#F1F5F9] text-paragraph hover:border-[#3DA9FC]/30 hover:bg-[#F0F9FF]"
                                     }
                                 `}
@@ -271,10 +271,10 @@ export default function BusinessPage() {
 
                     <div className="grid md:grid-cols-4 gap-8">
                         {[
-                            { step: "01", title: "Choose Your Devices", desc: "Browse 67+ AI devices. Pick any combination, any quantity — there are no minimums or bundles." },
-                            { step: "02", title: "Build Your Cohort", desc: "Add team members, assign devices, and configure your team dashboard. We ship directly to each person." },
-                            { step: "03", title: "Swap & Optimize", desc: "Team members try devices risk-free. Anyone can switch to a different device until they find the perfect fit." },
-                            { step: "04", title: "Keep or Return", desc: "Love it? Buy at a team discount. Done? Return with free shipping. Every member decides for themselves." },
+                            { step: "01", title: "Choose Devices", desc: "Browse 20+ AI devices. Pick any combination, any quantity — there are no minimums or bundles." },
+                            { step: "02", title: "Build a Team", desc: "Add team members, assign devices, and configure your dashboard. We ship directly to each person." },
+                            { step: "03", title: "Fit and Swap", desc: "Everyone tries AI devices risk-free. They can switch to different devices until they find the perfect fit." },
+                            { step: "04", title: "Keep or Return", desc: "Love it? Buy at a team discount. Done? Return with free shipping. Everyone can decide for themselves." },
                         ].map((s, i) => (
                             <div key={i} className="relative p-8 bg-white rounded-3xl border border-[#F1F5F9] shadow-sm">
                                 <div className="absolute top-0 left-8 w-12 h-1 bg-button rounded-b-md" />
