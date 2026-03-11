@@ -124,7 +124,7 @@ export default function WaitlistPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing Techloop</span>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Netflix for DVDs, but for AI devices</h2>
+                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Rent-to-buy AI devices for everyone</h2>
                         <p className="text-xl text-paragraph max-w-2xl mx-auto">
                             Rent any AI device for $42/month. Swap again and again. Find the perfect fit? Keep it at a discount.
                         </p>
@@ -251,7 +251,7 @@ export default function WaitlistPage() {
                         <div className="h-4 bg-white/10 rounded-full overflow-hidden mb-4">
                             <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-[17%] rounded-full"></div>
                         </div>
-                        <p className="text-sm text-cyan-200">Only 837 founder spots remaining</p>
+
                     </div>
                 </div>
             </section>
