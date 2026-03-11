@@ -52,7 +52,7 @@ export default function Sidebar() {
                     <p className="text-xs text-paragraph mb-3">
                         Contact our support team 24/7. We&apos;re here to help.
                     </p>
-                    <Link href="/contact">
+                    <Link href="/help">
                         <button className="w-full bg-white border border-[#E2E8F0] text-headline text-xs font-semibold py-2 rounded-lg hover:bg-[#F1F5F9] transition-colors">
                             Contact Support
                         </button>

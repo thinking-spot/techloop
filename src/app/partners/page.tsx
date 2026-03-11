@@ -18,8 +18,8 @@ export default function PartnersPage() {
         <div className="bg-white min-h-screen pb-20">
 
             {/* Hero Section */}
-            <section className="relative px-4 pt-12 md:px-12 lg:pt-20">
-                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-[#0F172A] p-6 md:p-20 text-center border border-[#334155] shadow-2xl relative overflow-hidden text-white">
+            <section className="relative px-6 pt-10 md:px-12 lg:pt-20">
+                <div className="mx-auto max-w-5xl rounded-[2.5rem] bg-[#0F172A] p-8 pt-16 pb-12 md:p-20 text-center border border-[#334155] shadow-2xl relative overflow-hidden text-white">
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/10 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
                     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/2" />
@@ -28,19 +28,19 @@ export default function PartnersPage() {
                         <Zap size={16} /> Distribution-as-a-Service
                     </div>
 
-                    <h1 className="relative mx-auto mb-2 font-display text-[40px] font-bold leading-tight md:text-[56px] max-w-4xl">
+                    <h1 className="relative mx-auto mb-2 font-display text-[44px] md:text-[64px] font-bold leading-[1.05] tracking-tight max-w-4xl">
                         Partner with Techloop
                     </h1>
                     <div className="relative mx-auto mb-6 font-display text-[20px] font-semibold leading-tight md:text-[56px] max-w-4xl">
                         <RotatingHeadline />
                     </div>
-                    <p className="relative mx-auto mb-10 text-[20px] md:text-[24px] text-slate-300 max-w-4xl leading-relaxed">
+                    <p className="relative mx-auto mb-10 text-[18px] md:text-[20px] text-slate-300 max-w-4xl leading-relaxed">
                         Acquiring customers is about more than the MSRP of your hardware. It’s about the LTV of users in your ecosystem.
                     </p>
 
                     <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="https://calendar.app.google/T6jpQJfSbEkuAxeo8">
-                            <Button size="lg" className="w-full sm:w-auto px-8 py-6 text-lg bg-[#3DA9FC] hover:bg-[#094067] border-0 text-white shadow-lg shadow-cyan-500/20">
+                            <Button size="md" className="w-full sm:w-auto px-8 text-lg bg-[#3DA9FC] hover:bg-[#094067] border-0 text-white shadow-lg shadow-cyan-500/20">
                                 Book a Call
                             </Button>
                         </Link>

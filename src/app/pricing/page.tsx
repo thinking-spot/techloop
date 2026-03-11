@@ -277,7 +277,7 @@ export default function PricingPage() {
 
                     <div className="text-center mt-12">
                         <p className="text-paragraph mb-4">Still have questions?</p>
-                        <Link href="/contact">
+                        <Link href="/help">
                             <Button variant="secondary">Help & Support</Button>
                         </Link>
                     </div>
