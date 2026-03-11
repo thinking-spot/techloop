@@ -30,7 +30,7 @@ export default function WaitlistPage() {
 
                     <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 w-full">
                         <div className="space-y-6 md:space-y-8 max-w-lg mx-auto lg:mx-0">
-                            <h1 className="font-display text-[44px] md:text-[56px] font-bold tracking-tight leading-[1.05] text-headline">
+                            <h1 className="font-display text-[44px] md:text-[48px] font-bold tracking-tight leading-[1.05] text-headline">
                                 Ready to love 💙 <br className="hidden lg:block" /><span className="text-[#3DA9FC]">Techloop 🤖</span>
                             </h1>
                             <p className="text-[18px] md:text-[20px] text-paragraph leading-relaxed font-light">
@@ -38,15 +38,18 @@ export default function WaitlistPage() {
                                 Try risk-free before you buy.
                             </p>
 
-                            <div className="relative flex flex-col sm:flex-row lg:flex-wrap justify-center lg:justify-start gap-3 text-sm font-medium text-paragraph/80 max-w-[200px] sm:max-w-none mx-auto lg:mx-0">
-                                <div className="flex w-full sm:w-auto items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <CheckCircle2 className="text-[#22C55E]" size={16} /> New AI devices
+                            <div className="relative grid grid-cols-2 sm:flex sm:flex-wrap lg:grid lg:grid-cols-2 justify-center lg:justify-start items-center gap-3 text-sm font-medium text-paragraph/80 max-w-[320px] sm:max-w-none mx-auto lg:mx-0">
+                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <Check size={16} className="text-[#22C55E]" /> New AI devices
                                 </div>
-                                <div className="flex w-full sm:w-auto items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <CheckCircle2 className="text-[#22C55E]" size={16} /> Free swaps
+                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <Check size={16} className="text-[#22C55E]" /> Rent-to-own
                                 </div>
-                                <div className="flex w-full sm:w-auto items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <CheckCircle2 className="text-[#22C55E]" size={16} /> Rent-to-own
+                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <Check size={16} className="text-[#22C55E]" /> Free swaps
+                                </div>
+                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <Shield size={16} className="text-[#22C55E]" /> Cancel anytime
                                 </div>
                             </div>
                         </div>
@@ -67,10 +70,7 @@ export default function WaitlistPage() {
 
                             </div>
 
-                            <div className="mt-4 flex justify-center gap-4 text-[10px] text-paragraph uppercase font-bold tracking-wider opacity-60">
-                                <span className="flex items-center gap-1"><Shield size={12} /> Secure Data</span>
-                                <span className="flex items-center gap-1"><CreditCard size={12} /> No Card Needed</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>

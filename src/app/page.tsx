@@ -26,7 +26,7 @@ export default async function Home() {
           {/* Background decorative blob */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-          <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[64px]">
+          <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[54px]">
             Try AI Devices <br />
             the <span className="text-[#3DA9FC] relative inline-block">
               Smart Way

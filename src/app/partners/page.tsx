@@ -28,10 +28,10 @@ export default function PartnersPage() {
                         <Zap size={16} /> Distribution-as-a-Service
                     </div>
 
-                    <h1 className="relative mx-auto mb-2 font-display text-[44px] md:text-[64px] font-bold leading-[1.05] tracking-tight max-w-4xl">
+                    <h1 className="relative mx-auto mb-2 font-display text-[44px] md:text-[54px] font-bold leading-[1.05] tracking-tight max-w-4xl">
                         Partner with Techloop
                     </h1>
-                    <div className="relative mx-auto mb-6 font-display text-[20px] font-semibold leading-tight md:text-[56px] max-w-4xl">
+                    <div className="relative mx-auto mb-6 font-display text-[20px] font-semibold leading-tight md:text-[48px] max-w-4xl">
                         <RotatingHeadline />
                     </div>
                     <p className="relative mx-auto mb-10 text-[18px] md:text-[20px] text-slate-300 max-w-4xl leading-relaxed">

@@ -96,7 +96,7 @@ export default function PricingPage() {
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                    <h1 className="relative mx-auto mb-6 font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[64px]">
+                    <h1 className="relative mx-auto mb-6 font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[54px]">
                         Try any AI device for $42/m.
                     </h1>
                     <p className="relative mx-auto mb-10 text-[18px] md:text-[20px] text-paragraph max-w-2xl mx-auto leading-relaxed">
