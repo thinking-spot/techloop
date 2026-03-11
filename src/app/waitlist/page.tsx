@@ -23,30 +23,30 @@ export default function WaitlistPage() {
         <div className="bg-white min-h-screen font-sans text-headline">
 
             {/* 1. Hero Section */}
-            <section className="relative px-4 pt-12 md:px-12 lg:pt-20">
-                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-6 md:p-16 text-center lg:text-left border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
+            <section className="relative px-4 pt-10 md:px-12 lg:pt-20">
+                <div className="mx-auto max-w-5xl rounded-[2.5rem] bg-[linear-gradient(135deg,#F0F9FF_0%,#E6F4FE_50%,#F1F5F9_100%)] p-6 pt-16 pb-12 md:p-16 text-center lg:text-left border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
-                        <div className="space-y-6 md:space-y-8">
-                            <h1 className="font-display text-[32px] md:text-[48px] font-bold tracking-tight leading-[1.1] text-headline">
-                                Ready to love 💙 <span className="text-button">Techloop 🤖</span>
+                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 w-full">
+                        <div className="space-y-6 md:space-y-8 max-w-lg mx-auto lg:mx-0">
+                            <h1 className="font-display text-[44px] md:text-[56px] font-bold tracking-tight leading-[1.05] text-headline">
+                                Ready to love 💙 <br className="hidden lg:block" /><span className="text-[#3DA9FC]">Techloop 🤖</span>
                             </h1>
-                            <p className="text-base md:text-[20px] text-paragraph leading-relaxed font-light">
+                            <p className="text-[18px] md:text-[20px] text-paragraph leading-relaxed font-light">
                                 AI glasses, rings, watches, earbuds, cards, and pins.
                                 Try risk-free before you buy.
                             </p>
 
-                            <div className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-3 text-sm md:text-base font-medium text-paragraph">
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> New AI devices
+                            <div className="relative flex flex-col sm:flex-row lg:flex-wrap justify-center lg:justify-start gap-3 text-sm font-medium text-paragraph/80 max-w-[200px] sm:max-w-none mx-auto lg:mx-0">
+                                <div className="flex w-full sm:w-auto items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <CheckCircle2 className="text-[#22C55E]" size={16} /> New AI devices
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> Rent-to-own
+                                <div className="flex w-full sm:w-auto items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <CheckCircle2 className="text-[#22C55E]" size={16} /> Free swaps
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-button" size={20} /> Free swaps
+                                <div className="flex w-full sm:w-auto items-center justify-center gap-2 bg-white px-5 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                                    <CheckCircle2 className="text-[#22C55E]" size={16} /> Rent-to-own
                                 </div>
                             </div>
                         </div>

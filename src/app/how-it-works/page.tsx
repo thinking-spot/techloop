@@ -27,31 +27,31 @@ export default function HowItWorksPage() {
         <div className="bg-white min-h-screen pb-20">
 
             {/* Hero */}
-            <section className="relative px-6 pt-12 md:px-12 lg:pt-20">
-                <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-8 md:p-20 text-center border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
+            <section className="relative px-6 pt-10 md:px-12 lg:pt-20">
+                <div className="mx-auto max-w-5xl rounded-[2.5rem] bg-[linear-gradient(135deg,#F0F9FF_0%,#E6F4FE_50%,#F1F5F9_100%)] p-8 pt-16 pb-12 md:p-20 text-center border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
                     {/* Background decorative blob */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                    <h1 className="relative mx-auto mb-6 font-display text-[40px] font-bold leading-tight text-headline md:text-[48px]">
+                    <h1 className="relative mx-auto mb-6 font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[64px]">
                         Rent-to-own AI devices. <br className="hidden md:block" />Swap anytime.
                     </h1>
-                    <p className="relative mx-auto mb-10 text-[20px] md:text-[22px] text-paragraph max-w-2xl leading-relaxed">
+                    <p className="relative mx-auto mb-10 text-[18px] md:text-[20px] text-paragraph max-w-2xl leading-relaxed">
                         $42/month. No commitment. Pick any device and try it for real. If you love it, keep it.
                     </p>
 
 
-                    <div className="relative flex flex-wrap justify-center gap-4 text-sm font-medium text-paragraph/80">
-                        <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Truck size={16} className="text-success" /> 2-3 day shipping
+                    <div className="relative grid grid-cols-2 md:flex md:flex-row justify-center items-center gap-3 text-sm font-medium text-paragraph/80 max-w-[320px] md:max-w-none mx-auto">
+                        <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                            <Truck size={16} className="text-[#22C55E]" /> 2-3 day shipping
                         </div>
-                        <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Check size={16} className="text-success" /> Rent-to-own
+                        <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                            <Check size={16} className="text-[#22C55E]" /> Rent-to-own
                         </div>
-                        <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <RefreshCcw size={16} className="text-success" /> Free swaps
+                        <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                            <RefreshCcw size={16} className="text-[#22C55E]" /> Free swaps
                         </div>
-                        <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-                            <Shield size={16} className="text-success" /> Cancel anytime
+                        <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+                            <Shield size={16} className="text-[#22C55E]" /> Cancel anytime
                         </div>
                     </div>
                 </div>

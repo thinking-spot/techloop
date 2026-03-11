@@ -21,50 +21,50 @@ export default async function Home() {
     <div className="flex flex-col gap-24 pb-20">
 
       {/* Hero Section */}
-      <section className="relative px-4 pt-12 md:px-12 lg:pt-20">
-        <div className="mx-auto max-w-6xl rounded-[2.5rem] bg-gradient-to-br from-[#F0F9FF] via-[#E6F4FE] to-[#F1F5F9] p-6 md:p-20 text-center border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
+      <section className="relative px-4 pt-10 md:px-12 lg:pt-20">
+        <div className="mx-auto max-w-5xl rounded-[2.5rem] bg-[linear-gradient(135deg,#F0F9FF_0%,#E6F4FE_50%,#F1F5F9_100%)] p-6 pt-16 pb-12 md:p-20 text-center border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
           {/* Background decorative blob */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-          <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-[40px] font-bold leading-[1.1] tracking-tight text-headline md:text-[52px]">
-            Try AI Devices <br className="hidden md:block" />
-            the <span className="text-button relative inline-block">
+          <h1 className="relative mx-auto mb-6 max-w-4xl font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[64px]">
+            Try AI Devices <br />
+            the <span className="text-[#3DA9FC] relative inline-block">
               Smart Way
-              <svg className="absolute w-full h-3 -bottom-1 left-0 text-button/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
+              <svg className="absolute w-[110%] h-3 -bottom-1 -left-[5%] text-[#3DA9FC]/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="6" fill="none" strokeLinecap="round" />
               </svg>
             </span>
           </h1>
-          <p className="relative mx-auto mb-10 max-w-2xl text-[20px] text-paragraph leading-relaxed md:text-[22px]">
-            AI glasses, rings, watches, earbuds, pins and more. <br className="hidden md:block" />
+          <p className="relative mx-auto mb-10 max-w-2xl text-[18px] text-paragraph leading-relaxed md:text-[20px]">
+            AI glasses, rings, watches, <br className="md:hidden" /> earbuds, pins and more. <br className="hidden md:block" />
             Find the perfect fit for $42/month.
           </p>
 
-          <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row mb-12">
-            <Link href="/browse">
-              <Button size="lg" className="w-full sm:w-auto px-8 py-7 text-lg shadow-lg shadow-button/20 hover:shadow-button/40 md:px-10">
-                Find Your Device <ArrowRight className="ml-2" />
+          <div className="relative flex flex-col items-center justify-center gap-4 sm:flex-row mb-12 max-w-md mx-auto sm:max-w-none">
+            <Link href="/browse" className="w-full sm:w-auto">
+              <Button size="md" className="w-full sm:w-auto px-6 py-6 text-base shadow-lg shadow-button/20 hover:shadow-button/40">
+                Find Your Device <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/how-it-works">
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-8 py-7 text-lg bg-white/60 hover:bg-white md:px-10">
+            <Link href="/how-it-works" className="w-full sm:w-auto">
+              <Button variant="secondary" size="md" className="w-full sm:w-auto px-6 py-6 text-base bg-white hover:bg-white/90 border-[#1B2B41] text-[#1B2B41] font-semibold">
                 How It Works
               </Button>
             </Link>
           </div>
 
-          <div className="relative flex flex-wrap justify-center gap-4 text-sm font-medium text-paragraph/80">
-            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-              <Check size={16} className="text-success" /> New AI devices
+          <div className="relative grid grid-cols-2 md:flex md:flex-row justify-center items-center gap-3 text-sm font-medium text-paragraph/80 max-w-[320px] md:max-w-none mx-auto">
+            <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+              <Check size={16} className="text-[#22C55E]" /> New AI devices
             </div>
-            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-              <Check size={16} className="text-success" /> Rent-to-own
+            <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+              <Check size={16} className="text-[#22C55E]" /> Rent-to-own
             </div>
-            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-              <Check size={16} className="text-success" /> Free swaps
+            <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+              <Check size={16} className="text-[#22C55E]" /> Free swaps
             </div>
-            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-white/50">
-              <Check size={16} className="text-success" /> Cancel anytime
+            <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
+              <Check size={16} className="text-[#22C55E]" /> Cancel anytime
             </div>
           </div>
 
