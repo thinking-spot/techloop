@@ -283,7 +283,7 @@ export default function WaitlistPage() {
                             <div className="absolute top-0 right-0 bg-button text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg uppercase">Most Popular</div>
                             <h3 className="text-2xl font-bold text-headline mb-2">Explorer</h3>
                             <div className="mb-6"><span className="text-4xl font-bold text-headline">$75</span><span className="text-paragraph">/mo</span></div>
-                            <p className="text-sm text-paragraph mb-8">Compare 2 devices side-by-side.</p>
+                            <p className="text-sm text-paragraph mb-8">Try 2 wearables side-by-side.</p>
                             <ul className="space-y-4 text-sm text-headline mb-8">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 2 devices at a time</li>
                                 <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 8 free swaps / year</li>
@@ -295,7 +295,7 @@ export default function WaitlistPage() {
                         {/* Tier 3 */}
                         <div className="border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                             <h3 className="text-2xl font-bold text-headline mb-2">Power User</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$100</span><span className="text-paragraph">/mo</span></div>
+                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$99</span><span className="text-paragraph">/mo</span></div>
                             <p className="text-sm text-paragraph mb-8">The full AI lifestyle.</p>
                             <ul className="space-y-4 text-sm text-headline mb-8">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 3 devices at a time</li>
