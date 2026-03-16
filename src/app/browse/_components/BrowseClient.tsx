@@ -382,7 +382,7 @@ export default function BrowseClient({
                         <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
                             <div>
                                 <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Glasses Buying Guide</h3>
-                                <p className="text-sm text-paragraph mb-4">Not sure which smart glasses are right for you?</p>
+                                <p className="text-sm text-paragraph mb-4">Which smart glasses are the best fit for you?</p>
                                 <ul className="space-y-3 text-sm text-paragraph">
                                     <li><strong>Camera Glasses (Meta Ray-Ban):</strong> Best for content creators and POV video.</li>
                                     <li><strong>AR Display Glasses (XREAL):</strong> Best for productivity, gaming, and watching movies on a giant virtual screen.</li>
