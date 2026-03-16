@@ -48,11 +48,11 @@ export default function BrowseClient({
     const allBrands = ["Meta", "Oura", "XREAL", "Apple", "Humane", "Whoop", "Samsung", "Nothing", "Brilliant", "Rabbit"];
     const allUseCases = ["Productivity", "Fitness & Health", "Entertainment", "Communication", "Developer", "AI Assistant"];
 
-    const priceRanges = [
-        { label: "Under $25/mo", min: 0, max: 25 },
-        { label: "$25 - $50/mo", min: 25, max: 50 },
-        { label: "$50 - $100/mo", min: 50, max: 100 },
-        { label: "$100+/mo", min: 100, max: 9999 },
+    const msrpRanges = [
+        { label: "Under $200", min: 0, max: 200 },
+        { label: "$200 - $400", min: 200, max: 400 },
+        { label: "$400 - $600", min: 400, max: 600 },
+        { label: "$600+", min: 600, max: 9999 },
     ];
 
     // Toggle filter helper
@@ -93,9 +93,10 @@ export default function BrowseClient({
             // Price
             if (selectedPriceRanges.length > 0) {
                 const matchesPrice = selectedPriceRanges.some(rangeLabel => {
-                    const range = priceRanges.find(r => r.label === rangeLabel);
+                    const range = msrpRanges.find(r => r.label === rangeLabel);
                     if (!range) return false;
-                    return price >= range.min && price < range.max;
+                    const msrp = device.msrp || 0;
+                    return msrp >= range.min && msrp < range.max;
                 });
                 if (!matchesPrice) return false;
             }
@@ -288,11 +289,11 @@ export default function BrowseClient({
                             </div>
                         </div>
 
-                        {/* Price */}
+                        {/* MSRP */}
                         <div>
-                            <h3 className="text-sm font-bold uppercase tracking-wider text-headline mb-4">Price / Month</h3>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-headline mb-4">MSRP</h3>
                             <div className="space-y-3">
-                                {priceRanges.map((range) => (
+                                {msrpRanges.map((range) => (
                                     <Checkbox
                                         key={range.label}
                                         label={range.label}
