@@ -922,7 +922,7 @@ export const devices: Device[] = [
         name: "Limitless Pendant",
         category: "AI Assistant",
         price: "42",
-        msrp: 99,
+        msrp: 199,
         tagline: "Your personalized AI memory.",
         description: "A wearable device that records and processes your conversations to help you remember everything.",
         imageUrl: "https://placehold.co/600x400?text=Limitless+Pendant",
