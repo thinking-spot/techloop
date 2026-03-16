@@ -7,8 +7,8 @@ export const revalidate = 3600;
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Browse AI Wearables | Techloop",
-    description: "Rent the latest smart glasses, AI pins, and smart rings. Flexible plans, free shipping, swap anytime.",
+    title: "Browse the best AI wearables | Techloop",
+    description: "Rent-to-buy the best AI glasses, watches, rings, earbuds, pins, pendants and cards. Flexible plans, free shipping, swap anytime.",
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },
