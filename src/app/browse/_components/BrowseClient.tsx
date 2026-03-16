@@ -34,7 +34,17 @@ export default function BrowseClient({
 
     // Extract unique categories and brands for filters DYNAMICALLY from the passed data
     // This allows the filters to update if the DB changes content categories
-    const allCategories = useMemo(() => Array.from(new Set(initialDevices.map(d => d.category))), [initialDevices]);
+    const allCategories = [
+        "Smart Glasses",
+        "AR Glasses",
+        "Smart Ring",
+        "Smartwatch",
+        "AI Earbuds",
+        "Pins",
+        "Pendants",
+        "Cards",
+        "Robotics"
+    ];
     const allBrands = ["Meta", "Oura", "XREAL", "Apple", "Humane", "Whoop", "Samsung", "Nothing", "Brilliant", "Rabbit"];
     const allUseCases = ["Productivity", "Fitness & Health", "Entertainment", "Communication", "Developer", "AI Assistant"];
 

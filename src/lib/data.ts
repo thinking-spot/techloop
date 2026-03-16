@@ -433,7 +433,7 @@ export const devices: Device[] = [
     {
         id: "whoop-4",
         name: "Whoop 4.0",
-        category: "Fitness Tracker",
+        category: "Smartwatch",
         price: "42",
         msrp: 280,
         tagline: "Your 24/7 digital fitness coach.",
@@ -497,7 +497,7 @@ export const devices: Device[] = [
     {
         id: "rabbit-r1",
         name: "Rabbit R1",
-        category: "AI Assistant",
+        category: "Cards",
         price: "42",
         msrp: 199,
         tagline: "Your pocket AI that actually does things.",
@@ -689,7 +689,7 @@ export const devices: Device[] = [
     {
         id: "quest-3",
         name: "Meta Quest 3",
-        category: "AR/VR Headset",
+        category: "AR Glasses",
         price: "42",
         msrp: 499,
         tagline: "Expand your world.",
@@ -920,7 +920,7 @@ export const devices: Device[] = [
     {
         id: "limitless-pendant",
         name: "Limitless Pendant",
-        category: "AI Assistant",
+        category: "Pendants",
         price: "42",
         msrp: 199,
         tagline: "Your personalized AI memory.",
@@ -933,7 +933,7 @@ export const devices: Device[] = [
     {
         id: "plaud-notepin-s",
         name: "Plaud NotePin S",
-        category: "AI Assistant",
+        category: "Pins",
         price: "42",
         msrp: 179,
         tagline: "Never miss a thought.",
@@ -946,7 +946,7 @@ export const devices: Device[] = [
     {
         id: "tab-pendant",
         name: "Tab Pendant",
-        category: "AI Assistant",
+        category: "Pendants",
         price: "42",
         msrp: 600,
         tagline: "The wearable AI companion.",
