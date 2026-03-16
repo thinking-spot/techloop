@@ -36,7 +36,8 @@ export default async function Home() {
             </span>
           </h1>
           <p className="relative mx-auto mb-10 max-w-2xl text-[18px] text-paragraph leading-relaxed md:text-[20px]">
-            AI glasses, rings, watches, <br className="md:hidden" /> earbuds, pins and more. <br className="hidden md:block" />
+            AI glasses, watches, rings, earbuds, pins, pendants, cards, and
+            more. <br className="md:hidden" /><br className="hidden md:block" />
             Find the perfect fit for $42/month.
           </p>
 
