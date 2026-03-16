@@ -29,6 +29,7 @@ export default function DeviceCard(props: DeviceCardProps) {
     const priceStr = props.device?.price || props.price?.toString();
     const price = parseFloat(priceStr || "0");
     const image = props.device?.imageUrl || props.image;
+    const msrp = props.device?.msrp;
     const rating = props.device?.rating || 4.5;
     const reviews = props.device?.reviewCount || 10;
     const description = props.device?.description || "";
@@ -92,9 +93,17 @@ export default function DeviceCard(props: DeviceCardProps) {
                 </Link>
 
                 <div className="mt-auto flex items-center justify-between gap-4 pt-4 border-t border-[#F1F5F9]">
-                    <div className="flex flex-col">
-                        <span className="text-lg font-bold text-headline">${price}</span>
-                        <span className="text-xs font-medium text-paragraph uppercase tracking-wide">Per Month</span>
+                    <div className="flex gap-4">
+                        <div className="flex flex-col">
+                            <span className="text-lg font-bold text-headline">${price}</span>
+                            <span className="text-xs font-medium text-paragraph uppercase tracking-wide">Month</span>
+                        </div>
+                        {msrp && (
+                            <div className="flex flex-col justify-start">
+                                <span className="text-lg font-bold text-green-600 line-through">${msrp}</span>
+                                <span className="text-xs font-medium text-green-600 uppercase tracking-wide">MSRP</span>
+                            </div>
+                        )}
                     </div>
 
                     <Button

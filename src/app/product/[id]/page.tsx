@@ -276,9 +276,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
                             <div className="rounded-2xl border border-[#F1F5F9] bg-white p-6 shadow-lg shadow-gray-100/50">
                                 <div className="mb-6">
-                                    <div className="flex items-baseline gap-1 mb-1">
-                                        <span className="font-display text-5xl font-bold text-headline">${device.price}</span>
-                                        <span className="text-xl text-paragraph font-medium">/mo</span>
+                                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="font-display text-5xl font-bold text-headline">${device.price}</span>
+                                            <span className="text-xl text-paragraph font-medium">/mo</span>
+                                        </div>
+                                        {device.msrp && (
+                                            <span className="text-lg text-green-600 font-bold line-through whitespace-nowrap">${device.msrp} MSRP</span>
+                                        )}
                                     </div>
                                     <p className="text-sm text-green-600 font-medium">
                                         ≈ ${(parseInt(device.price) / 30).toFixed(2)} / day to try risk-free
@@ -323,7 +328,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 <div className="flex items-center gap-4">
                     <div className="flex-1">
                         <div className="text-xs text-paragraph uppercase font-bold">Monthly Rental</div>
-                        <div className="text-xl font-bold text-headline">${device.price}<span className="text-sm font-normal text-paragraph">/mo</span></div>
+                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 leading-tight">
+                            <div className="text-xl font-bold text-headline">${device.price}<span className="text-sm font-normal text-paragraph">/mo</span></div>
+                            {device.msrp && <span className="text-xs text-green-600 font-bold line-through">${device.msrp} MSRP</span>}
+                        </div>
                     </div>
                     <div className="flex-1">
                         <AddToCartButton product={device} />
