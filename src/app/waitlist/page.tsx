@@ -61,7 +61,7 @@ export default function WaitlistPage() {
                                     <AlertCircle size={14} /> Limited Spots
                                 </div>
 
-                                <p className="text-paragraph text-sm">Be the first to know when we launch in Q1 2026.</p>
+                                <p className="text-paragraph text-sm">Be the first to know when we launch in Q2 2026.</p>
                             </div>
 
                             <WaitlistForm />
