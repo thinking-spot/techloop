@@ -19,8 +19,8 @@ interface BrowseClientProps {
 
 export default function BrowseClient({
     initialDevices,
-    pageTitle = "Find your perfect AI wearable",
-    pageDescription = "Browse 20+ devices across 6 categories. All brand new. All swappable. All available to ship today.",
+    pageTitle = "Find the best AI wearables",
+    pageDescription = "Browse dozens of devices across 7 categories. All brand new. All swappable. All available to ship today.",
     initialCategoryFilter = [],
     buyingGuideSlot
 }: BrowseClientProps) {
@@ -201,7 +201,7 @@ export default function BrowseClient({
                         <span className="flex items-center gap-2">📦 Free 2-3 day shipping</span>
                         <span className="flex items-center gap-2">🔄 4 free swaps per year</span>
                         <span className="flex items-center gap-2">⭐ 4+ star average rating</span>
-                        <span className="flex items-center gap-2">✅ 98% deposit refund rate</span>
+                        <span className="flex items-center gap-2">✅ Rent-to-own</span>
                     </div>
                 </div>
             </div>
