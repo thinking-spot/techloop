@@ -38,7 +38,7 @@ export const devices: Device[] = [
     {
         id: "meta-rayban",
         name: "Meta Ray-Ban Wayfarer",
-        category: "Smart Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 399,
         tagline: "Look normal. Act superhuman.",
@@ -112,7 +112,7 @@ export const devices: Device[] = [
     {
         id: "xreal-air-pro",
         name: "XREAL Air 2 Pro",
-        category: "AR Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 499,
         tagline: "Your personal 130-inch screen, anywhere.",
@@ -177,7 +177,7 @@ export const devices: Device[] = [
     {
         id: "oura-ring",
         name: "Oura Ring Gen 4",
-        category: "Smart Ring",
+        category: "Rings",
         price: "42",
         msrp: 349,
         tagline: "Your body's story, told by a ring.",
@@ -233,7 +233,7 @@ export const devices: Device[] = [
     {
         id: "samsung-ring",
         name: "Samsung Galaxy Ring",
-        category: "Smart Ring",
+        category: "Rings",
         price: "42",
         msrp: 399,
         tagline: "The smart ring that loves your Galaxy phone.",
@@ -304,7 +304,7 @@ export const devices: Device[] = [
     {
         id: "nothing-ear",
         name: "Nothing Ear",
-        category: "AI Earbuds",
+        category: "Earbuds",
         price: "42",
         msrp: 149,
         tagline: "ChatGPT in your ears. Music in your soul.",
@@ -368,7 +368,7 @@ export const devices: Device[] = [
     {
         id: "brilliant-labs-frame",
         name: "Brilliant Labs Frame",
-        category: "Smart Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 349,
         tagline: "Open-source smart glasses for hackers.",
@@ -433,7 +433,7 @@ export const devices: Device[] = [
     {
         id: "whoop-4",
         name: "Whoop 4.0",
-        category: "Smartwatch",
+        category: "Watches",
         price: "42",
         msrp: 280,
         tagline: "Your 24/7 digital fitness coach.",
@@ -561,7 +561,7 @@ export const devices: Device[] = [
     {
         id: "nothing-ear-a",
         name: "Nothing Ear (a)",
-        category: "AI Earbuds",
+        category: "Earbuds",
         price: "42",
         msrp: 149,
         tagline: "AI features without the premium price.",
@@ -625,7 +625,7 @@ export const devices: Device[] = [
     {
         id: "xreal-air-2",
         name: "XREAL Air 2",
-        category: "AR Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 449,
         tagline: "Same great display, without the Pro features.",
@@ -689,7 +689,7 @@ export const devices: Device[] = [
     {
         id: "quest-3",
         name: "Meta Quest 3",
-        category: "AR Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 499,
         tagline: "Expand your world.",
@@ -738,7 +738,7 @@ export const devices: Device[] = [
     {
         id: "solos-airgo-3",
         name: "Solos AirGo 3",
-        category: "Smart Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 249,
         tagline: "Your smart daily companion.",
@@ -751,7 +751,7 @@ export const devices: Device[] = [
     {
         id: "xreal-air-2-ultra",
         name: "XREAL Air 2 Ultra",
-        category: "AR Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 649,
         tagline: "The spatial computing edge.",
@@ -764,7 +764,7 @@ export const devices: Device[] = [
     {
         id: "viture-pro-xr",
         name: "Viture Pro XR",
-        category: "AR Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 459,
         tagline: "Your portable immersive cinema.",
@@ -777,7 +777,7 @@ export const devices: Device[] = [
     {
         id: "rokid-ar-lite",
         name: "Rokid AR Lite",
-        category: "AR Glasses",
+        category: "Glasses",
         price: "42",
         msrp: 749,
         tagline: "Lightweight spatial computing.",
@@ -790,7 +790,7 @@ export const devices: Device[] = [
     {
         id: "ultrahuman-ring-air",
         name: "Ultrahuman Ring Air",
-        category: "Smart Ring",
+        category: "Rings",
         price: "42",
         msrp: 349,
         tagline: "Metabolism and recovery tracking.",
@@ -803,7 +803,7 @@ export const devices: Device[] = [
     {
         id: "movano-evie-ring",
         name: "Movano Evie Ring",
-        category: "Smart Ring",
+        category: "Rings",
         price: "42",
         msrp: 269,
         tagline: "Designed specifically for women's health.",
@@ -816,7 +816,7 @@ export const devices: Device[] = [
     {
         id: "circular-ring-slim",
         name: "Circular Ring Slim",
-        category: "Smart Ring",
+        category: "Rings",
         price: "42",
         msrp: 281,
         tagline: "Sleek and actionable health insights.",
@@ -829,7 +829,7 @@ export const devices: Device[] = [
     {
         id: "google-pixel-watch",
         name: "Google Pixel Watch",
-        category: "Smartwatch",
+        category: "Watches",
         price: "42",
         msrp: 349,
         tagline: "Help by Google. Health by Fitbit.",
@@ -842,7 +842,7 @@ export const devices: Device[] = [
     {
         id: "apple-watch-series-10",
         name: "Apple Series 10",
-        category: "Smartwatch",
+        category: "Watches",
         price: "42",
         msrp: 399,
         tagline: "The ultimate device for a healthy life.",
@@ -855,7 +855,7 @@ export const devices: Device[] = [
     {
         id: "garmin-bounce-2",
         name: "Garmin Bounce 2",
-        category: "Smartwatch",
+        category: "Watches",
         price: "42",
         msrp: 149,
         tagline: "Stay connected to the kids.",
@@ -868,7 +868,7 @@ export const devices: Device[] = [
     {
         id: "withings-nova",
         name: "Withings Nova",
-        category: "Smartwatch",
+        category: "Watches",
         price: "42",
         msrp: 599,
         tagline: "Luxury meets health tech.",
@@ -881,7 +881,7 @@ export const devices: Device[] = [
     {
         id: "iyo-one",
         name: "Iyo One",
-        category: "AI Earbuds",
+        category: "Earbuds",
         price: "42",
         msrp: 599,
         tagline: "Your personal audio computer.",
@@ -894,7 +894,7 @@ export const devices: Device[] = [
     {
         id: "timekettle-wt2-w4",
         name: "Timekettle WT2 / W4",
-        category: "AI Earbuds",
+        category: "Earbuds",
         price: "42",
         msrp: 299,
         tagline: "Cross-language communication solved.",
@@ -907,7 +907,7 @@ export const devices: Device[] = [
     {
         id: "samsung-buds3-pro",
         name: "Samsung Buds3 Pro",
-        category: "AI Earbuds",
+        category: "Earbuds",
         price: "42",
         msrp: 249,
         tagline: "Galaxy AI in your ears.",

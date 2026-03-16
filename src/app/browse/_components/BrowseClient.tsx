@@ -35,11 +35,10 @@ export default function BrowseClient({
     // Extract unique categories and brands for filters DYNAMICALLY from the passed data
     // This allows the filters to update if the DB changes content categories
     const allCategories = [
-        "Smart Glasses",
-        "AR Glasses",
-        "Smart Ring",
-        "Smartwatch",
-        "AI Earbuds",
+        "Glasses",
+        "Rings",
+        "Watches",
+        "Earbuds",
         "Pins",
         "Pendants",
         "Cards",
@@ -230,7 +229,7 @@ export default function BrowseClient({
                 {/* Filters Sidebar */}
                 <aside className={`
                     fixed inset-0 z-40 bg-white p-6 overflow-y-auto transition-transform duration-300 transform
-                    lg:relative lg:transform-none lg:w-72 lg:flex-shrink-0 lg:border-r lg:border-[#F1F5F9] lg:h-auto lg:z-0 lg:py-10 lg:px-8
+                    lg:relative lg:transform-none lg:w-56 lg:flex-shrink-0 lg:border-r lg:border-[#F1F5F9] lg:h-auto lg:z-0 lg:py-10 lg:px-6
                     ${mobileFiltersOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                 `}>
                     <div className="flex items-center justify-between mb-8">
