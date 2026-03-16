@@ -388,18 +388,19 @@ export default function BrowseClient({
                                     <li><strong>AR Display Glasses (XREAL):</strong> Best for productivity, gaming, and watching movies on a giant virtual screen.</li>
                                     <li><strong>Developer Glasses (Brilliant Labs):</strong> Best for hackers wanting to build custom AI features.</li>
                                 </ul>
-                                <Link href="/help" className="text-sm font-bold text-button mt-4 inline-block hover:underline">Read full guide →</Link>
+                                <Link href="/blog/smart-glasses-buying-guide" className="text-sm font-bold text-button mt-4 inline-block hover:underline">Read full guide →</Link>
                             </div>
                             <div>
                                 <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Rings Buying Guide</h3>
                                 <p className="text-sm text-paragraph mb-4">Oura vs Samsung: Which is right for you?</p>
                                 <ul className="space-y-3 text-sm text-paragraph">
                                     <li><strong>Choose Oura if:</strong> You want accurate sleep tracking and have an iPhone.</li>
-                                    <li><strong>Choose Samsung Gallery Ring if:</strong> You have a Galaxy phone and want no subscription fees.</li>
+                                    <li><strong>Choose Samsung Galaxy Ring if:</strong> You have a Galaxy phone and want no subscription fees.</li>
                                 </ul>
                                 <div className="mt-4 text-sm bg-blue-50 text-blue-800 p-3 rounded-lg inline-block">
                                     <strong>Tip:</strong> Rent both on our Explorer plan to compare side-by-side.
                                 </div>
+                                <Link href="/blog/best-smart-rings-2026-guide" className="text-sm font-bold text-button mt-4 inline-block hover:underline">Read full guide →</Link>
                             </div>
                         </div>
                     )}
