@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllProducts } from '@/lib/products';
 import { categoryData } from "./browse/category-data";
+import { getAllBlogRoutes, getAllJobPageRoutes, getAllDevicePageRoutes } from '@/lib/content';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://trytechloop.com';
@@ -42,5 +43,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.8,
     }));
 
-    return [...routes, ...categoryRoutes, ...productRoutes];
+    // 4. Dynamic Blog Posts
+    const blogPosts = await getAllBlogRoutes();
+    const blogRoutes = blogPosts.map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.updated_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }));
+
+    // 5. Dynamic Job Pages
+    const jobPages = await getAllJobPageRoutes();
+    const jobRoutes = jobPages.map((page) => ({
+        url: `${baseUrl}/for/${page.slug}`,
+        lastModified: new Date(page.updated_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }));
+
+    // 6. Dynamic Device Content Pages
+    const devicePages = await getAllDevicePageRoutes();
+    const deviceRoutes = devicePages.map((page) => ({
+        url: `${baseUrl}/device/${page.slug}`,
+        lastModified: new Date(page.updated_at),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }));
+
+    return [
+        ...routes,
+        ...categoryRoutes,
+        ...productRoutes,
+        ...blogRoutes,
+        ...jobRoutes,
+        ...deviceRoutes
+    ];
 }

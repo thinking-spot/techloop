@@ -42,6 +42,19 @@ export async function getAllJobPageSlugs(): Promise<string[]> {
   return (data ?? []).map((row) => row.slug)
 }
 
+export async function getAllJobPageRoutes(): Promise<{ slug: string; updated_at: string }[]> {
+  const supabase = getSupabase()
+  const { data } = await supabase
+    .from('content_job_pages')
+    .select('slug, updated_at')
+    .eq('published', true)
+
+  return (data ?? []).map((row) => ({
+    slug: row.slug,
+    updated_at: row.updated_at,
+  }))
+}
+
 export async function getRelatedJobPages(
   slugs: string[]
 ): Promise<Pick<JobPageContent, 'slug' | 'job_title' | 'hero_subheadline'>[]> {
@@ -81,6 +94,19 @@ export async function getAllDevicePageSlugs(): Promise<string[]> {
     .eq('published', true)
 
   return (data ?? []).map((row) => row.slug)
+}
+
+export async function getAllDevicePageRoutes(): Promise<{ slug: string; updated_at: string }[]> {
+  const supabase = getSupabase()
+  const { data } = await supabase
+    .from('content_device_pages')
+    .select('slug, updated_at')
+    .eq('published', true)
+
+  return (data ?? []).map((row) => ({
+    slug: row.slug,
+    updated_at: row.updated_at,
+  }))
 }
 
 export async function getDevicesByCategory(
@@ -135,6 +161,19 @@ export async function getAllBlogSlugs(): Promise<string[]> {
     .eq('published', true)
 
   return (data ?? []).map((row) => row.slug)
+}
+
+export async function getAllBlogRoutes(): Promise<{ slug: string; updated_at: string }[]> {
+  const supabase = getSupabase()
+  const { data } = await supabase
+    .from('content_blog_posts')
+    .select('slug, updated_at')
+    .eq('published', true)
+
+  return (data ?? []).map((row) => ({
+    slug: row.slug,
+    updated_at: row.updated_at,
+  }))
 }
 
 export async function getBlogPostsByType(
