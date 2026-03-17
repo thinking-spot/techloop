@@ -4,7 +4,7 @@ import { categoryData } from "./browse/category-data";
 import { getAllBlogRoutes, getAllJobPageRoutes, getAllDevicePageRoutes } from '@/lib/content';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://trytechloop.com';
+    const baseUrl = 'https://www.trytechloop.com';
 
     // 1. Static Pages
     const routes = [
