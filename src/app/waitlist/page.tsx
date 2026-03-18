@@ -35,7 +35,7 @@ export default function WaitlistPage() {
                             </h1>
                             <p className="text-[18px] md:text-[20px] text-paragraph leading-relaxed font-light">
                                 AI glasses, rings, watches, earbuds, cards, and pins.
-                                Try risk-free before you buy.
+                                Rent to own, risk-free, for $42/m.
                             </p>
 
                             <div className="relative grid grid-cols-2 sm:flex sm:flex-wrap lg:grid lg:grid-cols-2 justify-center lg:justify-start items-center gap-3 text-sm font-medium text-paragraph/80 max-w-[320px] sm:max-w-none mx-auto lg:mx-0">
