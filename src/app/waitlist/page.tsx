@@ -243,16 +243,7 @@ export default function WaitlistPage() {
                         </div>
                     </div>
 
-                    <div className="mt-16 max-w-2xl mx-auto text-center">
-                        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest mb-2 px-1">
-                            <span>Progress</span>
-                            <span>17% Claimed</span>
-                        </div>
-                        <div className="h-4 bg-white/10 rounded-full overflow-hidden mb-4">
-                            <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-[17%] rounded-full"></div>
-                        </div>
 
-                    </div>
                 </div>
             </section>
 
