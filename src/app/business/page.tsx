@@ -91,12 +91,12 @@ export default function BusinessPage() {
 
                     <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-sm font-medium text-cyan-300 mb-8">
                         <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                        20+ AI devices across 6 categories
+                        AI DEVICES FOR ENTERPRISE & SMB TEAMS
                     </div>
 
                     <h1 className="relative mx-auto mb-6 font-display text-[44px] md:text-[64px] font-bold leading-[1.05] tracking-tight max-w-4xl">
                         Give your team the <br />
-                        <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,#38BDF8,#818CF8,#C084FC)] bg-[length:200%_200%] animate-[bg-position_6s_ease_infinite]">AI devices they deserve</span>
+                        <span className="text-transparent bg-clip-text bg-[linear-gradient(135deg,#38BDF8,#818CF8,#C084FC)] bg-[length:200%_200%] animate-[bg-position_6s_ease_infinite]">best AI devices for business</span>
                     </h1>
 
                     <p className="relative mx-auto mb-10 text-[18px] md:text-[20px] text-slate-300 max-w-2xl leading-relaxed">
