@@ -8,14 +8,14 @@ import { Button } from "@/components/ui/Button";
 const INDUSTRIES = [
     { name: "Sales Teams", icon: "📊", desc: "Equip reps with AI wearables that transcribe calls, surface insights, and close deals faster." },
     { name: "Drivers & Fleet", icon: "🚛", desc: "Hands-free AI assistants for navigation, dispatch, and real-time route optimization." },
-    { name: "Paralegals", icon: "⚖️", desc: "AI-powered research devices that cut document review time by 70%." },
-    { name: "Customer Support", icon: "🎧", desc: "Smart devices with real-time sentiment analysis and instant knowledge retrieval." },
-    { name: "Healthcare", icon: "🏥", desc: "HIPAA-aware AI devices for patient intake, clinical notes, and care coordination." },
-    { name: "Education", icon: "🎓", desc: "Adaptive learning devices for classrooms, tutoring labs, and remote instruction." },
-    { name: "Medical Research", icon: "🔬", desc: "High-compute AI devices for data analysis, literature review, and lab documentation." },
-    { name: "Content & Influencers", icon: "🎬", desc: "Creative AI tools for editing, scripting, scheduling, and audience analytics." },
+    { name: "Paralegals", icon: "⚖️", desc: "AI-powered devices that translate and transcribe in 120 languages." },
+    { name: "Customer Support", icon: "🎧", desc: "Smart devices with real-time agent enablement and knowledge retrieval." },
+    { name: "Healthcare", icon: "🏥", desc: "HIPAA-aware AI devices for clinical notes, care coordination, and outcome optimization." },
+    { name: "Education", icon: "🎓", desc: "Adaptive learning and teaching devices for classrooms, lesson prep, and remote instruction." },
+    { name: "Medical Research", icon: "🔬", desc: "Healthcare AI devices for real-time data, patient monitoring, and cohort research." },
+    { name: "Content & Influencers", icon: "🎬", desc: "Powerful AI tools for live content creation and sharing, entirely hands-free." },
     { name: "Field Techs", icon: "🔧", desc: "Rugged AI devices with visual diagnostics, manuals on demand, and remote expert support." },
-    { name: "Engineers", icon: "💻", desc: "Cutting-edge AI coding companions — test the latest before committing." },
+    { name: "Engineers", icon: "💻", desc: "Cutting-edge AI coding companions and substrates — build before committing." },
 ];
 
 const FEATURES = [
