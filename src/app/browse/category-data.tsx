@@ -4,7 +4,8 @@ import React from "react";
 export type CategoryConfig = {
     title: string;
     description: string;
-    filterCategories: string[]; // These must match the categories in data.ts
+    filterCategories?: string[]; // These must match the categories in data.ts
+    filterUseCases?: string[]; // These must match the useCase strings in data.ts
     BuyingGuide: React.ReactNode;
     metaTitle: string;
     metaDescription: string;
@@ -230,6 +231,167 @@ export const categoryData: Record<string, CategoryConfig> = {
                 <div>
                     <h3 className="font-display text-xl font-bold text-headline mb-4">Why bring robotics home?</h3>
                     <p className="text-sm text-paragraph mb-4">Whether as a dynamic security monitor, a moving voice agent, or a companion for entertainment, consumer robotics are finally smart enough to be genuinely useful.</p>
+                </div>
+            </div>
+        )
+    },
+    "productivity-ai-devices": {
+        title: "AI Devices for Productivity",
+        description: "Streamline your workflow with AI devices built to help you achieve more in less time.",
+        filterUseCases: ["Productivity"],
+        metaTitle: "Try AI Devices for Productivity | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent AI devices designed for productivity. Enhance your workflow with smart glasses, pins, and powerful AI companions.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Productivity Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">When evaluating technology to help you work faster, consider the form factor that best fits your daily habits:</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>AR Displays:</strong> The XREAL glasses allow you to carry a multi-monitor setup in your backpack automatically.</li>
+                        <li><strong>Memory Companions:</strong> Wearable pins or pendants act as a second brain, ensuring you never miss a detail from a meeting again.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Optimize your setup</h3>
+                    <p className="text-sm text-paragraph mb-4">Rent a device for your specific operational needs to see if it genuinely accelerates your process without adding extra friction.</p>
+                </div>
+            </div>
+        )
+    },
+    "fitness-health-ai-devices": {
+        title: "AI Devices for Fitness & Health",
+        description: "Track your body with absolute precision. Optimize your healthspan.",
+        filterUseCases: ["Fitness & Health"],
+        metaTitle: "Try AI Devices for Fitness & Health | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent AI wearables for fitness and health tracking. From Oura rings to Whoop straps, discover deeper recovery insights.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Health Trackers Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">Health data is only useful if it is accurate and you actually enjoy wearing the device.</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>Passive Monitoring:</strong> Rings (like Oura) and screen-free straps (like Whoop) fade into the background while providing continuous biometrics.</li>
+                        <li><strong>AI Coaching:</strong> Modern health wearables utilize AI to interpret your raw data into actionable insights rather than just giving you unrefined graphs.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Why upgrade your tracker?</h3>
+                    <p className="text-sm text-paragraph mb-4">It is no longer just about counting steps. Next-generation AI models predict fatigue, measure nuanced heart variability, and analyze intricate sleep cycles.</p>
+                </div>
+            </div>
+        )
+    },
+    "entertainment-ai-devices": {
+        title: "AI Devices for Entertainment",
+        description: "Redefine your downtime with massive virtual screens and intelligent audio.",
+        filterUseCases: ["Entertainment"],
+        metaTitle: "Try AI Devices for Entertainment | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent AI devices specifically tailored for entertainment. Spatial audio, AR cinema displays, and next-level immersion.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Entertainment Tech Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">Entertainment devices transport you—whether that is a virtual screen or audio enhancement.</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>AR Cinemas:</strong> Turn a long flight into a private theater experience. Devices like the XREAL Air offer 130" virtual displays locked securely into your vision.</li>
+                        <li><strong>Immersive Audio:</strong> AI earbuds leverage real-time spatial adjustments to make your favorite movies and music sound phenomenally vibrant.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Experience it yourself</h3>
+                    <p className="text-sm text-paragraph mb-4">Rent a device for your next vacation or long commute. Unwinding has never felt so futuristic.</p>
+                </div>
+            </div>
+        )
+    },
+    "communication-ai-devices": {
+        title: "AI Devices for Communication",
+        description: "Stay connected effortlessly. Real-time translation, crystal clear calls, and intelligent sorting.",
+        filterUseCases: ["Communication"],
+        metaTitle: "Try AI Devices for Communication | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent AI wearables that excel in communication. Real-time language translation earbuds and smart glasses.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Communication Tech Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">Break down language barriers and simplify how you talk to the world with AI communication tools.</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>Real-Time Translation:</strong> Next-generation earbuds seamlessly translate spoken conversations on the fly.</li>
+                        <li><strong>Hands-Free Networking:</strong> Glasses with directional microphones allow you to take calls on a busy street with unprecedented audio clarity.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Perfect for Travelers & Professionals</h3>
+                    <p className="text-sm text-paragraph mb-4">If clear communication is essential, renting one of these devices ensures you have the sharpest processing algorithms available today.</p>
+                </div>
+            </div>
+        )
+    },
+    "developer-ai-devices": {
+        title: "AI Devices for Developers",
+        description: "Hackable, open-source, and unconstrained. The ultimate playground for tinkerers.",
+        filterUseCases: ["Developer"],
+        metaTitle: "Try AI Devices for Developers | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent open-source and hackable AI devices designed for developers. Experiment with new AI models and sensory inputs.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Developer Devices Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">These devices are crafted for individuals who want to write their own rules.</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>Open Tooling:</strong> Devices like the Brilliant Labs Frame allow you to write Python scripts to display custom AR notifications.</li>
+                        <li><strong>Local LLMs:</strong> Explore new edge-capabilities by processing data directly on the hardware without cloud restrictions.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Why rent a dev kit?</h3>
+                    <p className="text-sm text-paragraph mb-4">Developer ecosystems evolve at a rapid pace. Renting allows you to experiment with SDKs and platform capabilities for $42 before diving headfirst into a single ecosystem.</p>
+                </div>
+            </div>
+        )
+    },
+    "assistant-ai-devices": {
+        title: "AI Assistant Devices",
+        description: "Your digital concierge. Voice-activated devices ready to navigate the world for you.",
+        filterUseCases: ["AI Assistant"],
+        metaTitle: "Try AI Assistant Devices | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent intelligent AI assistant devices. Voice-activated companions, pins, and standalone hardware.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">AI Assistants Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">The goal of these devices is to minimize screen time by prioritizing direct action and voice inputs.</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>Large Action Models (LAMs):</strong> The newest assistant hardware executes app commands autonomously without you needing to tap.</li>
+                        <li><strong>Wearable Intelligence:</strong> Having an assistant pinned to your lapel provides a completely different interaction dynamic than pulling out a smartphone.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">The Post-Smartphone Era</h3>
+                    <p className="text-sm text-paragraph mb-4">These ambient interfaces represent a significant paradigm shift. Take the leap and discover what's possible when technology gets out of your way.</p>
+                </div>
+            </div>
+        )
+    },
+    "business-ai-devices": {
+        title: "AI Devices for Business",
+        description: "Equip your enterprise. Scalable AI solutions for professionals and teams.",
+        filterUseCases: ["Business"],
+        metaTitle: "Try AI Devices for Business | Rent to buy, risk-free | Techloop",
+        metaDescription: "Rent enterprise-grade AI hardware. Discover transformative tools to enhance corporate collaboration and output.",
+        BuyingGuide: (
+            <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Business Tech Buying Guide</h3>
+                    <p className="text-sm text-paragraph mb-4">AI hardware in a corporate setting requires security, utility, and seamless deployment.</p>
+                    <ul className="space-y-3 text-sm text-paragraph">
+                        <li><strong>Corporate Wellness:</strong> Provide your team with accurate health trackers to promote longevity and burnout prevention.</li>
+                        <li><strong>Enterprise Efficiency:</strong> Equip travelling teams with communication-boosting wearables to remove physical interaction friction.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-display text-xl font-bold text-headline mb-4">Test at Scale</h3>
+                    <p className="text-sm text-paragraph mb-4">Explore high-end spatial computing headsets and automation tools before rolling them out company-wide.</p>
                 </div>
             </div>
         )

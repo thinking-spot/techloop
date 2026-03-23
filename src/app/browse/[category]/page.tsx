@@ -50,6 +50,7 @@ export default async function CategoryBrowsePage({ params }: { params: Promise<{
             pageTitle={data.title}
             pageDescription={data.description}
             initialCategoryFilter={data.filterCategories}
+            initialUseCaseFilter={data.filterUseCases}
             buyingGuideSlot={data.BuyingGuide}
         />
     );

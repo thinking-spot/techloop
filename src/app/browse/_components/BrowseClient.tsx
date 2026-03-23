@@ -14,6 +14,7 @@ interface BrowseClientProps {
     pageTitle?: string;
     pageDescription?: string;
     initialCategoryFilter?: string[];
+    initialUseCaseFilter?: string[];
     buyingGuideSlot?: React.ReactNode;
 }
 
@@ -22,13 +23,14 @@ export default function BrowseClient({
     pageTitle = "Find the best AI wearables",
     pageDescription = "Browse dozens of devices across 7 categories. All brand new. All swappable. All available to ship today.",
     initialCategoryFilter = [],
+    initialUseCaseFilter = [],
     buyingGuideSlot
 }: BrowseClientProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategories, setSelectedCategories] = useState<string[]>(initialCategoryFilter);
+    const [selectedUseCases, setSelectedUseCases] = useState<string[]>(initialUseCaseFilter);
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
     const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
-    const [selectedUseCases, setSelectedUseCases] = useState<string[]>([]);
     const [sortBy, setSortBy] = useState("popular");
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -45,7 +47,7 @@ export default function BrowseClient({
         "Robotics"
     ];
     const allBrands = ["Meta", "Oura", "XREAL", "Apple", "Humane", "Whoop", "Samsung", "Nothing", "Brilliant", "Rabbit"];
-    const allUseCases = ["Productivity", "Fitness & Health", "Entertainment", "Communication", "Developer", "AI Assistant"];
+    const allUseCases = ["Productivity", "Fitness & Health", "Entertainment", "Communication", "Developer", "AI Assistant", "Business"];
 
     const msrpRanges = [
         { label: "Under $200", min: 0, max: 200 },
