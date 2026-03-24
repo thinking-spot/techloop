@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import TopNav from "@/components/layout/TopNav";
 import Sidebar from "@/components/layout/Sidebar";
@@ -25,6 +26,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-2XYTMJLW0N`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-2XYTMJLW0N');
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans text-paragraph antialiased bg-background`}>
         <ToastProvider>
           <TopNav />
