@@ -1,7 +1,10 @@
+import { monthlyRate } from "./pricing.ts";
+
 export type Device = {
     id: string;
     name: string;
     category: string;
+    /** Monthly rental in whole dollars, derived from `msrp` below (see lib/pricing.ts). */
     price: string;
     tagline?: string;
     description: string;
@@ -34,12 +37,14 @@ export type Device = {
     msrp?: number;
 };
 
-export const devices: Device[] = [
+/** A catalog entry as written by hand: the price is always derived from the MSRP. */
+type RawDevice = Omit<Device, "price" | "msrp"> & { msrp: number };
+
+const rawDevices: RawDevice[] = [
     {
         id: "meta-rayban",
         name: "Meta Ray-Ban Wayfarer",
         category: "Glasses",
-        price: "42",
         msrp: 399,
         tagline: "Look normal. Act superhuman.",
         description: "Capture POV videos hands-free. Take calls without headphones. Your AI assistant lives in iconic Ray-Ban frames.",
@@ -113,7 +118,6 @@ export const devices: Device[] = [
         id: "xreal-air-pro",
         name: "XREAL Air 2 Pro",
         category: "Glasses",
-        price: "42",
         msrp: 499,
         tagline: "Your personal 130-inch screen, anywhere.",
         description: "Work on a massive virtual display from coffee shops. Watch movies on flights. The ultimate portable monitor.",
@@ -178,7 +182,6 @@ export const devices: Device[] = [
         id: "oura-ring",
         name: "Oura Ring Gen 4",
         category: "Rings",
-        price: "42",
         msrp: 349,
         tagline: "Your body's story, told by a ring.",
         description: "Advanced health sensing in a durable, lightweight titanium ring. Tracks sleep, readiness, and activity with research-grade accuracy.",
@@ -234,7 +237,6 @@ export const devices: Device[] = [
         id: "samsung-ring",
         name: "Samsung Galaxy Ring",
         category: "Rings",
-        price: "42",
         msrp: 399,
         tagline: "The smart ring that loves your Galaxy phone.",
         description: "Everything Oura does, but plays perfectly with Samsung ecosystem. Galaxy Watch integration. Free Samsung Health app.",
@@ -305,7 +307,6 @@ export const devices: Device[] = [
         id: "nothing-ear",
         name: "Nothing Ear",
         category: "Earbuds",
-        price: "42",
         msrp: 149,
         tagline: "ChatGPT in your ears. Music in your soul.",
         description: "Premium audio meets AI assistant. Ask questions, get translations, control your life without touching your phone.",
@@ -369,7 +370,6 @@ export const devices: Device[] = [
         id: "brilliant-labs-frame",
         name: "Brilliant Labs Frame",
         category: "Glasses",
-        price: "42",
         msrp: 349,
         tagline: "Open-source smart glasses for hackers.",
         description: "Build your own AI features. Customize everything. The anti-Meta glasses. Join the developer community.",
@@ -434,7 +434,6 @@ export const devices: Device[] = [
         id: "whoop-4",
         name: "Whoop 4.0",
         category: "Watches",
-        price: "42",
         msrp: 280,
         tagline: "Your 24/7 digital fitness coach.",
         description: "Personalized coaching without the distraction of a screen. Track strain, recovery, and sleep. Used by pro athletes.",
@@ -498,7 +497,6 @@ export const devices: Device[] = [
         id: "rabbit-r1",
         name: "Rabbit R1",
         category: "Cards",
-        price: "42",
         msrp: 199,
         tagline: "Your pocket AI that actually does things.",
         description: "Navigate apps for you via voice. Order food, book rides, control music. The standalone AI companion.",
@@ -562,7 +560,6 @@ export const devices: Device[] = [
         id: "nothing-ear-a",
         name: "Nothing Ear (a)",
         category: "Earbuds",
-        price: "42",
         msrp: 149,
         tagline: "AI features without the premium price.",
         description: "Great audio, solid ANC, ChatGPT integration. The smart budget choice.",
@@ -626,7 +623,6 @@ export const devices: Device[] = [
         id: "xreal-air-2",
         name: "XREAL Air 2",
         category: "Glasses",
-        price: "42",
         msrp: 449,
         tagline: "Same great display, without the Pro features.",
         description: "All the screen real estate of Air 2 Pro, but without dimming. Save $9/mo if you don't need it.",
@@ -690,7 +686,6 @@ export const devices: Device[] = [
         id: "quest-3",
         name: "Meta Quest 3",
         category: "Glasses",
-        price: "42",
         msrp: 499,
         tagline: "Expand your world.",
         description: "The most powerful Meta Quest yet, with breakthrough mixed reality.",
@@ -739,7 +734,6 @@ export const devices: Device[] = [
         id: "solos-airgo-3",
         name: "Solos AirGo 3",
         category: "Glasses",
-        price: "42",
         msrp: 249,
         tagline: "Your smart daily companion.",
         description: "Lightweight smart glasses with ChatGPT integration and great audio.",
@@ -752,7 +746,6 @@ export const devices: Device[] = [
         id: "xreal-air-2-ultra",
         name: "XREAL Air 2 Ultra",
         category: "Glasses",
-        price: "42",
         msrp: 649,
         tagline: "The spatial computing edge.",
         description: "Advanced AR glasses with 6DoF tracking and dual 1080p micro-OLED displays.",
@@ -765,7 +758,6 @@ export const devices: Device[] = [
         id: "viture-pro-xr",
         name: "Viture Pro XR",
         category: "Glasses",
-        price: "42",
         msrp: 459,
         tagline: "Your portable immersive cinema.",
         description: "Experience premium visual fidelity with electrochromic film and exceptional brightness.",
@@ -778,7 +770,6 @@ export const devices: Device[] = [
         id: "rokid-ar-lite",
         name: "Rokid AR Lite",
         category: "Glasses",
-        price: "42",
         msrp: 749,
         tagline: "Lightweight spatial computing.",
         description: "Seamlessly blends the digital and physical worlds with an ultra-lightweight design.",
@@ -791,7 +782,6 @@ export const devices: Device[] = [
         id: "ultrahuman-ring-air",
         name: "Ultrahuman Ring Air",
         category: "Rings",
-        price: "42",
         msrp: 349,
         tagline: "Metabolism and recovery tracking.",
         description: "The lightest smart ring designed to optimize your health span with deep sleep and recovery insights.",
@@ -804,7 +794,6 @@ export const devices: Device[] = [
         id: "movano-evie-ring",
         name: "Movano Evie Ring",
         category: "Rings",
-        price: "42",
         msrp: 269,
         tagline: "Designed specifically for women's health.",
         description: "Comprehensive health tracker with a flexible design that adapts to your finger throughout the day.",
@@ -817,7 +806,6 @@ export const devices: Device[] = [
         id: "circular-ring-slim",
         name: "Circular Ring Slim",
         category: "Rings",
-        price: "42",
         msrp: 281,
         tagline: "Sleek and actionable health insights.",
         description: "An incredibly thin smart ring with haptic feedback to wake you gently and remind you to move.",
@@ -830,7 +818,6 @@ export const devices: Device[] = [
         id: "google-pixel-watch",
         name: "Google Pixel Watch",
         category: "Watches",
-        price: "42",
         msrp: 349,
         tagline: "Help by Google. Health by Fitbit.",
         description: "Beautifully designed smartwatch with seamless Google integration and advanced Fitbit tracking.",
@@ -843,7 +830,6 @@ export const devices: Device[] = [
         id: "apple-watch-series-10",
         name: "Apple Series 10",
         category: "Watches",
-        price: "42",
         msrp: 399,
         tagline: "The ultimate device for a healthy life.",
         description: "The latest Apple Watch with advanced health sensors and a brighter, larger display.",
@@ -856,7 +842,6 @@ export const devices: Device[] = [
         id: "garmin-bounce-2",
         name: "Garmin Bounce 2",
         category: "Watches",
-        price: "42",
         msrp: 149,
         tagline: "Stay connected to the kids.",
         description: "A kids' smartwatch with LTE connectivity for text and voice messaging, plus location tracking.",
@@ -869,7 +854,6 @@ export const devices: Device[] = [
         id: "withings-nova",
         name: "Withings Nova",
         category: "Watches",
-        price: "42",
         msrp: 599,
         tagline: "Luxury meets health tech.",
         description: "A premium hybrid smartwatch that combines classic aesthetics with medical-grade health tracking.",
@@ -882,7 +866,6 @@ export const devices: Device[] = [
         id: "iyo-one",
         name: "Iyo One",
         category: "Earbuds",
-        price: "42",
         msrp: 599,
         tagline: "Your personal audio computer.",
         description: "Advanced audio wearables featuring built-in processing and generative AI capabilities offline.",
@@ -895,7 +878,6 @@ export const devices: Device[] = [
         id: "timekettle-wt2-w4",
         name: "Timekettle WT2 / W4",
         category: "Earbuds",
-        price: "42",
         msrp: 299,
         tagline: "Cross-language communication solved.",
         description: "Real-time translation earbuds allowing for seamless natural conversations across languages.",
@@ -908,7 +890,6 @@ export const devices: Device[] = [
         id: "samsung-buds3-pro",
         name: "Samsung Buds3 Pro",
         category: "Earbuds",
-        price: "42",
         msrp: 249,
         tagline: "Galaxy AI in your ears.",
         description: "Studio-quality sound with AI-powered noise cancellation and real-time translation features.",
@@ -921,7 +902,6 @@ export const devices: Device[] = [
         id: "limitless-pendant",
         name: "Limitless Pendant",
         category: "Pendants",
-        price: "42",
         msrp: 199,
         tagline: "Your personalized AI memory.",
         description: "A wearable device that records and processes your conversations to help you remember everything.",
@@ -934,7 +914,6 @@ export const devices: Device[] = [
         id: "plaud-notepin-s",
         name: "Plaud NotePin S",
         category: "Pins",
-        price: "42",
         msrp: 179,
         tagline: "Never miss a thought.",
         description: "A minimalist wearable voice recorder integrated with ChatGPT for intelligent summaries.",
@@ -947,7 +926,6 @@ export const devices: Device[] = [
         id: "tab-pendant",
         name: "Tab Pendant",
         category: "Pendants",
-        price: "42",
         msrp: 600,
         tagline: "The wearable AI companion.",
         description: "A premium, privacy-first wearable AI designed to listen, understand, and assist you proactively.",
@@ -956,3 +934,9 @@ export const devices: Device[] = [
         rating: 4.5,
     }
 ];
+
+/** The catalog, with each device's monthly rate derived from its MSRP. */
+export const devices: Device[] = rawDevices.map((device) => ({
+    ...device,
+    price: String(monthlyRate(device.msrp)),
+}));

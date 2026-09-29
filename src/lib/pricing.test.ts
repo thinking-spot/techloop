@@ -133,6 +133,23 @@ describe("catalog", () => {
     }
   });
 
+  it("every device's displayed price is derived from its MSRP", () => {
+    for (const d of devices) {
+      assert.equal(d.price, String(monthlyRate(d.msrp!)), `${d.id} price`);
+    }
+    const ray = devices.find((d) => d.id === "meta-rayban");
+    assert.equal(ray?.price, "39");
+    assert.equal(devices.find((d) => d.id === "rabbit-r1")?.price, "19");
+    assert.equal(devices.find((d) => d.id === "tab-pendant")?.price, "60");
+  });
+
+  it("no device still carries the old flat price", () => {
+    assert.ok(
+      new Set(devices.map((d) => d.price)).size > 5,
+      "prices should vary with MSRP"
+    );
+  });
+
   it("the lowest rate across the catalog is the $19 floor", () => {
     assert.equal(lowestMonthlyRate(devices), 19);
   });

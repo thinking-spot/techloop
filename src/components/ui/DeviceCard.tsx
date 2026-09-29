@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import PrimaryCta from "@/components/ui/PrimaryCta";
 import { Device } from "@/lib/data";
+import { isLaunchDevice } from "@/lib/site-config";
 import { useCartStore } from "@/store/cart";
 import { WishlistButton } from "@/components/commerce/WishlistButton";
 import { useToast } from "@/components/ui/Toast";
@@ -31,13 +31,14 @@ export default function DeviceCard(props: DeviceCardProps) {
     const price = parseFloat(priceStr || "0");
     const image = props.device?.imageUrl || props.image;
     const msrp = props.device?.msrp;
-    const rating = props.device?.rating || 4.5;
-    const reviews = props.device?.reviewCount || 10;
     const description = props.device?.description || "";
-    const badges = props.device?.badges || [];
     const category = props.device?.category || props.category || "Tech";
 
     if (!id || !name || !image) return null;
+
+    // Launch devices are the ones we plan to stock first. Everything else is
+    // "Coming soon": visitors can ask to be notified, but can't rent it.
+    const available = isLaunchDevice(id);
 
     const handleRent = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -52,12 +53,14 @@ export default function DeviceCard(props: DeviceCardProps) {
 
     return (
         <div className="group relative flex flex-col rounded-card border border-[#F1F5F9] bg-white transition-all hover:border-button/30 hover:shadow-lg hover:-translate-y-1 overflow-hidden h-full">
-            {/* Badge */}
-            {badges.length > 0 && (
-                <div className="absolute left-3 top-3 z-10 rounded-full bg-headline px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
-                    {badges[0]}
-                </div>
-            )}
+            {/* Status */}
+            <div
+                className={`absolute left-3 top-3 z-10 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-sm ${
+                    available ? "bg-headline text-white" : "bg-slate-100 text-slate-600"
+                }`}
+            >
+                {available ? "Launch device" : "Coming soon"}
+            </div>
 
             {/* Wishlist Button */}
             <div className="absolute right-3 top-3 z-10">
@@ -82,28 +85,19 @@ export default function DeviceCard(props: DeviceCardProps) {
 
             {/* Content Area */}
             <div className="flex flex-1 flex-col p-5">
-                <div className="mb-2 flex items-center gap-1.5">
-                    <Star className="h-3.5 w-3.5 fill-current text-yellow-400" />
-                    <span className="text-xs font-medium text-headline">{rating}</span>
-                    <span className="text-xs text-paragraph">({reviews} reviews)</span>
-                </div>
-
                 <Link href={`/product/${id}`} className="block flex-1 group-hover:text-button transition-colors">
                     <h3 className="mb-1 text-lg font-bold text-headline">{name}</h3>
                     <p className="mb-4 line-clamp-2 text-xs text-paragraph">{description}</p>
                 </Link>
 
                 <div className="mt-auto flex items-center justify-between gap-4 pt-4 border-t border-[#F1F5F9]">
-                    <div className="flex gap-4">
-                        <div className="flex flex-col">
-                            <span className="text-lg font-bold text-headline">${price}</span>
-                            <span className="text-xs font-medium text-paragraph uppercase tracking-wide">Month</span>
-                        </div>
+                    <div className="flex flex-col">
+                        <span className="text-lg font-bold text-headline">
+                            ${price}
+                            <span className="text-sm font-medium text-paragraph">/mo</span>
+                        </span>
                         {msrp && (
-                            <div className="flex flex-col justify-start">
-                                <span className="text-lg font-bold text-green-600 line-through">${msrp}</span>
-                                <span className="text-xs font-medium text-green-600 uppercase tracking-wide">MSRP</span>
-                            </div>
+                            <span className="text-xs text-paragraph">Retail ${msrp}</span>
                         )}
                     </div>
 
@@ -111,6 +105,8 @@ export default function DeviceCard(props: DeviceCardProps) {
                         device={{ id, name }}
                         location="device_card"
                         size="sm"
+                        forceWaitlist={!available}
+                        label={available ? "Join waitlist" : "Notify me"}
                         className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity"
                         liveCta={
                             <Button

@@ -14,6 +14,11 @@ import { Tooltip } from "@/components/ui/Tooltip"
 // or I can assume it exists. Let's use standard button with classes for now to be safe,
 // or check components/ui. Previous ls showed Button.tsx exists.
 import { Button } from "@/components/ui/Button"
+import DeviceCard from "@/components/ui/DeviceCard"
+import PricingBlock from "@/components/pricing/PricingBlock"
+import BuyoutSchedule from "@/components/pricing/BuyoutSchedule"
+import PricingExplainer from "@/components/pricing/PricingExplainer"
+import { devices } from "@/lib/data"
 
 export default function DesignSystemPage() {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
@@ -128,6 +133,43 @@ export default function DesignSystemPage() {
                             </Tooltip>
                         </CardContent>
                     </Card>
+                </div>
+            </section>
+
+            {/* Pricing */}
+            <section className="space-y-6">
+                <h2 className="text-2xl font-semibold">Pricing</h2>
+                <p className="text-slate-600">
+                    Every number below is computed by <code>lib/pricing.ts</code>. Check the
+                    $149 case: it shows the $19 minimum rate.
+                </p>
+
+                <div className="grid gap-6 md:grid-cols-3">
+                    <PricingBlock msrp={399} />
+                    <PricingBlock msrp={149} />
+                    <PricingBlock msrp={749} />
+                </div>
+
+                <div className="space-y-2">
+                    <h3 className="font-semibold">Inline layout</h3>
+                    <PricingBlock msrp={399} layout="inline" />
+                </div>
+
+                <div className="grid gap-6 md:grid-cols-2">
+                    <BuyoutSchedule msrp={399} />
+                    <BuyoutSchedule msrp={149} />
+                </div>
+
+                <PricingExplainer />
+
+                <div className="space-y-2">
+                    <h3 className="font-semibold">Device cards: launch device vs coming soon</h3>
+                    <div className="grid gap-6 md:grid-cols-3">
+                        {(["meta-rayban", "quest-3", "rabbit-r1"] as const).map((id) => {
+                            const device = devices.find((d) => d.id === id)
+                            return device ? <DeviceCard key={id} device={device} /> : null
+                        })}
+                    </div>
                 </div>
             </section>
 

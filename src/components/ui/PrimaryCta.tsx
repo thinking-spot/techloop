@@ -15,6 +15,11 @@ interface PrimaryCtaProps {
     liveCta?: ReactNode;
     /** Overrides the waitlist label. */
     label?: string;
+    /**
+     * Always show the waitlist link, even when the site is live. For devices
+     * we do not stock yet ("Coming soon").
+     */
+    forceWaitlist?: boolean;
     size?: "sm" | "md" | "lg";
     variant?: "primary" | "secondary";
     className?: string;
@@ -29,11 +34,12 @@ export default function PrimaryCta({
     location,
     liveCta,
     label = "Join the waitlist",
+    forceWaitlist = false,
     size = "md",
     variant = "primary",
     className,
 }: PrimaryCtaProps) {
-    if (!isWaitlistMode) {
+    if (!isWaitlistMode && !forceWaitlist) {
         return (
             <>
                 {liveCta ?? (
