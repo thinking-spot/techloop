@@ -1,5 +1,3 @@
-"use client";
-
 import {
     Check,
     CheckCircle2,
@@ -13,11 +11,12 @@ import {
     AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { joinWaitlist } from "@/app/actions";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
+import { getWaitlistDeviceOptions } from "@/lib/waitlist";
 
 export default function WaitlistPage() {
+    const deviceOptions = getWaitlistDeviceOptions();
+
     return (
         <div className="bg-white min-h-screen font-sans text-headline">
 
@@ -63,7 +62,7 @@ export default function WaitlistPage() {
                                 <p className="text-paragraph text-sm">Be the first to know when we launch in Q2 2026.</p>
                             </div>
 
-                            <WaitlistForm />
+                            <WaitlistForm deviceOptions={deviceOptions} />
 
                             <div className="mt-6 pt-6 border-t border-gray-100">
 
@@ -305,17 +304,7 @@ export default function WaitlistPage() {
                     <p className="text-xl text-paragraph mb-10">
                     </p>
                     <div className="max-w-md mx-auto">
-                        <form action={joinWaitlist} className="flex gap-2">
-                            <Input
-                                name="email"
-                                type="email"
-                                placeholder="Enter your email"
-                                required
-                                className="h-12 text-base"
-                            />
-                            <Button size="lg" className="px-8 shrink-0">Join Waitlist</Button>
-                        </form>
-                        <p className="text-xs text-paragraph mt-4">Unsubscribe anytime. No spam.</p>
+                        <WaitlistForm deviceOptions={deviceOptions} variant="compact" />
                     </div>
                 </div>
             </section>

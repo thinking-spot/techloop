@@ -1,24 +1,20 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import {
+    parseWaitlistForm,
+    submitWaitlist,
+    type WaitlistClient,
+    type WaitlistResult,
+} from "@/lib/waitlist";
 
-export async function joinWaitlist(formData: FormData) {
+export async function joinWaitlist(formData: FormData): Promise<WaitlistResult> {
+    const parsed = parseWaitlistForm(formData);
+
+    if (parsed.kind === "invalid") return { ok: false, error: parsed.error };
+    // A bot filled the hidden field. Say "success" and save nothing.
+    if (parsed.kind === "bot") return { ok: true };
+
     const supabase = await createClient();
-
-    const email = formData.get("email") as string;
-    const device = formData.get("device") as string;
-
-    if (!email) return;
-
-    // Insert into Supabase
-    // We ignore errors on the frontend (silent fail for duplicates) to prevent user enumeration
-    // but in a real app we might want to log this.
-    try {
-        await supabase.from("waitlist").insert({
-            email,
-            device_interest: device || null,
-        });
-    } catch (error) {
-        console.error("Waitlist Error:", error);
-    }
+    return submitWaitlist(supabase as unknown as WaitlistClient, parsed.entry);
 }
