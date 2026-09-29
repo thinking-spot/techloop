@@ -8,8 +8,7 @@ export default function Footer() {
                 <div className="col-span-1 md:col-span-1">
                     <Logo />
                     <p className="mt-4 text-sm text-paragraph/70">
-                        Try tomorrow&apos;s tech, today. <br />
-                        No commitment, just curiosity.
+                        Try AI wearables before you buy.
                     </p>
                 </div>
 
@@ -44,13 +43,8 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-paragraph/60">
+            <div className="max-w-7xl mx-auto pt-8 border-t border-slate-100 text-xs text-paragraph/60">
                 <p>&copy; {new Date().getFullYear()} Techloop Inc. All rights reserved.</p>
-                <div className="flex gap-4">
-                    <a href="#" className="hover:text-headline">Twitter</a>
-                    <a href="#" className="hover:text-headline">Instagram</a>
-                    <a href="#" className="hover:text-headline">LinkedIn</a>
-                </div>
             </div>
         </footer>
     );

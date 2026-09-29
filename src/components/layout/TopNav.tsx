@@ -1,35 +1,65 @@
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
+import MobileMenu from "@/components/layout/MobileMenu";
+import { buttonVariants } from "@/components/ui/Button";
+import { isWaitlistMode } from "@/lib/site-config";
+
+const NAV_LINKS = [
+    { href: "/browse", label: "Devices" },
+    { href: "/quiz", label: "Device Quiz" },
+    { href: "/how-it-works", label: "How It Works" },
+    { href: "/pricing", label: "Pricing" },
+];
 
 export default function TopNav() {
     return (
         <header className="sticky top-0 z-50 w-full border-b border-[#F1F5F9] bg-white/95 backdrop-blur-md">
-            <div className="flex h-16 items-center px-6">
+            <div className="flex h-16 items-center px-4 md:px-6">
                 <Logo className="mr-8" />
 
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-paragraph">
-                    <Link href="/quiz" className="hover:text-headline transition-colors">
-                        Device Quiz
-                    </Link>
-                    <Link href="/how-it-works" className="hover:text-headline transition-colors">
-                        How It Works
-                    </Link>
-                    <Link href="/pricing" className="hover:text-headline transition-colors">
-                        Pricing
-                    </Link>
+                    {NAV_LINKS.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="hover:text-headline transition-colors"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
                 </nav>
 
                 <div className="ml-auto flex items-center gap-2 md:gap-4">
-                    {/* Auth buttons placeholder - distinct from sidebar items */}
-                    <Link href="/login" className="text-xs font-semibold text-headline hover:text-button transition-colors md:text-sm">
-                        Log In
-                    </Link>
-                    <Link href="/signup" className="text-xs font-semibold bg-button text-button-text px-3 py-2 rounded-lg hover:bg-[#2D8FDC] transition-colors md:text-sm md:px-4">
-                        Sign Up
-                    </Link>
-                    <Link href="/waitlist" className="inline-flex text-xs font-semibold bg-headline text-white px-3 py-2 rounded-lg hover:bg-[#094067]/90 transition-colors shadow-sm md:text-sm md:px-4">
-                        Waitlist
-                    </Link>
+                    {isWaitlistMode ? (
+                        <Link
+                            href="/waitlist"
+                            className={buttonVariants({
+                                size: "sm",
+                                className: "text-xs md:text-sm px-3 py-2 md:px-4 rounded-lg",
+                            })}
+                        >
+                            Join waitlist
+                        </Link>
+                    ) : (
+                        <>
+                            <Link
+                                href="/login"
+                                className="text-xs font-semibold text-headline hover:text-button transition-colors md:text-sm"
+                            >
+                                Log In
+                            </Link>
+                            <Link
+                                href="/signup"
+                                className={buttonVariants({
+                                    size: "sm",
+                                    className: "text-xs md:text-sm px-3 py-2 md:px-4 rounded-lg",
+                                })}
+                            >
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
+                    <MobileMenu links={NAV_LINKS} />
                 </div>
             </div>
         </header>

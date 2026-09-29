@@ -2,9 +2,48 @@ import { ButtonHTMLAttributes, forwardRef } from "react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+type ButtonVariant = "primary" | "secondary" | "tertiary" | "outline" | "ghost";
+type ButtonSize = "sm" | "md" | "lg";
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "primary" | "secondary" | "tertiary" | "outline" | "ghost";
-    size?: "sm" | "md" | "lg";
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+}
+
+/**
+ * Button styling as a function, so anchors (`<Link>`) can look like buttons
+ * without nesting a <button> inside an <a>.
+ */
+function buttonVariants({
+    variant = "primary",
+    size = "md",
+    className,
+}: {
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    className?: string;
+} = {}) {
+    return twMerge(
+        clsx(
+            "inline-flex items-center justify-center rounded-button font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-button focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+            {
+                "bg-button text-button-text hover:bg-[#2D8FDC] active:bg-[#1D7FCC] shadow-sm hover:shadow-md hover:-translate-y-[1px]":
+                    variant === "primary",
+                "bg-white text-headline border-2 border-headline hover:bg-[#F8FAFC] active:bg-[#F1F5F9]":
+                    variant === "secondary",
+                "bg-transparent text-button hover:text-[#2D8FDC] active:text-[#1D7FCC] underline hover:no-underline":
+                    variant === "tertiary",
+                "bg-white border border-[#CBD5E1] text-headline hover:bg-[#F8FAFC] hover:border-[#94A3B8] shadow-sm":
+                    variant === "outline",
+                "bg-transparent text-headline hover:bg-[#F1F5F9] active:bg-[#E2E8F0]":
+                    variant === "ghost",
+                "px-3 py-1.5 text-sm": size === "sm",
+                "px-6 py-3 text-base": size === "md",
+                "px-8 py-3.5 text-lg": size === "lg",
+            }
+        ),
+        className
+    );
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -12,27 +51,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <button
                 ref={ref}
-                className={twMerge(
-                    clsx(
-                        "inline-flex items-center justify-center rounded-button font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-button focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
-                        {
-                            "bg-button text-button-text hover:bg-[#2D8FDC] active:bg-[#1D7FCC] shadow-sm hover:shadow-md hover:-translate-y-[1px]":
-                                variant === "primary",
-                            "bg-white text-headline border-2 border-headline hover:bg-[#F8FAFC] active:bg-[#F1F5F9]":
-                                variant === "secondary",
-                            "bg-transparent text-button hover:text-[#2D8FDC] active:text-[#1D7FCC] underline hover:no-underline":
-                                variant === "tertiary",
-                            "bg-white border border-[#CBD5E1] text-headline hover:bg-[#F8FAFC] hover:border-[#94A3B8] shadow-sm":
-                                variant === "outline",
-                            "bg-transparent text-headline hover:bg-[#F1F5F9] active:bg-[#E2E8F0]":
-                                variant === "ghost",
-                            "px-3 py-1.5 text-sm": size === "sm",
-                            "px-6 py-3 text-base": size === "md",
-                            "px-8 py-3.5 text-lg": size === "lg",
-                        }
-                    ),
-                    className
-                )}
+                className={buttonVariants({ variant, size, className })}
                 {...props}
             />
         );
@@ -41,4 +60,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
-export { Button };
+export { Button, buttonVariants };

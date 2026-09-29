@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import PrimaryCta from "@/components/ui/PrimaryCta";
 import { Device } from "@/lib/data";
 import { useCartStore } from "@/store/cart";
 import { WishlistButton } from "@/components/commerce/WishlistButton";
@@ -106,13 +107,21 @@ export default function DeviceCard(props: DeviceCardProps) {
                         )}
                     </div>
 
-                    <Button
+                    <PrimaryCta
+                        device={{ id, name }}
+                        location="device_card"
                         size="sm"
-                        onClick={handleRent}
-                        className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
-                    >
-                        Rent Now
-                    </Button>
+                        className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity"
+                        liveCta={
+                            <Button
+                                size="sm"
+                                onClick={handleRent}
+                                className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+                            >
+                                Rent Now
+                            </Button>
+                        }
+                    />
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import AddToCartButton from "@/components/ui/AddToCartButton";
+import PrimaryCta from "@/components/ui/PrimaryCta";
 import { getProductBySlug } from "@/lib/products";
 
 const iconMap: Record<string, any> = {
@@ -290,7 +291,13 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                     </p>
                                 </div>
 
-                                <AddToCartButton product={device} />
+                                <PrimaryCta
+                                    device={{ id: device.id, name: device.name }}
+                                    location="product_pricing_card"
+                                    size="lg"
+                                    className="w-full mb-4 py-6 text-lg font-bold shadow-button/20 shadow-lg"
+                                    liveCta={<AddToCartButton product={device} />}
+                                />
 
                                 <div className="space-y-4 mb-6 pt-6 border-t border-[#F1F5F9]">
                                     <div className="flex items-start gap-3 text-sm text-paragraph">
@@ -334,7 +341,13 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         </div>
                     </div>
                     <div className="flex-1">
-                        <AddToCartButton product={device} />
+                        <PrimaryCta
+                            device={{ id: device.id, name: device.name }}
+                            location="product_mobile_bar"
+                            label="Join waitlist"
+                            className="w-full px-4 whitespace-nowrap"
+                            liveCta={<AddToCartButton product={device} />}
+                        />
                     </div>
                 </div>
             </div>
