@@ -44,6 +44,10 @@ export function isLaunchDevice(id: string): boolean {
  */
 export const REFURB_BUYOUT_DISCOUNT_PCT = 0;
 
-/** Set NEXT_PUBLIC_SUPPORT_EMAIL once a real support address exists. */
+/**
+ * Where the help page tells people to write. Defaults to the address the
+ * old help page already published; confirm that mailbox exists, or set
+ * NEXT_PUBLIC_SUPPORT_EMAIL. Set it to an empty string to hide the contact section.
+ */
 export const SUPPORT_EMAIL: string | undefined =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL || undefined;
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "help@trytechloop.com";

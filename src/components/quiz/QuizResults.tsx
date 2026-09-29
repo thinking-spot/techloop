@@ -4,9 +4,14 @@ import { resultMapping } from "@/lib/quiz-data";
 import { devices } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/Button";
-import { Check, Star, ArrowRight, Zap, RefreshCw } from "lucide-react";
+import { useEffect } from "react";
+import { Button, buttonVariants } from "../ui/Button";
+import PrimaryCta from "../ui/PrimaryCta";
+import { Check, ArrowRight, Zap, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
+import { track } from "@/lib/analytics";
+import { POLICY } from "@/lib/faq";
+import { usd } from "@/lib/pricing";
 
 export default function QuizResults({ answers, onRetake }: { answers: Record<number, any>; onRetake: () => void }) {
     // Question 4 is now Identity (was 3)
@@ -50,6 +55,13 @@ export default function QuizResults({ answers, onRetake }: { answers: Record<num
 
     // Helper to get device details
     const getDevice = (id: string) => devices.find(d => d.id === id);
+
+    const topDeviceId = result.primary.devices[0];
+    const topDevice = getDevice(topDeviceId);
+
+    useEffect(() => {
+        track("quiz_complete", { top_match: topDeviceId });
+    }, [topDeviceId]);
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
@@ -118,11 +130,11 @@ export default function QuizResults({ answers, onRetake }: { answers: Record<num
                                             </div>
                                             <div>
                                                 <div className="font-bold text-headline">{device.name}</div>
-                                                <div className="text-sm text-paragraph">${device.price}/mo</div>
+                                                <div className="text-sm text-paragraph">{usd(Number(device.price))}/mo{device.msrp ? ` · retail ${usd(device.msrp)}` : ""}</div>
                                             </div>
                                         </div>
                                         <Link href={`/product/${device.id}`}>
-                                            <Button className="w-full" size="sm">Rent Now</Button>
+                                            <Button variant="secondary" className="w-full" size="sm">View details</Button>
                                         </Link>
                                     </div>
                                 )
@@ -139,14 +151,14 @@ export default function QuizResults({ answers, onRetake }: { answers: Record<num
                                 <Link key={device.id} href={`/product/${device.id}`} className="group block border border-[#F1F5F9] rounded-2xl p-4 hover:border-button transition-all hover:shadow-lg">
                                     <div className="relative aspect-[4/3] bg-[#F8FAFC] rounded-xl mb-4 overflow-hidden">
                                         <Image src={device.imageUrl} alt={device.name} fill className="object-contain p-4 group-hover:scale-105 transition-transform" />
-                                        <div className="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold shadow-sm flex items-center gap-1">
-                                            <Star size={10} className="fill-yellow-400 text-yellow-400" /> {device.rating}
-                                        </div>
                                     </div>
                                     <h4 className="font-bold text-headline mb-1">{device.name}</h4>
                                     <p className="text-sm text-paragraph line-clamp-2 mb-3">{device.description}</p>
                                     <div className="flex items-center justify-between text-sm">
-                                        <span className="font-bold text-headline">${device.price}/mo</span>
+                                        <span>
+                                            <span className="font-bold text-headline">{usd(Number(device.price))}/mo</span>
+                                            {device.msrp ? <span className="ml-2 text-xs text-paragraph">retail {usd(device.msrp)}</span> : null}
+                                        </span>
                                         <span className="text-button font-medium flex items-center gap-1 group-hover:underline">View <ArrowRight size={14} /></span>
                                     </div>
                                 </Link>
@@ -204,27 +216,33 @@ export default function QuizResults({ answers, onRetake }: { answers: Record<num
                 </div>
             </motion.section>
 
-            {/* 4. Explorer Plan Upsell */}
+            {/* 4. Try two, side by side */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
                 className="bg-headline text-white rounded-3xl p-8 md:p-12 text-center"
             >
-                <h2 className="font-display text-3xl font-bold mb-4">Try Both & Save</h2>
+                <h2 className="font-display text-3xl font-bold mb-4">Try two and compare</h2>
                 <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                    Get the <strong>Explorer Plan</strong> to try 2 devices at once. Swap anytime. Or rent to own.
+                    Rent two devices side by side to see which fits your life. Each is priced on its own,
+                    and you can swap after your first {POLICY.firstRentalMinimumDays} days.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/pricing">
-                        <Button variant="secondary" size="lg" className="w-full sm:w-auto bg-white text-headline border-white hover:bg-gray-100">
-                            Get Explorer Plan ($75/mo)
-                        </Button>
-                    </Link>
-                    <Link href="/browse">
-                        <Button variant="tertiary" size="lg" className="w-full sm:w-auto text-white border-white/20 hover:text-white hover:bg-white/10 no-underline">
-                            Browse All Devices
-                        </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <PrimaryCta
+                        device={topDevice ? { id: topDevice.id, name: topDevice.name } : undefined}
+                        location="quiz_results"
+                        size="lg"
+                        variant="secondary"
+                        className="w-full sm:w-auto whitespace-nowrap bg-white text-headline border-white hover:bg-gray-100"
+                        liveCta={
+                            <Link href="/pricing" className={buttonVariants({ variant: "secondary", size: "lg", className: "w-full sm:w-auto bg-white text-headline border-white hover:bg-gray-100" })}>
+                                See pricing
+                            </Link>
+                        }
+                    />
+                    <Link href="/browse" className={buttonVariants({ variant: "tertiary", size: "lg", className: "w-full sm:w-auto whitespace-nowrap text-white border-white/20 hover:text-white hover:bg-white/10 no-underline" })}>
+                        Browse all devices
                     </Link>
                 </div>
             </motion.div>

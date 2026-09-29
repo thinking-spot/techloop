@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import { PRICING } from "@/lib/pricing";
+import { POLICY } from "@/lib/faq";
 
 export type CategoryConfig = {
     title: string;
@@ -14,17 +16,17 @@ export type CategoryConfig = {
 export const categoryData: Record<string, CategoryConfig> = {
     "ai-rings": {
         title: "Find your perfect AI smart ring",
-        description: "Rent-to-buy the best smart rings on the market. All brand new. All swappable. All available to ship today.",
+        description: "Try smart rings before you buy one. Rent by the month, swap for another, or keep the one you love.",
         filterCategories: ["Rings"],
-        metaTitle: "Try AI Smart Rings | Rent to buy, risk-free | Techloop",
-        metaDescription: "Compare and rent top smart rings like Oura and Samsung Galaxy Ring. Flexible monthly plans, free sizing kits, and easy swaps.",
+        metaTitle: "Try AI Smart Rings | Rent, swap or buy | Techloop",
+        metaDescription: "Compare and rent top smart rings like Oura and Samsung Galaxy Ring. Rent by the month and put your payments toward owning one.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
                 <div>
                     <h3 className="font-display text-xl font-bold text-headline mb-4">Smart Rings Buying Guide</h3>
-                    <p className="text-sm text-paragraph mb-4">Smart rings pack advanced health sensors into a tiny, comfortable form factor. But which valid is right for you?</p>
+                    <p className="text-sm text-paragraph mb-4">Smart rings pack advanced health sensors into a tiny, comfortable form factor. But which one is right for you?</p>
                     <ul className="space-y-3 text-sm text-paragraph">
-                        <li><strong>Oura Ring Gen 3:</strong> The gold standard for sleep tracking. Best if you want deep recovery insights and don't mind a subscription (included in Techloop plan).</li>
+                        <li><strong>Oura Ring Gen 4:</strong> The gold standard for sleep tracking. Best if you want deep recovery insights and don't mind that Oura sells a separate membership for its app.</li>
                         <li><strong>Samsung Galaxy Ring:</strong> The best choice for Android users. Seamless integration with Galaxy phones and no separate subscription fee.</li>
                     </ul>
                 </div>
@@ -32,10 +34,10 @@ export const categoryData: Record<string, CategoryConfig> = {
                     <h3 className="font-display text-xl font-bold text-headline mb-4">Oura vs Samsung: Which is right?</h3>
                     <ul className="space-y-3 text-sm text-paragraph">
                         <li><strong>Choose Oura if:</strong> You use an iPhone OR want the most established sleep algorithms.</li>
-                        <li><strong>Choose Samsung Gallery Ring if:</strong> You have a Galaxy phone and want deeper ecosystem integration.</li>
+                        <li><strong>Choose Samsung Galaxy Ring if:</strong> You have a Galaxy phone and want deeper ecosystem integration.</li>
                     </ul>
                     <div className="mt-4 text-sm bg-blue-50 text-blue-800 p-3 rounded-lg inline-block">
-                        <strong>Tip:</strong> Rent both on our Explorer plan to compare side-by-side for a month.
+                        <strong>Tip:</strong> Rent both to compare them side by side. Each is priced on its own, and you can swap after your first {POLICY.firstRentalMinimumDays} days.
                     </div>
                 </div>
             </div>
@@ -45,8 +47,8 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "The best AI smart glasses",
         description: "From Meta Ray-Ban to AR displays. Experience the future of vision.",
         filterCategories: ["Glasses"],
-        metaTitle: "Try AI Smart Glasses | Rent to buy, risk-free | Techloop",
-        metaDescription: "Rent the latest smart glasses including Meta Ray-Bans and XREAL Air 2 using our flexible Explorer plan. Try before you buy.",
+        metaTitle: "Try AI Smart Glasses | Rent, swap or buy | Techloop",
+        metaDescription: "Rent the latest smart glasses including Meta Ray-Bans and XREAL Air 2. Rent by the month and try before you buy.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
                 <div>
@@ -72,7 +74,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI-powered audio",
         description: "Earbuds that do more than play music. Real-time translation and voice assistants.",
         filterCategories: ["Earbuds"],
-        metaTitle: "Try AI Earbuds | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Earbuds | Rent, swap or buy | Techloop",
         metaDescription: "Experience the next generation of audio. Rent AI earbuds with built-in ChatGPT and voice assistants.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -98,7 +100,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "Standalone AI Assistants",
         description: "The post-smartphone era is here. Pins, pendants, cards, and robotics.",
         filterCategories: ["Pins", "Pendants", "Cards", "Robotics"],
-        metaTitle: "Try AI Assistants | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Assistants | Rent, swap or buy | Techloop",
         metaDescription: "Try the latest standalone AI devices like Rabbit R1 and Humane Ai Pin. See if you're ready to ditch your smartphone.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -114,7 +116,7 @@ export const categoryData: Record<string, CategoryConfig> = {
                     <h3 className="font-display text-xl font-bold text-headline mb-4">Are they ready?</h3>
                     <p className="text-sm text-paragraph mb-4">Honestly? It's early days.</p>
                     <div className="mt-4 text-sm bg-orange-50 text-orange-800 p-3 rounded-lg inline-block">
-                        <strong>Why Renting is Perfect:</strong> These devices are experimental. Renting lets you try the future for $42 instead of paying $700+ to beta test hardware.
+                        <strong>Why Renting is Perfect:</strong> These devices are experimental. Renting lets you try one for about {PRICING.ratePct}% of its price a month instead of paying full price to beta test hardware.
                     </div>
                 </div>
             </div>
@@ -122,9 +124,9 @@ export const categoryData: Record<string, CategoryConfig> = {
     },
     "ai-watches": {
         title: "The best AI smart watches",
-        description: "Track your health, receive alerts, and train smarter. Rent-to-buy the finest AI-driven health watches.",
+        description: "Track your health, receive alerts, and train smarter. Try the finest AI-driven health watches before you buy one.",
         filterCategories: ["Watches"],
-        metaTitle: "Try AI Smart Watches | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Smart Watches | Rent, swap or buy | Techloop",
         metaDescription: "Rent top-tier AI smart watches for advanced fitness tracking and health metrics.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -147,7 +149,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "Wearable AI Pins",
         description: "The invisible assistants that clip to your shirt. Voice-first, always-ready intelligence.",
         filterCategories: ["Pins"],
-        metaTitle: "Try AI Pins | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Pins | Rent, swap or buy | Techloop",
         metaDescription: "Explore and rent AI pins. Compact, wearable logic without the bounds of a screen.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -170,7 +172,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Pendants",
         description: "A continuous memory companion. Pendants listen, remember, and organize your life.",
         filterCategories: ["Pendants"],
-        metaTitle: "Try AI Pendants | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Pendants | Rent, swap or buy | Techloop",
         metaDescription: "Rent AI pendants that serve as memory companions for note-taking, transcription, and ambient assistance.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -193,7 +195,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "Standalone AI Cards",
         description: "The anti-smartphone. Pocket-sized devices utilizing Large Action Models.",
         filterCategories: ["Cards"],
-        metaTitle: "Try AI Cards | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Cards | Rent, swap or buy | Techloop",
         metaDescription: "Pocket-sized AI card companions and devices for standalone functionality without app clutter.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -216,7 +218,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Robotics & Automation",
         description: "Intelligent companions and automation devices for your home or workspace.",
         filterCategories: ["Robotics"],
-        metaTitle: "Try AI Robotics | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Robotics | Rent, swap or buy | Techloop",
         metaDescription: "Bring intelligent automation to your home. Rent-to-try the latest AI robotics.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -239,7 +241,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Devices for Productivity",
         description: "Streamline your workflow with AI devices built to help you achieve more in less time.",
         filterUseCases: ["Productivity"],
-        metaTitle: "Try AI Devices for Productivity | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Devices for Productivity | Rent, swap or buy | Techloop",
         metaDescription: "Rent AI devices designed for productivity. Enhance your workflow with smart glasses, pins, and powerful AI companions.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -262,7 +264,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Devices for Fitness & Health",
         description: "Track your body with absolute precision. Optimize your healthspan.",
         filterUseCases: ["Fitness & Health"],
-        metaTitle: "Try AI Devices for Fitness & Health | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Devices for Fitness & Health | Rent, swap or buy | Techloop",
         metaDescription: "Rent AI wearables for fitness and health tracking. From Oura rings to Whoop straps, discover deeper recovery insights.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -285,7 +287,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Devices for Entertainment",
         description: "Redefine your downtime with massive virtual screens and intelligent audio.",
         filterUseCases: ["Entertainment"],
-        metaTitle: "Try AI Devices for Entertainment | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Devices for Entertainment | Rent, swap or buy | Techloop",
         metaDescription: "Rent AI devices specifically tailored for entertainment. Spatial audio, AR cinema displays, and next-level immersion.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -308,7 +310,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Devices for Communication",
         description: "Stay connected effortlessly. Real-time translation, crystal clear calls, and intelligent sorting.",
         filterUseCases: ["Communication"],
-        metaTitle: "Try AI Devices for Communication | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Devices for Communication | Rent, swap or buy | Techloop",
         metaDescription: "Rent AI wearables that excel in communication. Real-time language translation earbuds and smart glasses.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -331,7 +333,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Devices for Developers",
         description: "Hackable, open-source, and unconstrained. The ultimate playground for tinkerers.",
         filterUseCases: ["Developer"],
-        metaTitle: "Try AI Devices for Developers | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Devices for Developers | Rent, swap or buy | Techloop",
         metaDescription: "Rent open-source and hackable AI devices designed for developers. Experiment with new AI models and sensory inputs.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -345,7 +347,7 @@ export const categoryData: Record<string, CategoryConfig> = {
                 </div>
                 <div>
                     <h3 className="font-display text-xl font-bold text-headline mb-4">Why rent a dev kit?</h3>
-                    <p className="text-sm text-paragraph mb-4">Developer ecosystems evolve at a rapid pace. Renting allows you to experiment with SDKs and platform capabilities for $42 before diving headfirst into a single ecosystem.</p>
+                    <p className="text-sm text-paragraph mb-4">Developer ecosystems evolve at a rapid pace. Renting allows you to experiment with SDKs and platform capabilities for about {PRICING.ratePct}% of retail a month before diving headfirst into a single ecosystem.</p>
                 </div>
             </div>
         )
@@ -354,7 +356,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Assistant Devices",
         description: "Your digital concierge. Voice-activated devices ready to navigate the world for you.",
         filterUseCases: ["AI Assistant"],
-        metaTitle: "Try AI Assistant Devices | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Assistant Devices | Rent, swap or buy | Techloop",
         metaDescription: "Rent intelligent AI assistant devices. Voice-activated companions, pins, and standalone hardware.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">
@@ -377,7 +379,7 @@ export const categoryData: Record<string, CategoryConfig> = {
         title: "AI Devices for Business",
         description: "Equip your enterprise. Scalable AI solutions for professionals and teams.",
         filterUseCases: ["Business"],
-        metaTitle: "Try AI Devices for Business | Rent to buy, risk-free | Techloop",
+        metaTitle: "Try AI Devices for Business | Rent, swap or buy | Techloop",
         metaDescription: "Rent enterprise-grade AI hardware. Discover transformative tools to enhance corporate collaboration and output.",
         BuyingGuide: (
             <div className="mt-20 pt-12 border-t border-slate-100 grid md:grid-cols-2 gap-12">

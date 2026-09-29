@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Techloop Help Center | Support & Guides",
-    description: "Get answers about AI device rentals, swapping, billing, and returns. Chat with support or browse our detailed guides.",
+    title: "Help center | Techloop",
+    description: "Answers about renting AI wearables: pricing, deposits, swaps, buying a device and returns.",
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

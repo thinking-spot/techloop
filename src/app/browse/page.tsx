@@ -1,14 +1,18 @@
 import { getAllProducts } from "@/lib/products";
 import BrowseClient from "./_components/BrowseClient";
+import { devices } from "@/lib/data";
+import { PRICING, lowestMonthlyRate, usd } from "@/lib/pricing";
 
 // Revalidate every hour
 export const revalidate = 3600;
 
 import type { Metadata } from "next";
 
+const lowestRate = lowestMonthlyRate(devices) ?? PRICING.minMonthlyRate;
+
 export const metadata: Metadata = {
-    title: "Browse the best AI wearables | Techloop",
-    description: "Rent-to-buy the best AI glasses, watches, rings, earbuds, pins, pendants and cards. Flexible plans, free shipping, swap anytime.",
+    title: "Browse AI wearables to rent or buy | Techloop",
+    description: `Compare AI glasses, rings, watches, earbuds, pins, pendants and cards. Rent from ${usd(lowestRate)} a month and put your payments toward owning them.`,
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

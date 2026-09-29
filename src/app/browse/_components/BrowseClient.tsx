@@ -2,12 +2,16 @@
 
 import { useState, useMemo } from "react";
 import { Search, SlidersHorizontal, ChevronDown, X, HelpCircle, ArrowLeftRight, Layers, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Checkbox } from "@/components/ui/Checkbox";
 import DeviceCard from "@/components/ui/DeviceCard";
 import { Device } from "@/lib/data";
 import Link from "next/link";
+import { allBrands as catalogBrands, brandOf } from "@/lib/brands";
+import { isLaunchDevice } from "@/lib/site-config";
+import { lowestMonthlyRate, usd } from "@/lib/pricing";
+import { POLICY } from "@/lib/faq";
 
 interface BrowseClientProps {
     initialDevices: Device[];
@@ -21,7 +25,7 @@ interface BrowseClientProps {
 export default function BrowseClient({
     initialDevices,
     pageTitle = "Find the best AI wearables",
-    pageDescription = "Browse dozens of devices across 7 categories. All brand new. All swappable. All available to ship today.",
+    pageDescription,
     initialCategoryFilter = [],
     initialUseCaseFilter = [],
     buyingGuideSlot
@@ -31,7 +35,7 @@ export default function BrowseClient({
     const [selectedUseCases, setSelectedUseCases] = useState<string[]>(initialUseCaseFilter);
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
     const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
-    const [sortBy, setSortBy] = useState("popular");
+    const [sortBy, setSortBy] = useState("launch");
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
     // Extract unique categories and brands for filters DYNAMICALLY from the passed data
@@ -46,7 +50,12 @@ export default function BrowseClient({
         "Cards",
         "Robotics"
     ];
-    const allBrands = ["Meta", "Oura", "XREAL", "Apple", "Humane", "Whoop", "Samsung", "Nothing", "Brilliant", "Rabbit"];
+    const allBrands = catalogBrands();
+
+    const lowestRate = lowestMonthlyRate(initialDevices);
+    const headerDescription =
+        pageDescription ??
+        `Compare ${initialDevices.length} AI wearables.${lowestRate ? ` Rent from ${usd(lowestRate)} a month` : " Rent by the month"} and put your payments toward owning the ones you love.`;
     const allUseCases = ["Productivity", "Fitness & Health", "Entertainment", "Communication", "Developer", "AI Assistant", "Business"];
 
     const msrpRanges = [
@@ -87,8 +96,8 @@ export default function BrowseClient({
 
             // Brand
             if (selectedBrands.length > 0) {
-                const hasMatch = selectedBrands.some(brand => device.name.toLowerCase().includes(brand.toLowerCase()));
-                if (!hasMatch) return false;
+                const brand = brandOf(device.id);
+                if (!brand || !selectedBrands.includes(brand)) return false;
             }
 
             // Price
@@ -110,10 +119,13 @@ export default function BrowseClient({
             switch (sortBy) {
                 case "price-low": return priceA - priceB;
                 case "price-high": return priceB - priceA;
-                case "rating": return (b.rating || 0) - (a.rating || 0);
-                case "popular":
-                default:
-                    return (b.reviewCount || 0) - (a.reviewCount || 0);
+                case "launch":
+                default: {
+                    // Launch devices first, then cheapest first.
+                    const launchA = isLaunchDevice(a.id) ? 0 : 1;
+                    const launchB = isLaunchDevice(b.id) ? 0 : 1;
+                    return launchA - launchB || priceA - priceB;
+                }
             }
         });
     }, [initialDevices, searchQuery, selectedCategories, selectedBrands, selectedPriceRanges, selectedUseCases, sortBy]);
@@ -147,7 +159,7 @@ export default function BrowseClient({
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-headline">Not sure which device is right for you?</h3>
-                                <p className="text-paragraph">Take our 60-second quiz and we&apos;ll recommend your perfect match.</p>
+                                <p className="text-paragraph">Take our short quiz and we&apos;ll suggest a good place to start.</p>
                             </div>
                         </div>
                         <Link href="/quiz">
@@ -167,10 +179,10 @@ export default function BrowseClient({
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-headline">Can&apos;t decide between two devices?</h3>
-                                <p className="text-paragraph">See them side-by-side: specs, pricing, and real user reviews.</p>
+                                <p className="text-paragraph">Rent both and compare them side by side. Each device is priced on its own.</p>
                             </div>
                         </div>
-                        <Button variant="secondary" className="whitespace-nowrap">Compare Devices <ArrowRight className="ml-2 w-4 h-4" /></Button>
+                        <Link href="/pricing" className={buttonVariants({ variant: "secondary", className: "whitespace-nowrap" })}>How pricing works <ArrowRight className="ml-2 w-4 h-4" /></Link>
                     </div>
                 );
             }
@@ -186,10 +198,10 @@ export default function BrowseClient({
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Want to try multiple devices?</h3>
-                                <p className="text-white/80">Explorer plan lets you rent 2 devices at once for $75/month.</p>
+                                <p className="text-white/80">Rent two at once and compare them side by side. Each device is priced on its own, with no plans to pick.</p>
                             </div>
                         </div>
-                        <Button className="whitespace-nowrap bg-white text-headline hover:bg-white/90 border-0 relative z-10">See Explorer Plan</Button>
+                        <Link href="/pricing" className={buttonVariants({ className: "whitespace-nowrap bg-white text-headline hover:bg-white/90 border-0 relative z-10" })}>See pricing</Link>
                     </div>
                 );
             }
@@ -206,14 +218,14 @@ export default function BrowseClient({
                 <div className="max-w-7xl mx-auto">
                     <h1 className="font-display text-[40px] md:text-[48px] font-bold text-headline mb-4">{pageTitle}</h1>
                     <p className="text-[20px] md:text-[22px] text-paragraph max-w-2xl mb-8">
-                        {pageDescription}
+                        {headerDescription}
                     </p>
 
                     <div className="flex flex-wrap gap-4 md:gap-8 text-sm font-medium text-paragraph/80">
-                        <span className="flex items-center gap-2">📦 Free 2-3 day shipping</span>
-                        <span className="flex items-center gap-2">🔄 4 free swaps per year</span>
-                        <span className="flex items-center gap-2">⭐ 4+ star average rating</span>
-                        <span className="flex items-center gap-2">✅ Rent-to-own</span>
+                        <span className="flex items-center gap-2">📦 Free shipping both ways</span>
+                        <span className="flex items-center gap-2">🔄 Swap after {POLICY.firstRentalMinimumDays} days</span>
+                        <span className="flex items-center gap-2">🛡️ Refundable deposit</span>
+                        <span className="flex items-center gap-2">✅ Payments count toward owning</span>
                     </div>
                 </div>
             </div>
@@ -339,10 +351,9 @@ export default function BrowseClient({
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value)}
                             >
-                                <option value="popular">Most Popular</option>
-                                <option value="rating">Highest Rated</option>
-                                <option value="price-low">Lowest Price</option>
-                                <option value="price-high">Highest Price</option>
+                                <option value="launch">Launch devices first</option>
+                                <option value="price-low">Lowest price</option>
+                                <option value="price-high">Highest price</option>
                             </select>
                             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-paragraph/50 pointer-events-none" size={16} />
                         </div>
@@ -410,7 +421,7 @@ export default function BrowseClient({
                                     <li><strong>Choose Samsung Galaxy Ring if:</strong> You have a Galaxy phone and want no subscription fees.</li>
                                 </ul>
                                 <div className="mt-4 text-sm bg-blue-50 text-blue-800 p-3 rounded-lg inline-block">
-                                    <strong>Tip:</strong> Rent both on our Explorer plan to compare side-by-side.
+                                    <strong>Tip:</strong> Rent both to compare them side by side.
                                 </div>
                                 <Link href="/blog/best-smart-rings-2026-guide" className="text-sm font-bold text-button mt-4 inline-block hover:underline">Read full guide →</Link>
                             </div>

@@ -7,6 +7,7 @@ import { Button } from "../ui/Button";
 import { ArrowRight, ChevronLeft, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
+import { track } from "@/lib/analytics";
 
 export default function QuizRunner() {
     const [started, setStarted] = useState(false);
@@ -41,6 +42,11 @@ export default function QuizRunner() {
         }
     };
 
+    const startQuiz = () => {
+        track("quiz_start", {});
+        setStarted(true);
+    };
+
     const retake = () => {
         setAnswers({});
         setCurrentQuestionIndex(0);
@@ -67,10 +73,10 @@ export default function QuizRunner() {
                     <p className="text-xl text-paragraph mb-10 leading-relaxed">
                         Answer a few questions about your life and goals. We&apos;ll match you with devices that actually fit how you want to live.
                     </p>
-                    <Button size="lg" onClick={() => setStarted(true)} className="px-10 py-4 text-lg shadow-xl shadow-button/20">
+                    <Button size="lg" onClick={startQuiz} className="px-10 py-4 text-lg shadow-xl shadow-button/20">
                         Start Quiz <ArrowRight size={20} className="ml-2" />
                     </Button>
-                    <p className="mt-4 text-sm text-paragraph/60">Takes less than 2 minutes</p>
+                    <p className="mt-4 text-sm text-paragraph/60">A few quick questions</p>
                 </motion.div>
             </div>
         );
