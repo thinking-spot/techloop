@@ -1,314 +1,190 @@
-import {
-    Check,
-    CheckCircle2,
-    Shield,
-    CreditCard,
-    Gift,
-    TrendingUp,
-    RefreshCcw,
-    Zap,
-    HelpCircle,
-    AlertCircle,
-} from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Check, DollarSign, RefreshCcw, KeyRound, Zap, ListChecks, ThumbsUp } from "lucide-react";
 import WaitlistForm from "@/components/waitlist/WaitlistForm";
+import PricingExplainer from "@/components/pricing/PricingExplainer";
+import FaqSection from "@/components/marketing/FaqSection";
+import FinalCta from "@/components/marketing/FinalCta";
 import { getWaitlistDeviceOptions } from "@/lib/waitlist";
+import { devices } from "@/lib/data";
+import { PRICING, lowestMonthlyRate, usd } from "@/lib/pricing";
+import { POLICY } from "@/lib/faq";
+
+const lowestRate = lowestMonthlyRate(devices) ?? PRICING.minMonthlyRate;
+
+// Real catalog prices for the "expensive to experiment" example.
+const glasses = devices.find((d) => d.id === "meta-rayban");
+const ring = devices.find((d) => d.id === "oura-ring");
 
 export default function WaitlistPage() {
     const deviceOptions = getWaitlistDeviceOptions();
+    const bothTotal = (glasses?.msrp ?? 0) + (ring?.msrp ?? 0);
+
+    const chips = [
+        `From ${usd(lowestRate)}/mo`,
+        "Refundable deposit",
+        "Swap for another device",
+        "Payments count toward owning",
+    ];
 
     return (
         <div className="bg-white min-h-screen font-sans text-headline">
 
-            {/* 1. Hero Section */}
+            {/* Hero */}
             <section className="relative px-4 pt-10 md:px-12 lg:pt-20">
-                <div className="mx-auto max-w-5xl rounded-[2.5rem] bg-[linear-gradient(135deg,#F0F9FF_0%,#E6F4FE_50%,#F1F5F9_100%)] p-6 pt-16 pb-12 md:p-16 text-center lg:text-left border border-[#BAE6FD]/40 shadow-sm relative overflow-hidden">
-                    {/* Background decorative blob */}
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#3DA9FC]/5 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
+                <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-[#BAE6FD]/40 bg-[linear-gradient(135deg,#F0F9FF_0%,#E6F4FE_50%,#F1F5F9_100%)] p-6 pb-12 pt-16 text-center shadow-sm md:p-16 lg:text-left">
+                    <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-[#3DA9FC]/5 blur-[100px]" />
 
-                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 w-full">
-                        <div className="space-y-6 md:space-y-8 max-w-lg mx-auto lg:mx-0">
-                            <h1 className="font-display text-[44px] md:text-[48px] font-bold tracking-tight leading-[1.05] text-headline">
-                                Ready to love 💙 <br className="hidden lg:block" /><span className="text-[#3DA9FC]">Techloop 🤖</span>
+                    <div className="relative z-10 grid w-full items-center gap-8 md:gap-12 lg:grid-cols-2">
+                        <div className="mx-auto max-w-lg space-y-6 md:space-y-8 lg:mx-0">
+                            <h1 className="font-display text-[44px] font-bold leading-[1.05] tracking-tight text-headline md:text-[48px]">
+                                Try AI wearables <span className="text-[#3DA9FC]">before you buy.</span>
                             </h1>
-                            <p className="text-[18px] md:text-[20px] text-paragraph leading-relaxed font-light">
-                                AI glasses, rings, watches, earbuds, cards, and pins.
-                                Rent to own, risk-free, for $42/m.
+                            <p className="text-[18px] font-light leading-relaxed text-paragraph md:text-[20px]">
+                                Join the waitlist for early access. Rent smart glasses, rings, earbuds and more from{" "}
+                                {usd(lowestRate)} a month, and put your payments toward owning the ones you love.
                             </p>
 
-                            <div className="relative grid grid-cols-2 sm:flex sm:flex-wrap lg:grid lg:grid-cols-2 justify-center lg:justify-start items-center gap-3 text-sm font-medium text-paragraph/80 max-w-[320px] sm:max-w-none mx-auto lg:mx-0">
-                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <Check size={16} className="text-[#22C55E]" /> New AI devices
-                                </div>
-                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <Check size={16} className="text-[#22C55E]" /> Rent-to-own
-                                </div>
-                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <Check size={16} className="text-[#22C55E]" /> Free swaps
-                                </div>
-                                <div className="flex items-center justify-center gap-2 bg-white px-3 py-2.5 rounded-xl shadow-sm border border-[#F1F5F9] whitespace-nowrap">
-                                    <Shield size={16} className="text-[#22C55E]" /> Cancel anytime
-                                </div>
-                            </div>
+                            <ul className="mx-auto grid max-w-[340px] grid-cols-2 gap-3 text-sm font-medium text-paragraph/80 sm:max-w-none sm:flex sm:flex-wrap lg:mx-0 lg:grid lg:grid-cols-2">
+                                {chips.map((chip) => (
+                                    <li
+                                        key={chip}
+                                        className="flex items-center justify-center gap-2 rounded-xl border border-[#F1F5F9] bg-white px-3 py-2.5 text-center shadow-sm sm:whitespace-nowrap lg:whitespace-normal"
+                                    >
+                                        <Check size={16} className="shrink-0 text-[#22C55E]" /> {chip}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
-                        {/* Waitlist Box */}
-                        <div className="bg-white text-headline rounded-2xl p-8 shadow-xl border border-[#BAE6FD]/60 max-w-md mx-auto w-full relative">
-                            <div className="text-center mb-6">
-                                <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-3 animate-pulse">
-                                    <AlertCircle size={14} /> Limited Spots
-                                </div>
-
-                                <p className="text-paragraph text-sm">Be the first to know when we launch in Q2 2026.</p>
+                        <div className="relative mx-auto w-full max-w-md rounded-2xl border border-[#BAE6FD]/60 bg-white p-8 text-headline shadow-xl">
+                            <div className="mb-6 text-center">
+                                <h2 className="text-xl font-bold text-headline">Get early access</h2>
+                                <p className="mt-1 text-sm text-paragraph">
+                                    We&apos;re opening to the waitlist first. We&apos;ll email you when your spot opens.
+                                </p>
                             </div>
-
                             <WaitlistForm deviceOptions={deviceOptions} />
-
-                            <div className="mt-6 pt-6 border-t border-gray-100">
-
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* 2. The Problem */}
-            <section className="py-24 px-6 bg-white">
-                <div className="max-w-4xl mx-auto text-center mb-16">
-                    <h2 className="font-display text-3xl md:text-4xl font-bold text-headline mb-6">AI wearables are a tough sell</h2>
-                    <p className="text-xl text-paragraph leading-relaxed">
-                        You want smart glasses, but you need to try before you buy. What if they don't fit? What if they're creepy? Will you actually use them? Fair questions.
+            {/* The problem */}
+            <section className="bg-white px-6 py-24">
+                <div className="mx-auto mb-16 max-w-4xl text-center">
+                    <h2 className="mb-6 font-display text-3xl font-bold text-headline md:text-4xl">AI wearables are a tough sell</h2>
+                    <p className="text-xl leading-relaxed text-paragraph">
+                        You want to try smart glasses, but you can&apos;t know if they fit your life until you&apos;ve
+                        worn them. Fair questions: Will they fit? Will I use them? Will I feel like myself?
                     </p>
                 </div>
 
-                <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+                <div className="mx-auto grid max-w-6xl gap-12 text-center md:grid-cols-3">
                     <div className="p-6">
-                        <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">💸</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Too expensive to experiment</h3>
-                        <p className="text-paragraph leading-relaxed mb-6">
-                            AI glasses cost $450. Rings are $300. Trying both costs over $750. Why lock yourself in when you can try before you buy?
+                        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-3xl text-red-600">💸</div>
+                        <h3 className="mb-4 text-xl font-bold text-headline">Expensive to experiment</h3>
+                        <p className="leading-relaxed text-paragraph">
+                            {glasses && ring
+                                ? `The ${glasses.name} is ${usd(glasses.msrp ?? 0)}. The ${ring.name} is ${usd(ring.msrp ?? 0)}. Trying both means spending ${usd(bothTotal)} before you know what you'll actually wear.`
+                                : "Smart glasses and smart rings each cost hundreds of dollars. Trying a few means spending a lot before you know what you'll wear."}
                         </p>
-                        <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-red-200">
-                            &quot;I wanted to try XREAL glasses for work, but $399 is steep for something I might not use.&quot;
-                        </blockquote>
-                    </div>
-                    <div className="p-6">
-                        <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🤷</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Is this my AI identity?</h3>
-                        <p className="text-paragraph leading-relaxed mb-6">
-                            AI wearables are more than fashion. The right device should feel like <b>your self</b>. With Techloop, you can try until you find the perfect fit.
-                        </p>
-                        <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-orange-200">
-                            &quot;I bought Meta Ray-Ban, but it just didn&apos;t feel like &apos;me&apos;. Wish I could&apos;ve rented first.&quot;
-                        </blockquote>
                     </div>
                     <div className="p-6">
-                        <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🔄</div>
-                        <h3 className="text-xl font-bold text-headline mb-4">Tech moves too fast</h3>
-                        <p className="text-paragraph leading-relaxed mb-6">
-                            Buy XREAL Air 2 today, Air 3 comes out tomorrow. The upgrade cycle can be brutal. Be an early adopter, every time, for just $42/month.
-                        </p>
-                        <blockquote className="bg-gray-50 p-4 rounded-xl text-sm text-paragraph italic border-l-4 border-blue-200">
-                            &quot;Bought Humane AI Pin for $699 last year. It&apos;s already obsolete. Waste of money.&quot;
-                        </blockquote>
-                    </div>
-                </div>
-            </section>
-
-            {/* 3. The Solution */}
-            <section className="py-24 px-6 bg-[#F0F9FF]">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <span className="text-button font-bold tracking-wider uppercase text-sm">Introducing Techloop</span>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-headline mt-3 mb-6">Rent-to-buy AI devices for everyone</h2>
-                        <p className="text-xl text-paragraph max-w-2xl mx-auto">
-                            Rent any AI device for $42/month. Swap again and again. Find the perfect fit? Keep it at a discount.
+                        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-3xl text-orange-600">🤷</div>
+                        <h3 className="mb-4 text-xl font-bold text-headline">Is this really me?</h3>
+                        <p className="leading-relaxed text-paragraph">
+                            AI wearables sit on your face, your finger, your ear. The right one should feel like
+                            yours, and a spec sheet can&apos;t tell you that.
                         </p>
                     </div>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-cyan-100">
-                            <CheckCircle2 size={40} className="text-button mb-6" />
-                            <h3 className="text-2xl font-bold text-headline mb-4">Try Risk-Free</h3>
-                            <p className="text-paragraph mb-6">
-                                Rent Meta Ray-Ban for $42/mo instead of $400 upfront. Try for 2 months. Don&apos;t love it? Return free.
-                            </p>
-                            <div className="bg-green-50 text-green-800 text-sm font-bold px-3 py-1 rounded-full inline-block">
-                                Save $350+ month 1
-                            </div>
-                        </div>
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-cyan-100">
-                            <RefreshCcw size={40} className="text-button mb-6" />
-                            <h3 className="text-2xl font-bold text-headline mb-4">Swap Anytime</h3>
-                            <p className="text-paragraph mb-6">
-                                Try Oura Ring. Swap to Samsung Ring next month. Compare them in real life. 4 free swaps included per year.
-                            </p>
-                        </div>
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-cyan-100">
-                            <TrendingUp size={40} className="text-button mb-6" />
-                            <h3 className="text-2xl font-bold text-headline mb-4">Always Latest Tech</h3>
-                            <p className="text-paragraph mb-6">
-                                New model launch? Swap to it immediately. Never get stuck with old hardware again.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Rent to Own & Security Deposit */}
-            <section className="py-20 px-6 md:px-12 bg-white">
-                <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16">
-                    {/* Security Deposit */}
-                    <div>
-                        <h3 className="flex items-center gap-2 font-display text-2xl font-bold text-headline mb-4">
-                            <Shield size={28} className="text-button" /> Security Deposit
-                        </h3>
-                        <p className="text-paragraph mb-6">
-                            We collect a refundable deposit ($42) to protect our devices and keep the balance sheet healthy.
+                    <div className="p-6">
+                        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-3xl text-blue-600">🔄</div>
+                        <h3 className="mb-4 text-xl font-bold text-headline">Buy now or wait?</h3>
+                        <p className="leading-relaxed text-paragraph">
+                            New models keep arriving, and it&apos;s hard to know whether to buy today or hold off.
+                            Renting lets you try what&apos;s out now without committing to it.
                         </p>
-                        <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0]">
-                            <h4 className="font-semibold text-headline mb-3 text-sm">100% Refunded when you:</h4>
-                            <ul className="space-y-3 mb-4">
-                                <li className="flex items-center gap-2 text-sm text-paragraph"><Check size={16} className="text-success" /> Return the device</li>
-                                <li className="flex items-center gap-2 text-sm text-paragraph"><Check size={16} className="text-success" /> Purchase the device</li>
-                            </ul>
-                            <p className="text-xs text-paragraph/70 border-t border-[#E2E8F0] pt-3">
-                                98% of our users get their full deposit back.
-                            </p>
-                        </div>
                     </div>
+                </div>
+            </section>
 
-                    {/* Rent to Own */}
-                    <div>
-                        <h3 className="flex items-center gap-2 font-display text-2xl font-bold text-headline mb-4">
-                            <RefreshCcw size={28} className="text-button" /> Rent-to-Own
-                        </h3>
-                        <p className="text-paragraph mb-6">
-                            Fall in love? Keep it. Your rental payments count toward the purchase price.
+            {/* The solution */}
+            <section className="bg-[#F0F9FF] px-6 py-24">
+                <div className="mx-auto max-w-7xl">
+                    <div className="mb-16 text-center">
+                        <span className="text-sm font-bold uppercase tracking-wider text-button">Introducing Techloop</span>
+                        <h2 className="mb-6 mt-3 font-display text-4xl font-bold text-headline md:text-5xl">Rent first. Keep what you love.</h2>
+                        <p className="mx-auto max-w-2xl text-xl text-paragraph">
+                            Try any device for about {PRICING.ratePct}% of its retail price a month. Swap it, send it
+                            back, or buy it with your payments already counting.
                         </p>
+                    </div>
 
-                        <div className="bg-[#F8FAFC] p-6 rounded-xl border border-[#E2E8F0] text-sm">
-                            <div className="flex justify-between mb-2">
-                                <span className="text-paragraph">Retail Price:</span>
-                                <span className="font-bold text-headline line-through">$400</span>
-                            </div>
-                            <div className="flex justify-between mb-4 pb-4 border-b border-[#E2E8F0]">
-                                <span className="text-paragraph">Rental Payments (3 x $42):</span>
-                                <span className="font-bold text-success">-$126</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="font-bold text-headline">Buyout Price:</span>
-                                <span className="font-bold text-2xl text-button">$274</span>
-                            </div>
-                            <p className="text-xs text-paragraph mt-4">
-                                *Example for Meta Ray-Ban after 3 months.
+                    <div className="grid gap-8 md:grid-cols-3">
+                        <div className="rounded-2xl border border-cyan-100 bg-white p-8 shadow-sm">
+                            <DollarSign size={40} className="mb-6 text-button" />
+                            <h3 className="mb-4 text-2xl font-bold text-headline">Try it for real</h3>
+                            <p className="text-paragraph">
+                                Start with your first month and a refundable deposit instead of the full retail price.
+                                Your first device ships new and sealed.
+                            </p>
+                        </div>
+                        <div className="rounded-2xl border border-cyan-100 bg-white p-8 shadow-sm">
+                            <RefreshCcw size={40} className="mb-6 text-button" />
+                            <h3 className="mb-4 text-2xl font-bold text-headline">Swap when it&apos;s not the one</h3>
+                            <p className="text-paragraph">
+                                Try an Oura Ring, then a Samsung Galaxy Ring. After your first {POLICY.firstRentalMinimumDays} days
+                                you can swap for a different device, and shipping is free.
+                            </p>
+                        </div>
+                        <div className="rounded-2xl border border-cyan-100 bg-white p-8 shadow-sm">
+                            <KeyRound size={40} className="mb-6 text-button" />
+                            <h3 className="mb-4 text-2xl font-bold text-headline">Own it when you love it</h3>
+                            <p className="text-paragraph">
+                                Your deposit and first {PRICING.creditedPayments} payments count toward buying. Buy within{" "}
+                                {PRICING.creditedPayments} months and you pay exactly the retail price.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* 6. Benefits */}
-            <section className="py-24 px-6 bg-[#0A1F44] text-white">
-                <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="font-display text-4xl font-bold mb-6 text-white">Why Join the Waitlist?</h2>
-                        <p className="text-xl text-cyan-100/80">The first people to try Techloop get exclusive lifetime perks.</p>
+            {/* How the money works */}
+            <PricingExplainer className="mx-auto max-w-6xl px-6 py-24" />
+
+            {/* Perks */}
+            <section className="bg-[#0A1F44] px-6 py-24 text-white">
+                <div className="mx-auto max-w-6xl">
+                    <div className="mb-16 text-center">
+                        <h2 className="mb-6 font-display text-4xl font-bold text-white">Why join the waitlist?</h2>
+                        <p className="text-xl text-cyan-100/80">The people who join first get first pick.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                            <Zap className="text-yellow-400 mb-4" size={32} />
-                            <h3 className="text-xl font-bold mb-2 text-white">Skip the Line</h3>
-                            <p className="text-sm text-gray-300">Get early access before public launch. Choose your device first.</p>
+                    <div className="grid gap-8 md:grid-cols-3">
+                        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                            <Zap className="mb-4 text-yellow-400" size={32} />
+                            <h3 className="mb-2 text-xl font-bold text-white">Early access</h3>
+                            <p className="text-sm text-gray-300">You&apos;re first in line when we open, before everyone else.</p>
                         </div>
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                            <CreditCard className="text-green-400 mb-4" size={32} />
-                            <h3 className="text-xl font-bold mb-2 text-white">Founder&apos;s Pricing</h3>
-                            <p className="text-sm text-gray-300">Lock in $42/mo forever, even if prices go up later.</p>
+                        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                            <ListChecks className="mb-4 text-green-400" size={32} />
+                            <h3 className="mb-2 text-xl font-bold text-white">Pick your launch device first</h3>
+                            <p className="text-sm text-gray-300">Choose your device before we open the catalog to the public.</p>
                         </div>
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                            <Gift className="text-pink-400 mb-4" size={32} />
-                            <h3 className="text-xl font-bold mb-2 text-white">$20 Credit</h3>
-                            <p className="text-sm text-gray-300">First month discount. Try your first device for just $22.</p>
-                        </div>
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
-                            <HelpCircle className="text-cyan-400 mb-4" size={32} />
-                            <h3 className="text-xl font-bold mb-2 text-white">Vote on Roadmap</h3>
-                            <p className="text-sm text-gray-300">Tell us which devices to add next. Shape the inventory.</p>
-                        </div>
-                    </div>
-
-
-                </div>
-            </section>
-
-            {/* 8. Pricing Preview - Simplified */}
-            <section className="py-24 px-6 bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="font-display text-4xl font-bold text-headline mb-6">Simple, Transparent Pricing</h2>
-                        <p className="text-xl text-paragraph">Pick devices. Swap anytime. Buy or return whenever.</p>
-                    </div>
-
-                    <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {/* Tier 1 */}
-                        <div className="border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                            <h3 className="text-2xl font-bold text-headline mb-2">Starter</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$42</span><span className="text-paragraph">/mo</span></div>
-                            <p className="text-sm text-paragraph mb-8">Perfect for trying one device deeply.</p>
-                            <ul className="space-y-4 text-sm text-headline mb-8">
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 1 device at a time</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 4 free swaps / year</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> Free shipping & returns</li>
-                            </ul>
-                            <Button variant="secondary" className="w-full" disabled>Coming Soon</Button>
-                        </div>
-
-                        {/* Tier 2 */}
-                        <div className="border-2 border-button rounded-2xl p-8 relative shadow-xl">
-                            <div className="absolute top-0 right-0 bg-button text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg uppercase">Most Popular</div>
-                            <h3 className="text-2xl font-bold text-headline mb-2">Explorer</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$75</span><span className="text-paragraph">/mo</span></div>
-                            <p className="text-sm text-paragraph mb-8">Try 2 wearables side-by-side.</p>
-                            <ul className="space-y-4 text-sm text-headline mb-8">
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 2 devices at a time</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 8 free swaps / year</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> Save 16% vs Starter</li>
-                            </ul>
-                            <Button className="w-full" disabled>Coming Soon</Button>
-                        </div>
-
-                        {/* Tier 3 */}
-                        <div className="border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                            <h3 className="text-2xl font-bold text-headline mb-2">Power User</h3>
-                            <div className="mb-6"><span className="text-4xl font-bold text-headline">$99</span><span className="text-paragraph">/mo</span></div>
-                            <p className="text-sm text-paragraph mb-8">The full AI lifestyle.</p>
-                            <ul className="space-y-4 text-sm text-headline mb-8">
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> 3 devices at a time</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> Priority Support</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-green-500" /> Unlimited Swaps</li>
-                            </ul>
-                            <Button variant="secondary" className="w-full" disabled>Coming Soon</Button>
+                        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                            <ThumbsUp className="mb-4 text-cyan-400" size={32} />
+                            <h3 className="mb-2 text-xl font-bold text-white">Vote on what we add next</h3>
+                            <p className="text-sm text-gray-300">Tell us which devices you want. The most requested come first.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Final CTA */}
-            <section className="bg-gray-50 py-24 px-6 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="font-display text-4xl font-bold text-headline mb-6">Ready to skip the $400 risk?</h2>
-                    <p className="text-xl text-paragraph mb-10">
-                    </p>
-                    <div className="max-w-md mx-auto">
-                        <WaitlistForm deviceOptions={deviceOptions} variant="compact" />
-                    </div>
-                </div>
-            </section>
+            <FaqSection
+                className="mx-auto max-w-3xl px-6 py-24"
+                ids={["waitlist-status", "pricing-how", "pricing-deposit", "buying-keep", "first-device-new", "swaps-how"]}
+            />
 
+            <FinalCta className="px-6 pb-24" />
         </div>
     );
 }

@@ -1,56 +1,55 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-    Check,
     Shield,
     Truck,
-    Star,
+    RefreshCcw,
+    Check,
     Info,
     Camera,
     Mic,
     Speaker,
     Bot,
-    Battery
+    Battery,
+    type LucideIcon,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import AddToCartButton from "@/components/ui/AddToCartButton";
 import PrimaryCta from "@/components/ui/PrimaryCta";
+import PricingBlock from "@/components/pricing/PricingBlock";
+import BuyoutSchedule from "@/components/pricing/BuyoutSchedule";
+import FaqSection from "@/components/marketing/FaqSection";
+import ProductViewTracker from "@/components/analytics/ProductViewTracker";
 import { getProductBySlug } from "@/lib/products";
+import { brandOf } from "@/lib/brands";
+import { isLaunchDevice, isWaitlistMode, SITE_URL } from "@/lib/site-config";
+import { PRICING, priceSummary, usd } from "@/lib/pricing";
+import { POLICY } from "@/lib/faq";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
     Camera,
     Mic,
     Speaker,
     Bot,
-    Battery
+    Battery,
 };
 
-
-
 export async function generateMetadata(
-    { params }: { params: Promise<{ id: string }> },
-    parent: ResolvingMetadata
+    { params }: { params: Promise<{ id: string }> }
 ): Promise<Metadata> {
-    // read route params
     const { id } = await params;
-
-    // fetch data
     const device = await getProductBySlug(id);
 
-    // optionally access and extend (rather than replace) parent metadata
-    // const previousImages = (await parent).openGraph?.images || []
-
-    if (!device) {
-        return {
-            title: "Product Not Found | Techloop",
-        };
+    if (!device || !device.msrp) {
+        return { title: "Product not found | Techloop" };
     }
 
+    const p = priceSummary(device.msrp);
+
     return {
-        title: `${device.name} | $${device.price}/m | Rent-to-buy + Risk-free`,
-        description: `Rent ${device.name} for $${device.price}/month. No commitment. Swap anytime. Free shipping & returns. Try AI wearables before you buy.`,
+        title: `${device.name} rental from ${usd(p.monthlyRate)}/mo | Techloop`,
+        description: `Try the ${device.name} for ${usd(p.monthlyRate)} a month (retail ${usd(p.msrp)}). Your deposit and first ${PRICING.creditedPayments} payments count toward buying it for ${usd(p.buyoutAfterCredits)}.`,
         openGraph: {
             images: "/images/techloop-wordmark.png",
         },
@@ -61,12 +60,70 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     const { id } = await params;
     const device = await getProductBySlug(id);
 
-    if (!device) {
+    if (!device || !device.msrp) {
         notFound();
     }
 
+    const p = priceSummary(device.msrp);
+    const available = isLaunchDevice(device.id);
+    const brand = brandOf(device.id);
+
+    // Only describe an offer when the device can actually be rented.
+    const offerIsLive = !isWaitlistMode && available;
+    const structuredData = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        name: device.name,
+        image: device.imageUrl,
+        description: device.description,
+        url: `${SITE_URL}/product/${device.id}`,
+        ...(brand ? { brand: { "@type": "Brand", name: brand } } : {}),
+        ...(offerIsLive
+            ? {
+                  offers: {
+                      "@type": "Offer",
+                      url: `${SITE_URL}/product/${device.id}`,
+                      priceCurrency: "USD",
+                      price: p.monthlyRate,
+                      availability: "https://schema.org/InStock",
+                      priceSpecification: {
+                          "@type": "UnitPriceSpecification",
+                          price: p.monthlyRate,
+                          priceCurrency: "USD",
+                          billingDuration: 1,
+                          unitCode: "MON",
+                      },
+                  },
+              }
+            : {}),
+    };
+
+    // Only the fields the cart needs: passing the whole device would serialize
+    // all of it into the page's HTML.
+    const cartItem = {
+        id: device.id,
+        name: device.name,
+        price: device.price,
+        imageUrl: device.imageUrl,
+    };
+
+    const ctaProps = {
+        device: { id: device.id, name: device.name },
+        forceWaitlist: !available,
+        label: available ? "Join the waitlist" : "Notify me",
+    };
+
+    const perks = [
+        { icon: Check, text: "First device ships new and sealed" },
+        { icon: Truck, text: "Free shipping both ways" },
+        { icon: RefreshCcw, text: `Swap for another device after ${POLICY.firstRentalMinimumDays} days` },
+        { icon: Shield, text: "Deposit refunded when you return it" },
+    ];
+
     return (
         <div className="bg-white min-h-screen pb-20">
+            <ProductViewTracker deviceId={device.id} />
+
             {/* Breadcrumb */}
             <div className="border-b border-[#F1F5F9] bg-white">
                 <div className="max-w-7xl mx-auto px-6 h-12 flex items-center text-sm text-paragraph/60">
@@ -81,29 +138,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org/",
-                        "@type": "Product",
-                        name: device.name,
-                        image: device.imageUrl,
-                        description: device.description,
-                        brand: {
-                            "@type": "Brand",
-                            name: "Techloop"
-                        },
-                        offers: {
-                            "@type": "Offer",
-                            url: `https://techloop.com/product/${device.id}`,
-                            priceCurrency: "USD",
-                            price: device.price,
-                            availability: "https://schema.org/InStock"
-                        },
-                        aggregateRating: {
-                            "@type": "AggregateRating",
-                            ratingValue: device.rating,
-                            reviewCount: device.reviewCount
-                        }
-                    })
+                    // Escape "<" so a device name can never close the script tag.
+                    __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
                 }}
             />
 
@@ -123,22 +159,21 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                                     priority
                                 />
-                                {device.badges && (
-                                    <div className="absolute top-4 left-4 flex flex-col gap-2">
-                                        {device.badges.map(badge => (
-                                            <span key={badge} className="bg-headline text-white text-xs font-bold px-3 py-1.5 rounded-md uppercase tracking-wide">
-                                                {badge}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
+                                <div className="absolute top-4 left-4">
+                                    <span
+                                        className={`text-xs font-bold px-3 py-1.5 rounded-md uppercase tracking-wide ${
+                                            available ? "bg-headline text-white" : "bg-slate-100 text-slate-600"
+                                        }`}
+                                    >
+                                        {available ? "Launch device" : "Coming soon"}
+                                    </span>
+                                </div>
                             </div>
 
                             {device.galleryImages && (
                                 <div className="grid grid-cols-5 gap-4">
-                                    {/* Map actual gallery images, defaulting to placeholders if needed */}
                                     {device.galleryImages.map((img, i) => (
-                                        <div key={i} className={`relative aspect-square rounded-lg bg-[#F8FAFC] border border-[#F1F5F9] cursor-pointer hover:border-button transition-all ${i === 0 ? 'ring-2 ring-button ring-offset-2' : ''}`}>
+                                        <div key={i} className={`relative aspect-square rounded-lg bg-[#F8FAFC] border border-[#F1F5F9] hover:border-button transition-all ${i === 0 ? 'ring-2 ring-button ring-offset-2' : ''}`}>
                                             <Image
                                                 src={img}
                                                 alt={`${device.name} view ${i}`}
@@ -153,15 +188,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
                         {/* Mobile Title (visible only on small screens) */}
                         <div className="lg:hidden">
+                            {brand && <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-paragraph">{brand}</p>}
                             <h1 className="font-display text-3xl font-bold text-headline mb-2">{device.name}</h1>
-                            {device.tagline && <p className="text-lg text-paragraph mb-4">{device.tagline}</p>}
-                            <div className="flex items-center gap-2 mb-6">
-                                <div className="flex text-yellow-400">
-                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} size={16} fill="currentColor" />)}
-                                </div>
-                                <span className="text-sm font-medium text-headline">{device.rating}</span>
-                                <span className="text-sm text-paragraph underline">({device.reviewCount} reviews)</span>
-                            </div>
+                            {device.tagline && <p className="text-lg text-paragraph">{device.tagline}</p>}
                         </div>
 
                         {/* Description */}
@@ -191,6 +220,15 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             )}
                         </div>
 
+                        {/* What it costs to own */}
+                        <div>
+                            <h2 className="font-display text-2xl font-bold text-headline mb-2">What it costs to own</h2>
+                            <p className="mb-6 text-paragraph">
+                                Rent the {device.name} and put your payments toward keeping it.
+                            </p>
+                            <BuyoutSchedule msrp={p.msrp} />
+                        </div>
+
                         {/* Technical Specs Accordion-style */}
                         {device.technicalSpecs && (
                             <div>
@@ -213,116 +251,46 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             </div>
                         )}
 
-                        {/* Reviews */}
-                        {device.reviews && (
-                            <div id="reviews">
-                                <div className="flex items-center justify-between mb-8">
-                                    <h2 className="font-display text-2xl font-bold text-headline">Member Reviews</h2>
-                                    <div className="text-right">
-                                        <div className="text-3xl font-bold text-headline">{device.rating}</div>
-                                        <div className="flex text-yellow-400 text-sm justify-end">
-                                            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={12} fill="currentColor" />)}
-                                        </div>
-                                        <div className="text-xs text-paragraph">{device.reviewCount} reviews</div>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-6">
-                                    {device.reviews.map((review, i) => (
-                                        <div key={i} className="bg-[#F8FAFC] p-6 rounded-2xl border border-[#F1F5F9]">
-                                            <div className="flex justify-between items-start mb-4">
-                                                <div>
-                                                    <div className="flex items-center gap-2 mb-1">
-                                                        <h4 className="font-bold text-headline">{review.title}</h4>
-                                                        {review.verified && <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Verified Rental</span>}
-                                                    </div>
-                                                    <div className="flex text-yellow-400 text-xs">
-                                                        {[...Array(5)].map((_, starIndex) => (
-                                                            <Star key={starIndex} size={12} fill={starIndex < review.rating ? "currentColor" : "none"} className={starIndex >= review.rating ? "text-gray-300" : ""} />
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <span className="text-xs text-paragraph">{review.date}</span>
-                                            </div>
-                                            <p className="text-paragraph text-sm leading-relaxed mb-4">
-                                                &quot;{review.content}&quot;
-                                            </p>
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-6 h-6 rounded-full bg-gray-200" />
-                                                <span className="text-xs font-medium text-headline">{review.user}</span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
+                        <FaqSection
+                            heading="Renting the fine print, in plain English"
+                            ids={["pricing-deposit", "buying-keep", "swaps-how", "returns-cancel", "returns-shipping"]}
+                        />
 
                     </div>
 
-                    {/* Right Column: Sticky Pricing Card (4 cols) */}
+                    {/* Right Column: Sticky Pricing (4 cols) */}
                     <div className="lg:col-span-4">
                         <div className="sticky top-24 space-y-6">
                             {/* Desktop Title */}
                             <div className="hidden lg:block">
+                                {brand && <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-paragraph">{brand}</p>}
                                 <h1 className="font-display text-3xl font-bold text-headline mb-2">{device.name}</h1>
-                                {device.tagline && <p className="text-paragraph mb-4">{device.tagline}</p>}
-                                <div className="flex items-center gap-2 mb-6">
-                                    <div className="flex text-yellow-400">
-                                        {[1, 2, 3, 4, 5].map(i => <Star key={i} size={16} fill="currentColor" />)}
-                                    </div>
-                                    <span className="text-sm font-medium text-headline">{device.rating}</span>
-                                    <a href="#reviews" className="text-sm text-paragraph underline hover:text-button">({device.reviewCount} reviews)</a>
-                                </div>
+                                {device.tagline && <p className="text-paragraph">{device.tagline}</p>}
                             </div>
 
-                            <div className="rounded-2xl border border-[#F1F5F9] bg-white p-6 shadow-lg shadow-gray-100/50">
-                                <div className="mb-6">
-                                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="font-display text-5xl font-bold text-headline">${device.price}</span>
-                                            <span className="text-xl text-paragraph font-medium">/mo</span>
-                                        </div>
-                                        {device.msrp && (
-                                            <span className="text-lg text-green-600 font-bold line-through whitespace-nowrap">${device.msrp} MSRP</span>
-                                        )}
-                                    </div>
-                                    <p className="text-sm text-green-600 font-medium">
-                                        ≈ ${(parseInt(device.price) / 30).toFixed(2)} / day to try risk-free
-                                    </p>
-                                </div>
+                            <PricingBlock msrp={p.msrp} className="shadow-lg shadow-gray-100/50" />
 
+                            <div>
                                 <PrimaryCta
-                                    device={{ id: device.id, name: device.name }}
+                                    {...ctaProps}
                                     location="product_pricing_card"
                                     size="lg"
-                                    className="w-full mb-4 py-6 text-lg font-bold shadow-button/20 shadow-lg"
-                                    liveCta={<AddToCartButton product={device} />}
+                                    className="w-full py-6 text-lg font-bold shadow-button/20 shadow-lg"
+                                    liveCta={available ? <AddToCartButton product={cartItem} /> : undefined}
                                 />
-
-                                <div className="space-y-4 mb-6 pt-6 border-t border-[#F1F5F9]">
-                                    <div className="flex items-start gap-3 text-sm text-paragraph">
-                                        <Check size={18} className="text-success flex-shrink-0 mt-0.5" />
-                                        <span><strong>Brand new device</strong> (sealed)</span>
-                                    </div>
-                                    <div className="flex items-start gap-3 text-sm text-paragraph">
-                                        <Truck size={18} className="text-button flex-shrink-0 mt-0.5" />
-                                        <span><strong>Free 2-day shipping</strong> both ways</span>
-                                    </div>
-                                    <div className="flex items-start gap-3 text-sm text-paragraph">
-                                        <Shield size={18} className="text-button flex-shrink-0 mt-0.5" />
-                                        <span><strong>Cancel anytime</strong> by returning</span>
-                                    </div>
-                                </div>
-
-                                <div className="bg-[#F0F9FF] rounded-lg p-4 text-xs text-headline border border-[#E0F2FE]">
-                                    <p className="font-bold mb-1">Rent-to-Own Available</p>
-                                    <p>Love it? Your rental payments go toward the purchase price. Buy it anytime.</p>
-                                </div>
-                            </div>
-
-                            <div className="text-center">
-                                <p className="text-xs text-paragraph mb-2">Questions?</p>
-                                <button className="text-sm font-semibold text-button hover:underline">Chat with a device expert</button>
+                                {!available && (
+                                    <p className="mt-3 text-xs text-paragraph">
+                                        The {device.name} isn&apos;t in our launch lineup yet. Asking to be notified counts as a vote for it.
+                                    </p>
+                                )}
+                                <ul className="mt-6 space-y-3 border-t border-[#F1F5F9] pt-6">
+                                    {perks.map(({ icon: Icon, text }) => (
+                                        <li key={text} className="flex items-start gap-3 text-sm text-paragraph">
+                                            <Icon size={18} className="mt-0.5 shrink-0 text-button" />
+                                            <span>{text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -334,19 +302,18 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-[#F1F5F9] p-4 lg:hidden z-50">
                 <div className="flex items-center gap-4">
                     <div className="flex-1">
-                        <div className="text-xs text-paragraph uppercase font-bold">Monthly Rental</div>
-                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 leading-tight">
-                            <div className="text-xl font-bold text-headline">${device.price}<span className="text-sm font-normal text-paragraph">/mo</span></div>
-                            {device.msrp && <span className="text-xs text-green-600 font-bold line-through">${device.msrp} MSRP</span>}
+                        <div className="text-xl font-bold text-headline leading-tight">
+                            {usd(p.monthlyRate)}<span className="text-sm font-normal text-paragraph">/mo</span>
                         </div>
+                        <span className="text-xs text-paragraph">Retail {usd(p.msrp)}</span>
                     </div>
                     <div className="flex-1">
                         <PrimaryCta
-                            device={{ id: device.id, name: device.name }}
+                            {...ctaProps}
                             location="product_mobile_bar"
-                            label="Join waitlist"
+                            label={available ? "Join waitlist" : "Notify me"}
                             className="w-full px-4 whitespace-nowrap"
-                            liveCta={<AddToCartButton product={device} />}
+                            liveCta={available ? <AddToCartButton product={cartItem} /> : undefined}
                         />
                     </div>
                 </div>

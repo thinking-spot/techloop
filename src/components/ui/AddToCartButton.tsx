@@ -5,7 +5,12 @@ import { Button } from "./Button";
 import { useRouter } from "next/navigation";
 import { Device } from "@/lib/data";
 
-export default function AddToCartButton({ product }: { product: Device }) {
+// Only what the cart needs. Passing the whole device would serialize all of it into the page.
+export default function AddToCartButton({
+    product,
+}: {
+    product: Pick<Device, "id" | "name" | "price" | "imageUrl">;
+}) {
     const { addItem } = useCartStore();
     const router = useRouter();
 
