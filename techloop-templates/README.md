@@ -1,3 +1,11 @@
+> **Superseded: do not copy from this folder.** This is the original scaffold the content system
+> was built from. The maintained versions live in `src/` (pages, `src/lib/content.ts`,
+> `src/components/content/`), and they have had the invented prices, ratings, testimonials and
+> promises removed and are built on `src/lib/pricing.ts` (the exception is `DevicePageTemplate.tsx`,
+> which is not routed and carries a warning at its top). Copying files from here back into
+> `src/` would bring those claims back. It is kept only for reference and can be deleted.
+> For the current content rules, see `techloop-content-schemas.md`.
+
 # techloop Content Template System
 
 ## File Map

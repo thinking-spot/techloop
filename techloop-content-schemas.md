@@ -15,8 +15,45 @@ define the shape consumed by page components. The same interface is used to:
 3. Guide AI content generation (pass the schema to Claude/Antigravity as a prompt context)
 
 **Publishing workflow:**
-INSERT row into Supabase → Vercel ISR revalidates → page is live within seconds.
+INSERT row into Supabase → audit it → Vercel ISR revalidates → page is live within seconds.
 No deploy required after initial template is built.
+
+---
+
+## Read this first: facts live in code, not in rows
+
+Content rows are prose. They must not restate facts that the site already owns, because
+the row cannot follow when the fact changes. That is how the old rows ended up with
+prices, ratings and promises that were never true or stopped being true.
+
+| Fact | Where it lives | What a row may do |
+| --- | --- | --- |
+| Prices, deposit, rent-to-own credit, buyout | `src/lib/pricing.ts` (one rule for every device) | Never state an amount. Say "see pricing" and link to `/pricing`. |
+| Policy: minimum first rental, return window, refunds, swaps, failed payments | `POLICY` in `src/lib/faq.ts`, plus the Rental Terms page | Don't restate the numbers. Link to `/rental-terms`. |
+| Which devices exist, their names, specs, retail price | `src/lib/data.ts` (the catalog) | Refer to a device only by its catalog id. |
+| Which devices are open for rent | `LAUNCH_DEVICE_IDS` in `src/lib/site-config.ts` | Don't promise availability. |
+| Customers, reviews, ratings | none exist yet | Leave every testimonial, stat, rating and review column NULL. |
+| Where things are | the pages listed below | Link only to pages that exist. |
+
+Pages that exist: `/`, `/pricing`, `/how-it-works`, `/waitlist`, `/quiz`, `/browse`,
+`/browse/<category>`, `/product/<catalog id>`, `/blog/<slug>`, `/for/<slug>`, `/privacy`,
+`/terms`, `/rental-terms`. There is no `/rent` page and no `/device` page: a device's page
+is `/product/<catalog id>`.
+
+Also keep out of content: delivery or shipping times, "best"/"most popular" style
+superlatives, and any tax, legal, safety, medical or workplace-regulation advice. The full
+list of claims that have been removed is in `src/lib/banned-claims.ts`; the audit enforces it.
+
+**Check before you publish.** Save the generated JSON to a file and run:
+
+```
+npm run audit:content -- --file page.json
+```
+
+It exits 0 when the row is clean. To check every row already in Supabase, run
+`npm run audit:content` (needs `NEXT_PUBLIC_SUPABASE_URL` and a key in `.env.local`). To
+clear the backlog of old rows, see `supabase/patches/20260930_content_cleanup.sql`.
+Regenerating a page with the prompt in section 7 is usually faster than editing it.
 
 ---
 
@@ -41,9 +78,9 @@ create table content_job_pages (
 
   -- Hero
   hero_headline text not null,           -- e.g. "AI Wearables for Electricians"
-  hero_subheadline text not null,        -- e.g. "Hands-free. Risk-free. Try before you buy."
+  hero_subheadline text not null,        -- e.g. "Hands-free on the job. Try before you buy."
   hero_cta_primary text not null,        -- e.g. "Take the Device Quiz"
-  hero_cta_secondary text not null,      -- e.g. "See Pricing — from $48/month"
+  hero_cta_secondary text not null,      -- e.g. "See pricing" (never a price)
 
   -- Audience
   job_title text not null,               -- e.g. "Electrician"
@@ -57,7 +94,8 @@ create table content_job_pages (
   -- Device recommendations (1–3)
   recommended_devices jsonb not null,
   -- Shape: [{ device_slug: string, reason: string, cta_label: string }]
-  -- device_slug references content_device_pages.slug
+  -- device_slug must be a catalog id from src/lib/data.ts (e.g. "meta-rayban"). Any other value
+  -- is silently dropped from the page.
 
   -- How it works (job-framed, 3 steps)
   how_it_works jsonb not null,
@@ -67,7 +105,9 @@ create table content_job_pages (
   objections jsonb not null,
   -- Shape: [{ question: string, answer: string }]
 
-  -- Social proof
+  -- Social proof: LEAVE ALL NULL. There are no customers yet. The site hides these columns
+  -- unless NEXT_PUBLIC_SHOW_CUSTOMER_PROOF is switched on, which should only happen once the
+  -- values are real and the person quoted has agreed to it.
   testimonial_quote text,
   testimonial_name text,
   testimonial_job_title text,
@@ -81,10 +121,10 @@ create table content_job_pages (
   related_job_slugs text[],             -- slugs of adjacent job pages to link to
   related_blog_slugs text[],            -- slugs of relevant blog posts
 
-  -- Stats/social proof numbers (optional, shown in trust bar)
-  stat_users_count text,                -- e.g. "1,000+"
-  stat_rating text,                     -- e.g. "4.8/5"
-  stat_return_rate text,                -- e.g. "98% deposit returned"
+  -- Trust-bar numbers: LEAVE ALL NULL, for the same reason as the testimonial columns.
+  stat_users_count text,
+  stat_rating text,
+  stat_return_rate text,
 
   constraint pain_points_min check (jsonb_array_length(pain_points) >= 3),
   constraint faqs_min check (jsonb_array_length(faqs) >= 4)
@@ -112,9 +152,9 @@ export interface PainPoint {
 }
 
 export interface DeviceRecommendation {
-  device_slug: string;  // references content_device_pages.slug
+  device_slug: string;  // a catalog id from src/lib/data.ts
   reason: string;       // 1–2 sentences why this device fits this job
-  cta_label: string;    // e.g. "Rent the XREAL Air 2 Pro"
+  cta_label: string;    // e.g. "See the XREAL Air 2 Pro"
 }
 
 export interface HowItWorksStep {
@@ -163,7 +203,7 @@ export interface JobPageContent {
   objections: Objection[];             // 2–4
   faqs: FAQ[];                         // 4–6
 
-  // Social proof
+  // Social proof (leave null: no customers yet)
   testimonial_quote?: string;
   testimonial_name?: string;
   testimonial_job_title?: string;
@@ -173,7 +213,7 @@ export interface JobPageContent {
   related_job_slugs?: string[];
   related_blog_slugs?: string[];
 
-  // Trust bar
+  // Trust bar (leave null: no customers yet)
   stat_users_count?: string;
   stat_rating?: string;
   stat_return_rate?: string;
@@ -186,12 +226,12 @@ export interface JobPageContent {
 {
   "slug": "electricians",
   "published": true,
-  "meta_title": "AI Wearables for Electricians — Try Before You Buy | techloop",
-  "meta_description": "Rent smart glasses built for electrical work. Hands-free schematics, voice notes, job site comms. $48/mo. Cancel anytime.",
+  "meta_title": "AI Wearables for Electricians | techloop",
+  "meta_description": "Rent smart glasses built for electrical work. Hands-free schematics, voice notes and job site comms. Put your payments toward owning them.",
   "hero_headline": "AI Wearables for Electricians",
-  "hero_subheadline": "Hands-free on the job. Try before you spend $400. Cancel anytime.",
+  "hero_subheadline": "Hands-free on the job. Try before you buy, and put your payments toward owning it.",
   "hero_cta_primary": "Take the Device Quiz",
-  "hero_cta_secondary": "See Pricing — from $48/month",
+  "hero_cta_secondary": "See pricing",
   "job_title": "Electrician",
   "job_category": "blue-collar",
   "audience_description": "Electricians work in tight spaces with both hands occupied. The right AI wearable keeps documentation, communication, and safety information accessible without ever putting down a tool.",
@@ -214,80 +254,93 @@ export interface JobPageContent {
   ],
   "recommended_devices": [
     {
-      "device_slug": "xreal-air-2-pro",
-      "reason": "Lightweight AR glasses with a wide field of view — designed to be worn alongside safety equipment. Used by field technicians in utilities and industrial settings.",
-      "cta_label": "Rent the XREAL Air 2 Pro"
+      "device_slug": "xreal-air-pro",
+      "reason": "Lightweight AR glasses with a wide field of view, so schematics stay in front of you while your hands stay on the work.",
+      "cta_label": "See the XREAL Air 2 Pro"
     },
     {
-      "device_slug": "meta-ray-ban",
-      "reason": "Look completely normal on a job site. Built-in camera, voice assistant, and speakers. The most socially acceptable smart glasses available.",
-      "cta_label": "Rent Meta Ray-Ban Smart Glasses"
+      "device_slug": "meta-rayban",
+      "reason": "Looks like an ordinary pair of sunglasses, with a built-in camera, voice assistant and speakers for hands-free notes and calls.",
+      "cta_label": "See the Meta Ray-Ban Wayfarer"
     }
   ],
   "how_it_works": [
     {
       "step": 1,
       "title": "Pick the device that fits your job",
-      "body": "Take our 60-second quiz or browse by device type. We'll match you to smart glasses that work with your helmet, safety requirements, and workflow."
+      "body": "Take the device quiz or browse by device type, then match what your job needs to the right glasses, ring or earbuds."
     },
     {
       "step": 2,
       "title": "We ship it new, you try it on the job",
-      "body": "Factory-sealed device arrives in 2–3 days. Use it on real jobs for at least 30 days. Most electricians know within the first week whether it belongs in their kit permanently."
+      "body": "Your first device arrives new and sealed. Use it on real jobs and see whether it earns a place in your kit before you own it."
     },
     {
       "step": 3,
-      "title": "Keep it, swap it, or cancel",
-      "body": "Love it? Apply your rental payments toward the purchase price. Not the right fit? Swap for a different device or cancel with no penalty. You're always in control."
+      "title": "Keep it, swap it, or send it back",
+      "body": "Love it? Part of what you pay counts toward buying it. Want something different? You can swap or send it back. The rental terms explain how."
     }
   ],
   "objections": [
     {
       "question": "Will smart glasses hold up on a job site?",
-      "answer": "The XREAL Air 2 Pro and Meta Ray-Ban are both built for daily wear, not just desk use. They're not rated for extreme environments, which is why we let you try them first — you'll know within a week whether they fit your specific working conditions. If they don't survive your environment, swap for something else. No penalty."
+      "answer": "Smart glasses are built for everyday wear, not for extreme conditions, so check the maker's guidance for your environment. Trying one first is the point of renting: you find out whether it fits the way you actually work before you own it."
     },
     {
-      "question": "Are smart glasses legal and safe to wear while doing electrical work?",
-      "answer": "Smart glasses are generally permitted on electrical job sites under current OSHA guidelines, provided they don't interfere with required PPE. Most models are compatible with standard safety glasses or can be worn alongside them. Always confirm with your site supervisor. We've written a full guide on workplace smart glasses policy."
+      "question": "Are smart glasses OK to wear while doing electrical work?",
+      "answer": "That depends on your employer, your site's rules, and whether the device works alongside your required safety equipment. Ask your supervisor before you wear one on a job, and read the maker's guidance on safe use."
     },
     {
-      "question": "Is $48/month worth it for a tool I might not use every day?",
-      "answer": "That's exactly the question techloop is built to answer. You don't commit to $400 upfront to find out. Try it for a month. If it saves you 30 minutes a week in documentation time alone, it's paid for itself. If it doesn't, cancel."
+      "question": "Is it worth paying for a tool I might not use every day?",
+      "answer": "That is what renting is for. You pay a small monthly amount instead of the full price up front, so you can find out whether it earns its place in your routine. If it does, part of what you have paid counts toward buying it."
     }
   ],
   "faqs": [
     {
       "question": "What smart glasses work best for electricians?",
-      "answer": "The XREAL Air 2 Pro and Meta Ray-Ban Smart Glasses are the top choices for electrical work. XREAL offers a wider AR display for schematics; Meta Ray-Ban looks more discreet on site and has better battery life for full-day wear."
+      "answer": "Two good starting points are the XREAL Air 2 Pro, which has a wider display for schematics, and the Meta Ray-Ban Wayfarer, which looks more discreet on site. Which fits best depends on your work, so compare them on their product pages."
     },
     {
       "question": "Can I use smart glasses with a hard hat?",
-      "answer": "Meta Ray-Ban Smart Glasses fit under most standard hard hats. XREAL Air 2 Pro requires more clearance and works best in environments where a full hard hat isn't required. Try both — techloop lets you swap if the first choice doesn't fit your gear."
+      "answer": "It depends on the frame and the hat. Check each maker's fit guidance, and ask your site supervisor about your safety equipment rules. Trying a device before you buy is the easiest way to find out whether it works with your gear."
     },
     {
       "question": "Do AI wearables work without a phone?",
-      "answer": "Most smart glasses connect to your phone via Bluetooth or USB-C and rely on it for data. The Meta Ray-Ban has some standalone functionality. For most field use cases, your phone stays in your pocket while the glasses do the display work."
+      "answer": "Most smart glasses connect to your phone over Bluetooth or a cable and rely on it for data. Some have limited features on their own. Check the maker's specs for the model you are considering to see what works without a phone."
     },
     {
       "question": "How long does the battery last on smart glasses?",
-      "answer": "Meta Ray-Ban Smart Glasses last 4–6 hours of active use. XREAL Air 2 Pro draws power from the connected device. For full-day jobs, most electricians keep a USB-C power bank on their belt. We include charging guidance with every device."
+      "answer": "It varies a lot by device and by how you use it, and some models draw power from the connected device instead of having their own battery. The maker's spec sheet is the best guide, and you can compare devices on our product pages."
     },
     {
-      "question": "Can I expense or write off AI wearables for my business?",
-      "answer": "Yes — tools used for business purposes are generally deductible. A techloop subscription used for work is a business expense. Consult your accountant, but most self-employed electricians and small electrical contractors expense it directly."
+      "question": "Can I keep the device if I like it?",
+      "answer": "Yes. Part of what you pay counts toward buying it, so you can keep a device you love. The rental terms explain how the credit works, and the pricing page shows the numbers for each device."
     }
   ],
+  "testimonial_quote": null,
+  "testimonial_name": null,
+  "testimonial_job_title": null,
+  "testimonial_company": null,
   "related_job_slugs": ["hvac-technicians", "field-service-techs", "construction-managers"],
   "related_blog_slugs": ["smart-glasses-legal-at-work", "xreal-vs-meta-ray-ban", "smart-glasses-for-blue-collar-workers"],
-  "stat_users_count": "1,000+",
-  "stat_rating": "4.8/5",
-  "stat_return_rate": "98% deposit returned"
+  "stat_users_count": null,
+  "stat_rating": null,
+  "stat_return_rate": null
 }
 ```
 
 ---
 
-## 2. Device Pages (`/rent/[slug]`)
+## 2. Device Pages (not built yet)
+
+There is no device page under `/rent`, and no page reads this table today. A device's public
+page is `/product/<catalog id>`, rendered from the catalog in `src/lib/data.ts`, which is
+where its name, specs and retail price come from. This table is kept for a later phase
+that adds richer device pages. **Do not publish rows here until that phase is built.**
+
+When it is built, price columns are derived, never authored: the monthly price, the
+number of credited payments and the credit total all follow `src/lib/pricing.ts`. The
+audit checks the stored values against the rule, and the cleanup patch recomputes them.
 
 ### Supabase Table: `content_device_pages`
 
@@ -296,7 +349,7 @@ create table content_device_pages (
   id uuid primary key default gen_random_uuid(),
 
   -- Routing
-  slug text not null unique,              -- e.g. "xreal-air-2-pro"
+  slug text not null unique,              -- the catalog id, e.g. "xreal-air-pro"
   published boolean default false,
   created_at timestamptz default now(),
   updated_at timestamptz default now(),
@@ -311,8 +364,8 @@ create table content_device_pages (
   brand text not null,                   -- e.g. "XREAL"
   category text not null,                -- "smart-glasses" | "smart-ring" | "ai-earbuds" | "ai-watch" | "ai-pin" | "robotics"
   tagline text not null,                 -- e.g. "The AR glasses built for serious use."
-  msrp_cents integer not null,           -- retail price in cents (e.g. 39900 = $399)
-  rental_price_cents integer not null,   -- monthly rental in cents (e.g. 4800 = $48)
+  msrp_cents integer not null,           -- retail price in cents; must match the catalog
+  rental_price_cents integer not null,   -- DERIVED from msrp_cents by lib/pricing.ts, never written by hand
 
   -- Hero
   hero_headline text not null,
@@ -335,11 +388,11 @@ create table content_device_pages (
 
   -- Rental details
   rental_includes jsonb not null,
-  -- Shape: [{ item: string }] — what's in the box / included in rental
+  -- Shape: [{ item: string }] — what is in the box, as the maker ships it
 
-  -- Rent-to-own math
-  purchase_credit_months integer default 3,  -- how many months of rental apply to purchase
-  purchase_credit_total_cents integer,        -- calculated: rental_price_cents * purchase_credit_months
+  -- Rent-to-own math: DERIVED, never written by hand
+  purchase_credit_months integer default 3,  -- how many monthly payments count toward buying
+  purchase_credit_total_cents integer,        -- the deposit plus those payments, from lib/pricing.ts
 
   -- Comparison
   vs_devices jsonb,
@@ -350,8 +403,8 @@ create table content_device_pages (
   faqs jsonb not null,
   -- Shape: [{ question: string, answer: string }]
 
-  -- Social proof
-  subscriber_rating decimal(3,2),        -- e.g. 4.7
+  -- Social proof: LEAVE ALL NULL. There are no customers or reviews yet.
+  subscriber_rating decimal(3,2),
   subscriber_review_count integer,
   featured_review_quote text,
   featured_review_author text,
@@ -391,7 +444,7 @@ export interface DeviceFeature {
 }
 
 export interface RentalIncludesItem {
-  item: string;           // e.g. "Factory-sealed device", "USB-C charging cable"
+  item: string;           // e.g. "New, sealed device", "USB-C charging cable"
 }
 
 export interface DeviceVsLink {
@@ -441,7 +494,7 @@ export interface DevicePageContent {
   purchase_credit_months: number;
   purchase_credit_total_cents: number;
 
-  // Social proof
+  // Social proof (leave null: no customers yet)
   subscriber_rating?: number;
   subscriber_review_count?: number;
   featured_review_quote?: string;
@@ -451,20 +504,22 @@ export interface DevicePageContent {
 
 ### Example JSON
 
+The prices below are what `src/lib/pricing.ts` gives for a retail price of 49900 cents.
+
 ```json
 {
-  "slug": "xreal-air-2-pro",
-  "published": true,
-  "meta_title": "Rent XREAL Air 2 Pro Smart Glasses — Try Before You Buy | techloop",
-  "meta_description": "Rent the XREAL Air 2 Pro for $48/month. Factory new. Cancel anytime. Apply payments toward the $399 purchase price.",
+  "slug": "xreal-air-pro",
+  "published": false,
+  "meta_title": "Rent XREAL Air 2 Pro Smart Glasses | techloop",
+  "meta_description": "Rent the XREAL Air 2 Pro by the month and put your payments toward owning it. See the full price and how the credit works.",
   "device_name": "XREAL Air 2 Pro",
   "brand": "XREAL",
   "category": "smart-glasses",
   "tagline": "The AR glasses built for serious daily use.",
-  "msrp_cents": 39900,
-  "rental_price_cents": 4800,
-  "hero_headline": "Rent the XREAL Air 2 Pro — Try Before You Spend $399",
-  "hero_subheadline": "$48/month. Factory sealed. Cancel anytime. Apply your payments toward the purchase price.",
+  "msrp_cents": 49900,
+  "rental_price_cents": 4900,
+  "hero_headline": "Rent the XREAL Air 2 Pro and try it before you own it",
+  "hero_subheadline": "Rent by the month, and put part of what you pay toward buying it.",
   "specs": [
     { "label": "Display", "value": "Micro-OLED, 46° FoV" },
     { "label": "Resolution", "value": "1080p per eye" },
@@ -472,58 +527,55 @@ export interface DevicePageContent {
     { "label": "Connection", "value": "USB-C (phone or laptop)" },
     { "label": "Compatibility", "value": "iOS, Android, Mac, Windows, Steam Deck" },
     { "label": "Battery", "value": "Powered by connected device" },
-    { "label": "Audio", "value": "Spatial audio speakers" },
-    { "label": "Retail Price", "value": "$399" }
+    { "label": "Audio", "value": "Spatial audio speakers" }
   ],
   "features": [
     {
-      "title": "A 201-inch screen that goes anywhere",
-      "body": "The Micro-OLED display creates a virtual 201-inch display floating in your field of view. Work, watch, or reference materials without a monitor.",
+      "title": "A huge virtual screen that goes anywhere",
+      "body": "The Micro-OLED display creates a large virtual screen floating in your field of view. Work, watch, or reference materials without a monitor.",
       "icon": "Monitor"
     },
     {
-      "title": "Works with what you already own",
-      "body": "Plugs into any USB-C device — phone, MacBook, Steam Deck, or Windows laptop. No proprietary dongles, no app lock-in.",
+      "title": "Works with the devices you already own",
+      "body": "Plugs into many USB-C devices that support video output, including phones, laptops and handheld consoles. Check the maker's compatibility list for your model.",
       "icon": "Cable"
     },
     {
-      "title": "Comfortable for hours, not minutes",
-      "body": "At 72g, the Air 2 Pro is lighter than most sunglasses. Electrochromic lenses adjust darkness so it works indoors and out.",
+      "title": "Light enough for long sessions",
+      "body": "At 72g it is designed to be worn for hours, and the electrochromic lenses adjust their darkness so it works indoors and out.",
       "icon": "Sun"
     }
   ],
   "rental_includes": [
-    { "item": "Factory-sealed XREAL Air 2 Pro" },
-    { "item": "USB-C adapter for your device type" },
-    { "item": "Protective carrying case" },
-    { "item": "techloop setup guide for first-day use" }
+    { "item": "A new, sealed XREAL Air 2 Pro" },
+    { "item": "Everything the maker includes in the box" }
   ],
   "best_for_job_slugs": ["electricians", "remote-workers", "software-engineers", "consultants"],
   "best_for_labels": ["Electricians", "Remote Workers", "Software Engineers", "Consultants"],
   "vs_devices": [
-    { "device_slug": "meta-ray-ban", "comparison_slug": "xreal-vs-meta-ray-ban" }
+    { "device_slug": "meta-rayban", "comparison_slug": "xreal-vs-meta-ray-ban" }
   ],
-  "related_device_slugs": ["meta-ray-ban", "brilliant-labs-frame"],
+  "related_device_slugs": ["meta-rayban", "brilliant-labs-frame"],
   "purchase_credit_months": 3,
-  "purchase_credit_total_cents": 14400,
+  "purchase_credit_total_cents": 19600,
   "faqs": [
     {
       "question": "Does the XREAL Air 2 Pro work with my iPhone?",
-      "answer": "Yes, with a USB-C to Lightning or USB-C to USB-C adapter depending on your iPhone model. iPhone 15 and later connect directly. techloop includes the right adapter for your device."
+      "answer": "Many recent iPhones with a USB-C port can connect directly, and older ones may need an adapter. Check XREAL's compatibility list for your exact model before you rent."
     },
     {
-      "question": "What's included in the techloop XREAL rental?",
-      "answer": "You receive a factory-sealed XREAL Air 2 Pro, the correct USB-C adapter for your primary device, the original carrying case, and a techloop setup guide. Everything arrives ready to use."
+      "question": "What comes with the rental?",
+      "answer": "Your first device ships new and sealed, with whatever the maker puts in the box. The rental terms cover everything else about how a rental works."
     },
     {
-      "question": "Can I apply my rental payments toward buying the XREAL Air 2 Pro?",
-      "answer": "Yes. techloop applies up to 3 months of rental payments ($144) as credit toward the $399 purchase price. If you decide to buy, you pay $255 and it's yours."
+      "question": "Can I put my payments toward buying the XREAL Air 2 Pro?",
+      "answer": "Yes. Part of what you pay counts toward buying it. The rental terms explain exactly how much, and the pricing page shows the numbers for this device."
     }
   ],
-  "subscriber_rating": 4.7,
-  "subscriber_review_count": 84,
-  "featured_review_quote": "Tried it for two weeks before committing. Used my rental credit to buy it. Best $255 I've spent on gear.",
-  "featured_review_author": "Marcus T., Software Engineer"
+  "subscriber_rating": null,
+  "subscriber_review_count": null,
+  "featured_review_quote": null,
+  "featured_review_author": null
 }
 ```
 
@@ -561,7 +613,7 @@ create table content_blog_posts (
   title text not null,
   subtitle text,
   intro text not null,                    -- 2–4 sentences. First 40–60 words = featured snippet target.
-  body_mdx text not null,                 -- Full MDX content
+  body_mdx text not null,                 -- Full MDX content (see the rules below)
   table_of_contents jsonb,               -- Auto-generated or manually set
   -- Shape: [{ anchor: string, label: string, level: number }]
 
@@ -576,10 +628,11 @@ create table content_blog_posts (
   -- CTAs (2–3 embedded CTAs in the body)
   ctas jsonb,
   -- Shape: [{ position: "intro"|"mid"|"outro", label: string, href: string, style: "primary"|"secondary" }]
+  -- href must be a page that exists, e.g. "/product/xreal-air-pro", "/pricing", "/waitlist", "/quiz"
 
   -- Internal linking targets
   linked_job_slugs text[],               -- job pages this post links to
-  linked_device_slugs text[],            -- device pages this post links to
+  linked_device_slugs text[],            -- catalog ids this post links to
   linked_blog_slugs text[],              -- other blog posts this links to
   cluster_pillar_slug text,              -- if this is a cluster support post, the pillar's slug
 
@@ -598,6 +651,15 @@ create index on content_blog_posts (slug) where published = true;
 create index on content_blog_posts (funnel_stage, content_type) where published = true;
 create index on content_blog_posts (cluster_pillar_slug) where published = true;
 ```
+
+**Rules for `body_mdx`**
+
+- Link only to pages that exist (see the list at the top). A device is `/product/<catalog id>`.
+- Write no dollar amounts. When a post needs rent-versus-buy numbers, embed the calculator
+  with `<RentVsBuyCalculator />`; it computes them from the pricing rule.
+- Describe devices from the maker's published specs, and set `last_reviewed_at` so readers
+  can see how fresh the information is.
+- Use plain `## Heading` text with no `{#anchor-id}` syntax.
 
 ### TypeScript Interface
 
@@ -634,8 +696,8 @@ export interface ComparisonSubjects {
 
 export interface BlogCTA {
   position: 'intro' | 'mid' | 'outro';
-  label: string;          // e.g. "Rent the XREAL Air 2 Pro"
-  href: string;           // e.g. "/rent/xreal-air-2-pro"
+  label: string;          // e.g. "See the XREAL Air 2 Pro"
+  href: string;           // e.g. "/product/xreal-air-pro"
   style: 'primary' | 'secondary';
 }
 
@@ -710,15 +772,9 @@ create table content_tag_assignments (
   tag_slug text not null references content_tags(slug),
   primary key (content_type, content_id, tag_slug)
 );
-
--- Sitemap helper view
-create view published_content_sitemap as
-  select 'job' as content_type, slug, updated_at from content_job_pages where published = true
-  union all
-  select 'device', slug, updated_at from content_device_pages where published = true
-  union all
-  select 'blog', slug, updated_at from content_blog_posts where published = true;
 ```
+
+The site's sitemap is built in code (`src/app/sitemap.ts`), not from a database view.
 
 ---
 
@@ -729,19 +785,17 @@ app/
   for/
     [slug]/
       page.tsx          ← reads content_job_pages where slug = params.slug
-  rent/
-    [slug]/
-      page.tsx          ← reads content_device_pages where slug = params.slug
   blog/
     [slug]/
       page.tsx          ← reads content_blog_posts where slug = params.slug
-  for/
-    page.tsx            ← index of all job pages (optional sitemap/browse)
-  rent/
-    page.tsx            ← browse all devices
-  blog/
-    page.tsx            ← blog index with filtering by funnel_stage + content_type
+    page.tsx            ← blog index
+  product/
+    [id]/
+      page.tsx          ← NOT database content: rendered from the catalog in src/lib/data.ts
 ```
+
+There is no `/rent` route and no `/device` route. Device pages driven by
+`content_device_pages` are a later phase (section 2).
 
 ### ISR Config (in each `page.tsx`)
 
@@ -755,33 +809,19 @@ export const revalidate = 60;
 
 ### On-Demand Revalidation (Recommended)
 
-```typescript
-// app/api/revalidate/route.ts
-import { revalidatePath } from 'next/cache';
-import { NextRequest } from 'next/server';
+`src/app/api/revalidate/route.ts` is the real implementation. A Supabase Database Webhook
+posts `{ table, record }` to it whenever a row is published, with the
+`x-revalidation-secret` header set to `REVALIDATION_SECRET`. It maps the table to a path:
 
-export async function POST(req: NextRequest) {
-  const secret = req.headers.get('x-revalidation-secret');
-  if (secret !== process.env.REVALIDATION_SECRET) {
-    return Response.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-  
-  const { content_type, slug } = await req.json();
-  
-  const pathMap: Record<string, string> = {
-    job_page: `/for/${slug}`,
-    device_page: `/rent/${slug}`,
-    blog_post: `/blog/${slug}`,
-  };
-  
-  const path = pathMap[content_type];
-  if (path) revalidatePath(path);
-  
-  return Response.json({ revalidated: true, path });
+```typescript
+const CONTENT_TYPE_PATHS: Record<string, (slug: string) => string> = {
+  content_job_pages: (slug) => `/for/${slug}`,
+  content_blog_posts: (slug) => `/blog/${slug}`,
 }
+// content_device_pages is skipped: there is no public page for it yet.
 ```
 
-Set up a Supabase Database Webhook → POST to this endpoint whenever a row's `published` field is set to `true`. **Publish in Supabase = page live in under 5 seconds.**
+**Publish in Supabase = page live in under 5 seconds.**
 
 ---
 
@@ -832,22 +872,51 @@ export const JobPageSchema = z.object({
 export type JobPageInput = z.infer<typeof JobPageSchema>;
 ```
 
+Zod only checks the shape of a row, not whether what it says is true. The content check is
+`npm run audit:content -- --file page.json`, which uses the rules in
+`src/lib/content-audit.ts`.
+
 ---
 
 ## 7. AI Content Generation Prompt Template
 
 Use this as the system prompt when generating content with Claude or Antigravity:
 
-```
-You are a content writer for techloop, a subscription service that lets people 
-rent AI wearables (smart glasses, rings, earbuds, watches) for ~15% of MSRP per month, 
-with the option to apply rental payments toward purchase.
+```prompt
+You are a content writer for techloop, a startup that plans to let people rent AI wearables
+(smart glasses, rings, earbuds, watches) by the month, with part of what they pay counting
+toward buying the device. techloop is still on a waitlist: nothing has launched and there are
+no customers yet.
 
-Generate a complete job landing page JSON object for the slug provided. 
+Generate a complete job landing page JSON object for the slug provided.
 The JSON must validate against the JobPageSchema exactly.
 
+FACTS YOU MAY USE
+- People rent a device by the month, and part of what they pay counts toward buying it.
+- A first device ships new and sealed. A renter can swap to a different device later.
+- Devices come from a fixed catalog. The ONLY values allowed for device_slug are:
+  meta-rayban, oura-ring, xreal-air-pro, rabbit-r1, brilliant-labs-frame, ultrahuman-ring-air
+- Pages that exist, and the only ones you may link to or name: /pricing, /how-it-works,
+  /rental-terms, /waitlist, /quiz, /browse, /product/<device_slug>, /blog/<slug>, /for/<slug>.
+
+NEVER WRITE
+- Any price, dollar amount, percentage of retail, discount, or number of months or days.
+  The site works out prices and shows them itself. Say "see pricing" instead.
+- Ratings, review counts, user counts, testimonials, customer quotes, or "trusted by" claims.
+  Set every testimonial_* and stat_* field to null.
+- "Risk-free", "no risk", "cancel anytime", "no penalty", "no commitment", "no questions
+  asked", or anything like them. Do not describe cancellation, refund or return terms; send the
+  reader to the rental terms.
+- Delivery or shipping times, "in stock", "ships today", "most popular", or superlatives such
+  as "best" and "top choice".
+- Tax, legal, safety, medical or workplace-regulation advice or claims (deductions, OSHA,
+  HIPAA, FDA). If the job raises a safety question, tell the reader to check with their
+  employer and the device maker.
+- Facts about a device that are not in its maker's published specs.
+- Links to /rent/... or /device/... (those pages do not exist).
+
 Key voice guidelines:
-- Lowercase brand style: "techloop" not "Techloop"  
+- Lowercase brand style: "techloop" not "Techloop"
 - Dry, competent, direct — not corporate, not quirky
 - Lead with the job-specific problem, not product features
 - "Rent" not "try" — commercial framing throughout
@@ -856,7 +925,7 @@ Key voice guidelines:
 
 Key SEO guidelines:
 - meta_title: under 60 chars, include "AI Wearables for [Job]" and "| techloop"
-- meta_description: under 155 chars, include rental price and cancel-anytime
+- meta_description: under 155 chars, say what the reader gets; no price
 - hero_headline: exact match or close variant of primary keyword
 - FAQ answers: 40–60 words each (featured snippet targets)
 
@@ -876,13 +945,15 @@ Recommended device slugs: ["{{DEVICE_1}}", "{{DEVICE_2}}"]
 ## 8. Publishing Workflow Summary
 
 ```
-1. Open Supabase table editor (or use a simple admin UI)
-2. Insert new row with published = false
-3. Paste AI-generated JSON into the appropriate jsonb fields
-4. Review the content (2–5 min per page)
-5. Set published = true
-6. Supabase webhook fires → Next.js revalidates → page live in <5 seconds
-7. Submit URL to Google Search Console for indexing
+1. Generate the page JSON with the prompt above and save it to a file
+2. Run: npm run audit:content -- --file page.json   (fix anything it lists, or regenerate)
+3. Open Supabase table editor (or use a simple admin UI)
+4. Insert new row with published = false
+5. Paste the JSON into the appropriate jsonb fields
+6. Review the content (2–5 min per page)
+7. Set published = true
+8. Supabase webhook fires → Next.js revalidates → page live in <5 seconds
+9. Submit URL to Google Search Console for indexing
 ```
 
 Total time per BOFU landing page (after templates are built): **15–20 minutes**.

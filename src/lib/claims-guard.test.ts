@@ -11,6 +11,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { BANNED_CLAIMS } from "./banned-claims.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const SRC = path.join(ROOT, "src");
@@ -22,28 +23,10 @@ const KNOWN_LEGACY: Record<string, string> = {
     "hardcoded demo data on a page that redirects to /waitlist until launch; rebuilt on real Stripe data in Phase 2",
 };
 
-const BANNED: Array<[RegExp, string]> = [
-  [/\$42\b/, "the old flat $42 price"],
-  [/\$48\b/, "the old $48 price"],
-  [/\$75\b/, "the Explorer plan price"],
-  [/\$99\b/, "the Power User plan price"],
-  [/risk[- ]free/i, '"risk-free" (the deposit and first month are not refundable)'],
-  [/\bno risk\b/i, '"no risk"'],
-  [/cancel anytime/i, '"cancel anytime" (say what actually happens)'],
-  [/no questions asked/i, '"no questions asked"'],
-  [/\b98%/, "the invented 98% stat"],
-  [/4\.8\/5/, "the invented 4.8/5 rating"],
-  [/Marcus T|Elliott W/, "the placeholder testimonials"],
-  [/Explorer (plan|Plan)/, "the Explorer plan"],
-  [/Power User/, "the Power User plan"],
-  [/Founder.s Pricing/i, "the Founder's Pricing perk"],
-  [/ships? today|ship it today|available to ship/i, "unsupported shipping-speed claims"],
-  [/Q2 2026/, "the stale launch date"],
-  [/\bMost Popular\b/, "the unearned Most Popular badge"],
-  [/\bIn Stock\b/, "the In Stock badge"],
-  [/\b(30|60)-second\b/i, "an unverified quiz duration"],
-  [/free sizing kits?/i, "free sizing kits (not offered)"],
-];
+const BANNED = BANNED_CLAIMS;
+
+// These files define or demonstrate the patterns, so they contain them by design.
+const PATTERN_DEFINITIONS = new Set(["src/lib/banned-claims.ts", "src/lib/content-audit.ts"]);
 
 function collect(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -74,7 +57,7 @@ describe("removed claims stay removed", () => {
   for (const [pattern, why] of BANNED) {
     it(`no ${why}`, () => {
       const hits = files
-        .filter((file) => !legacyPaths.has(rel(file)))
+        .filter((file) => !legacyPaths.has(rel(file)) && !PATTERN_DEFINITIONS.has(rel(file)))
         .flatMap((file) => hitsFor(file, pattern));
       assert.deepEqual(hits, [], `${why} found:\n${hits.join("\n")}`);
     });
