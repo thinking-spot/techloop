@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -136,7 +137,8 @@ function WaitlistFormInner({ deviceOptions, variant = "full" }: WaitlistFormProp
                 </div>
                 {errorNote}
                 <p className="text-xs text-paragraph">
-                    We&apos;ll only use your email to tell you about Techloop&apos;s launch.
+                    We&apos;ll only use your email to tell you about Techloop&apos;s launch.{" "}
+                    <Link href="/privacy" className="underline hover:text-button">Privacy Policy</Link>
                 </p>
             </form>
         );
@@ -201,7 +203,8 @@ function WaitlistFormInner({ deviceOptions, variant = "full" }: WaitlistFormProp
             </Button>
 
             <p className="text-xs text-center text-gray-400">
-                We&apos;ll only use your email to tell you about Techloop&apos;s launch.
+                We&apos;ll only use your email to tell you about Techloop&apos;s launch.{" "}
+                <Link href="/privacy" className="underline hover:text-gray-600">Privacy Policy</Link>
             </p>
         </form>
     );

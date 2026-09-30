@@ -33,6 +33,15 @@ export const SHOW_CUSTOMER_PROOF: boolean = parseFlag(
   process.env.NEXT_PUBLIC_SHOW_CUSTOMER_PROOF
 );
 
+/**
+ * Legal identity shown in the footer and on the legal pages. Update
+ * `lastUpdated` whenever the privacy policy or either set of terms changes.
+ */
+export const LEGAL = {
+  entity: "Techloop Inc.",
+  lastUpdated: "September 30, 2026",
+} as const;
+
 /** Canonical origin used for metadata, sitemap, robots and structured data. */
 export const SITE_URL = "https://www.trytechloop.com";
 
@@ -64,5 +73,7 @@ export const REFURB_BUYOUT_DISCOUNT_PCT = 0;
  * old help page already published; confirm that mailbox exists, or set
  * NEXT_PUBLIC_SUPPORT_EMAIL. Set it to an empty string to hide the contact section.
  */
+export const DEFAULT_SUPPORT_EMAIL = "help@trytechloop.com";
+
 export const SUPPORT_EMAIL: string | undefined =
-  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "help@trytechloop.com";
+  process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? DEFAULT_SUPPORT_EMAIL;

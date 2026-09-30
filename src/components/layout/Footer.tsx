@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
+import { LEGAL } from "@/lib/site-config";
 
 export default function Footer() {
     return (
@@ -37,14 +38,16 @@ export default function Footer() {
                 <div>
                     <h4 className="font-bold text-headline mb-4">Legal</h4>
                     <ul className="space-y-2 text-sm text-paragraph">
-                        <li><a href="#" className="hover:text-button">Privacy Policy</a></li>
-                        <li><a href="#" className="hover:text-button">Terms of Service</a></li>
+                        <li><Link href="/privacy" className="hover:text-button">Privacy Policy</Link></li>
+                        <li><Link href="/terms" className="hover:text-button">Terms of Service</Link></li>
+                        <li><Link href="/rental-terms" className="hover:text-button">Rental Terms</Link></li>
                     </ul>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto pt-8 border-t border-slate-100 text-xs text-paragraph/60">
-                <p>&copy; {new Date().getFullYear()} Techloop Inc. All rights reserved.</p>
+            <div className="max-w-7xl mx-auto pt-8 border-t border-slate-100 text-xs text-paragraph/60 space-y-2">
+                <p>&copy; {new Date().getFullYear()} {LEGAL.entity} All rights reserved.</p>
+                <p>Techloop is independent and is not affiliated with the device brands shown on this site. Brand names belong to their owners.</p>
             </div>
         </footer>
     );
