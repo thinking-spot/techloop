@@ -1,3 +1,13 @@
+// NOT ROUTED. No page renders this template yet (the sitemap and revalidate
+// route mention /device/* and /rent/*, but neither route exists).
+//
+// Do not wire it up as it is. It predates the current pricing rule:
+//   - prices come from the stored rental_price_cents / purchase_credit_total_cents
+//     columns instead of lib/pricing.ts, so they can drift from the rest of the site;
+//   - it makes claims the site no longer makes ("risk-free", "Cancel anytime",
+//     subscriber ratings and a featured review).
+// Rewrite it on lib/pricing.ts and PricingBlock first.
+
 'use client'
 
 // components/content/DevicePageTemplate.tsx

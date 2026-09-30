@@ -8,6 +8,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import type { BlogPostContent } from '@/types/content'
+import { PRICING, usd } from '@/lib/pricing'
 
 interface Props {
   content: BlogPostContent
@@ -270,7 +271,7 @@ function IntroCTA({ content }: { content: BlogPostContent }) {
     <div className="max-w-4xl mx-auto px-6 mt-8">
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50 border border-slate-200 rounded-lg p-5">
         <p className="text-sm text-slate-600 flex-1">
-          Want to try instead of read? techloop ships new devices to your door.
+          Want to try instead of read? Rent a device and see how it fits your life.
         </p>
         <Link
           href={cta.href}
@@ -329,10 +330,10 @@ function MidCTA({ content }: { content: BlogPostContent }) {
     <div className="max-w-4xl mx-auto px-6 my-12">
       <div className="bg-gradient-to-r from-[#0A1F44] to-[#0d2654] rounded-xl p-8 text-center">
         <p className="text-white font-bold text-lg mb-2">
-          Try before you spend $400.
+          Try before you buy.
         </p>
         <p className="text-slate-400 text-sm mb-6">
-          techloop ships new AI wearables from $42/month. Cancel anytime.
+          Rent AI wearables from {usd(PRICING.minMonthlyRate)}/month plus a refundable deposit.
         </p>
         <Link
           href={cta.href}
@@ -440,7 +441,7 @@ function BottomCTA({ content }: { content: BlogPostContent }) {
           Done reading. Ready to try?
         </h2>
         <p className="text-slate-400 mb-8">
-          New devices from $42/month. Cancel anytime. Apply payments toward purchase.
+          Rent from {usd(PRICING.minMonthlyRate)}/month plus a refundable deposit. Your payments count toward owning it.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

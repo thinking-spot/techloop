@@ -273,7 +273,7 @@ export default function BusinessPage() {
                         {[
                             { step: "01", title: "Choose Devices", desc: "Browse 20+ AI devices. Pick any combination, any quantity — there are no minimums or bundles." },
                             { step: "02", title: "Build a Team", desc: "Add team members, assign devices, and configure your dashboard. We ship directly to each person." },
-                            { step: "03", title: "Fit and Swap", desc: "Everyone tries AI devices risk-free. They can switch to different devices until they find the perfect fit." },
+                            { step: "03", title: "Fit and Swap", desc: "Everyone tries AI devices before committing. They can switch to different devices until they find the perfect fit." },
                             { step: "04", title: "Keep or Return", desc: "Love it? Buy at a team discount. Done? Return with free shipping. Everyone can decide for themselves." },
                         ].map((s, i) => (
                             <div key={i} className="relative p-8 bg-white rounded-3xl border border-[#F1F5F9] shadow-sm">
@@ -309,7 +309,7 @@ export default function BusinessPage() {
                         </Link>
                     </div>
                     <p className="relative text-sm font-medium text-white/50 uppercase tracking-widest">
-                        Free setup · No minimum order · Cancel anytime
+                        Free setup · No minimum order
                     </p>
                 </div>
             </section>

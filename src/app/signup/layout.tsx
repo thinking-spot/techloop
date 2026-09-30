@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Create Account | Join the AI Revolution",
-    description: "Sign up for Techloop to start your AI wearable journey. Try risk-free for $42/mo.",
+    description: "Create your Techloop account to rent AI wearables and put your payments toward owning them.",
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

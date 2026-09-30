@@ -3,6 +3,8 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
   resolveLaunchMode,
+  parseFlag,
+  SHOW_CUSTOMER_PROOF,
   LAUNCH_DEVICE_IDS,
   isLaunchDevice,
   SITE_URL,
@@ -17,6 +19,19 @@ describe("launch mode", () => {
     assert.equal(resolveLaunchMode(""), "waitlist");
     assert.equal(resolveLaunchMode("LIVE"), "waitlist");
     assert.equal(resolveLaunchMode("true"), "waitlist");
+  });
+});
+
+describe("customer proof flag", () => {
+  it("only the exact string 'true' turns it on", () => {
+    assert.equal(parseFlag("true"), true);
+    for (const off of [undefined, "", "false", "TRUE", "1", "yes"]) {
+      assert.equal(parseFlag(off), false, String(off));
+    }
+  });
+
+  it("is off by default, so placeholder testimonials and stats stay hidden", () => {
+    assert.equal(SHOW_CUSTOMER_PROOF, false);
   });
 });
 

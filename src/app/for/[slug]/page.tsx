@@ -6,7 +6,10 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getJobPage, getAllJobPageSlugs } from '@/lib/content'
-import { JobPageTemplate } from '@/components/content/JobPageTemplate'
+import { JobPageTemplate, type DeviceInfo } from '@/components/content/JobPageTemplate'
+import { devices } from '@/lib/data'
+import { monthlyRate } from '@/lib/pricing'
+import { stripCustomerProof } from '@/lib/customer-proof'
 
 // ─── ISR config ───────────────────────────────────────────────────────────────
 // Re-check Supabase every 60s. Combined with on-demand revalidation webhook,
@@ -61,9 +64,26 @@ export default async function JobPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const content = await getJobPage(slug)
+  const found = await getJobPage(slug)
 
-  if (!content) notFound()
+  if (!found) notFound()
+
+  // Placeholder testimonials and stats must not reach the browser at all.
+  const content = stripCustomerProof(found)
+
+  // Catalog details for the devices this page recommends, so the cards can
+  // show a name and price and link to a real product page.
+  const deviceInfo: Record<string, DeviceInfo> = {}
+  for (const rec of content.recommended_devices) {
+    const device = devices.find((d) => d.id === rec.device_slug)
+    if (device?.msrp) {
+      deviceInfo[device.id] = {
+        name: device.name,
+        monthlyRate: monthlyRate(device.msrp),
+        msrp: device.msrp,
+      }
+    }
+  }
 
   // BreadcrumbList structured data
   const breadcrumbSchema = {
@@ -81,7 +101,7 @@ export default async function JobPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <JobPageTemplate content={content} />
+      <JobPageTemplate content={content} deviceInfo={deviceInfo} />
     </>
   )
 }

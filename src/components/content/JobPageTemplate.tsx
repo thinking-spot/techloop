@@ -8,9 +8,21 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import type { JobPageContent } from '@/types/content'
+import { PRICING, usd } from '@/lib/pricing'
+import { POLICY } from '@/lib/faq'
+import { SHOW_CUSTOMER_PROOF } from '@/lib/site-config'
+
+/** What the page knows about a catalog device, so recommendations can show a name and price. */
+export interface DeviceInfo {
+  name: string
+  monthlyRate: number
+  msrp: number
+}
 
 interface Props {
   content: JobPageContent
+  /** Catalog devices by id. A recommendation whose slug is missing here links to /browse. */
+  deviceInfo?: Record<string, DeviceInfo>
 }
 
 // ─── Shared primitives ────────────────────────────────────────────────────────
@@ -103,7 +115,7 @@ function Hero({ content }: { content: JobPageContent }) {
         </div>
 
         {/* Trust bar */}
-        {(content.stat_users_count || content.stat_rating || content.stat_return_rate) && (
+        {SHOW_CUSTOMER_PROOF && (content.stat_users_count || content.stat_rating || content.stat_return_rate) && (
           <div className="mt-16 pt-8 border-t border-slate-800 flex flex-wrap gap-8">
             {content.stat_users_count && (
               <Stat value={content.stat_users_count} label="subscribers" />
@@ -163,7 +175,13 @@ function PainPoints({ content }: { content: JobPageContent }) {
 
 // ─── Section: Device Recommendations ─────────────────────────────────────────
 
-function DeviceRecommendations({ content }: { content: JobPageContent }) {
+function DeviceRecommendations({
+  content,
+  deviceInfo = {},
+}: {
+  content: JobPageContent
+  deviceInfo?: Record<string, DeviceInfo>
+}) {
   return (
     <section className="bg-slate-50 border-y border-slate-200">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -176,34 +194,46 @@ function DeviceRecommendations({ content }: { content: JobPageContent }) {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {content.recommended_devices.map((device, i) => (
+          {content.recommended_devices.map((device, i) => {
+            const info = deviceInfo[device.device_slug]
+            return (
             <div
               key={i}
               className="bg-white border border-slate-200 rounded-lg p-6 flex flex-col gap-4"
             >
-              {/* Device number + slug */}
-              <div className="flex items-center justify-between">
+              {/* Option number + the device it refers to */}
+              <div className="flex items-center justify-between gap-3">
                 <span className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-400">
                   Option {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="text-xs font-mono text-slate-400 bg-slate-100 rounded px-2 py-0.5">
-                  /rent/{device.device_slug}
-                </span>
+                {info && (
+                  <span className="text-sm font-semibold text-slate-900">
+                    {info.name}
+                  </span>
+                )}
               </div>
 
               <p className="text-sm text-slate-700 leading-relaxed">
                 {device.reason}
               </p>
 
+              {info && (
+                <p className="text-sm text-slate-500">
+                  <span className="font-semibold text-slate-900">{usd(info.monthlyRate)}/mo</span>
+                  {' '}· retail {usd(info.msrp)}
+                </p>
+              )}
+
               <Link
-                href={`/rent/${device.device_slug}`}
+                href={info ? `/product/${device.device_slug}` : '/browse'}
                 className="mt-auto inline-flex items-center gap-2 bg-[#0A1F44] hover:bg-[#0d2654] text-white text-sm font-semibold px-5 py-3 rounded transition-colors"
               >
                 {device.cta_label}
                 <ArrowIcon />
               </Link>
             </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Quiz bridge */}
@@ -215,7 +245,7 @@ function DeviceRecommendations({ content }: { content: JobPageContent }) {
             href="/quiz"
             className="inline-flex items-center gap-2 text-cyan-600 hover:text-cyan-700 font-semibold text-sm transition-colors"
           >
-            Take the 60-second device quiz
+            Take the device quiz
             <ArrowIcon className="text-cyan-600" />
           </Link>
         </div>
@@ -264,7 +294,8 @@ function HowItWorks({ content }: { content: JobPageContent }) {
 // ─── Section: Testimonial ─────────────────────────────────────────────────────
 
 function Testimonial({ content }: { content: JobPageContent }) {
-  if (!content.testimonial_quote) return null
+  // Hidden until there are real customers (see SHOW_CUSTOMER_PROOF).
+  if (!SHOW_CUSTOMER_PROOF || !content.testimonial_quote) return null
 
   return (
     <section className="bg-[#0A1F44]">
@@ -397,10 +428,10 @@ function MidCTA({ content }: { content: JobPageContent }) {
       <div className="max-w-4xl mx-auto px-6 py-14 flex flex-col md:flex-row items-center justify-between gap-8">
         <div>
           <p className="text-white font-bold text-xl mb-2">
-            Try the right device for your job — before spending $400.
+            Try the right device for your job — before you buy one.
           </p>
           <p className="text-slate-400 text-sm">
-            From $42/month. Cancel anytime. Apply payments toward the purchase price.
+            From {usd(PRICING.minMonthlyRate)}/month plus a refundable deposit. Your payments count toward owning it.
           </p>
         </div>
         <div className="flex-shrink-0 flex flex-col sm:flex-row gap-3">
@@ -470,10 +501,10 @@ function BottomCTA({ content }: { content: JobPageContent }) {
         <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
           The right AI device for your job.
           <br />
-          Without the $400 commitment.
+          Try it before you buy it.
         </h2>
         <p className="text-slate-400 text-lg mb-10">
-          From $42/month. Cancel anytime. Keep what works.
+          From {usd(PRICING.minMonthlyRate)}/month plus a refundable deposit. Keep what works.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -491,7 +522,7 @@ function BottomCTA({ content }: { content: JobPageContent }) {
           </Link>
         </div>
         <p className="mt-6 text-xs text-slate-500">
-          No commitment. New devices. Free swaps.
+          First device ships new. Swap after {POLICY.firstRentalMinimumDays} days. Free shipping both ways.
         </p>
       </div>
     </section>
@@ -540,13 +571,13 @@ function ChevronIcon({ open }: { open: boolean }) {
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 
-export function JobPageTemplate({ content }: Props) {
+export function JobPageTemplate({ content, deviceInfo }: Props) {
   return (
     <main>
       <Hero content={content} />
       <PainPoints content={content} />
       <MidCTA content={content} />
-      <DeviceRecommendations content={content} />
+      <DeviceRecommendations content={content} deviceInfo={deviceInfo} />
       <HowItWorks content={content} />
       <Testimonial content={content} />
       <Objections content={content} />

@@ -18,6 +18,21 @@ export const LAUNCH_MODE: LaunchMode = resolveLaunchMode(
 
 export const isWaitlistMode: boolean = LAUNCH_MODE === "waitlist";
 
+/** Only the exact string "true" turns a flag on. */
+export function parseFlag(value: string | undefined): boolean {
+  return value === "true";
+}
+
+/**
+ * Testimonials, subscriber counts and star ratings on content pages. Off
+ * until there are real customers: the content tables were generated with
+ * placeholder values, and showing them would be inventing social proof.
+ * Turn on with NEXT_PUBLIC_SHOW_CUSTOMER_PROOF=true once the data is real.
+ */
+export const SHOW_CUSTOMER_PROOF: boolean = parseFlag(
+  process.env.NEXT_PUBLIC_SHOW_CUSTOMER_PROOF
+);
+
 /** Canonical origin used for metadata, sitemap, robots and structured data. */
 export const SITE_URL = "https://www.trytechloop.com";
 
