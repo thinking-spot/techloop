@@ -63,6 +63,22 @@ describe("faqs", () => {
   });
 });
 
+describe("catalog carries no customer data", () => {
+  it("has no ratings, review counts, reviews or badges", () => {
+    const forbidden = ["rating", "reviewCount", "reviews", "badges"];
+    for (const d of devices) {
+      for (const key of forbidden) {
+        assert.equal(key in d, false, `${d.id} still has "${key}"`);
+      }
+    }
+  });
+
+  it("makes none of the unsourced statistics that were in the descriptions", () => {
+    const text = devices.map((d) => `${d.description} ${d.longDescription ?? ""}`).join(" ");
+    assert.doesNotMatch(text, /1M\+ pairs|51% market share|world's first/i);
+  });
+});
+
 describe("brands", () => {
   it("every catalog device has a brand", () => {
     for (const d of devices) {

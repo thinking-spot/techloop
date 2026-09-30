@@ -21,18 +21,6 @@ export type Device = {
         category: string;
         items: { label: string; value: string }[];
     }[];
-    reviews?: {
-        user: string;
-        rating: number;
-        title: string;
-        content: string;
-        date: string;
-        verified: boolean;
-        avatar?: string;
-    }[];
-    rating?: number;
-    reviewCount?: number;
-    badges?: string[];
     useCase?: string[]; // Added for new filter
     msrp?: number;
 };
@@ -48,7 +36,7 @@ const rawDevices: RawDevice[] = [
         msrp: 399,
         tagline: "Look normal. Act superhuman.",
         description: "Capture POV videos hands-free. Take calls without headphones. Your AI assistant lives in iconic Ray-Ban frames.",
-        longDescription: "The smart glasses everyone's actually wearing. Built on the iconic Ray-Ban Wayfarer design, these are the smart glasses that finally don't look 'smart'. Meta sold 1M+ pairs because they solved the fundamental problem: they look like regular sunglasses your friends already wear.",
+        longDescription: "Built on the iconic Ray-Ban Wayfarer design, these are the smart glasses that finally don't look 'smart'. They solve the fundamental problem with smart glasses: they look like regular sunglasses your friends already wear.",
         imageUrl: "https://placehold.co/600x400?text=Meta+Ray-Ban",
         galleryImages: [
             "https://placehold.co/600x400?text=Meta+Ray-Ban+Front",
@@ -56,7 +44,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Meta+Ray-Ban+Lifestyle",
             "https://placehold.co/600x400?text=Meta+Ray-Ban+Case",
         ],
-        badges: ["Most Popular", "In Stock"],
         useCase: ["Photography", "Communication", "Entertainment"],
         specs: ["12MP Ultra Wide Camera", "Qualcomm Snapdragon AR1 Gen 1", "Open-ear Audio", "Meta AI Voice Control"],
         features: [
@@ -93,26 +80,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.8,
-        reviewCount: 2347,
-        reviews: [
-            {
-                user: "Marcus T.",
-                rating: 5,
-                title: "Worth every penny for POV content",
-                content: "I'm a travel content creator and these glasses completely changed my workflow. Being able to capture hands-free POV footage while hiking is a game-changer.",
-                date: "October 2024",
-                verified: true
-            },
-            {
-                user: "Sarah K.",
-                rating: 4,
-                title: "Great concept, minor flaws",
-                content: "Love the idea and use them daily. Meta AI misunderstands me 30% of the time, but taking calls while walking my dog is amazing.",
-                date: "November 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "xreal-air-pro",
@@ -121,7 +88,7 @@ const rawDevices: RawDevice[] = [
         msrp: 499,
         tagline: "Your personal 130-inch screen, anywhere.",
         description: "Work on a massive virtual display from coffee shops. Watch movies on flights. The ultimate portable monitor.",
-        longDescription: "XREAL has 51% market share in AR glasses because they nailed the core use case: a giant, crisp display you can take anywhere. No cameras, no AI gimmicks—just a beautiful 1080p screen floating in front of your eyes.",
+        longDescription: "XREAL nailed the core use case: a giant, crisp display you can take anywhere. No cameras, no AI gimmicks—just a beautiful 1080p screen floating in front of your eyes.",
         imageUrl: "https://placehold.co/600x400?text=XREAL+Air+2+Pro",
         galleryImages: [
             "https://placehold.co/600x400?text=XREAL+Front",
@@ -129,7 +96,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=XREAL+Lifestyle",
             "https://placehold.co/600x400?text=XREAL+POV",
         ],
-        badges: ["Best for Productivity", "In Stock"],
         useCase: ["Productivity", "Travel", "Gaming"],
         specs: ["Micro-OLED Panel", "120Hz Refresh Rate", "One-touch Immersion Control", "Directional Audio"],
         features: [
@@ -157,26 +123,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.6,
-        reviewCount: 1892,
-        reviews: [
-            {
-                user: "David L.",
-                rating: 5,
-                title: "Remote work game changer",
-                content: "I work from coffee shops daily. Having a second 130-inch monitor in my backpack is invaluable. The dimming feature is magic.",
-                date: "November 2024",
-                verified: true
-            },
-            {
-                user: "Jessica M.",
-                rating: 4,
-                title: "Great for flights",
-                content: "Used these on a 6-hour flight to London. Watched 3 movies comfortably. Slight nose pressure after 4 hours but totally worth it.",
-                date: "October 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "oura-ring",
@@ -193,7 +139,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Oura+App+View",
             "https://placehold.co/600x400?text=Oura+Charger",
         ],
-        badges: ["Free Sizing Kit", "In Stock"],
         useCase: ["Fitness & Health", "Sleep"],
         specs: ["Sleep Tracking", "Heart Rate Variability", "7 Days Battery", "Water Resistant"],
         features: [
@@ -220,18 +165,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.7,
-        reviewCount: 8456,
-        reviews: [
-            {
-                user: "Emily R.",
-                rating: 5,
-                title: "Replaced my Apple Watch",
-                content: "I hated wearing a watch to sleep. This ring is invisible. The data is shockingly accurate compared to my sleep lab results.",
-                date: "December 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "samsung-ring",
@@ -248,7 +181,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Samsung+Ring+Case",
             "https://placehold.co/600x400?text=Samsung+Health+App",
         ],
-        badges: ["Best for Android", "In Stock"],
         useCase: ["Fitness & Health", "Communication"],
         specs: ["7-day battery", "Galaxy Watch Gestures", "Waterproof", "No Subscription"],
         features: [
@@ -282,26 +214,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.4,
-        reviewCount: 1673,
-        reviews: [
-            {
-                user: "Jason M.",
-                rating: 5,
-                title: "Works perfect with my S24",
-                content: "The integration with my Galaxy phone is seamless. I love the Energy Score feature, it really helps me plan my day.",
-                date: "November 2024",
-                verified: true
-            },
-            {
-                user: "Lisa K.",
-                rating: 4,
-                title: "So light",
-                content: "I forget I'm wearing it. The charging case is really nice too, looks like a jewelry box.",
-                date: "December 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "nothing-ear",
@@ -318,7 +230,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Nothing+Ear+Worn",
             "https://placehold.co/600x400?text=Nothing+X+App",
         ],
-        badges: ["Best Value", "In Stock"],
         useCase: ["Entertainment", "Communication", "AI Assistant"],
         specs: ["Active Noise Cancellation", "40hr Battery", "ChatGPT Built-in", "IPX4"],
         features: [
@@ -345,26 +256,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.5,
-        reviewCount: 3128,
-        reviews: [
-            {
-                user: "Carlos R.",
-                rating: 5,
-                title: "Best sound for the price",
-                content: "The ceramic drivers actually make a difference. Highs are super crisp. And the transparent design is a conversation starter.",
-                date: "October 2024",
-                verified: true
-            },
-            {
-                user: "Sophie L.",
-                rating: 4,
-                title: "ChatGPT is cool",
-                content: "Using ChatGPT on the go without taking out my phone is surprisingly useful for quick questions.",
-                date: "November 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "brilliant-labs-frame",
@@ -373,7 +264,7 @@ const rawDevices: RawDevice[] = [
         msrp: 349,
         tagline: "Open-source smart glasses for hackers.",
         description: "Build your own AI features. Customize everything. The anti-Meta glasses. Join the developer community.",
-        longDescription: "Frame is the world's first open-source AI glasses. It's designed for hackers, builders, and dreamers. With an always-on display and camera, it brings the powers of AI to your daily life. It's fully programmable and hackable.",
+        longDescription: "Frame is open-source AI glasses. It's designed for hackers, builders, and dreamers. With an always-on display and camera, it brings the powers of AI to your daily life. It's fully programmable and hackable.",
         imageUrl: "https://placehold.co/600x400?text=Brilliant+Labs+Frame",
         galleryImages: [
             "https://placehold.co/600x400?text=Frame+Front",
@@ -381,7 +272,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Frame+Lens",
             "https://placehold.co/600x400?text=Frame+App",
         ],
-        badges: ["Developer Favorite", "In Stock"],
         useCase: ["Developer", "Productivity"],
         specs: ["Open-source SDK", "AI Vision", "MicroPython", "Lightweight"],
         features: [
@@ -408,26 +298,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.3,
-        reviewCount: 894,
-        reviews: [
-            {
-                user: "DevGuy99",
-                rating: 5,
-                title: "Dream device for makers",
-                content: "I wrote a python script to display my server stats on the lens in 10 minutes. This is what Google Glass should have been.",
-                date: "September 2024",
-                verified: true
-            },
-            {
-                user: "Alice W.",
-                rating: 4,
-                title: "Super light",
-                content: "They look like regular glasses (mostly). The AI translation feature is actually really fast.",
-                date: "October 2024",
-                verified: true
-            }
-        ]
     },
 
     {
@@ -445,7 +315,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Whoop+App",
             "https://placehold.co/600x400?text=Whoop+Battery+Pack",
         ],
-        badges: ["Fitness Focused", "In Stock"],
         useCase: ["Fitness & Health", "Sleep"],
         specs: ["5-day battery", "Waterproof", "Haptic Alarm", "No Screen"],
         features: [
@@ -472,26 +341,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.6,
-        reviewCount: 5234,
-        reviews: [
-            {
-                user: "Mike T.",
-                rating: 5,
-                title: "Changed my training",
-                content: "The recovery score is real. When it says I'm red, I perform poorly. When green, I PR. Simple as that.",
-                date: "November 2024",
-                verified: true
-            },
-            {
-                user: "Jenny S.",
-                rating: 5,
-                title: "Love that it has no screen",
-                content: "I was tired of notifications on my wrist. Whoop lets me track everything without the distractions.",
-                date: "December 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "rabbit-r1",
@@ -508,7 +357,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=R1+Camera",
             "https://placehold.co/600x400?text=R1+Scroll+Wheel",
         ],
-        badges: ["New Arrival", "In Stock"],
         useCase: ["AI Assistant", "Productivity"],
         specs: ["Push-to-talk", "Rotating Camera", "Standalone", "TEO OS"],
         features: [
@@ -535,26 +383,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 3.8,
-        reviewCount: 234,
-        reviews: [
-            {
-                user: "TechReviewer",
-                rating: 3,
-                title: "Fun but early",
-                content: "The hardware design by Teenage Engineering is stunning. The AI is promising but still learning many apps.",
-                date: "November 2024",
-                verified: true
-            },
-            {
-                user: "EarlyAdopter",
-                rating: 5,
-                title: "The future of interfaces",
-                content: "Not having to doom scroll through apps to get a task done feels liberating. The teaching mode is very powerful.",
-                date: "December 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "nothing-ear-a",
@@ -571,7 +399,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Ear+(a)+Case",
             "https://placehold.co/600x400?text=Ear+(a)+Buds",
         ],
-        badges: ["Budget Pick", "In Stock"],
         useCase: ["Entertainment", "AI Assistant", "Value"],
         specs: ["Active Noise Cancellation", "42hr Battery", "ChatGPT Built-in", "IPX4"],
         features: [
@@ -598,26 +425,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.4,
-        reviewCount: 1456,
-        reviews: [
-            {
-                user: "Student22",
-                rating: 5,
-                title: "Best value earbuds",
-                content: "For this price? The ANC is insane. And I love the yellow color, so unique.",
-                date: "October 2024",
-                verified: true
-            },
-            {
-                user: "MusicLover",
-                rating: 4,
-                title: "Fun sound",
-                content: "Definitely more bass-heavy than the flagship ears, but perfect for the gym.",
-                date: "November 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "xreal-air-2",
@@ -634,7 +441,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Air+2+Side",
             "https://placehold.co/600x400?text=Air+2+Gaming",
         ],
-        badges: ["Value Option", "In Stock"],
         useCase: ["Productivity", "Gaming"],
         specs: ["1080p Display", "72g weight", "USB-C Plug & Play", "Compatible w/ All"],
         features: [
@@ -661,26 +467,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.5,
-        reviewCount: 3567,
-        reviews: [
-            {
-                user: "GamerPro",
-                rating: 5,
-                title: "Essential for Steam Deck",
-                content: "Laying in bed playing Cyberpunk on a 130 inch screen is the peak of gaming. Zero lag.",
-                date: "November 2024",
-                verified: true
-            },
-            {
-                user: "Traveler",
-                rating: 4,
-                title: "Good for planes",
-                content: "I didn't need the dimming feature of the Pro, so I saved money with this. Works great on red-eyes.",
-                date: "October 2024",
-                verified: true
-            }
-        ]
     },
     {
         id: "quest-3",
@@ -696,7 +482,6 @@ const rawDevices: RawDevice[] = [
             "https://placehold.co/600x400?text=Quest+3+POV",
             "https://placehold.co/600x400?text=Quest+3+Controllers",
         ],
-        badges: ["Best VR Headset", "In Stock"],
         useCase: ["Gaming", "Entertainment"],
         specs: ["4K+ Infinite Display", "Snapdragon XR2 Gen 2", "Color Passthrough", "Touch Plus Controllers"],
         features: [
@@ -715,18 +500,6 @@ const rawDevices: RawDevice[] = [
                 ]
             }
         ],
-        rating: 4.8,
-        reviewCount: 1540,
-        reviews: [
-            {
-                user: "Alex G.",
-                rating: 5,
-                title: "Mind blowing MR",
-                content: "Mixed reality is finally good. Playing board games on my coffee table with aliens is wild.",
-                date: "December 2024",
-                verified: true
-            }
-        ]
     }
 ,
 
@@ -739,8 +512,6 @@ const rawDevices: RawDevice[] = [
         description: "Lightweight smart glasses with ChatGPT integration and great audio.",
         imageUrl: "https://placehold.co/600x400?text=Solos+AirGo+3",
         specs: ["ChatGPT Integration", "Open-ear Audio", "Interchangeable Frames", "Whisper Audio"],
-        rating: 4.5,
-        reviewCount: 120,
     },
     {
         id: "xreal-air-2-ultra",
@@ -751,8 +522,6 @@ const rawDevices: RawDevice[] = [
         description: "Advanced AR glasses with 6DoF tracking and dual 1080p micro-OLED displays.",
         imageUrl: "https://placehold.co/600x400?text=XREAL+Air+2+Ultra",
         specs: ["Dual 3D Tracking Cameras", "120Hz Refresh Rate", "Titanium Frame", "6DoF Tracking"],
-        rating: 4.7,
-        reviewCount: 450,
     },
     {
         id: "viture-pro-xr",
@@ -763,8 +532,6 @@ const rawDevices: RawDevice[] = [
         description: "Experience premium visual fidelity with electrochromic film and exceptional brightness.",
         imageUrl: "https://placehold.co/600x400?text=Viture+Pro+XR",
         specs: ["120Hz Refresh Rate", "Electrochromic Dimming", "HARMAN Audio", "Myopia Adjustments"],
-        rating: 4.6,
-        reviewCount: 380,
     },
     {
         id: "rokid-ar-lite",
@@ -775,8 +542,6 @@ const rawDevices: RawDevice[] = [
         description: "Seamlessly blends the digital and physical worlds with an ultra-lightweight design.",
         imageUrl: "https://placehold.co/600x400?text=Rokid+AR+Lite",
         specs: ["Spatial Audio", "High-Resolution Display", "Multi-screen Productivity", "Wireless Streaming"],
-        rating: 4.4,
-        reviewCount: 200,
     },
     {
         id: "ultrahuman-ring-air",
@@ -787,8 +552,6 @@ const rawDevices: RawDevice[] = [
         description: "The lightest smart ring designed to optimize your health span with deep sleep and recovery insights.",
         imageUrl: "https://placehold.co/600x400?text=Ultrahuman+Ring+Air",
         specs: ["Circadian Alignment", "Recovery Score", "6-day Battery", "Waterproof"],
-        rating: 4.6,
-        reviewCount: 512,
     },
     {
         id: "movano-evie-ring",
@@ -799,8 +562,6 @@ const rawDevices: RawDevice[] = [
         description: "Comprehensive health tracker with a flexible design that adapts to your finger throughout the day.",
         imageUrl: "https://placehold.co/600x400?text=Movano+Evie+Ring",
         specs: ["Menstrual Tracking", "Flexible Fit", "SpO2 Monitoring", "Heart Rate Variability"],
-        rating: 4.3,
-        reviewCount: 230,
     },
     {
         id: "circular-ring-slim",
@@ -811,8 +572,6 @@ const rawDevices: RawDevice[] = [
         description: "An incredibly thin smart ring with haptic feedback to wake you gently and remind you to move.",
         imageUrl: "https://placehold.co/600x400?text=Circular+Ring+Slim",
         specs: ["Haptic Navigation", "Sleep Analysis", "Ultra-thin Design", "AI Wellness Assistant"],
-        rating: 4.2,
-        reviewCount: 150,
     },
     {
         id: "google-pixel-watch",
@@ -823,8 +582,6 @@ const rawDevices: RawDevice[] = [
         description: "Beautifully designed smartwatch with seamless Google integration and advanced Fitbit tracking.",
         imageUrl: "https://placehold.co/600x400?text=Google+Pixel+Watch",
         specs: ["Wear OS by Google", "Fitbit Health Tracking", "LTE Options", "Domed Sapphire Glass"],
-        rating: 4.5,
-        reviewCount: 1240,
     },
     {
         id: "apple-watch-series-10",
@@ -835,8 +592,6 @@ const rawDevices: RawDevice[] = [
         description: "The latest Apple Watch with advanced health sensors and a brighter, larger display.",
         imageUrl: "https://placehold.co/600x400?text=Apple+Series+10",
         specs: ["Always-On Retina Display", "ECG App", "Temperature Sensing", "Crash Detection"],
-        rating: 4.9,
-        reviewCount: 5600,
     },
     {
         id: "garmin-bounce-2",
@@ -847,8 +602,6 @@ const rawDevices: RawDevice[] = [
         description: "A kids' smartwatch with LTE connectivity for text and voice messaging, plus location tracking.",
         imageUrl: "https://placehold.co/600x400?text=Garmin+Bounce+2",
         specs: ["LTE Connectivity", "Location Tracking", "Activity Chores", "Parental Controls"],
-        rating: 4.4,
-        reviewCount: 890,
     },
     {
         id: "withings-nova",
@@ -859,8 +612,6 @@ const rawDevices: RawDevice[] = [
         description: "A premium hybrid smartwatch that combines classic aesthetics with medical-grade health tracking.",
         imageUrl: "https://placehold.co/600x400?text=Withings+Nova",
         specs: ["ECG & SpO2", "30-Day Battery", "Sapphire Glass", "Activity Tracking"],
-        rating: 4.7,
-        reviewCount: 310,
     },
     {
         id: "iyo-one",
@@ -871,8 +622,6 @@ const rawDevices: RawDevice[] = [
         description: "Advanced audio wearables featuring built-in processing and generative AI capabilities offline.",
         imageUrl: "https://placehold.co/600x400?text=Iyo+One",
         specs: ["On-device Gen AI", "High-Fidelity Audio", "Standalone Connectivity", "Real-time Translation"],
-        rating: 4.6,
-        reviewCount: 180,
     },
     {
         id: "timekettle-wt2-w4",
@@ -883,8 +632,6 @@ const rawDevices: RawDevice[] = [
         description: "Real-time translation earbuds allowing for seamless natural conversations across languages.",
         imageUrl: "https://placehold.co/600x400?text=Timekettle+WT2+%2F+W4",
         specs: ["Bi-directional Translation", "Active Noise Cancellation", "40 Languages", "Offline Translation Support"],
-        rating: 4.5,
-        reviewCount: 780,
     },
     {
         id: "samsung-buds3-pro",
@@ -895,8 +642,6 @@ const rawDevices: RawDevice[] = [
         description: "Studio-quality sound with AI-powered noise cancellation and real-time translation features.",
         imageUrl: "https://placehold.co/600x400?text=Samsung+Buds3+Pro",
         specs: ["Galaxy AI Translation", "Adaptive ANC", "24-bit Hi-Fi Audio", "Blade Design"],
-        rating: 4.8,
-        reviewCount: 2100,
     },
     {
         id: "limitless-pendant",
@@ -907,8 +652,6 @@ const rawDevices: RawDevice[] = [
         description: "A wearable device that records and processes your conversations to help you remember everything.",
         imageUrl: "https://placehold.co/600x400?text=Limitless+Pendant",
         specs: ["Meeting Summaries", "Audio Recording", "Privacy Centric", "Long Battery Life"],
-        rating: 4.3,
-        reviewCount: 340,
     },
     {
         id: "plaud-notepin-s",
@@ -919,8 +662,6 @@ const rawDevices: RawDevice[] = [
         description: "A minimalist wearable voice recorder integrated with ChatGPT for intelligent summaries.",
         imageUrl: "https://placehold.co/600x400?text=Plaud+NotePin+S",
         specs: ["ChatGPT Summaries", "High-Quality Mics", "Magnetic Attachment", "One-touch Record"],
-        rating: 4.4,
-        reviewCount: 420,
     },
     {
         id: "tab-pendant",
@@ -931,7 +672,6 @@ const rawDevices: RawDevice[] = [
         description: "A premium, privacy-first wearable AI designed to listen, understand, and assist you proactively.",
         imageUrl: "https://placehold.co/600x400?text=Tab+Pendant",
         specs: ["Proactive Assistance", "Premium Materials", "Privacy-first Design", "Always-on AI"],
-        rating: 4.5,
     }
 ];
 
