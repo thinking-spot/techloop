@@ -7,6 +7,7 @@ const lowestRate = lowestMonthlyRate(devices) ?? PRICING.minMonthlyRate;
 export const metadata: Metadata = {
     title: "Join the waitlist | Early access to Techloop",
     description: `Get early access to Techloop: rent AI wearables from ${usd(lowestRate)} a month and put your payments toward owning them. Tell us which device you're most curious about.`,
+    alternates: { canonical: "/waitlist" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

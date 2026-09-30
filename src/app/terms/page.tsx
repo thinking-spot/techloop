@@ -6,6 +6,7 @@ import { DEFAULT_SUPPORT_EMAIL, LEGAL, SUPPORT_EMAIL } from "@/lib/site-config";
 export const metadata: Metadata = {
     title: "Terms of Service | Techloop",
     description: "The terms for using trytechloop.com and joining the Techloop waitlist.",
+    alternates: { canonical: "/terms" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

@@ -36,11 +36,8 @@ export default function CheckoutPage() {
             const res = await fetch("/api/checkout/session", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    price: mainItem.price,
-                    productName: mainItem.name,
-                    productId: mainItem.id // slug
-                }),
+                // Only the device is sent: the server works out the price.
+                body: JSON.stringify({ productId: mainItem.id }),
             });
 
             if (!res.ok) {
@@ -137,7 +134,7 @@ export default function CheckoutPage() {
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-paragraph">Taxes</span>
-                                <span className="text-paragraph italic">At checkout</span>
+                                <span className="text-paragraph">Included</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-paragraph">Shipping</span>

@@ -10,6 +10,7 @@ import { DEFAULT_SUPPORT_EMAIL, SUPPORT_EMAIL } from "@/lib/site-config";
 export const metadata: Metadata = {
     title: "Rental Terms | Techloop",
     description: "How renting from Techloop works: pricing, deposits, cancelling, swaps, and buying a device you rent.",
+    alternates: { canonical: "/rental-terms" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

@@ -4,7 +4,7 @@
 //   Table: content_job_pages (and repeat for device/blog tables)
 //   Events: UPDATE (when published = true)
 //   HTTP Method: POST
-//   URL: https://trytechloop.com/api/revalidate
+//   URL: https://www.trytechloop.com/api/revalidate
 //   Headers: x-revalidation-secret: [your REVALIDATION_SECRET env var]
 //
 // This makes publish-to-live < 5 seconds, with no Vercel deploy required.
@@ -14,9 +14,11 @@ import { NextRequest } from 'next/server'
 
 const CONTENT_TYPE_PATHS: Record<string, (slug: string) => string> = {
   content_job_pages: (slug) => `/for/${slug}`,
-  content_device_pages: (slug) => `/rent/${slug}`,
   content_blog_posts: (slug) => `/blog/${slug}`,
 }
+
+// Device content has no public page yet (there is no /rent or /device route), so there is nothing to revalidate.
+const TABLES_WITHOUT_ROUTE = new Set(['content_device_pages'])
 
 export async function POST(req: NextRequest) {
   // Validate secret
@@ -37,6 +39,10 @@ export async function POST(req: NextRequest) {
   // Only revalidate published content
   if (!record?.published || !record?.slug || !table) {
     return Response.json({ skipped: true, reason: 'Not published or missing data' })
+  }
+
+  if (TABLES_WITHOUT_ROUTE.has(table)) {
+    return Response.json({ skipped: true, reason: 'No public page for this content type yet' })
   }
 
   const pathFn = CONTENT_TYPE_PATHS[table]

@@ -50,6 +50,7 @@ export async function generateMetadata(
     return {
         title: `${device.name} rental from ${usd(p.monthlyRate)}/mo | Techloop`,
         description: `Try the ${device.name} for ${usd(p.monthlyRate)} a month (retail ${usd(p.msrp)}). Your deposit and first ${PRICING.creditedPayments} payments count toward buying it for ${usd(p.buyoutAfterCredits)}.`,
+        alternates: { canonical: `/product/${device.id}` },
         openGraph: {
             images: "/images/techloop-wordmark.png",
         },

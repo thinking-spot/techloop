@@ -8,6 +8,7 @@ const CONTACT_EMAIL = SUPPORT_EMAIL || DEFAULT_SUPPORT_EMAIL;
 export const metadata: Metadata = {
     title: "Privacy Policy | Techloop",
     description: "What information Techloop collects, why, who it is shared with, and the choices you have.",
+    alternates: { canonical: "/privacy" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

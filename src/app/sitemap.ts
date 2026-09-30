@@ -1,25 +1,15 @@
 import { MetadataRoute } from 'next';
 import { getAllProducts } from '@/lib/products';
 import { categoryData } from "./browse/category-data";
-import { getAllBlogRoutes, getAllJobPageRoutes, getAllDevicePageRoutes } from '@/lib/content';
+import { getAllBlogRoutes, getAllJobPageRoutes } from '@/lib/content';
+import { SITE_URL } from '@/lib/site-config';
+import { SITEMAP_STATIC_ROUTES } from '@/lib/site-routes';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = 'https://www.trytechloop.com';
+    const baseUrl = SITE_URL;
 
     // 1. Static Pages
-    const routes = [
-        '',
-        '/browse',
-        '/how-it-works',
-        '/pricing',
-        '/partners',
-        '/quiz',
-        '/help',
-        '/login',
-        '/signup',
-        '/waitlist',
-        '/blog',
-    ].map((route) => ({
+    const routes = SITEMAP_STATIC_ROUTES.map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
@@ -61,21 +51,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
     }));
 
-    // 6. Dynamic Device Content Pages
-    const devicePages = await getAllDevicePageRoutes();
-    const deviceRoutes = devicePages.map((page) => ({
-        url: `${baseUrl}/device/${page.slug}`,
-        lastModified: new Date(page.updated_at),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
-    }));
-
     return [
         ...routes,
         ...categoryRoutes,
         ...productRoutes,
         ...blogRoutes,
         ...jobRoutes,
-        ...deviceRoutes
     ];
 }

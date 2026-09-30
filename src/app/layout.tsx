@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/commerce/CartDrawer";
 import { ToastProvider } from "@/components/ui/Toast";
 import { PRICING } from "@/lib/pricing";
-import { isWaitlistMode } from "@/lib/site-config";
+import { isWaitlistMode, SITE_URL } from "@/lib/site-config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trytechloop.com"),
+  metadataBase: new URL(SITE_URL),
   title: "Techloop: Try AI wearables before you buy",
   description: `Try AI glasses, rings, earbuds and more before you buy. Rent for about ${PRICING.ratePct}% of retail a month, and your payments count toward owning it.`,
 };

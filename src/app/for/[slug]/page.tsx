@@ -10,6 +10,7 @@ import { JobPageTemplate, type DeviceInfo } from '@/components/content/JobPageTe
 import { devices } from '@/lib/data'
 import { monthlyRate } from '@/lib/pricing'
 import { stripCustomerProof } from '@/lib/customer-proof'
+import { SITE_URL } from '@/lib/site-config'
 
 // ─── ISR config ───────────────────────────────────────────────────────────────
 // Re-check Supabase every 60s. Combined with on-demand revalidation webhook,
@@ -43,7 +44,7 @@ export async function generateMetadata({
       title: content.meta_title,
       description: content.meta_description,
       images: content.og_image_url ? [content.og_image_url] : [],
-      url: `https://trytechloop.com/for/${content.slug}`,
+      url: `${SITE_URL}/for/${content.slug}`,
       type: 'website',
     },
     twitter: {
@@ -52,7 +53,7 @@ export async function generateMetadata({
       description: content.meta_description,
     },
     alternates: {
-      canonical: `https://trytechloop.com/for/${content.slug}`,
+      canonical: `${SITE_URL}/for/${content.slug}`,
     },
   }
 }
@@ -90,8 +91,8 @@ export default async function JobPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'techloop', item: 'https://trytechloop.com' },
-      { '@type': 'ListItem', position: 2, name: content.job_title, item: `https://trytechloop.com/for/${content.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'techloop', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: content.job_title, item: `${SITE_URL}/for/${content.slug}` },
     ],
   }
 

@@ -12,6 +12,7 @@ import { POLICY } from "@/lib/faq";
 export const metadata: Metadata = {
     title: "Pricing: rent AI wearables from 10% of retail | Techloop",
     description: `One rule for every device: rent for ${PRICING.ratePct}% of retail a month (minimum ${usd(PRICING.minMonthlyRate)}), plus a refundable deposit. Your deposit and first ${PRICING.creditedPayments} payments count toward buying it.`,
+    alternates: { canonical: "/pricing" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

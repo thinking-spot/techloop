@@ -17,9 +17,10 @@ create table public.profiles (
 alter table public.profiles enable row level security;
 
 -- Profiles Policies
-create policy "Public profiles are viewable by everyone."
+-- Owner-only: profiles hold email addresses, so they must never be publicly readable.
+create policy "Users can view own profile"
   on profiles for select
-  using ( true );
+  using ( auth.uid() = id );
 
 create policy "Users can insert their own profile."
   on profiles for insert

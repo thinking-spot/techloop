@@ -10,6 +10,7 @@ import { POLICY } from "@/lib/faq";
 export const metadata: Metadata = {
     title: "How Techloop works: rent, swap or buy AI wearables",
     description: `Pick a device, try it for ${POLICY.firstRentalMinimumDays}+ days, then keep renting, buy it, swap it or send it back. Your deposit and first ${PRICING.creditedPayments} payments count toward owning it.`,
+    alternates: { canonical: "/how-it-works" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

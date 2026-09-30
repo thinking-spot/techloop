@@ -10,6 +10,7 @@ import remarkGfm from 'remark-gfm'
 import { getBlogPost, getAllBlogSlugs } from '@/lib/content'
 import { BlogPostTemplate } from '@/components/content/BlogPostTemplate'
 import RentVsBuyCalculator from '@/components/mdx/RentVsBuyCalculator'
+import { SITE_URL } from '@/lib/site-config'
 
 export const revalidate = 60
 export const dynamicParams = true
@@ -35,7 +36,7 @@ export async function generateMetadata({
       title: content.meta_title,
       description: content.meta_description,
       images: content.og_image_url ? [content.og_image_url] : [],
-      url: `https://trytechloop.com/blog/${content.slug}`,
+      url: `${SITE_URL}/blog/${content.slug}`,
       type: 'article',
       publishedTime: content.published_at,
       modifiedTime: content.last_reviewed_at ?? content.updated_at,
@@ -47,7 +48,7 @@ export async function generateMetadata({
       description: content.meta_description,
     },
     alternates: {
-      canonical: `https://trytechloop.com/blog/${content.slug}`,
+      canonical: `${SITE_URL}/blog/${content.slug}`,
     },
   }
 }
@@ -75,13 +76,13 @@ export default async function BlogPage({
     publisher: {
       '@type': 'Organization',
       name: 'techloop',
-      url: 'https://trytechloop.com',
+      url: SITE_URL,
     },
     datePublished: content.published_at,
     dateModified: content.last_reviewed_at ?? content.updated_at,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://trytechloop.com/blog/${content.slug}`,
+      '@id': `${SITE_URL}/blog/${content.slug}`,
     },
     image: content.og_image_url,
     keywords: [content.primary_keyword, ...(content.secondary_keywords ?? [])].join(', '),
@@ -91,9 +92,9 @@ export default async function BlogPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'techloop', item: 'https://trytechloop.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://trytechloop.com/blog' },
-      { '@type': 'ListItem', position: 3, name: content.title, item: `https://trytechloop.com/blog/${content.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'techloop', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: content.title, item: `${SITE_URL}/blog/${content.slug}` },
     ],
   }
 

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Techloop Blog | Future of AI Wearables",
     description: "Insights, reviews, and news about the latest AI hardware and the subscription economy.",
+    alternates: { canonical: "/blog" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },

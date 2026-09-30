@@ -13,6 +13,7 @@ const lowestRate = lowestMonthlyRate(devices) ?? PRICING.minMonthlyRate;
 export const metadata: Metadata = {
     title: "Browse AI wearables to rent or buy | Techloop",
     description: `Compare AI glasses, rings, watches, earbuds, pins, pendants and cards. Rent from ${usd(lowestRate)} a month and put your payments toward owning them.`,
+    alternates: { canonical: "/browse" },
     openGraph: {
         images: "/images/techloop-wordmark.png",
     },
