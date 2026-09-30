@@ -30,6 +30,15 @@ describe("faqs", () => {
     assert.ok(answer("returns-unreturned").includes(`${POLICY.returnWindowDays} days`));
     assert.ok(answer("pricing-deposit").includes(`${POLICY.depositRefundDays} days`));
     assert.ok(answer("swaps-how").includes(`${POLICY.firstRentalMinimumDays} days`));
+    assert.ok(answer("pricing-failed-payment").includes(`${POLICY.paymentGraceDays} days`));
+    assert.ok(answer("pricing-failed-payment").includes(`${POLICY.missedPaymentsBeforeUnreturned} monthly payments`));
+  });
+
+  it("says tax is included and who supports the device", () => {
+    const answer = (id: string) => faqs.find((f) => f.id === id)!.answer;
+    assert.match(answer("pricing-tax"), /includes sales tax/);
+    assert.match(answer("support-device"), /device's maker/);
+    assert.match(answer("pricing-price-changes"), /keeps its monthly price/);
   });
 
   it("makes none of the claims we removed from the site", () => {

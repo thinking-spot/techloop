@@ -60,8 +60,8 @@ export default function TermsPage() {
             <h2>Prices and availability</h2>
             <p>
                 Prices on the site are worked out from each device&apos;s retail price using the formula on our{" "}
-                <Link href="/pricing">pricing page</Link>. Prices, devices and availability can change, and we may fix mistakes. No
-                rental exists until we confirm it.
+                <Link href="/pricing">pricing page</Link>, and include sales tax. Prices, devices and availability can change, and we
+                may fix mistakes. No rental exists until we confirm it. A rental you already have keeps its monthly price.
             </p>
 
             <h2>Other companies&apos; products and names</h2>

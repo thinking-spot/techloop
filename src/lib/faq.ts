@@ -12,6 +12,12 @@ export const POLICY = {
   returnWindowDays: 14,
   /** The deposit is refunded within this many days of us receiving the device. */
   depositRefundDays: 7,
+  /** A failed monthly payment is retried this many times, and the customer is emailed once. */
+  paymentRetries: 1,
+  /** Days after a failed payment to fix the card before we start treating the rental as at risk. */
+  paymentGraceDays: 14,
+  /** This many missed monthly payments and the device is treated as not returned. */
+  missedPaymentsBeforeUnreturned: 2,
 } as const;
 
 export type FaqTopic = "getting-started" | "pricing" | "buying" | "swaps" | "returns";
@@ -42,6 +48,12 @@ const ALL_FAQS: Faq[] = [
     topic: "pricing",
     question: "How much does it cost?",
     answer: `Your monthly price is ${PRICING.ratePct}% of the device's retail price, rounded down, with a ${usd(PRICING.minMonthlyRate)} minimum. A ${usd(EXAMPLE_MSRP)} device is ${usd(rate)} a month. At checkout you pay your first month plus a refundable deposit of ${PRICING.depositPct}% of retail (${usd(dep)} here), so ${usd(dueToday(EXAMPLE_MSRP))} to start.`,
+  },
+  {
+    id: "pricing-tax",
+    topic: "pricing",
+    question: "Are taxes included?",
+    answer: "Yes. The price you see already includes sales tax, so nothing is added at checkout.",
   },
   {
     id: "pricing-deposit",
@@ -79,6 +91,26 @@ const ALL_FAQS: Faq[] = [
     topic: "returns",
     question: "What if I don't send it back?",
     answer: `If we don't receive the device within ${POLICY.returnWindowDays} days of you cancelling, we charge the card on file the remaining balance: the retail price minus your credit.`,
+  },
+  {
+    id: "pricing-failed-payment",
+    topic: "pricing",
+    question: "What if a payment fails?",
+    answer: `We retry it once and email you. You then have ${POLICY.paymentGraceDays} days to update your card. If ${POLICY.missedPaymentsBeforeUnreturned} monthly payments are missed, we treat the device as not returned and the charge described under "What if I don't send it back?" applies.`,
+  },
+  {
+    id: "pricing-price-changes",
+    topic: "pricing",
+    question: "Will my monthly price change?",
+    answer:
+      "No. If our prices change, a rental you already have keeps its monthly price and deposit for as long as you keep that device.",
+  },
+  {
+    id: "support-device",
+    topic: "getting-started",
+    question: "Who helps if my device has a problem?",
+    answer:
+      "Help with using or fixing a device comes from the device's maker. For your rental, payments, shipping, swaps or returns, email us.",
   },
   {
     id: "returns-shipping",

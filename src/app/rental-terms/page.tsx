@@ -56,11 +56,20 @@ export default function RentalTermsPage() {
                 <li>
                     <strong>After that:</strong> your monthly price is charged to your card each month until you cancel.
                 </li>
+                <li>
+                    <strong>Tax:</strong> our prices include sales tax, so nothing is added at checkout.
+                </li>
             </ul>
             <p>
                 Example: a device with a retail price of {usd(EXAMPLE_MSRP)} costs {usd(ex.monthlyRate)} a month with a{" "}
                 {usd(ex.deposit)} deposit, so {usd(ex.dueToday)} is due at checkout. The price of every device is listed on our{" "}
                 <Link href="/pricing">pricing page</Link>.
+            </p>
+
+            <h2>If our prices change</h2>
+            <p>
+                A rental you already have keeps its monthly price and deposit for as long as you keep that device. New prices apply
+                to new rentals, and to a device you swap to.
             </p>
 
             <h2>Your deposit</h2>
@@ -86,12 +95,26 @@ export default function RentalTermsPage() {
                 <li>Monthly payments you have already made are not refunded.</li>
             </ul>
 
+            <h2>If a payment fails</h2>
+            <ul>
+                <li>
+                    We retry a failed monthly payment {POLICY.paymentRetries === 1 ? "once" : `${POLICY.paymentRetries} times`} and email
+                    you.
+                </li>
+                <li>You then have {POLICY.paymentGraceDays} days to update your card or pay.</li>
+                <li>
+                    If {POLICY.missedPaymentsBeforeUnreturned} monthly payments are missed, we treat the device as not returned.
+                    The rules in the next section then apply.
+                </li>
+            </ul>
+
             <h2>If a device is not returned, lost or damaged</h2>
             <ul>
                 <li>
                     <strong>Not returned.</strong> If we do not receive the device within {POLICY.returnWindowDays} days of you
-                    cancelling, we will charge the card on file the remaining balance: the retail price minus your credit (see
-                    &quot;Buying a device&quot; below for what counts as credit). By renting, you authorize us to make that charge.
+                    cancelling, or if we treat it as not returned because of missed payments, we will charge the card on file the
+                    remaining balance: the retail price minus your credit (see &quot;Buying a device&quot; below for what counts as
+                    credit). By renting, you authorize us to make that charge.
                 </li>
                 <li>
                     <strong>Normal wear</strong> from ordinary use is expected and is not charged.
@@ -172,6 +195,12 @@ export default function RentalTermsPage() {
                     you are responsible for removing your own data.
                 </li>
             </ul>
+
+            <h2>Help with your device</h2>
+            <p>
+                Help with using or fixing a device comes from the device&apos;s maker. For questions about your rental, payments,
+                shipping, swaps or returns, email us.
+            </p>
 
             <h2>Checking your identity and payment</h2>
             <p>

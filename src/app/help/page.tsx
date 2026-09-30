@@ -59,7 +59,10 @@ export default function HelpPage() {
                             <Mail size={24} />
                         </div>
                         <h2 className="mb-3 font-display text-3xl font-bold text-headline">Still have a question?</h2>
-                        <p className="mb-8 text-paragraph">Email us and a person will get back to you.</p>
+                        <p className="mb-8 text-paragraph">
+                            Questions about your rental, payments, shipping or returns? Email us and a person will get back to you. For
+                            help using or fixing a device, contact its maker.
+                        </p>
                         <a
                             href={`mailto:${SUPPORT_EMAIL}`}
                             className={buttonVariants({ size: "lg" })}
